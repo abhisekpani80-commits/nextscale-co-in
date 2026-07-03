@@ -79,8 +79,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: `${SITE.url}/og-image.png`,
-        width: 1200,
-        height: 630,
+        width: 1024,
+        height: 536,
         alt: "Nextscale — We build AI that runs your business",
         type: "image/png",
       },
