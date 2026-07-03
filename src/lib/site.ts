@@ -23,23 +23,29 @@ export const SITE = {
   legalName: "Nextscale Technologies",
   tagline: "We build AI that runs your business.",
   description:
-    "AI products, AI agents, websites and digital growth for Indian businesses. Built from Odisha, for all of India.",
+    "AI products, AI agents, websites and digital growth for Indian businesses. Built in Bhubaneswar, Odisha by Abhisek Pani.",
   whatsapp: "919556436685",
   whatsappMessage: "Hi Nextscale! I'd like to know more about your AI services.",
   url: "https://nextscale.co.in",
   location: "Odisha, India",
   email: "biz.abhisek@gmail.com",
-  founder: "Abhisek",
+  founder: "Abhisek Pani",
+  founderSameAs: [
+    "https://github.com/abhisekpani80-commits",
+    "https://linkedin.com/in/abhisek-pani",
+    "https://x.com/abhisekpani",
+  ],
   foundingDate: "2024",
   region: { city: "Bhubaneswar", state: "Odisha", country: "India", countryCode: "IN" },
   /** Last review date for legal documents — keep in sync when policies change. */
   legalUpdated: "2026-06-28",
   /** Public profiles — used for SEO `sameAs` and the footer. */
   socials: {
-    youtube: "https://youtube.com",
-    twitter: "https://x.com",
-    linkedin: "https://linkedin.com",
-    instagram: "https://instagram.com",
+    youtube: "https://youtube.com/@nextscale",
+    twitter: "https://x.com/abhisekpani",
+    linkedin: "https://linkedin.com/in/abhisek-pani",
+    instagram: "https://instagram.com/nextscale.co.in",
+    github: "https://github.com/abhisekpani80-commits",
   },
 };
 

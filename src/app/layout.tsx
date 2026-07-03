@@ -8,7 +8,7 @@ import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { CookieConsent } from "@/components/ui/cookie-consent";
 import { ClickSparkProvider } from "@/components/ui/click-spark-provider";
 import { JsonLd } from "@/components/seo/json-ld";
-import { organizationSchema, websiteSchema } from "@/lib/seo";
+import { organizationSchema, websiteSchema, founderPersonSchema } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 import DotField from "@/components/DotField";
 
@@ -45,6 +45,12 @@ export const metadata: Metadata = {
     "Aura English coach",
     "AI automation small business",
     "digital growth India",
+    "Abhisek Pani",
+    "founder Nextscale",
+    "Nextscale founder",
+    "Abhisek Pani Odisha",
+    "AI startup Bhubaneswar",
+    "Nextscale Technologies",
   ],
   authors: [{ name: SITE.founder }],
   creator: SITE.founder,
@@ -104,7 +110,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             waveAmplitude={1.5}
           />
         </div>
-        <JsonLd schema={[organizationSchema(), websiteSchema()]} />
+        <JsonLd schema={[organizationSchema(), websiteSchema(), founderPersonSchema()]} />
         <ScrollProgress />
         <Navbar />
         <ClickSparkProvider>

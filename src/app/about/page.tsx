@@ -17,11 +17,34 @@ import { Reveal } from "@/components/ui/reveal";
 import { VALUES, TIMELINE } from "@/lib/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { JsonLd } from "@/components/seo/json-ld";
+import { founderPersonSchema, profilePageSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "About — Nextscale | AI Products & Digital Infrastructure",
+  title: "Abhisek Pani — Founder of Nextscale | AI Builder from Odisha, India",
   description:
-    "Nextscale builds AI products and digital infrastructure for ambitious businesses worldwide. Founded in India, serving globally.",
+    "Abhisek Pani is the founder and CEO of Nextscale, an AI products and digital infrastructure company based in Bhubaneswar, Odisha. Self-taught builder creating AI agents, SaaS products, and digital growth solutions for businesses across India and globally.",
+  keywords: [
+    "Abhisek Pani",
+    "Abhisek Pani Nextscale",
+    "founder of Nextscale",
+    "Nextscale founder",
+    "who is Abhisek Pani",
+    "Abhisek Pani Odisha",
+    "AI builder India",
+    "self-taught developer Odisha",
+    "AI startup founder India",
+    "Nextscale CEO",
+    "Bhubaneswar tech founder",
+    "AI company Odisha",
+  ],
+  openGraph: {
+    title: "Abhisek Pani — Founder of Nextscale",
+    description:
+      "Abhisek Pani is the founder and CEO of Nextscale. A self-taught AI builder from Bhubaneswar, Odisha who is building AI products and digital infrastructure for businesses across India.",
+    url: "https://nextscale.co.in/about",
+    type: "profile",
+  },
 };
 
 const GLOBAL_STATS = [
@@ -81,6 +104,7 @@ const WHY_NEXTSCALE = [
 export default function AboutPage() {
   return (
     <>
+      <JsonLd schema={[founderPersonSchema(), profilePageSchema()]} />
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-white/[0.06] pt-36 pb-24">
         <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-96 w-[50rem] rounded-full opacity-20 blur-3xl"
@@ -166,13 +190,16 @@ export default function AboutPage() {
                 </h2>
                 <div className="mt-8 flex flex-col gap-5 text-[15px] leading-relaxed text-white/50 tracking-[-0.01em]">
                   <p>
-                    I'm Abhisek — a self-taught builder from Odisha who started Nextscale without a computer science degree, VC funding, or a fancy co-working space. Just curiosity, and a conviction that the best tools in the world shouldn't be exclusive to billion-dollar companies.
+                    I'm <strong className="text-white/80">Abhisek Pani</strong> — the founder and CEO of Nextscale. A self-taught builder from Bhubaneswar, Odisha who started Nextscale without a computer science degree, VC funding, or a fancy co-working space. Just curiosity, and a conviction that the best tools in the world shouldn't be exclusive to billion-dollar companies.
                   </p>
                   <p>
                     What started as building websites for local clinics evolved into a full AI infrastructure company — deploying intelligent agents, SaaS products, and digital systems for businesses from Bhubaneswar to Birmingham.
                   </p>
                   <p>
                     We don't compete on size. We compete on <span className="text-white/80 font-medium">speed, quality, and outcomes.</span> Every client — whether they're a solo GP in Puri or a startup in Dubai — gets the same standard of work that Silicon Valley teams expect.
+                  </p>
+                  <p className="text-[13px] text-white/35">
+                    Abhisek Pani · Founder of Nextscale · Bhubaneswar, Odisha, India
                   </p>
                 </div>
               </div>

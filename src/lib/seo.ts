@@ -62,7 +62,7 @@ export function organizationSchema() {
     description: SITE.description,
     email: SITE.email,
     foundingDate: SITE.foundingDate,
-    founder: { "@type": "Person", name: SITE.founder },
+    founder: { "@type": "Person", "@id": `${SITE.url}/#founder`, name: SITE.founder },
     sameAs: SAME_AS,
     areaServed: { "@type": "Country", name: "India" },
     address: {
@@ -149,5 +149,95 @@ export function faqSchema(faqs: { q: string; a: string }[] = PRICING_FAQ) {
       name: f.q,
       acceptedAnswer: { "@type": "Answer", text: f.a },
     })),
+  };
+}
+
+/**
+ * Person schema for Abhisek Pani — the primary GEO/AEO entity signal.
+ * Links the founder to the organization and all social profiles so Google
+ * can build a Knowledge Graph entry for “Abhisek Pani” and
+ * “founder of Nextscale” queries.
+ */
+export function founderPersonSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${SITE.url}/#founder`,
+    name: "Abhisek Pani",
+    alternateName: ["Abhisek", "Abhisek Pani Nextscale"],
+    url: `${SITE.url}/about`,
+    email: SITE.email,
+    jobTitle: "Founder & CEO",
+    description:
+      "Abhisek Pani is the founder and CEO of Nextscale, an AI products and digital infrastructure company based in Bhubaneswar, Odisha, India. He is a self-taught builder who creates AI agents, SaaS products, and digital growth systems for businesses across India and globally.",
+    nationality: {
+      "@type": "Country",
+      name: "India",
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Bhubaneswar",
+      addressRegion: "Odisha",
+      addressCountry: "IN",
+    },
+    worksFor: {
+      "@type": "Organization",
+      "@id": `${SITE.url}/#organization`,
+      name: SITE.name,
+      url: SITE.url,
+    },
+    founder: {
+      "@type": "Organization",
+      "@id": `${SITE.url}/#organization`,
+      name: SITE.name,
+    },
+    knowsAbout: [
+      "Artificial Intelligence",
+      "AI Agents",
+      "SaaS Products",
+      "Web Development",
+      "Digital Marketing",
+      "EdTech",
+      "Business Automation",
+      "Next.js",
+      "React",
+      "Machine Learning",
+    ],
+    sameAs: SITE.founderSameAs,
+    image: {
+      "@type": "ImageObject",
+      url: abs("/icon.svg"),
+    },
+  };
+}
+
+/**
+ * ProfilePage schema — marks the /about page as the canonical profile page
+ * for Abhisek Pani. This is a strong AEO/GEO signal for AI search engines
+ * (Google SGE, Gemini, Perplexity) to surface your profile when someone
+ * asks “who is Abhisek Pani” or “who founded Nextscale”.
+ */
+export function profilePageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": `${SITE.url}/about#profilepage`,
+    url: `${SITE.url}/about`,
+    name: "Abhisek Pani — Founder of Nextscale",
+    description:
+      "Profile page of Abhisek Pani, founder and CEO of Nextscale. Learn about Abhisek’s journey as a self-taught AI builder from Odisha who created Nextscale to build AI products and digital infrastructure for businesses across India.",
+    dateCreated: "2024-01-01",
+    dateModified: new Date().toISOString().split("T")[0],
+    inLanguage: "en-IN",
+    isPartOf: { "@id": `${SITE.url}/#website` },
+    about: { "@id": `${SITE.url}/#founder` },
+    mainEntity: { "@id": `${SITE.url}/#founder` },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+        { "@type": "ListItem", position: 2, name: "About Abhisek Pani", item: `${SITE.url}/about` },
+      ],
+    },
   };
 }
