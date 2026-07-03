@@ -8,6 +8,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { SITE, waLink } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import dynamic from "next/dynamic";
+import { MobileHeroBg } from "@/components/ui/mobile-hero-bg";
 
 const ShaderAnimation = dynamic(
   () => import("@/components/ui/shader-animation").then((m) => m.ShaderAnimation),
@@ -48,9 +49,9 @@ export function Hero() {
 
   return (
     <section className="relative isolate flex min-h-[92vh] flex-col justify-center overflow-hidden">
-      {/* Shader bg */}
+      {/* Shader bg / Mobile animated bg fallback */}
       <div className="absolute inset-0 -z-20">
-        {renderShader ? <ShaderAnimation /> : <div className="w-full h-full bg-[#0a0c10]" />}
+        {renderShader ? <ShaderAnimation /> : <MobileHeroBg />}
       </div>
 
       {/* Premium ambient glows — replaced letter glitch */}

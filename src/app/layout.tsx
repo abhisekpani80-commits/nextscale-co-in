@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     description: "Custom AI products, intelligent voice/WhatsApp agents, and high-performance digital infrastructure for ambitious businesses worldwide.",
     images: [
       {
-        url: `${SITE.url}/og-image.png`,
+        url: `${SITE.url}/og-image-v2.png`,
         width: 1024,
         height: 536,
         alt: "Nextscale — We build AI that runs your business",
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     title: `${SITE.name} — AI Products & Digital Infrastructure`,
     description: "Custom AI products, intelligent voice/WhatsApp agents, and high-performance digital infrastructure for ambitious businesses worldwide.",
     creator: "@abhisekpani",
-    images: [`${SITE.url}/og-image.png`],
+    images: [`${SITE.url}/og-image-v2.png`],
   },
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }, { url: "/favicon.ico", sizes: "48x48" }],
