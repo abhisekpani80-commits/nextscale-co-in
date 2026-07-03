@@ -1,0 +1,41 @@
+# Nextscale
+
+> Nextscale is an AI-first technology company from Odisha, India that builds AI products, AI agents, business websites, and digital-growth services for clinics and small-to-medium businesses across India. Founded in 2024 by Abhisek, a self-taught founder.
+
+Contact: biz.abhisek@gmail.com · WhatsApp preferred · Serves all of India · Based in Bhubaneswar, Odisha.
+
+## What Nextscale offers
+
+- **AI Agents** — WhatsApp AI receptionist that books appointments, sends reminders, qualifies leads, requests Google reviews, and runs follow-ups 24/7. Goes live in 48 hours. Plans: Starter ₹5,999/mo, Growth ₹12,999/mo, Enterprise ₹24,999/mo.
+- **Websites** — Custom, mobile-first, SEO-ready business websites live in 7 days. Plans from ₹4,999.
+- **Digital Growth** — Google Business setup, local SEO, and social presence with monthly growth reports.
+
+## Products
+
+- **ExamOS** (Beta) — AI-powered exam prep for India: AI-generated mock tests, previous-year-question analysis, and performance tracking for NEET, CUET, IBPS, SSC CGL, OSSSC, and OPSC.
+- **Aura** (Coming Soon) — Voice-based AI English fluency coach with real-time pronunciation feedback, built on Deepgram, Claude, and Sarvam AI.
+
+## Key facts
+
+- Free 2-week trial on AI agents; no credit card required.
+- No lock-in — cancel anytime with full data export.
+- Payment via UPI, bank transfer, or monthly billing; no international card needed.
+- AI agents live in 48 hours, websites in 7 days.
+- 25+ websites shipped, 12+ AI agents live, 2 products, 8 books, 10+ digital products.
+
+## Pages
+
+- Products: https://nextscale.co.in/products
+- Services: https://nextscale.co.in/services
+- Pricing: https://nextscale.co.in/pricing
+- Portfolio: https://nextscale.co.in/portfolio
+- About: https://nextscale.co.in/about
+- Careers: https://nextscale.co.in/careers
+- Contact: https://nextscale.co.in/contact
+
+## Legal
+
+- Privacy Policy: https://nextscale.co.in/legal/privacy
+- Terms of Service: https://nextscale.co.in/legal/terms
+- Refund & Cancellation: https://nextscale.co.in/legal/refund
+- Cookie Policy: https://nextscale.co.in/legal/cookies

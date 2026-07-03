@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 3000
+    },
+    {
+      "name": "demos",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["-y", "serve", "C:/Users/abhis_vrzof03/Documents/buildora-demos", "-l", "4321"],
+      "port": 4321
+    },
+    {
+      "name": "ecommerce",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["-y", "serve", "C:/Users/abhis_vrzof03/Documents/buildora-demos/ecommerce", "-l", "4322"],
+      "port": 4322
+    }
+  ]
+}
