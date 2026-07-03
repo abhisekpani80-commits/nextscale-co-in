@@ -37,9 +37,15 @@ export function PortfolioHighlight() {
     // Find the corresponding item in the main portfolio list
     const project = PORTFOLIO.find((p) => p.title === item.text);
     if (project?.liveUrl) {
-      window.open(project.liveUrl, "_blank", "noopener,noreferrer");
+      // Use a hidden anchor element click so mobile browsers don't block it as a popup
+      const a = document.createElement("a");
+      a.href = project.liveUrl;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
     } else {
-      // Redirect to the main portfolio page and highlight the correct category
       window.location.href = `/portfolio?category=${encodeURIComponent(project?.category || "All")}`;
     }
   };

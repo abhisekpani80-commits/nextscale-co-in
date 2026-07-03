@@ -97,30 +97,10 @@ export default function PortfolioPage() {
           {visible.map((item, i) => {
             const bgColor = categoryColor[item.category] ?? "rgba(39,208,237,0.1)";
             const textColor = categoryTextColor[item.category] ?? "#27d0ed";
+            const cardClass = "group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card/60 backdrop-blur-sm transition-all duration-300 hover:border-white/15 hover:shadow-[0_8px_40px_rgba(0,0,0,0.4)] hover:-translate-y-1";
 
-            const CardWrapper = item.liveUrl
-              ? ({ children }: { children: React.ReactNode }) => (
-                  <a
-                    href={item.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card/60 backdrop-blur-sm transition-all duration-300 hover:border-white/15 hover:shadow-[0_8px_40px_rgba(0,0,0,0.4)] hover:-translate-y-1"
-                    style={{ animationDelay: `${i * 50}ms` }}
-                  >
-                    {children}
-                  </a>
-                )
-              : ({ children }: { children: React.ReactNode }) => (
-                  <div
-                    className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card/60 backdrop-blur-sm"
-                    style={{ animationDelay: `${i * 50}ms` }}
-                  >
-                    {children}
-                  </div>
-                );
-
-            return (
-              <CardWrapper key={`${item.title}-${item.category}-${i}`}>
+            const cardInner = (
+              <>
                 {/* Image */}
                 <div className="relative h-48 w-full overflow-hidden">
                   <Image
@@ -197,7 +177,28 @@ export default function PortfolioPage() {
                     </div>
                   )}
                 </div>
-              </CardWrapper>
+              </>
+            );
+
+            return item.liveUrl ? (
+              <a
+                key={`${item.title}-${item.category}-${i}`}
+                href={item.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cardClass}
+                style={{ animationDelay: `${i * 50}ms` }}
+              >
+                {cardInner}
+              </a>
+            ) : (
+              <div
+                key={`${item.title}-${item.category}-${i}`}
+                className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card/60 backdrop-blur-sm"
+                style={{ animationDelay: `${i * 50}ms` }}
+              >
+                {cardInner}
+              </div>
             );
           })}
         </div>
