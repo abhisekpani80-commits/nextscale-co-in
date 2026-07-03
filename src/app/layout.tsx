@@ -6,12 +6,11 @@ import { Footer } from "@/components/layout/footer";
 import { WhatsAppFloat } from "@/components/layout/whatsapp-float";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { CookieConsent } from "@/components/ui/cookie-consent";
-import { ClickSparkProvider } from "@/components/ui/click-spark-provider";
 import { JsonLd } from "@/components/seo/json-ld";
 import { organizationSchema, websiteSchema, founderPersonSchema } from "@/lib/seo";
 import { SITE } from "@/lib/site";
-import DotField from "@/components/DotField";
 import { LoadingScreen } from "@/components/ui/loading-screen";
+import { ClientWrapper } from "@/components/ui/client-wrapper";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -27,7 +26,6 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE.url),
   title: {
     default: `${SITE.name} — AI Products & Digital Infrastructure for Indian Businesses`,
     template: `%s — ${SITE.name}`,
@@ -35,7 +33,9 @@ export const metadata: Metadata = {
   description:
     "We build AI products like ExamOS and Aura, plus AI agents, websites, and digital growth services for clinics and businesses across India.",
   applicationName: SITE.name,
-  generator: "Next.js",
+  authors: [{ name: SITE.founder }],
+  creator: SITE.founder,
+  publisher: SITE.name,
   keywords: [
     "AI agents India",
     "WhatsApp AI receptionist",
@@ -53,21 +53,14 @@ export const metadata: Metadata = {
     "AI startup Bhubaneswar",
     "Nextscale Technologies",
   ],
-  authors: [{ name: SITE.founder }],
-  creator: SITE.founder,
-  publisher: SITE.legalName,
-  category: "technology",
-  alternates: { canonical: "/" },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
-    },
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL(SITE.url),
+  alternates: {
+    canonical: "./",
   },
   openGraph: {
     type: "website",
@@ -112,22 +105,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     >
       <body className="min-h-full flex flex-col bg-background text-foreground relative">
         <LoadingScreen />
-        <div className="fixed inset-0 -z-50 pointer-events-none opacity-35">
-          <DotField
-            dotRadius={1.2}
-            dotSpacing={16}
-            bulgeStrength={55}
-            glowRadius={180}
-            sparkle={true}
-            waveAmplitude={1.5}
-          />
-        </div>
         <JsonLd schema={[organizationSchema(), websiteSchema(), founderPersonSchema()]} />
         <ScrollProgress />
-        <Navbar />
-        <ClickSparkProvider>
+        <ClientWrapper>
+          <Navbar />
           <main className="flex-1">{children}</main>
-        </ClickSparkProvider>
+        </ClientWrapper>
         <Footer />
         <WhatsAppFloat />
         <CookieConsent />

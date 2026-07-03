@@ -1,13 +1,33 @@
 "use client";
 
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { PORTFOLIO } from "@/lib/site";
-import CircularGallery from "@/components/CircularGallery";
+import dynamic from "next/dynamic";
+
+const CircularGallery = dynamic(() => import("@/components/CircularGallery"), { ssr: false });
 
 export function PortfolioHighlight() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect(); // Keep loaded once visible
+        }
+      },
+      { rootMargin: "150px" }
+    );
+    if (containerRef.current) observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   const featured = PORTFOLIO.filter((item) => item.featured).map((item) => ({
     image: item.image,
     text: item.title,
@@ -49,19 +69,25 @@ export function PortfolioHighlight() {
         </div>
 
         {/* Circular Gallery container */}
-        <div className="relative mt-14 h-[420px] sm:h-[520px] w-full overflow-hidden border border-border/40 rounded-3xl bg-[#080a0d] shadow-[inset_0_4px_30px_rgba(0,0,0,0.6)]">
+        <div ref={containerRef} className="relative mt-14 h-[420px] sm:h-[520px] w-full overflow-hidden border border-border/40 rounded-3xl bg-[#080a0d] shadow-[inset_0_4px_30px_rgba(0,0,0,0.6)]">
           <div className="absolute inset-0 bg-radial-fade opacity-30 pointer-events-none" />
-          <CircularGallery
-            items={featured}
-            bend={2.5}
-            textColor="#27d0ed"
-            borderRadius={0.06}
-            scrollEase={0.03}
-            scrollSpeed={2.5}
-            font="bold 22px 'Inter'"
-            fontUrl="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap"
-            onItemClick={handleItemClick}
-          />
+          {isInView ? (
+            <CircularGallery
+              items={featured}
+              bend={2.5}
+              textColor="#27d0ed"
+              borderRadius={0.06}
+              scrollEase={0.03}
+              scrollSpeed={2.5}
+              font="bold 22px 'Inter'"
+              fontUrl="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap"
+              onItemClick={handleItemClick}
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center font-mono text-xs text-muted-foreground/30">
+              Loading visual portfolio...
+            </div>
+          )}
         </div>
       </div>
     </section>

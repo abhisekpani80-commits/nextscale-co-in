@@ -40,8 +40,19 @@ export function DevTerminal({
 }) {
   const [printed, setPrinted] = useState<{ line: Line; full: string; partial: string }[]>([]);
   const [cycle, setCycle] = useState(0);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
 
   useEffect(() => {
+    const isMobile = window.matchMedia("(max-width: 768px) or (pointer: coarse)").matches;
+    setShouldAnimate(!isMobile);
+  }, []);
+
+  useEffect(() => {
+    if (!shouldAnimate) {
+      setPrinted(lines.map((line) => ({ line, full: line.text, partial: line.text })));
+      return;
+    }
+
     let cancelled = false;
     let idx = 0;
     const queue = [...lines];
@@ -76,7 +87,7 @@ export function DevTerminal({
     };
     // re-run when cycle bumps
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cycle, typingSpeedMs, lineDelayMs, loop]);
+  }, [cycle, typingSpeedMs, lineDelayMs, loop, shouldAnimate]);
 
   return (
     <div

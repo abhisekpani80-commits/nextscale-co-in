@@ -211,22 +211,14 @@ const DotField = memo(({
           drawX += Math.cos(d.ay * 0.03 + t * 0.7) * p.waveAmplitude * 0.5;
         }
 
+        let currentRad = rad;
         if (p.sparkle) {
           const hash = ((i * 2654435761) ^ (frameCount >> 3)) >>> 0;
-          if ((hash % 100) < 3) {
-            ctx.moveTo(drawX + rad * 1.8, drawY);
-            ctx.arc(drawX, drawY, rad * 1.8, 0, TWO_PI);
-          } else {
-            ctx.moveTo(drawX + rad, drawY);
-            ctx.arc(drawX, drawY, rad, 0, TWO_PI);
-          }
-        } else {
-          ctx.moveTo(drawX + rad, drawY);
-          ctx.arc(drawX, drawY, rad, 0, TWO_PI);
+          if ((hash % 100) < 3) currentRad = rad * 1.8;
         }
+        // Render crisp high-performance squares instead of circular paths
+        ctx.fillRect(drawX - currentRad, drawY - currentRad, currentRad * 2, currentRad * 2);
       }
-
-      ctx.fill();
 
       rafRef.current = requestAnimationFrame(tick);
     }
@@ -297,4 +289,17 @@ const DotField = memo(({
 
 DotField.displayName = 'DotField';
 
-export default DotField;
+import { useState } from 'react';
+
+export default function DotFieldWrapper(props: DotFieldProps) {
+  const [shouldRender, setShouldRender] = useState(false);
+
+  useEffect(() => {
+    const isMobile = window.matchMedia("(max-width: 768px) or (pointer: coarse)").matches;
+    setShouldRender(!isMobile);
+  }, []);
+
+  if (!shouldRender) return null;
+  return <DotField {...props} />;
+}
+

@@ -1,7 +1,16 @@
 'use client';
 import ClickSpark from '@/components/ClickSpark';
+import { useEffect, useState } from 'react';
 
 export function ClickSparkProvider({ children }: { children: React.ReactNode }) {
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    setIsMobile(window.matchMedia("(max-width: 768px) or (pointer: coarse)").matches);
+  }, []);
+
+  if (isMobile) return <>{children}</>;
+
   return (
     <ClickSpark
       sparkColor="#27d0ed"

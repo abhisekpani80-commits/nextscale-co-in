@@ -4,10 +4,15 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { ShaderAnimation } from "@/components/ui/shader-animation";
 import { buttonVariants } from "@/components/ui/button";
 import { SITE, waLink } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import dynamic from "next/dynamic";
+
+const ShaderAnimation = dynamic(
+  () => import("@/components/ui/shader-animation").then((m) => m.ShaderAnimation),
+  { ssr: false }
+);
 
 const up: Variants = {
   hidden: { opacity: 0, y: 28, filter: "blur(6px)" },
@@ -29,8 +34,12 @@ const WORDS = [
 
 export function Hero() {
   const [index, setIndex] = useState(0);
+  const [renderShader, setRenderShader] = useState(false);
 
   useEffect(() => {
+    const isMobile = window.matchMedia("(max-width: 768px) or (pointer: coarse)").matches;
+    setRenderShader(!isMobile);
+
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % WORDS.length);
     }, 2800);
@@ -41,7 +50,7 @@ export function Hero() {
     <section className="relative isolate flex min-h-[92vh] flex-col justify-center overflow-hidden">
       {/* Shader bg */}
       <div className="absolute inset-0 -z-20">
-        <ShaderAnimation />
+        {renderShader ? <ShaderAnimation /> : <div className="w-full h-full bg-[#0a0c10]" />}
       </div>
 
       {/* Premium ambient glows — replaced letter glitch */}

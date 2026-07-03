@@ -91,6 +91,7 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
     if (!ctx) return;
 
     let animationId: number;
+    let loopRunning = false;
 
     const draw = (timestamp: number) => {
       if (!startTimeRef.current) {
@@ -125,13 +126,27 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
         return true;
       });
 
-      animationId = requestAnimationFrame(draw);
+      if (sparksRef.current.length > 0) {
+        animationId = requestAnimationFrame(draw);
+      } else {
+        loopRunning = false;
+        ctx?.clearRect(0, 0, canvas.width, canvas.height);
+      }
     };
 
-    animationId = requestAnimationFrame(draw);
+    const handleSparkTrigger = () => {
+      if (!loopRunning) {
+        loopRunning = true;
+        startTimeRef.current = null;
+        animationId = requestAnimationFrame(draw);
+      }
+    };
+
+    window.addEventListener('click-spark-trigger', handleSparkTrigger);
 
     return () => {
       cancelAnimationFrame(animationId);
+      window.removeEventListener('click-spark-trigger', handleSparkTrigger);
     };
   }, [sparkColor, sparkSize, sparkRadius, sparkCount, duration, easeFunc, extraScale]);
 
@@ -151,6 +166,7 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
     }));
 
     sparksRef.current.push(...newSparks);
+    window.dispatchEvent(new CustomEvent('click-spark-trigger'));
   };
 
   return (
