@@ -44,6 +44,21 @@ export const metadata: Metadata = {
       "Abhisek Pani is the founder and CEO of Nextscale. A self-taught AI builder from Bhubaneswar, Odisha who is building AI products and digital infrastructure for businesses across India.",
     url: "https://nextscale.co.in/about",
     type: "profile",
+    images: [
+      {
+        url: "https://nextscale.co.in/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Abhisek Pani — Founder of Nextscale",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Abhisek Pani — Founder of Nextscale",
+    description: "Self-taught AI builder from Bhubaneswar, Odisha. Founder of Nextscale — building AI products and digital infrastructure for businesses across India.",
+    creator: "@abhisekpani",
+    images: ["https://nextscale.co.in/og-image.png"],
   },
 };
 

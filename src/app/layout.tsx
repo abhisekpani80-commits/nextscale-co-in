@@ -74,13 +74,23 @@ export const metadata: Metadata = {
     url: SITE.url,
     siteName: SITE.name,
     title: `${SITE.name} — AI Products & Digital Infrastructure`,
-    description: "AI agents, websites, and digital growth for Indian businesses. Built from Odisha.",
+    description: "AI agents, websites, and digital growth for Indian businesses. Built from Odisha by Abhisek Pani.",
+    images: [
+      {
+        url: `${SITE.url}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: "Nextscale — We build AI that runs your business",
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE.name} — AI Products & Digital Infrastructure`,
-    description: "AI agents, websites, and digital growth for Indian businesses. Built from Odisha.",
-    creator: "@nextscale",
+    description: "AI agents, websites, and digital growth for Indian businesses. Built from Odisha by Abhisek Pani.",
+    creator: "@abhisekpani",
+    images: [`${SITE.url}/og-image.png`],
   },
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }, { url: "/favicon.ico", sizes: "48x48" }],
