@@ -23,7 +23,7 @@ export const SITE = {
   legalName: "Nextscale Technologies",
   tagline: "We build AI that runs your business.",
   description:
-    "AI products, AI agents, websites and digital growth for Indian businesses. Built in Bhubaneswar, Odisha by Abhisek Pani.",
+    "Custom AI products, intelligent voice/WhatsApp agents, and high-performance digital infrastructure for ambitious businesses worldwide.",
   whatsapp: "919556436685",
   whatsappMessage: "Hi Nextscale! I'd like to know more about your AI services.",
   url: "https://nextscale.co.in",
