@@ -11,6 +11,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { organizationSchema, websiteSchema, founderPersonSchema } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 import DotField from "@/components/DotField";
+import { LoadingScreen } from "@/components/ui/loading-screen";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -110,6 +111,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       className={`dark ${inter.variable} ${mono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground relative">
+        <LoadingScreen />
         <div className="fixed inset-0 -z-50 pointer-events-none opacity-35">
           <DotField
             dotRadius={1.2}
