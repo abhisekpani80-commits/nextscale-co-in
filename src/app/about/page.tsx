@@ -124,7 +124,7 @@ export default function AboutPage() {
           <Reveal delay={0.1}>
             <p className="mt-7 max-w-2xl mx-auto text-[1.05rem] leading-relaxed text-[#6B6860] tracking-[-0.01em]">
               From a small office in Bhubaneswar to clients across India, the Gulf, Europe, and North America —
-              Nextscale delivers AI products and digital infrastructure that would cost 10× more anywhere else.
+              Next Scale delivers AI products and digital infrastructure that would cost 10× more anywhere else.
             </p>
           </Reveal>
 
@@ -176,7 +176,7 @@ export default function AboutPage() {
                 </h2>
                 <div className="mt-8 flex flex-col gap-5 text-[15px] leading-relaxed text-[#6B6860] tracking-[-0.01em]">
                   <p>
-                    I'm <strong className="text-[#0F0E0D]">Abhisek Pani</strong> — the founder and CEO of Nextscale. A self-taught builder from Bhubaneswar, Odisha who started Nextscale without a computer science degree, VC funding, or a fancy co-working space. Just curiosity, and a conviction that the best tools in the world shouldn't be exclusive to billion-dollar companies.
+                    I'm <strong className="text-[#0F0E0D]">Abhisek Pani</strong> — the founder and CEO of Next Scale. A self-taught builder from Bhubaneswar, Odisha who started Next Scale without a computer science degree, VC funding, or a fancy co-working space. Just curiosity, and a conviction that the best tools in the world shouldn't be exclusive to billion-dollar companies.
                   </p>
                   <p>
                     What started as building websites for local clinics evolved into a full AI infrastructure company — deploying intelligent agents, SaaS products, and digital systems for businesses from Bhubaneswar to Birmingham.
@@ -185,7 +185,7 @@ export default function AboutPage() {
                     We don't compete on size. We compete on <span className="text-[#0F0E0D] font-medium">speed, quality, and outcomes.</span> Every client — whether they're a solo GP in Puri or a startup in Dubai — gets the same standard of work that Silicon Valley teams expect.
                   </p>
                   <p className="text-[13px] text-[#6B6860]/60">
-                    Abhisek Pani · Founder of Nextscale · Bhubaneswar, Odisha, India
+                    Abhisek Pani · Founder of Next Scale · Bhubaneswar, Odisha, India
                   </p>
                 </div>
               </div>
@@ -225,7 +225,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Why Nextscale */}
+        {/* Why Next Scale */}
         <section className="py-10 pb-24 sm:pb-32 border-t border-[#E8E6E1]">
           <Reveal>
             <div className="mt-16 mb-14 text-center">

@@ -97,6 +97,7 @@ export function websiteSchema() {
     "@id": `${SITE.url}/#website`,
     url: SITE.url,
     name: SITE.name,
+    alternateName: ["NextScale", "Next Scale Technologies", "nextscale.co.in"],
     description: SITE.description,
     inLanguage: "en-IN",
     publisher: { "@id": `${SITE.url}/#organization` },

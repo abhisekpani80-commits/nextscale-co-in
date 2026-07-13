@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: `%s — ${SITE.name}`,
   },
   description:
-    "Nextscale builds custom business websites (live in 7 days) and WhatsApp AI agents for clinics, salons, real estate, and SMBs.",
+    "Next Scale builds custom business websites (live in 7 days) and WhatsApp AI agents for clinics, salons, real estate, and SMBs.",
   applicationName: SITE.name,
   authors: [{ name: SITE.founder }],
   creator: SITE.founder,
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     "AI agents for small business",
     "website live in 7 days",
     "ExamOS exam prep",
-    "Nextscale",
+    "Next Scale",
     "Abhisek Pani",
   ],
   formatDetection: {
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
         url: `${SITE.url}/og-image-v2.png`,
         width: 1024,
         height: 536,
-        alt: "Nextscale — We build websites and AI systems that bring you customers",
+        alt: "Next Scale — We build websites and AI systems that bring you customers",
         type: "image/png",
       },
     ],

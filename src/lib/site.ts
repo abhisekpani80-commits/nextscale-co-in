@@ -19,8 +19,8 @@ import {
 } from "lucide-react";
 
 export const SITE = {
-  name: "Nextscale",
-  legalName: "Nextscale Technologies",
+  name: "Next Scale",
+  legalName: "Next Scale Technologies",
   tagline: "We build AI that runs your business.",
   description:
     "Custom AI products, intelligent voice/WhatsApp agents, and high-performance digital infrastructure for ambitious businesses worldwide.",
