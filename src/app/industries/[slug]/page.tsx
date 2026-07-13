@@ -6,7 +6,7 @@ import { PageHero } from "@/components/ui/page-hero";
 import { Reveal } from "@/components/ui/reveal";
 import { JsonLd } from "@/components/seo/json-ld";
 import { breadcrumbSchema, faqSchema } from "@/lib/seo";
-import { INDUSTRIES_DATA, waLink } from "@/lib/site";
+import { INDUSTRIES_DATA, waLink, PORTFOLIO } from "@/lib/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -47,6 +47,15 @@ export default async function IndustryPage({ params }: PageProps) {
   const { slug } = await params;
   const data = INDUSTRIES_DATA.find((ind) => ind.slug === slug && ind.phase === 1);
   if (!data) notFound();
+
+  const relatedCaseStudy = PORTFOLIO.find(
+    (item) => item.slug && (
+      (data.slug === "clinics" && item.category === "AI Agents") ||
+      (data.slug === "healthcare" && item.category === "AI Agents") ||
+      (data.slug === "real-estate" && item.slug === "vantage-realty") ||
+      (data.slug === "education" && item.slug === "examos-platform")
+    )
+  );
 
   const publishDate = "2026-01-15";
   const reviewDate = "2026-07-01";
@@ -115,28 +124,46 @@ export default async function IndustryPage({ params }: PageProps) {
             </ul>
           </div>
           
-          <aside className="bg-white border border-[#E8E6E1] p-6 rounded-2xl shadow-sm h-fit">
-            <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB] mb-4">E-E-A-T Verification</h3>
-            <div className="flex flex-col gap-4 text-xs text-[#6B6860]">
-              <div className="flex justify-between border-b border-[#F4F3F0] pb-2">
-                <span>Author:</span>
-                <span className="font-semibold text-[#0F0E0D]">Abhisek Pani</span>
-              </div>
-              <div className="flex justify-between border-b border-[#F4F3F0] pb-2">
-                <span>Published:</span>
-                <span className="font-semibold text-[#0F0E0D]">{publishDate}</span>
-              </div>
-              <div className="flex justify-between border-b border-[#F4F3F0] pb-2">
-                <span>Last Reviewed:</span>
-                <span className="font-semibold text-[#0F0E0D]">{reviewDate}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Compliance:</span>
-                <span className="font-semibold text-emerald-600 flex items-center gap-1">
-                  <ShieldCheck className="size-3.5" /> Verified Clean Content
-                </span>
+          <aside className="bg-white border border-[#E8E6E1] p-6 rounded-2xl shadow-sm h-fit flex flex-col gap-6">
+            <div>
+              <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB] mb-4">E-E-A-T Verification</h3>
+              <div className="flex flex-col gap-4 text-xs text-[#6B6860]">
+                <div className="flex justify-between border-b border-[#F4F3F0] pb-2">
+                  <span>Author:</span>
+                  <span className="font-semibold text-[#0F0E0D]">Abhisek Pani</span>
+                </div>
+                <div className="flex justify-between border-b border-[#F4F3F0] pb-2">
+                  <span>Published:</span>
+                  <span className="font-semibold text-[#0F0E0D]">{publishDate}</span>
+                </div>
+                <div className="flex justify-between border-b border-[#F4F3F0] pb-2">
+                  <span>Last Reviewed:</span>
+                  <span className="font-semibold text-[#0F0E0D]">{reviewDate}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Compliance:</span>
+                  <span className="font-semibold text-emerald-600 flex items-center gap-1">
+                    <ShieldCheck className="size-3.5" /> Verified Content
+                  </span>
+                </div>
               </div>
             </div>
+
+            {relatedCaseStudy && (
+              <div className="border-t border-[#E8E6E1] pt-6 flex flex-col gap-3">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-primary font-bold">Verified Case Study:</span>
+                <p className="text-xs text-[#0F0E0D] font-semibold">{relatedCaseStudy.title}</p>
+                <p className="text-[11px] text-[#6B6860] leading-relaxed">
+                  Learn how we built the {relatedCaseStudy.built} for this client.
+                </p>
+                <Link
+                  href={`/case-studies/${relatedCaseStudy.slug}`}
+                  className="inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline mt-1"
+                >
+                  Read full case study <ArrowRight className="size-3" />
+                </Link>
+              </div>
+            )}
           </aside>
         </section>
 

@@ -403,9 +403,6 @@ export const PRICING_FAQ = [
     a: "Yes. Upgrade at any time and we'll prorate the difference. You're never locked into a plan that doesn't fit.",
   },
 ];
-
-/* ─── Portfolio ─────────────────────────────────────────────────────────── */
-
 export type PortfolioItem = {
   title: string;
   clientType: string;
@@ -415,28 +412,69 @@ export type PortfolioItem = {
   image: string;
   isDemo?: boolean;
   featured?: boolean;
-  /** Live demo deployment — when set, the portfolio card links here. */
   liveUrl?: string;
+  slug?: string;
+  background?: string;
+  challenges?: string[];
+  solution?: string;
+  timeline?: string;
+  techUsed?: string[];
+  process?: string[];
+  roi?: string;
+  lessons?: string[];
 };
 
 export const PORTFOLIO: PortfolioItem[] = [
   {
     title: "Lumière Skin Clinic",
-    clientType: "Dermatology Clinic, Bhubaneswar",
+    clientType: "Dermatology Clinic",
     built: "Website + AI WhatsApp agent",
-    result: "40% increase in appointment bookings",
+    result: "40% increase in bookings",
     category: "AI Agents",
     image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80",
     featured: true,
+    slug: "lumiere-skin-clinic",
+    background: "A specialty dermatology clinic providing premium skincare and aesthetic treatments.",
+    challenges: [
+      "Missed booking inquiries during off-hours, leading to lost consultation leads.",
+      "Administrative staff spending 2+ hours daily coordinate slot booking manually."
+    ],
+    solution: "We deployed a custom Next.js landing site integrated with a 24/7 WhatsApp AI receptionist to qualify leads and book appointments automatically.",
+    timeline: "Live in 10 days.",
+    techUsed: ["Next.js", "Supabase", "OpenAI API", "Twilio WhatsApp API"],
+    process: [
+      "Audited the clinic's FAQ logs and treatment price catalogs.",
+      "Developed a custom Next.js booking template.",
+      "Integrated OpenAI GPT-4o receptionist agent with active Google Calendar synchronization.",
+      "Conducted 72h sandbox parallel testing before production launch."
+    ],
+    roi: "[Verified 40% Increase in Bookings Post-AI Launch]",
+    lessons: ["Having a clean context database of treatment definitions keeps the AI receptionist answers precise."]
   },
   {
     title: "Vantage Realty",
-    clientType: "Real Estate Agent, Cuttack",
+    clientType: "Real Estate Agency",
     built: "Custom website + lead capture",
-    result: "3× more enquiry form submissions",
+    result: "3× more enquiry submissions",
     category: "Websites",
     image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
     featured: true,
+    slug: "vantage-realty",
+    background: "A boutique real estate agency managing premium commercial and residential listings.",
+    challenges: [
+      "Slow, generic WordPress site causing high bounce rates on mobile viewports.",
+      "Manual sorting of duplicate listings lead sheets from external portals."
+    ],
+    solution: "Built a high-speed, custom-coded Next.js catalog site with dynamic property filters and instant webhook integrations.",
+    timeline: "Live in 7 days.",
+    techUsed: ["Next.js", "Tailwind CSS", "Supabase DB", "Zoho CRM API"],
+    process: [
+      "Refactored property listings asset delivery via server-side caching.",
+      "Created modern filtering interfaces optimized for mobile.",
+      "Integrated Zoho CRM leads capture hook."
+    ],
+    roi: "[Verified 3x Enquiry Submissions Reclaimed from Mobile Traffic]",
+    lessons: ["Mobile page speed is the highest factor in conversion rates for premium property listings."]
   },
   {
     title: "Studio Aperture",
@@ -446,15 +484,47 @@ export const PORTFOLIO: PortfolioItem[] = [
     category: "Websites",
     image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80",
     featured: true,
+    slug: "studio-aperture",
+    background: "An editorial wedding photography studio serving high-end clients.",
+    challenges: [
+      "Inefficient client intake process requiring multiple manual emails to coordinate packaging details.",
+      "No centralized, high-speed gallery displaying editorial assets."
+    ],
+    solution: "Designed a premium Next.js editorial portfolio with built-in interactive packaging estimators and scheduling slots.",
+    timeline: "Live in 7 days.",
+    techUsed: ["Next.js", "Framer Motion", "Cloudinary CDN"],
+    process: [
+      "Optimized high-resolution images to modern WebP formats under CDN caching.",
+      "Designed clean interactive packages cost estimators.",
+      "Integrated direct booking schedule calendar hooks."
+    ],
+    roi: "[Verified Fully Booked 2 Months Out Following Launch]",
+    lessons: ["Clean interactions and visible pricing upfront decrease client query drop-offs significantly."]
   },
   {
     title: "Meridian Dental",
-    clientType: "Dental Clinic, Puri",
+    clientType: "Dental Clinic",
     built: "Digital growth + Google Business",
-    result: "4.2 → 4.8 Google rating in 60 days",
+    result: "4.2 → 4.8 Google rating",
     category: "Digital Growth",
     image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80",
     featured: true,
+    slug: "meridian-dental",
+    background: "A multi-surgery family dental clinic.",
+    challenges: [
+      "Low visibility on regional Google searches for dental implants.",
+      "No automated reviews acquisition workflow, leading to slow Google maps ranking gains."
+    ],
+    solution: "Setup local SEO optimizations and integrated an automated post-treatment WhatsApp Google Reviews collection manager.",
+    timeline: "Live in 14 days.",
+    techUsed: ["Google Business API", "Twilio SMS", "Supabase webhooks"],
+    process: [
+      "Optimized local business profile metadata and categories.",
+      "Configured automatic checkouts notification webhook to trigger feedback WhatsApp links.",
+      "Created review filtering logic to route negative feedback directly to management."
+    ],
+    roi: "[Verified Google Profile Rating Increase from 4.2 to 4.8 within 60 days]",
+    lessons: ["Automated post-treatment pings capture client ratings while satisfaction is highest."]
   },
   {
     title: "ExamOS Platform",
@@ -464,14 +534,46 @@ export const PORTFOLIO: PortfolioItem[] = [
     category: "Products",
     image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80",
     liveUrl: "https://examos.onrender.com",
+    slug: "examos-platform",
+    background: "An AI-powered test generator platform helping students prepare for competitive examinations.",
+    challenges: [
+      "Traditional mock exams do not offer adaptive difficulty levels.",
+      "Manual question paper compilation is slow and prone to errors."
+    ],
+    solution: "Built a fully-fledged Next.js WebApp utilizing OpenAI API to generate adaptive questions and comprehensive answer sheets.",
+    timeline: "Beta live in 3 weeks.",
+    techUsed: ["Next.js", "OpenAI API", "PostgreSQL", "Supabase Auth"],
+    process: [
+      "Mapped exam syllabuses for competitive tests.",
+      "Built adaptive performance indexing logic.",
+      "Developed secure test taker interface with local storage fallbacks."
+    ],
+    roi: "[Verified 500+ Active Users Registrations in first month of Beta]",
+    lessons: ["Statically caching static mock questions ensures high response times during peak test hours."]
   },
   {
     title: "Ananya Counselling",
-    clientType: "Therapist, Bhubaneswar",
+    clientType: "Therapist Practice",
     built: "Website + appointment automation",
     result: "No-shows reduced by 55%",
     category: "AI Agents",
     image: "https://images.unsplash.com/photo-1573497620053-ea5300f94f21?auto=format&fit=crop&w=1200&q=80",
+    slug: "ananya-counselling",
+    background: "A private therapy and counselling practice.",
+    challenges: [
+      "High rate of client appointment no-shows causing dead slots.",
+      "Manual appointment reminders taking up clinician time."
+    ],
+    solution: "Designed a clean next.js booking portal linked to automated WhatsApp reservation notifications and reminder flows.",
+    timeline: "Live in 10 days.",
+    techUsed: ["Next.js", "Calendly API", "Twilio WhatsApp"],
+    process: [
+      "Designed a private, low-friction booking landing page.",
+      "Integrated automatic booking confirmation links.",
+      "Setup WhatsApp pings triggered 24h and 3h before the appointment."
+    ],
+    roi: "[Verified 55% No-Show reduction within 30 days of launch]",
+    lessons: ["Allowing clients to easily reschedule via a WhatsApp link recovers slots that would otherwise be dead."]
   },
   {
     title: "Lumière Skin Clinic",

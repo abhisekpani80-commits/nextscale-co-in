@@ -26,9 +26,8 @@ const RESOURCES_CATEGORIES = [
     desc: "In-depth playbooks and roadmap documents explaining how to implement AI in operations.",
     icon: BookOpen,
     items: [
-      { name: "The Complete Business AI Playbook 2026", href: "#" },
-      { name: "How to Build a Custom WhatsApp AI Agent", href: "#" },
-      { name: "Standard Operating Procedures (SOPs) for AI receptionists", href: "#" },
+      { name: "The Complete Business AI Playbook 2026", href: "/resources/guides/business-ai-playbook" },
+      { name: "Core AI Term Glossary", href: "/resources/glossary/ai-glossary" },
     ],
   },
   {
@@ -38,7 +37,6 @@ const RESOURCES_CATEGORIES = [
     items: [
       { name: "Next Scale vs Traditional Web Agencies", href: "/compare" },
       { name: "AI Automation vs Manual Human Workflows", href: "/compare" },
-      { name: "Next.js vs WordPress for Business Sites", href: "#" },
     ],
   },
   {
@@ -46,9 +44,8 @@ const RESOURCES_CATEGORIES = [
     desc: "Downloadable SOPs, system prompts, and checklists for operations team.",
     icon: FileCode,
     items: [
-      { name: "WhatsApp AI System Prompt Library", href: "#" },
-      { name: "Pre-consultation Clinic Booking Templates", href: "#" },
-      { name: "Business Tech Audit Checklist PDF", href: "#" },
+      { name: "WhatsApp AI System Prompt & SOP Template", href: "/resources/templates/whatsapp-ai-agent-sop" },
+      { name: "Business Tech Audit Checklist", href: "/resources/checklists/tech-audit-checklist" },
     ],
   },
   {
@@ -56,9 +53,7 @@ const RESOURCES_CATEGORIES = [
     desc: "Proprietary research statistics and benchmarks on Indian business automation trends.",
     icon: FileText,
     items: [
-      { name: "AI Adoption Report India 2026", href: "#" },
-      { name: "Website Speed & Core Web Vitals Benchmark", href: "#" },
-      { name: "Customer Support Deflection ROI Dataset", href: "#" },
+      { name: "AI Adoption Report India 2026", href: "/resources/research/ai-adoption-report" },
     ],
   },
 ];
@@ -143,10 +138,10 @@ export default function ResourcesPage() {
               </p>
             </div>
             <Link
-              href="#"
-              className="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-primary text-white hover:bg-primary-hover px-6 text-sm font-semibold shadow-sm transition-all duration-200 shrink-0"
+              href="/resources/research/ai-adoption-report"
+              className="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-[#1A56DB] text-white hover:bg-[#1447C0] px-6 text-sm font-semibold shadow-sm transition-all duration-200 shrink-0"
             >
-              Download Free Dataset <ArrowRight className="size-4" />
+              Explore Research Report <ArrowRight className="size-4" />
             </Link>
           </div>
         </section>

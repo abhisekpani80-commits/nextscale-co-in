@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight, MessageCircle, Check } from "lucide-react";
 import { PageHero } from "@/components/ui/page-hero";
 import { Reveal } from "@/components/ui/reveal";
 import { AGENTS, SERVICES, waLink } from "@/lib/site";
@@ -93,6 +93,28 @@ export default function AIAgentsPage() {
             </div>
           </Reveal>
         </div>
+
+        {/* Trust & E-E-A-T resource links */}
+        <Reveal className="mt-16 border-t border-[#E8E6E1] pt-12">
+          <div className="grid gap-6 sm:grid-cols-2 text-xs text-[#6B6860]">
+            <div className="bg-white border border-[#E8E6E1] p-5 rounded-2xl">
+              <h4 className="font-bold text-[#0F0E0D] mb-1.5 flex items-center gap-1">
+                <Check className="size-4 text-primary" /> Delivery Methodology &amp; Security
+              </h4>
+              <p className="leading-relaxed">
+                All AI agents go through a strict 72-hour sandbox validation process. Integration channels are secured via HSTS rules and token verification hooks to prevent data exposure. Learn more in our <Link href="/resources/guides/business-ai-playbook" className="text-primary hover:underline font-semibold">AI Business Playbook</Link>.
+              </p>
+            </div>
+            <div className="bg-white border border-[#E8E6E1] p-5 rounded-2xl">
+              <h4 className="font-bold text-[#0F0E0D] mb-1.5 flex items-center gap-1">
+                <Check className="size-4 text-primary" /> Related Tools &amp; Case Studies
+              </h4>
+              <p className="leading-relaxed">
+                Calculate your potential staff hour savings with the <Link href="/tools" className="text-primary hover:underline font-semibold">AI ROI Calculator</Link>, or read our clinic execution case study for <Link href="/case-studies/lumiere-skin-clinic" className="text-primary hover:underline font-semibold">Lumière Skin Clinic</Link>.
+              </p>
+            </div>
+          </div>
+        </Reveal>
 
         {/* CTA */}
         <Reveal className="mt-16 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">

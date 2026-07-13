@@ -125,8 +125,8 @@ export default function PortfolioPage() {
                     </div>
                   )}
 
-                  {/* Live URL arrow overlay */}
-                  {item.liveUrl && (
+                  {/* Live URL / Case Study arrow overlay */}
+                  {(item.liveUrl || item.slug) && (
                     <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <span className="flex items-center justify-center size-8 rounded-full bg-white/95 border border-[#E8E6E1] shadow-sm">
                         <ArrowUpRight className="size-4 text-[#0F0E0D]" />
@@ -142,7 +142,7 @@ export default function PortfolioPage() {
                       <h3 className="font-heading text-base font-semibold leading-snug text-[#0F0E0D] transition-colors duration-300 group-hover:text-[#1A56DB]">
                         {item.title}
                       </h3>
-                      {item.liveUrl && (
+                      {(item.liveUrl || item.slug) && (
                         <ArrowUpRight className="size-4 shrink-0 text-[#6B6860] transition-all duration-300 group-hover:text-[#1A56DB] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 mt-0.5" />
                       )}
                     </div>
@@ -167,18 +167,32 @@ export default function PortfolioPage() {
               </>
             );
 
-            return item.liveUrl ? (
-              <Reveal key={`${item.title}-${item.category}-${i}`} delay={i * 0.05}>
-                <a
-                  href={item.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={cardClass}
-                >
-                  {cardInner}
-                </a>
-              </Reveal>
-            ) : (
+            if (item.slug) {
+              return (
+                <Reveal key={`${item.title}-${item.category}-${i}`} delay={i * 0.05}>
+                  <Link href={`/case-studies/${item.slug}`} className={cardClass}>
+                    {cardInner}
+                  </Link>
+                </Reveal>
+              );
+            }
+
+            if (item.isDemo && item.liveUrl) {
+              return (
+                <Reveal key={`${item.title}-${item.category}-${i}`} delay={i * 0.05}>
+                  <a
+                    href={item.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cardClass}
+                  >
+                    {cardInner}
+                  </a>
+                </Reveal>
+              );
+            }
+
+            return (
               <Reveal key={`${item.title}-${item.category}-${i}`} delay={i * 0.05}>
                 <div className={cardClass}>
                   {cardInner}

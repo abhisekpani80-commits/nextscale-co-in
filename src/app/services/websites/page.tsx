@@ -137,6 +137,28 @@ export default function WebsitesPage() {
         )}
 
         {/* CTA */}
+        {/* Trust & E-E-A-T resource links */}
+        <Reveal className="mt-16 border-t border-[#E8E6E1] pt-12">
+          <div className="grid gap-6 sm:grid-cols-2 text-xs text-[#6B6860]">
+            <div className="bg-white border border-[#E8E6E1] p-5 rounded-2xl">
+              <h4 className="font-bold text-[#0F0E0D] mb-1.5 flex items-center gap-1">
+                <Check className="size-4 text-primary" /> Delivery Methodology &amp; Speed
+              </h4>
+              <p className="leading-relaxed">
+                All websites are custom-coded Next.js builds live within 7 days. Code packages are statically pre-rendered to ensure perfect Core Web Vitals. Learn more in our <Link href="/resources/checklists/tech-audit-checklist" className="text-primary hover:underline font-semibold">Business Tech Audit Checklist</Link>.
+              </p>
+            </div>
+            <div className="bg-white border border-[#E8E6E1] p-5 rounded-2xl">
+              <h4 className="font-bold text-[#0F0E0D] mb-1.5 flex items-center gap-1">
+                <Check className="size-4 text-primary" /> Related Tools &amp; Case Studies
+              </h4>
+              <p className="leading-relaxed">
+                Estimate your custom website cost using the interactive <Link href="/tools" className="text-primary hover:underline font-semibold">Website Cost Calculator</Link>, or read our case studies for <Link href="/case-studies/vantage-realty" className="text-primary hover:underline font-semibold">Vantage Realty</Link> and <Link href="/case-studies/studio-aperture" className="text-primary hover:underline font-semibold">Studio Aperture</Link>.
+              </p>
+            </div>
+          </div>
+        </Reveal>
+
         <Reveal className="mt-16 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <a href={waLink("Hi! I'm interested in getting a website built.")} target="_blank" rel="noopener noreferrer" className="inline-flex h-12 items-center gap-2 rounded-xl bg-[#1A56DB] text-white hover:bg-[#1447C0] px-7 text-base font-semibold shadow-sm transition-all duration-200">
             Start your website <ArrowRight className="size-4" />
