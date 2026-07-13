@@ -6,14 +6,16 @@ import { PRODUCTS } from "@/lib/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { JsonLd } from "@/components/seo/json-ld";
-import { breadcrumbSchema, productSchema } from "@/lib/seo";
+import { breadcrumbSchema, productSchema, pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "ExamOS — AI Exam Prep for NEET, CUET, SSC, Banking & More",
-  description: "Practice with AI-generated mock tests, PYQ analysis, and intelligent performance tracking. Built for Indian competitive exams.",
-};
+export const metadata: Metadata = pageMeta({
+  title: "ExamOS — AI Exam Builder & Test Platform",
+  description: "Statically generated adaptive test generator platform. Build custom mock exams and question papers dynamically.",
+  path: "/products/examos",
+  keywords: ["ExamOS", "AI mock test builder", "online exam engine", "question paper generator"]
+});
 
-const product = PRODUCTS[0]!;
+const product = PRODUCTS.find((p) => p.href === "/products/examos")!;
 const liveLink = product.liveUrl ?? "/contact";
 
 export default function ExamOSPage() {

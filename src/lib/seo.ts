@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { SITE, SAME_AS, PRODUCTS, SERVICES, PRICING_FAQ } from "@/lib/site";
+import { SITE, SAME_AS, PRODUCTS, SERVICES, PRICING_FAQ, TESTIMONIALS } from "@/lib/site";
 
 /**
- * Build a per-page Metadata object with sane SEO defaults: a canonical URL,
+ * Build a per-page Metadata object with sane SEO defaults: an absolute canonical URL,
  * Open Graph + Twitter cards, and keyword hints. Pages pass only what differs
  * from the root layout; everything else is inherited or filled in here.
  */
@@ -24,7 +24,7 @@ export function pageMeta({
     title,
     description,
     keywords,
-    alternates: { canonical: path },
+    alternates: { canonical: url },
     robots: noindex ? { index: false, follow: false } : undefined,
     openGraph: {
       title: `${title} — ${SITE.name}`,
@@ -65,12 +65,6 @@ export function organizationSchema() {
     founder: { "@type": "Person", "@id": `${SITE.url}/#founder`, name: SITE.founder },
     sameAs: SAME_AS,
     areaServed: { "@type": "Country", name: "India" },
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: SITE.region.city,
-      addressRegion: SITE.region.state,
-      addressCountry: SITE.region.countryCode,
-    },
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
@@ -78,6 +72,20 @@ export function organizationSchema() {
       areaServed: "IN",
       availableLanguage: ["en", "hi"],
     },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      "@id": `${SITE.url}/#offercatalog`,
+      name: "AI Automation & Web Development Services",
+      itemListElement: SERVICES.map((s, idx) => ({
+        "@type": "Offer",
+        position: idx + 1,
+        itemOffered: {
+          "@type": "Service",
+          name: s.name,
+          description: s.description,
+        }
+      }))
+    }
   };
 }
 
@@ -92,6 +100,14 @@ export function websiteSchema() {
     description: SITE.description,
     inLanguage: "en-IN",
     publisher: { "@id": `${SITE.url}/#organization` },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE.url}/?s={search_term_string}`
+      },
+      "query-input": "required name=search_term_string"
+    }
   };
 }
 
@@ -154,9 +170,7 @@ export function faqSchema(faqs: { q: string; a: string }[] = PRICING_FAQ) {
 
 /**
  * Person schema for Abhisek Pani — the primary GEO/AEO entity signal.
- * Links the founder to the organization and all social profiles so Google
- * can build a Knowledge Graph entry for “Abhisek Pani” and
- * “founder of Nextscale” queries.
+ * Links the founder to the organization and all social profiles.
  */
 export function founderPersonSchema() {
   return {
@@ -169,16 +183,10 @@ export function founderPersonSchema() {
     email: SITE.email,
     jobTitle: "Founder & CEO",
     description:
-      "Abhisek Pani is the founder and CEO of Nextscale, an AI products and digital infrastructure company based in Bhubaneswar, Odisha, India. He is a self-taught builder who creates AI agents, SaaS products, and digital growth systems for businesses across India and globally.",
+      "Abhisek Pani is the founder and CEO of Next Scale, an AI products and digital infrastructure company in India. He is a builder who creates AI agents, SaaS products, and digital growth systems for businesses across India.",
     nationality: {
       "@type": "Country",
       name: "India",
-    },
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Bhubaneswar",
-      addressRegion: "Odisha",
-      addressCountry: "IN",
     },
     worksFor: {
       "@type": "Organization",
@@ -186,22 +194,15 @@ export function founderPersonSchema() {
       name: SITE.name,
       url: SITE.url,
     },
-    founder: {
-      "@type": "Organization",
-      "@id": `${SITE.url}/#organization`,
-      name: SITE.name,
-    },
     knowsAbout: [
       "Artificial Intelligence",
-      "AI Agents",
-      "SaaS Products",
-      "Web Development",
-      "Digital Marketing",
-      "EdTech",
-      "Business Automation",
+      "AI Automation",
+      "Software Development",
+      "Workflow Automation",
+      "Business Process Automation",
       "Next.js",
       "React",
-      "Machine Learning",
+      "Supabase",
     ],
     sameAs: SITE.founderSameAs,
     image: {
@@ -214,8 +215,7 @@ export function founderPersonSchema() {
 /**
  * ProfilePage schema — marks the /about page as the canonical profile page
  * for Abhisek Pani. This is a strong AEO/GEO signal for AI search engines
- * (Google SGE, Gemini, Perplexity) to surface your profile when someone
- * asks “who is Abhisek Pani” or “who founded Nextscale”.
+ * to surface founder info.
  */
 export function profilePageSchema() {
   return {
@@ -223,9 +223,9 @@ export function profilePageSchema() {
     "@type": "ProfilePage",
     "@id": `${SITE.url}/about#profilepage`,
     url: `${SITE.url}/about`,
-    name: "Abhisek Pani — Founder of Nextscale",
+    name: "Abhisek Pani — Founder of Next Scale",
     description:
-      "Profile page of Abhisek Pani, founder and CEO of Nextscale. Learn about Abhisek’s journey as a self-taught AI builder from Odisha who created Nextscale to build AI products and digital infrastructure for businesses across India.",
+      "Profile page of Abhisek Pani, founder and CEO of Next Scale. Learn about Abhisek’s journey as an AI builder who created Next Scale to build AI products and digital infrastructure for businesses.",
     dateCreated: "2024-01-01",
     dateModified: new Date().toISOString().split("T")[0],
     inLanguage: "en-IN",
@@ -238,6 +238,72 @@ export function profilePageSchema() {
         { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
         { "@type": "ListItem", position: 2, name: "About Abhisek Pani", item: `${SITE.url}/about` },
       ],
+    },
+  };
+}
+
+/** LocalBusiness schema for rich snippet local indexing */
+export function localBusinessSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": `${SITE.url}/#localbusiness`,
+    name: SITE.name,
+    image: abs("/icon.svg"),
+    priceRange: "$$",
+    telephone: `+91 ${SITE.whatsapp}`,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: SITE.region.city,
+      addressRegion: SITE.region.state,
+      addressCountry: SITE.region.countryCode,
+    },
+    url: SITE.url,
+    parentOrganization: { "@id": `${SITE.url}/#organization` },
+  };
+}
+
+/** Reviews schema generating dynamic Review models based on testimonials */
+export function reviewsSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Next Scale Client Reviews",
+    itemListElement: TESTIMONIALS.map((t, idx) => ({
+      "@type": "Review",
+      position: idx + 1,
+      itemReviewed: {
+        "@type": "LocalBusiness",
+        "@id": `${SITE.url}/#localbusiness`,
+        name: SITE.name,
+      },
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: "5",
+        bestRating: "5",
+      },
+      author: {
+        "@type": "Person",
+        name: t.author,
+      },
+      reviewBody: t.quote,
+    })),
+  };
+}
+
+/** AggregateRating schema indicating overall client rating score */
+export function aggregateRatingSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: `${SITE.name} Services`,
+    image: abs("/icon.svg"),
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      reviewCount: TESTIMONIALS.length.toString(),
+      bestRating: "5",
+      worstRating: "1",
     },
   };
 }

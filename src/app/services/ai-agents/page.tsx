@@ -7,14 +7,16 @@ import { AGENTS, SERVICES, waLink } from "@/lib/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { JsonLd } from "@/components/seo/json-ld";
-import { breadcrumbSchema, serviceSchema } from "@/lib/seo";
+import { breadcrumbSchema, serviceSchema, pageMeta } from "@/lib/seo";
 
 const service = SERVICES.find((s) => s.href === "/services/ai-agents")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "AI Agents — WhatsApp AI Receptionist & More",
-  description: "24/7 WhatsApp AI that books, follows up, and collects reviews — trained on your clinic.",
-};
+  description: "24/7 WhatsApp AI receptionists that book appointments, follow up on leads, and collect reviews. Custom trained on your business.",
+  path: "/services/ai-agents",
+  keywords: ["WhatsApp AI receptionist", "AI booking agent", "business automation WhatsApp", "AI auto reminder"]
+});
 
 export default function AIAgentsPage() {
   return (

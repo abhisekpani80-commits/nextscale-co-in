@@ -7,14 +7,16 @@ import { SERVICES, waLink } from "@/lib/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { JsonLd } from "@/components/seo/json-ld";
-import { breadcrumbSchema, serviceSchema } from "@/lib/seo";
+import { breadcrumbSchema, serviceSchema, pageMeta } from "@/lib/seo";
 
 const service = SERVICES.find((s) => s.href === "/services/digital-growth")!;
 
-export const metadata: Metadata = {
-  title: "Digital Growth — Google Business, SEO & Social Presence",
-  description: "Google Business, local SEO and social presence that brings clients to your door.",
-};
+export const metadata: Metadata = pageMeta({
+  title: "Digital Growth — SEO, Google Ads & Review Systems",
+  description: "Get found on Google Search, run targeted Google Ads, and double review volume using custom review tools.",
+  path: "/services/digital-growth",
+  keywords: ["local SEO India", "Google Review manager", "business lead generation", "google ads setup"]
+});
 
 const services = [
   { icon: MapPin, name: "Google Business Profile", description: "Complete setup and optimisation. Correct categories, photos, hours, services and Q&A — so you rank for local searches that matter." },

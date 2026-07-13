@@ -98,6 +98,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       lang="en"
       className={`${inter.variable} ${plusJakarta.variable} h-full antialiased`}
     >
+      <head>
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+      </head>
       <body className="min-h-full flex flex-col bg-[#F8F7F4] text-[#0F0E0D] relative">
         <JsonLd schema={[organizationSchema(), websiteSchema(), founderPersonSchema()]} />
         <ScrollProgress />

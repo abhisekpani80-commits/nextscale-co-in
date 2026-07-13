@@ -7,11 +7,14 @@ import { TiltCard } from "@/components/ui/tilt-card";
 import { ROLES, WHY_JOIN, PROCESS_STEPS } from "@/lib/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Careers — Join Nextscale",
-  description: "100% work-from-home roles in sales, development, content, AI, video editing and SEO. Compensation discussed on a call.",
-};
+export const metadata: Metadata = pageMeta({
+  title: "Careers — Join Next Scale",
+  description: "100% work-from-home roles in sales, development, content, AI, video editing, and SEO. Learn about our remote-first, result-oriented career opportunities.",
+  path: "/careers",
+  keywords: ["remote jobs India", "work from home developer jobs", "sales rep remote India", "AI builder jobs"]
+});
 
 export default function CareersPage() {
   const totalOpenings = ROLES.reduce((a, r) => a + r.openings, 0);

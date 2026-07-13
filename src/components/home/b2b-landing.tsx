@@ -10,6 +10,8 @@ import { B2BTestimonials } from "@/components/home/b2b-testimonials";
 import { B2BStats } from "@/components/home/b2b-stats";
 import { B2BCta } from "@/components/home/b2b-cta";
 
+import { B2BFaq } from "@/components/home/b2b-faq";
+
 export function B2BLanding() {
   useEffect(() => {
     const observerOptions = {
@@ -68,6 +70,7 @@ export function B2BLanding() {
       <B2BWork />
       <B2BTestimonials />
       <B2BStats />
+      <B2BFaq />
       <B2BCta />
     </>
   );

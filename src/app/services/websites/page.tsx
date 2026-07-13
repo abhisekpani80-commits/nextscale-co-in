@@ -8,14 +8,16 @@ import { PORTFOLIO, SERVICES, waLink } from "@/lib/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { JsonLd } from "@/components/seo/json-ld";
-import { breadcrumbSchema, serviceSchema } from "@/lib/seo";
+import { breadcrumbSchema, serviceSchema, pageMeta } from "@/lib/seo";
 
 const service = SERVICES.find((s) => s.href === "/services/websites")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Websites — Custom Business Websites Live in 7 Days",
-  description: "Custom-built business websites for clinics and SMBs. Mobile-first, SEO-optimized, live in 7 days.",
-};
+  description: "Custom-built business websites. Mobile-first, SEO-optimized, live in 7 days. Designed to build client trust and conversion.",
+  path: "/services/websites",
+  keywords: ["custom business websites", "Next.js websites", "website live in 7 days", "SEO websites India"]
+});
 
 const websiteFeatures = [
   "Mobile-responsive design (60%+ of Indian traffic is mobile)",
@@ -105,7 +107,7 @@ export default function WebsitesPage() {
               {websiteDemos.map((d, i) => {
                 const cardContent = (
                   <>
-                    <Image src={d.image} alt={d.title} fill className="object-cover transition-transform duration-75 group-hover:scale-102" sizes="(max-width: 640px) 100vw, 50vw" />
+                    <Image src={d.image} alt={d.title} fill className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]" sizes="(max-width: 640px) 100vw, 50vw" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
                     <div className="absolute bottom-0 p-5">
                       <h3 className="font-heading text-lg font-semibold text-white">{d.title}</h3>

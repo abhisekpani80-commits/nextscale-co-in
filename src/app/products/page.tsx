@@ -8,13 +8,15 @@ import { PRODUCTS } from "@/lib/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { JsonLd } from "@/components/seo/json-ld";
-import { breadcrumbSchema, productSchema } from "@/lib/seo";
+import { breadcrumbSchema, productSchema, pageMeta } from "@/lib/seo";
 import { YoutubeComingSoon } from "@/components/ui/youtube-coming-soon";
 
-export const metadata: Metadata = {
-  title: "Our Products — ExamOS, Aura & More",
-  description: "AI-powered exam preparation and English fluency coaching. Products built for Indian students and professionals.",
-};
+export const metadata: Metadata = pageMeta({
+  title: "Products — Premium AI Software & Platforms",
+  description: "SaaS products and platforms built by Next Scale: ExamOS assessment builder and Aura clinic receptionist.",
+  path: "/products",
+  keywords: ["Next Scale products", "ExamOS assessment", "Aura AI receptionist", "custom SaaS tools"]
+});
 
 const statusStyles: Record<string, string> = {
   Live: "bg-emerald-50 text-emerald-700 border border-emerald-200",

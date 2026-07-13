@@ -18,12 +18,14 @@ import {
 } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { JsonLd } from "@/components/seo/json-ld";
-import { breadcrumbSchema, faqSchema } from "@/lib/seo";
+import { breadcrumbSchema, faqSchema, pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Pricing — AI Agents from ₹5,999/mo, Websites from ₹4,999",
-  description: "Transparent pricing for AI agent bundles, website packages, and digital growth services. No hidden fees.",
-};
+  description: "Transparent pricing for custom business websites and WhatsApp AI receptionists. Choose a plan that aligns with your business goals.",
+  path: "/pricing",
+  keywords: ["AI agent pricing", "website development cost India", "business automation packages"]
+});
 
 export default function PricingPage() {
   return (

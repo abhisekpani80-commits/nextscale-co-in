@@ -7,16 +7,18 @@ import { PRODUCTS, waLink } from "@/lib/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { JsonLd } from "@/components/seo/json-ld";
-import { breadcrumbSchema, productSchema } from "@/lib/seo";
+import { breadcrumbSchema, productSchema, pageMeta } from "@/lib/seo";
 
 const WAITLIST_LINK = waLink("Hi Nextscale! I'd like to join the Aura waitlist and get early access.");
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Aura — AI English Fluency Coach",
-  description: "Practice English with an AI voice coach. Real-time conversation, pronunciation feedback, daily routines.",
-};
+  description: "Practice conversational English with an AI voice coach. Real-time dialog, pronunciation help, and feedback.",
+  path: "/products/aura",
+  keywords: ["Aura AI", "AI English coach", "voice learning app", "English speaking helper"]
+});
 
-const product = PRODUCTS[1]!;
+const product = PRODUCTS.find((p) => p.href === "/products/aura")!;
 
 export default function AuraPage() {
   return (

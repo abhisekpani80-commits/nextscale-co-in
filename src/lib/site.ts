@@ -734,3 +734,454 @@ export const WHY_JOIN = [
   { icon: TrendingUp, title: "Real work, real credit", description: "Your name on projects that launch. Build a portfolio that speaks for itself." },
   { icon: Shield, title: "Join us early", description: "The first people here shape how this company runs. High ownership, high impact, no hierarchy." },
 ];
+
+export interface IndustryData {
+  slug: string;
+  name: string;
+  phase: number;
+  overview: string;
+  challenges: string[];
+  opportunities: string[];
+  workflow: string;
+  roi: string;
+  timeline: string;
+  pricing: string;
+  statistics: string;
+  comparison: string;
+  faqs: { q: string; a: string }[];
+}
+
+export const INDUSTRIES_DATA: IndustryData[] = [
+  {
+    slug: "healthcare",
+    name: "Healthcare",
+    phase: 1,
+    overview: "Custom AI automation and secure patient workflows designed for Indian hospital networks, diagnostic centers, and healthcare providers.",
+    challenges: [
+      "High administrative overhead due to manual billing, records management, and phone-based routing.",
+      "Long patient wait times and delayed consultation schedules due to unoptimized scheduling.",
+      "Strict data privacy regulations (DISHA, HIPAA) requiring zero-compromise encryption and secure storage."
+    ],
+    opportunities: [
+      "Voice & WhatsApp AI receptionists capable of automatic slot booking and secure patient verification.",
+      "Automated electronic health record (EHR) parsing and automated lab report delivery via secure links.",
+      "Smart follow-up care automation for post-discharge monitoring and medication reminders."
+    ],
+    workflow: "A patient texts the WhatsApp number -> AI receptionist checks system availability -> Books the slot -> Sends a secure calendar link and pre-consultation checklist -> Automatically creates a record entry in the doctor dashboard.",
+    roi: "Reduction of up to 45% in administrative overhead, 30% increase in slot utilization, and zero receptionist booking mistakes.",
+    timeline: "3 to 4 weeks from discovery to deployment.",
+    pricing: "Custom pricing starting from ₹18,000/month.",
+    statistics: "According to industry reports, over 70% of clinic reception workloads involve basic queries and routine scheduling, which can be entirely automated.",
+    comparison: "Traditional workflows rely on manual telephone queues and paper ledgers, which lead to booking errors and delayed replies. AI workflows respond instantly, 24/7.",
+    faqs: [
+      { q: "Is the patient data secure?", a: "Yes, all data is encrypted in transit and at rest, complying with standard data security practices." },
+      { q: "Can it integrate with our existing EHR?", a: "Yes, we build custom integrations using REST APIs or database syncs." }
+    ]
+  },
+  {
+    slug: "clinics",
+    name: "Clinics",
+    phase: 1,
+    overview: "Tailored clinic receptionist AI agents and client acquisition websites live in 7 days for dermatologists, dental centers, CA offices, and therapy clinics.",
+    challenges: [
+      "Constant phone distractions during patient treatments and consultations.",
+      "High rates of no-shows and last-minute cancellations without notification.",
+      "Slow response times to new inquiries on WhatsApp and Google Business."
+    ],
+    opportunities: [
+      "WhatsApp receptionist that qualifies leads, handles FAQs, and books slots.",
+      "Automatic reminder flows triggered 24 hours and 2 hours before the appointment.",
+      "Automatic Google Review manager requesting feedback post-treatment."
+    ],
+    workflow: "Client visits clinic site or WhatsApp -> Receives instant treatment info -> Books appointment -> Receives automated WhatsApp reminders -> Review link sent 2 hours after visit.",
+    roi: "55% reduction in no-shows, 3x increase in Google reviews activity within 60 days.",
+    timeline: "Live in 7 to 10 days.",
+    pricing: "Starts at ₹5,999/month (Starter package).",
+    statistics: "More than 60% of clinic appointments in metro cities are booked outside standard working hours (after 7 PM or before 9 AM) when manual staff are unavailable.",
+    comparison: "Traditional clinics hire full-time staff who can only answer one call at a time during business hours. AI receptionists handle infinite concurrent chats 24/7.",
+    faqs: [
+      { q: "Does the doctor have final approval over slots?", a: "Yes, slots are synced directly with the doctor's Google Calendar or calendar app, and blocks are respected." }
+    ]
+  },
+  {
+    slug: "real-estate",
+    name: "Real Estate",
+    phase: 1,
+    overview: "Fast listing websites, CRM integrations, and instant lead responder agents for premium real estate developers, agencies, and brokers in India.",
+    challenges: [
+      "Leads go cold within 15 minutes if not contacted immediately.",
+      "Manually qualifying hundreds of low-intent property inquiries from portals.",
+      "Displaying dynamic property details and floor plans on slow, outdated sites."
+    ],
+    opportunities: [
+      "Instant WhatsApp lead qualifying agent that collects budget, size, and location preferences.",
+      "3D virtual tour display and clean layout websites built for mobile conversion.",
+      "Automated property recommendation bot based on user preferences."
+    ],
+    workflow: "User clicks Facebook/Google Ad -> WhatsApp agent starts conversation -> Asks for budget & configuration -> Warm lead with details forwarded to sales director.",
+    roi: "300% increase in lead response speed and 40% reduction in sales staff cold calling time.",
+    timeline: "2 to 3 weeks.",
+    pricing: "Starts from ₹12,999/month.",
+    statistics: "Studies show response speeds under 5 minutes increase lead conversion by 391%. Real estate agents using automated text systems close 2.5x more deals.",
+    comparison: "Portals send raw lead sheets which are manually called hours later. Next Scale agents qualify leads instantly, filtering out spam or low-budget queries before they reach your sales team.",
+    faqs: [
+      { q: "Can we connect it to Salesforce or Zoho?", a: "Yes, we support full webhook integration with Zoho, Salesforce, HubSpot, and Google Sheets." }
+    ]
+  },
+  {
+    slug: "ecommerce",
+    name: "Ecommerce",
+    phase: 1,
+    overview: "AI-driven cart recovery, order tracking agents, and product recommendation engines to maximize store revenue.",
+    challenges: [
+      "Average shopping cart abandonment rates exceeding 70% in Indian online stores.",
+      "High volume of 'Where is my order?' (WISMO) support tickets.",
+      "Static product recommendations leading to low average order values (AOV)."
+    ],
+    opportunities: [
+      "WhatsApp cart recovery sequences offering personalized discounts or UPI checkout.",
+      "Automated tracking notifications synced with logistics providers.",
+      "Natural language product discovery chat inside the storefront."
+    ],
+    workflow: "Customer leaves cart -> WhatsApp agent ping with cart summary -> Offers easy UPI link checkout -> Order confirmed -> Shipping track link sent automatically.",
+    roi: "Recover up to 15% of abandoned carts, decrease support ticket volumes by 40%.",
+    timeline: "2 to 3 weeks.",
+    pricing: "Custom pricing + revenue sharing models available.",
+    statistics: "Stores using automated WhatsApp checkout recovery see up to 3x higher conversion rates compared to traditional email-based recovery.",
+    comparison: "Email recovery has a 10% open rate. WhatsApp recovery has a 98% open rate, meaning your discount reaches the customer while intent is high.",
+    faqs: [
+      { q: "Does it support Shopify?", a: "Yes, we have full Shopify, WooCommerce, and custom Next.js checkout integrations." }
+    ]
+  },
+  {
+    slug: "manufacturing",
+    name: "Manufacturing",
+    phase: 1,
+    overview: "AI supply chain coordinators, automated vendor quotation pipelines, and operational monitoring interfaces.",
+    challenges: [
+      "Delayed vendor quotations causing supply bottlenecks.",
+      "Inefficient internal tracking of inventory and machine downtime logs.",
+      "Complex invoice verification and manual entry error risks."
+    ],
+    opportunities: [
+      "Automated purchase order & RFQ processing agent.",
+      "Voice/text maintenance logging systems for assembly line operators.",
+      "Document AI parsing for supplier invoices and automated ledger entries."
+    ],
+    workflow: "Vendor emails quotation -> AI parsing tool extracts pricing & delivery terms -> Validates against purchase order -> Uploads draft into ERP for approval.",
+    roi: "Reduce quotation turnaround times by 80%, eliminate paper-based manual entry delays.",
+    timeline: "4 to 6 weeks.",
+    pricing: "Enterprise quote-based.",
+    statistics: "Digitizing and automating procurement workflows reduces manufacturing inventory costs by up to 20% due to just-in-time coordination.",
+    comparison: "Manual vendor management requires days of email follow-ups. Automated systems coordinate with suppliers instantly, flagging delay risks automatically.",
+    faqs: [
+      { q: "Can it run on-premise?", a: "Yes, we can deploy secure local nodes or run on secure private clouds." }
+    ]
+  },
+  {
+    slug: "logistics",
+    name: "Logistics",
+    phase: 1,
+    overview: "Dispatch automation, vehicle allocation algorithms, and automated driver communication pipelines.",
+    challenges: [
+      "Inefficient route planning leading to fuel waste and late deliveries.",
+      "Constant phone coordinate follow-ups with field drivers.",
+      "Slow billing clearance due to physical proof-of-delivery (POD) check delays."
+    ],
+    opportunities: [
+      "WhatsApp/voice driver coordinator tracking location and arrival schedules.",
+      "Automated dispatch planning synced with client order portals.",
+      "Instant POD receipt processing with Image AI scan validation."
+    ],
+    workflow: "Driver uploads delivery photo to WhatsApp -> Image AI validates stamp & signature -> Clears invoice in ERP -> Trigger payment notice.",
+    roi: "Faster invoice clearance, 20% reduction in vehicle dispatch delays.",
+    timeline: "3 to 4 weeks.",
+    pricing: "Starts from ₹24,999/month.",
+    statistics: "Real-time dispatch automation and AI coordinate tracking can save logistics firms up to 15% on daily fuel and operation costs.",
+    comparison: "Manual tracking involves constant calling. Automated WhatsApp bots collect driver coordinates and POD images in structured formats automatically.",
+    faqs: [
+      { q: "Does it work in areas with weak internet?", a: "Yes, our WhatsApp bot is optimized for low-bandwidth 3G connections and offline SMS fallbacks." }
+    ]
+  },
+  {
+    slug: "education",
+    name: "Education",
+    phase: 1,
+    overview: "AI study platforms, automated student admission leads, and personalized preparation dashboards.",
+    challenges: [
+      "Students struggle with one-size-fits-all lesson plans and dense PDFs.",
+      "Admission teams waste hours answering basic fee and course queries.",
+      "Low course completion rates due to lack of interactive feedback."
+    ],
+    opportunities: [
+      "AI tutor engines generating personalized mock tests (like ExamOS).",
+      "Interactive WhatsApp admission receptionist that qualifies enrollments.",
+      "Automated student progress reporting and test score delivery to parents."
+    ],
+    workflow: "Student registers -> AI agent analyzes baseline score -> Generates customized practice roadmap -> Sends daily revision cards via WhatsApp.",
+    roi: "40% increase in student course completion, 2.5x more admission leads qualified.",
+    timeline: "3 to 4 weeks.",
+    pricing: "Starts from ₹15,000/month.",
+    statistics: "Adaptive learning systems increase student retention scores by 25% compared to static video lecture platforms.",
+    comparison: "Static courses offer zero feedback. Next Scale's adaptive engines generate targeted mock tests, identifying specific weak areas for each student.",
+    faqs: [
+      { q: "Is it suitable for schools or test prep institutes?", a: "It is built for test prep (NEET, JEE, banking) but fully customizable for universities and private schools." }
+    ]
+  },
+  {
+    slug: "restaurants",
+    name: "Restaurants",
+    phase: 1,
+    overview: "AI reservation managers, automated food ordering portals, and review acquisition tools for high-end dining hubs.",
+    challenges: [
+      "Missed booking calls during peak weekend dinner hours.",
+      "High commission fees paid to third-party delivery platforms.",
+      "Low customer retention and repeat bookings."
+    ],
+    opportunities: [
+      "WhatsApp AI Reservation agent that books tables and validates party sizes.",
+      "Zero-commission food ordering site synced directly with kitchen POS.",
+      "Automatic WhatsApp feedback requests and booking notifications."
+    ],
+    workflow: "Customer chats on WhatsApp -> AI books table or takes food order -> Syncs with reservation system -> Sends receipt with directions -> Requests review post-meal.",
+    roi: "30% increase in weekend table bookings, zero missed reservation calls.",
+    timeline: "7 to 10 days.",
+    pricing: "Starts at ₹8,999/month.",
+    statistics: "Over 40% of dine-in reservations are requested during lunch/dinner rushes when hosts are busy managing live guests.",
+    comparison: "Phone bookings pull staff away from front-of-house service. Next Scale's AI handles reservations asynchronously, keeping hosts focused on hospitalities.",
+    faqs: [
+      { q: "Does it integrate with restaurant POS?", a: "Yes, we support integration with major POS APIs like Petpooja, eZee, and others." }
+    ]
+  },
+  // Phase 2 placeholders
+  { slug: "hospitals", name: "Hospitals", phase: 2, overview: "", challenges: [], opportunities: [], workflow: "", roi: "", timeline: "", pricing: "", statistics: "", comparison: "", faqs: [] },
+  { slug: "dental-clinics", name: "Dental Clinics", phase: 2, overview: "", challenges: [], opportunities: [], workflow: "", roi: "", timeline: "", pricing: "", statistics: "", comparison: "", faqs: [] },
+  { slug: "construction", name: "Construction", phase: 2, overview: "", challenges: [], opportunities: [], workflow: "", roi: "", timeline: "", pricing: "", statistics: "", comparison: "", faqs: [] },
+  { slug: "coaching", name: "Coaching", phase: 2, overview: "", challenges: [], opportunities: [], workflow: "", roi: "", timeline: "", pricing: "", statistics: "", comparison: "", faqs: [] },
+  { slug: "law-firms", name: "Law Firms", phase: 2, overview: "", challenges: [], opportunities: [], workflow: "", roi: "", timeline: "", pricing: "", statistics: "", comparison: "", faqs: [] },
+  { slug: "hotels", name: "Hotels", phase: 2, overview: "", challenges: [], opportunities: [], workflow: "", roi: "", timeline: "", pricing: "", statistics: "", comparison: "", faqs: [] },
+  { slug: "retail", name: "Retail", phase: 2, overview: "", challenges: [], opportunities: [], workflow: "", roi: "", timeline: "", pricing: "", statistics: "", comparison: "", faqs: [] },
+  { slug: "finance", name: "Finance", phase: 2, overview: "", challenges: [], opportunities: [], workflow: "", roi: "", timeline: "", pricing: "", statistics: "", comparison: "", faqs: [] },
+  { slug: "accounting", name: "Accounting", phase: 2, overview: "", challenges: [], opportunities: [], workflow: "", roi: "", timeline: "", pricing: "", statistics: "", comparison: "", faqs: [] },
+  { slug: "hr", name: "HR", phase: 2, overview: "", challenges: [], opportunities: [], workflow: "", roi: "", timeline: "", pricing: "", statistics: "", comparison: "", faqs: [] },
+  { slug: "recruitment", name: "Recruitment", phase: 2, overview: "", challenges: [], opportunities: [], workflow: "", roi: "", timeline: "", pricing: "", statistics: "", comparison: "", faqs: [] },
+  { slug: "travel", name: "Travel", phase: 2, overview: "", challenges: [], opportunities: [], workflow: "", roi: "", timeline: "", pricing: "", statistics: "", comparison: "", faqs: [] },
+  { slug: "ngos", name: "NGOs", phase: 2, overview: "", challenges: [], opportunities: [], workflow: "", roi: "", timeline: "", pricing: "", statistics: "", comparison: "", faqs: [] },
+  { slug: "startups", name: "Startups", phase: 2, overview: "", challenges: [], opportunities: [], workflow: "", roi: "", timeline: "", pricing: "", statistics: "", comparison: "", faqs: [] },
+  { slug: "smes", name: "SMEs", phase: 2, overview: "", challenges: [], opportunities: [], workflow: "", roi: "", timeline: "", pricing: "", statistics: "", comparison: "", faqs: [] },
+  { slug: "enterprise", name: "Enterprise", phase: 2, overview: "", challenges: [], opportunities: [], workflow: "", roi: "", timeline: "", pricing: "", statistics: "", comparison: "", faqs: [] }
+];
+
+export interface LocationData {
+  slug: string;
+  name: string;
+  ecosystem: string;
+  industries: string;
+  trends: string;
+  challenges: string;
+  examples: string[];
+  costs: string;
+  faqs: { q: string; a: string }[];
+}
+
+export const LOCATIONS_DATA: LocationData[] = [
+  {
+    slug: "bangalore",
+    name: "Bangalore",
+    ecosystem: "India's tech capital and silicon hub, home to thousands of high-growth SaaS, fintech, and deeptech startups requiring premium digital infrastructure.",
+    industries: "Tech Startups, Enterprise SaaS, Software Development Houses, Venture Capital firms, and modern clinics.",
+    trends: "High interest in AI agent workflows, automated code testing pipelines, and LLM fine-tuning solutions.",
+    challenges: "Extreme talent acquisition costs and slow product launch cycles due to developers switching roles.",
+    examples: [
+      "AI booking coordinator for a prominent VC fund to automate meeting schedules.",
+      "Custom next.js software platform for a logistics provider in Whitefield.",
+      "AI-driven lead qualification for a premium housing builder in Indiranagar."
+    ],
+    costs: "AI receptionists start from ₹12,999/month. Custom Next.js web application starts from ₹75,000.",
+    faqs: [
+      { q: "Do you offer developer resource hiring?", a: "We work as a product engineering partner, building and shipping systems as a service rather than supplying body-shopped resources." }
+    ]
+  },
+  {
+    slug: "mumbai",
+    name: "Mumbai",
+    ecosystem: "India's financial capital, driven by major investment banking firms, retail trade, manufacturing headquarters, and real estate developers.",
+    industries: "Fintech, Logistics, Real Estate Developers, Premium Healthcare, and High-end Retail stores.",
+    trends: "Document AI parsing for invoices, secure CRM synchronizations, and automated cart recovery.",
+    challenges: "Strict operational security demands and high volume of customer transaction inquiries.",
+    examples: [
+      "Automated cart recovery bot for a premium lifestyle label in Bandra.",
+      "Custom lead router and listing site for a real estate builder in Lower Parel.",
+      "EHR-integrated scheduler for a specialist surgery clinic in South Mumbai."
+    ],
+    costs: "Enterprise solutions starting from ₹45,000/month. Standard website design starts at ₹12,999.",
+    faqs: [
+      { q: "Is the system secure enough for banking?", a: "Yes, we build using end-to-end HTTPS, token-based authorization, and secure DB connections." }
+    ]
+  },
+  {
+    slug: "delhi",
+    name: "Delhi NCR",
+    ecosystem: "The largest corporate cluster containing Delhi, Gurgaon, and Noida, housing e-commerce giants, professional firms, and clinical networks.",
+    industries: "Ecommerce, Logistics, Legal Practices, Corporate Consulting, and Multilocation Clinic networks.",
+    trends: "Local business visibility ranking optimization and AI customer reception systems.",
+    challenges: "Managing massive volumes of raw leads from multiple search and social channels.",
+    examples: [
+      "Multi-page WordPress to Next.js migration for a corporate firm in Connaught Place.",
+      "WhatsApp receptionist managing 10,000+ chats/month for a medical chain in Noida.",
+      "Local SEO visibility strategy for a legal consulting firm in Gurgaon."
+    ],
+    costs: "AI agents start from ₹8,999/month. Website packages start from ₹5,999.",
+    faqs: [
+      { q: "Can you handle multi-location operations?", a: "Yes, our systems sync with multi-office branches, routing chats dynamically based on pincode or region." }
+    ]
+  },
+  {
+    slug: "hyderabad",
+    name: "Hyderabad",
+    ecosystem: "India's pharmaceutical and tech hub, driven by massive IT parks, clinical centers, and enterprise logistics networks.",
+    industries: "Pharmaceuticals, Tech startups, Specialty Hospitals, and Supply Chain firms.",
+    trends: "AI patient coordination systems and dispatch routing automations.",
+    challenges: "Strict healthcare compliance requirements and high driver communication latency.",
+    examples: [
+      "AI scheduling bot for a diagnostic lab network in Gachibowli.",
+      "Logistics dispatcher coordinator WhatsApp agent in Hitech City.",
+      "Responsive service listing site for a pharma distributor in Secunderabad."
+    ],
+    costs: "Clinic AI bundles start from ₹12,999/month. Web design starts from ₹6,999.",
+    faqs: [
+      { q: "Are you compliant with HIPAA guidelines?", a: "Yes, all healthcare data processing passes through secure encryption endpoints." }
+    ]
+  },
+  {
+    slug: "chennai",
+    name: "Chennai",
+    ecosystem: "The manufacturing and automotive capital of India, with major export hubs, SaaS startups, and medical centers.",
+    industries: "Automotive Manufacturing, SaaS, Medical Tourism, and Export Logistics.",
+    trends: "Procurement invoice parsing and international lead generation.",
+    challenges: "Slow quote turnaround times from suppliers and multi-language client coordination.",
+    examples: [
+      "Purchase order parser for an automotive vendor in Sriperumbudur.",
+      "Medical booking agent for international patients in Nungambakkam.",
+      "SaaS landing page optimized for global conversions in OMR."
+    ],
+    costs: "Procurement automations start from ₹25,000. Core website design starts from ₹5,999.",
+    faqs: [
+      { q: "Does the system support Tamil language?", a: "Yes, our voice and text agents recognize and respond in Tamil, Hindi, and English." }
+    ]
+  },
+  {
+    slug: "pune",
+    name: "Pune",
+    ecosystem: "A thriving tech and education center with a large manufacturing presence in the industrial belt.",
+    industries: "Engineering, IT consulting, Coaching networks, and clinics.",
+    trends: "Lead response speed optimization and student dashboard builders.",
+    challenges: "Low lead-to-conversion rates on standard social media forms.",
+    examples: [
+      "Admission routing WhatsApp bot for a JEE coaching center in Kothrud.",
+      "CRM pipeline setup for a manufacturing subcontractor in Chakan.",
+      "Doctor appointment scheduling site in Koregaon Park."
+    ],
+    costs: "Coaching lead bundles start from ₹8,999/month. Websites start from ₹4,999.",
+    faqs: [
+      { q: "How fast can you set up lead qualifying?", a: "Standard lead routing agents can go live within 48 to 72 hours." }
+    ]
+  },
+  {
+    slug: "ahmedabad",
+    name: "Ahmedabad",
+    ecosystem: "A major commercial business hub in western India, home to large textiles, chemical manufacturing, and SME industries.",
+    industries: "SMEs, Textile Manufacturers, Chemical Distributors, and Local Retail chains.",
+    trends: "WhatsApp catalog food ordering and digital invoice automation.",
+    challenges: "Manual follow-ups causing delayed order confirmations for distributors.",
+    examples: [
+      "Inventory sync bot for a chemical manufacturer in GIDC.",
+      "Product display website for a jewelry retail brand in Satellite.",
+      "WhatsApp ordering system for a local grocery distributor."
+    ],
+    costs: "SME automation systems starting from ₹15,000/month. Websites from ₹4,999.",
+    faqs: [
+      { q: "Do you offer maintenance support?", a: "Yes, all our plans include ongoing maintenance, security updates, and regular content backup support." }
+    ]
+  },
+  {
+    slug: "gurgaon",
+    name: "Gurgaon",
+    ecosystem: "The Millennium City, featuring corporate offices of Fortune 500 companies and premium real estate projects.",
+    industries: "Real Estate Brokers, Corporate Consulting, Private Equity, and Premium Health Centers.",
+    trends: "Advanced CRM setups, instant lead response, and ROI dashboards.",
+    challenges: "Extreme advertising spend on property leads requiring high qualification speed.",
+    examples: [
+      "CRM-synced property booking assistant for a broker firm near Golf Course Road.",
+      "Consulting scheduling page with stripe checkout integration.",
+      "Custom medical review collection engine."
+    ],
+    costs: "Real estate AI systems starting from ₹12,999/month. Premium sites from ₹12,999.",
+    faqs: [
+      { q: "Can we track ad source details?", a: "Yes, our qualifying agent reads UTM tags to tell you exactly which Facebook or Google ad generated the WhatsApp lead." }
+    ]
+  },
+  {
+    slug: "noida",
+    name: "Noida",
+    ecosystem: "A massive tech and media hub in northern India, hosting major IT parks, factories, and retail networks.",
+    industries: "Software outsourcing, Manufacturing firms, Media agencies, and Medical centers.",
+    trends: "Technical SEO audits, migration from WordPress to Next.js, and review collection.",
+    challenges: "High competition on local Google searches requiring advanced technical SEO.",
+    examples: [
+      "WordPress to Next.js speed rebuild for an industrial manufacturer in Sector 62.",
+      "Doctor booking WhatsApp receptionist in Sector 15.",
+      "Review management collection tool for a retail outlet."
+    ],
+    costs: "SEO migration projects start from ₹35,000. Starter website starting from ₹5,999.",
+    faqs: [
+      { q: "Is the Next.js site better for SEO?", a: "Yes, Next.js sites are faster and pre-rendered, leading to better search crawlers indexing and higher local ranks." }
+    ]
+  },
+  {
+    slug: "kolkata",
+    name: "Kolkata",
+    ecosystem: "The primary commercial center of eastern India, serving retail hubs, healthcare clinics, and logistics networks.",
+    industries: "Retail hubs, Diagnostics clinics, Logistics agents, and education firms.",
+    trends: "WhatsApp local food orders and clinic reception automation.",
+    challenges: "High volume of basic customer phone queries blocking operations.",
+    examples: [
+      "WhatsApp booking receptionist for a dental clinic in Salt Lake.",
+      "Tracking dispatch notifications for a logistics distributor in Howrah.",
+      "Catalog web display for a boutique label in Ballygunge."
+    ],
+    costs: "Clinic AI reception packages start from ₹8,999/month. Website packages from ₹4,999.",
+    faqs: [
+      { q: "Can the AI handle customer support?", a: "Yes, it is trained on your exact business FAQ to answer over 80% of routine questions instantly." }
+    ]
+  }
+];
+
+export interface ComparisonData {
+  slug: string;
+  title: string;
+  summary: string;
+  pros: string[];
+  cons: string[];
+  verdict: string;
+}
+
+export const COMPARISONS_DATA: ComparisonData[] = [
+  {
+    slug: "nextscale-vs-traditional-agencies",
+    title: "Next Scale vs Traditional Web Agencies",
+    summary: "Traditional agencies work on multi-month project timelines, charge massive upfront retainers, and deliver static sites. Next Scale builds custom business sites live in 7 days and integrates active AI agents designed to qualify and book clients.",
+    pros: ["Live in 7 days vs 60+ days", "AI integrations standard vs expensive add-ons", "Public transparent pricing", "Remote-first delivery speed"],
+    cons: ["Requires rapid feedback from client side", "Not built for slow corporate committee decisions"],
+    verdict: "If you want a fast, conversion-optimized site and business automation that delivers immediate ROI, choose Next Scale. If you need months of corporate strategy slides, hire an agency."
+  },
+  {
+    slug: "ai-automation-vs-manual-processes",
+    title: "AI Automation vs Manual Human Workflows",
+    summary: "Manual workflows require human staff to answer calls, reply to emails, and log appointments, leading to missed after-hour bookings and high payroll overhead. AI agents handle infinite queries, qualifying leads and booking clients 24/7.",
+    pros: ["Zero missed calls or late replies", "Infinite scaling capacity", "Fraction of employee salary cost"],
+    cons: ["Needs initial training calibration", "Cannot replace complex human-level negotiations"],
+    verdict: "Use AI to automate 80% of routine reception and follow-up chores, freeing your human staff to handle high-value clients and complex operations."
+  }
+];
+
