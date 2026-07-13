@@ -90,6 +90,13 @@ export function Footer() {
     return () => observer.disconnect();
   }, []);
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (window.location.pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <footer
       ref={footerRef}
@@ -107,6 +114,7 @@ export function Footer() {
           <div className="footer-col" style={{ transitionDelay: "0ms" }}>
             <Link
               href="/"
+              onClick={handleLogoClick}
               className="footer-brand-logo"
               aria-label="NextScale home"
             >

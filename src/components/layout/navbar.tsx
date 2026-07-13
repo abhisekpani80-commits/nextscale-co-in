@@ -30,6 +30,13 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (window.location.pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <header
@@ -44,6 +51,7 @@ export function Navbar() {
           {/* Logo / Wordmark */}
           <Link
             href="/"
+            onClick={handleLogoClick}
             className="text-[18px] font-extrabold tracking-tight text-[#0F0E0D] hover:opacity-80 transition-opacity"
             aria-label="NextScale home"
           >
