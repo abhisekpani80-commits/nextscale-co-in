@@ -109,7 +109,7 @@ export function breadcrumbSchema(trail: { name: string; path: string }[]) {
   };
 }
 
-/** Software/product schema for a Buildora product (ExamOS, Aura). */
+/** Software/product schema for a Nextscale product (ExamOS, Aura). */
 export function productSchema(p: (typeof PRODUCTS)[number]) {
   return {
     "@context": "https://schema.org",

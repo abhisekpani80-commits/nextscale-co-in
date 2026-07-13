@@ -12,19 +12,19 @@ type Line =
   | { kind: "info"; text: string };
 
 const DEFAULT_LINES: Line[] = [
-  { kind: "cmd", text: "buildora deploy lumiere-clinic --prod" },
+  { kind: "cmd", text: "nextscale deploy lumiere-clinic --prod" },
   { kind: "info", text: "→ provisioning whatsapp ai agent" },
   { kind: "info", text: "→ tuning intents · 24 flows · 1.4s" },
   { kind: "ok",   text: "✓ ai agent live · wa.me/lumiere" },
   { kind: "info", text: "→ shipping site · next 16 · vercel edge" },
   { kind: "ok",   text: "✓ deployed in 6.2s · lumiere.in" },
-  { kind: "cmd", text: "buildora ship --to=meridian-dental" },
+  { kind: "cmd", text: "nextscale ship --to=meridian-dental" },
   { kind: "info", text: "→ google business · gmb sync ok" },
   { kind: "ok",   text: "✓ no-shows ↓ 55% · revenue ↑ 32%" },
 ];
 
 export function DevTerminal({
-  title = "buildora@odisha:~",
+  title = "nextscale@odisha:~",
   lines = DEFAULT_LINES,
   className,
   typingSpeedMs = 14,

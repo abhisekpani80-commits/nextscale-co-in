@@ -120,24 +120,25 @@ export default function AboutPage() {
   return (
     <>
       <JsonLd schema={[founderPersonSchema(), profilePageSchema()]} />
+      
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-white/[0.06] pt-36 pb-24">
-        <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-96 w-[50rem] rounded-full opacity-20 blur-3xl"
-          style={{ background: "radial-gradient(ellipse, #27d0ed 0%, #e040fb 60%, transparent 100%)" }} />
+      <section className="relative overflow-hidden border-b border-[#E8E6E1] pt-32 pb-20">
+        <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-96 w-[50rem] rounded-full opacity-10 blur-3xl"
+          style={{ background: "radial-gradient(ellipse, #1A56DB 0%, #702BDE 60%, transparent 100%)" }} />
 
         <div className="mx-auto max-w-5xl px-5 sm:px-8 text-center">
           <Reveal>
             <span className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] mb-6"
-              style={{ background: "rgba(39,208,237,0.08)", color: "#27d0ed", border: "1px solid rgba(39,208,237,0.2)" }}>
+              style={{ background: "rgba(26,86,219,0.06)", color: "#1A56DB", border: "1px solid rgba(26,86,219,0.12)" }}>
               <MapPin className="size-3" /> Founded in Odisha · Operating globally
             </span>
           </Reveal>
 
           <Reveal delay={0.05}>
-            <h1 className="text-[clamp(2.8rem,7vw,5.5rem)] font-bold tracking-[-0.04em] leading-[1.0]">
+            <h1 className="text-[clamp(2.8rem,7vw,5.5rem)] font-bold tracking-[-0.04em] leading-[1.0] text-[#0F0E0D]">
               We build the AI stack<br />
               <span style={{
-                background: "linear-gradient(90deg, #27d0ed 0%, #a78bfa 50%, #e040fb 100%)",
+                background: "linear-gradient(90deg, #1A56DB 0%, #702BDE 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -148,7 +149,7 @@ export default function AboutPage() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <p className="mt-7 max-w-2xl mx-auto text-[1.05rem] leading-relaxed text-white/45 tracking-[-0.01em]">
+            <p className="mt-7 max-w-2xl mx-auto text-[1.05rem] leading-relaxed text-[#6B6860] tracking-[-0.01em]">
               From a small office in Bhubaneswar to clients across India, the Gulf, Europe, and North America —
               Nextscale delivers AI products and digital infrastructure that would cost 10× more anywhere else.
             </p>
@@ -158,14 +159,13 @@ export default function AboutPage() {
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               <Link
                 href="/contact"
-                className="inline-flex h-12 items-center gap-2 rounded-xl px-7 text-[13px] font-semibold tracking-[-0.01em] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_24px_rgba(39,208,237,0.25)]"
-                style={{ background: "linear-gradient(90deg, #27d0ed 0%, #a78bfa 100%)", color: "#06080c" }}
+                className="inline-flex h-12 items-center gap-2 rounded-xl px-7 text-[13px] font-semibold tracking-[-0.01em] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_24px_rgba(26,86,219,0.25)] bg-[#1A56DB] text-white hover:bg-[#1447C0]"
               >
                 Work with us <ArrowRight className="size-4" />
               </Link>
               <Link
                 href="/portfolio"
-                className={cn(buttonVariants({ variant: "outline" }), "h-12 gap-2 px-7 text-[13px] tracking-[-0.01em]")}
+                className="inline-flex h-12 items-center gap-2 rounded-xl border border-[#E8E6E1] bg-white px-7 text-[13px] font-semibold text-[#0F0E0D] hover:bg-[#F4F3F0] transition-all duration-200"
               >
                 See our work
               </Link>
@@ -175,16 +175,15 @@ export default function AboutPage() {
       </section>
 
       {/* Global stats bar */}
-      <section className="border-b" style={{ borderColor: "rgba(255,255,255,0.06)", background: "rgba(16,20,30,0.6)" }}>
+      <section className="border-b border-[#E8E6E1] bg-[#F4F3F0]">
         <div className="mx-auto max-w-6xl px-5 py-8 sm:px-8">
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
             {GLOBAL_STATS.map((s) => (
               <div key={s.label} className="text-center">
-                <div className="text-3xl font-bold tracking-[-0.04em]"
-                  style={{ background: "linear-gradient(90deg, #27d0ed, #a78bfa)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                <div className="text-3xl font-bold tracking-[-0.04em] text-[#1A56DB]">
                   {s.value}
                 </div>
-                <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.15em] text-white/35">{s.label}</div>
+                <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.15em] text-[#6B6860]">{s.label}</div>
               </div>
             ))}
           </div>
@@ -192,28 +191,27 @@ export default function AboutPage() {
       </section>
 
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-
         {/* Founder narrative */}
         <section className="py-24 sm:py-32">
           <div className="grid gap-16 lg:grid-cols-2 lg:items-start">
             <Reveal>
               <div>
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">Our story</span>
-                <h2 className="mt-4 text-4xl font-bold tracking-[-0.04em] leading-[1.08] sm:text-5xl">
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#1A56DB]">Our story</span>
+                <h2 className="mt-4 text-4xl font-bold tracking-[-0.04em] leading-[1.08] sm:text-5xl text-[#0F0E0D]">
                   The world doesn't need<br />
-                  <span className="text-white/35">another big agency.</span>
+                  <span className="text-[#6B6860]/70">another big agency.</span>
                 </h2>
-                <div className="mt-8 flex flex-col gap-5 text-[15px] leading-relaxed text-white/50 tracking-[-0.01em]">
+                <div className="mt-8 flex flex-col gap-5 text-[15px] leading-relaxed text-[#6B6860] tracking-[-0.01em]">
                   <p>
-                    I'm <strong className="text-white/80">Abhisek Pani</strong> — the founder and CEO of Nextscale. A self-taught builder from Bhubaneswar, Odisha who started Nextscale without a computer science degree, VC funding, or a fancy co-working space. Just curiosity, and a conviction that the best tools in the world shouldn't be exclusive to billion-dollar companies.
+                    I'm <strong className="text-[#0F0E0D]">Abhisek Pani</strong> — the founder and CEO of Nextscale. A self-taught builder from Bhubaneswar, Odisha who started Nextscale without a computer science degree, VC funding, or a fancy co-working space. Just curiosity, and a conviction that the best tools in the world shouldn't be exclusive to billion-dollar companies.
                   </p>
                   <p>
                     What started as building websites for local clinics evolved into a full AI infrastructure company — deploying intelligent agents, SaaS products, and digital systems for businesses from Bhubaneswar to Birmingham.
                   </p>
                   <p>
-                    We don't compete on size. We compete on <span className="text-white/80 font-medium">speed, quality, and outcomes.</span> Every client — whether they're a solo GP in Puri or a startup in Dubai — gets the same standard of work that Silicon Valley teams expect.
+                    We don't compete on size. We compete on <span className="text-[#0F0E0D] font-medium">speed, quality, and outcomes.</span> Every client — whether they're a solo GP in Puri or a startup in Dubai — gets the same standard of work that Silicon Valley teams expect.
                   </p>
-                  <p className="text-[13px] text-white/35">
+                  <p className="text-[13px] text-[#6B6860]/60">
                     Abhisek Pani · Founder of Nextscale · Bhubaneswar, Odisha, India
                   </p>
                 </div>
@@ -223,35 +221,31 @@ export default function AboutPage() {
             {/* Global reach */}
             <Reveal delay={0.1}>
               <div
-                className="rounded-2xl p-px"
-                style={{ background: "linear-gradient(135deg, rgba(39,208,237,0.2) 0%, rgba(167,139,250,0.15) 100%)" }}
+                className="rounded-2xl border border-[#E8E6E1] bg-white p-8 shadow-sm"
               >
-                <div className="rounded-[22px] p-8" style={{ background: "rgba(14,18,28,0.97)" }}>
-                  <div className="flex items-center gap-2 mb-6">
-                    <Globe className="size-4 text-primary" />
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">Where we operate</span>
-                  </div>
-                  <div className="flex flex-col gap-4">
-                    {GLOBAL_REACH.map((r, i) => (
-                      <div key={r.region} className="flex items-start gap-3">
-                        <div className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full"
-                          style={{ background: i === 0 ? "rgba(39,208,237,0.15)" : "rgba(255,255,255,0.06)" }}>
-                          <Check className="size-3" style={{ color: i === 0 ? "#27d0ed" : "rgba(255,255,255,0.3)" }} strokeWidth={3} />
-                        </div>
-                        <div>
-                          <p className="text-[14px] font-semibold tracking-[-0.02em]">{r.region}</p>
-                          <p className="text-[12px] text-white/35 tracking-[-0.01em]">{r.note}</p>
-                        </div>
+                <div className="flex items-center gap-2 mb-6">
+                  <Globe className="size-4 text-[#1A56DB]" />
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#1A56DB]">Where we operate</span>
+                </div>
+                <div className="flex flex-col gap-4">
+                  {GLOBAL_REACH.map((r, i) => (
+                    <div key={r.region} className="flex items-start gap-3">
+                      <div className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-blue-50">
+                        <Check className="size-3 text-[#1A56DB]" strokeWidth={3} />
                       </div>
-                    ))}
-                  </div>
+                      <div>
+                        <p className="text-[14px] font-semibold tracking-[-0.02em] text-[#0F0E0D]">{r.region}</p>
+                        <p className="text-[12px] text-[#6B6860] tracking-[-0.01em]">{r.note}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
 
-                  <div className="mt-8 flex items-center gap-3 rounded-xl p-4" style={{ background: "rgba(39,208,237,0.06)", border: "1px solid rgba(39,208,237,0.12)" }}>
-                    <Clock className="size-4 text-primary shrink-0" />
-                    <p className="text-[12px] text-white/50 tracking-[-0.01em]">
-                      <span className="text-white/80 font-medium">Async-first.</span> We respond within 4 hours across all timezones.
-                    </p>
-                  </div>
+                <div className="mt-8 flex items-center gap-3 rounded-xl p-4 bg-blue-50/50 border border-blue-100">
+                  <Clock className="size-4 text-[#1A56DB] shrink-0" />
+                  <p className="text-[12px] text-[#6B6860] tracking-[-0.01em]">
+                    <span className="text-[#0F0E0D] font-medium">Async-first.</span> We respond within 4 hours across all timezones.
+                  </p>
                 </div>
               </div>
             </Reveal>
@@ -259,14 +253,14 @@ export default function AboutPage() {
         </section>
 
         {/* Why Nextscale */}
-        <section className="py-10 pb-24 sm:pb-32 border-t" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+        <section className="py-10 pb-24 sm:pb-32 border-t border-[#E8E6E1]">
           <Reveal>
             <div className="mt-16 mb-14 text-center">
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">Why us</span>
-              <h2 className="mt-4 text-3xl font-bold tracking-[-0.04em] sm:text-4xl">
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#1A56DB]">Why us</span>
+              <h2 className="mt-4 text-3xl font-bold tracking-[-0.04em] sm:text-4xl text-[#0F0E0D]">
                 Built different. By design.
               </h2>
-              <p className="mt-4 text-white/40 max-w-lg mx-auto text-[15px] tracking-[-0.01em]">
+              <p className="mt-4 text-[#6B6860] max-w-lg mx-auto text-[15px] tracking-[-0.01em]">
                 Every decision we make comes from one question: what would a world-class team do here?
               </p>
             </div>
@@ -275,18 +269,13 @@ export default function AboutPage() {
             {WHY_NEXTSCALE.map((w, i) => (
               <Reveal key={w.title} delay={i * 0.06}>
                 <div
-                  className="group flex flex-col gap-4 rounded-2xl p-6 transition-all duration-300 hover:border-white/10"
-                  style={{
-                    border: "1px solid rgba(255,255,255,0.06)",
-                    background: "rgba(16,20,30,0.6)",
-                  }}
+                  className="group flex flex-col gap-4 rounded-2xl p-6 transition-all duration-300 border border-[#E8E6E1] bg-white shadow-sm hover:border-[#1A56DB]"
                 >
-                  <div className="flex size-10 items-center justify-center rounded-xl"
-                    style={{ background: "rgba(39,208,237,0.1)", border: "1px solid rgba(39,208,237,0.15)" }}>
-                    <w.icon className="size-5 text-primary" />
+                  <div className="flex size-10 items-center justify-center rounded-xl bg-blue-50 border border-blue-100">
+                    <w.icon className="size-5 text-[#1A56DB]" />
                   </div>
-                  <h3 className="text-[15px] font-semibold tracking-[-0.02em]">{w.title}</h3>
-                  <p className="text-[13px] text-white/45 leading-relaxed tracking-[-0.01em]">{w.description}</p>
+                  <h3 className="text-[15px] font-semibold tracking-[-0.02em] text-[#0F0E0D]">{w.title}</h3>
+                  <p className="text-[13px] text-[#6B6860] leading-relaxed tracking-[-0.01em]">{w.description}</p>
                 </div>
               </Reveal>
             ))}
@@ -294,26 +283,24 @@ export default function AboutPage() {
         </section>
 
         {/* Timeline */}
-        <section className="py-10 pb-24 sm:pb-32 border-t" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+        <section className="py-10 pb-24 sm:pb-32 border-t border-[#E8E6E1]">
           <Reveal>
             <div className="mt-16 mb-14">
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">Milestones</span>
-              <h2 className="mt-4 text-3xl font-bold tracking-[-0.04em]">The journey so far.</h2>
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#1A56DB]">Milestones</span>
+              <h2 className="mt-4 text-3xl font-bold tracking-[-0.04em] text-[#0F0E0D]">The journey so far.</h2>
             </div>
           </Reveal>
           <div className="relative">
-            <div className="absolute left-3 top-2 bottom-0 w-px"
-              style={{ background: "linear-gradient(to bottom, rgba(39,208,237,0.4), rgba(39,208,237,0.05), transparent)" }} />
+            <div className="absolute left-3 top-2 bottom-0 w-px bg-gradient-to-b from-[#1A56DB]/40 to-transparent" />
             <div className="flex flex-col gap-10">
               {TIMELINE.map((t, i) => (
                 <Reveal key={t.year + t.title} delay={i * 0.08} className="pl-10 relative">
-                  <div className="absolute left-0 top-1 size-6 rounded-full grid place-items-center"
-                    style={{ background: "rgba(14,18,28,0.97)", border: "1px solid rgba(39,208,237,0.25)" }}>
-                    <div className="size-2 rounded-full" style={{ background: "#27d0ed" }} />
+                  <div className="absolute left-0 top-1 size-6 rounded-full grid place-items-center bg-white border border-[#1A56DB]/50 shadow-sm">
+                    <div className="size-2 rounded-full bg-[#1A56DB]" />
                   </div>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary">{t.year}</span>
-                  <h4 className="mt-2 text-[16px] font-semibold tracking-[-0.02em]">{t.title}</h4>
-                  <p className="mt-1.5 text-[13px] text-white/45 leading-relaxed tracking-[-0.01em]">{t.description}</p>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#1A56DB]">{t.year}</span>
+                  <h4 className="mt-2 text-[16px] font-semibold tracking-[-0.02em] text-[#0F0E0D]">{t.title}</h4>
+                  <p className="mt-1.5 text-[13px] text-[#6B6860] leading-relaxed tracking-[-0.01em]">{t.description}</p>
                 </Reveal>
               ))}
             </div>
@@ -321,24 +308,22 @@ export default function AboutPage() {
         </section>
 
         {/* Values */}
-        <section className="py-10 pb-24 sm:pb-32 border-t" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+        <section className="py-10 pb-24 sm:pb-32 border-t border-[#E8E6E1]">
           <Reveal>
             <div className="mt-16 mb-14">
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">Principles</span>
-              <h2 className="mt-4 text-3xl font-bold tracking-[-0.04em]">What we believe in.</h2>
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#1A56DB]">Principles</span>
+              <h2 className="mt-4 text-3xl font-bold tracking-[-0.04em] text-[#0F0E0D]">What we believe in.</h2>
             </div>
           </Reveal>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {VALUES.map((v, i) => (
               <Reveal key={v.name} delay={i * 0.07}>
-                <div className="flex flex-col gap-4 rounded-2xl p-6 h-full"
-                  style={{ border: "1px solid rgba(255,255,255,0.06)", background: "rgba(16,20,30,0.5)" }}>
-                  <div className="flex size-10 items-center justify-center rounded-xl"
-                    style={{ background: "rgba(39,208,237,0.08)", border: "1px solid rgba(39,208,237,0.12)" }}>
-                    <v.icon className="size-5 text-primary" />
+                <div className="flex flex-col gap-4 rounded-2xl p-6 h-full border border-[#E8E6E1] bg-white shadow-sm">
+                  <div className="flex size-10 items-center justify-center rounded-xl bg-blue-50 border border-blue-100">
+                    <v.icon className="size-5 text-[#1A56DB]" />
                   </div>
-                  <h3 className="text-[14px] font-semibold tracking-[-0.02em]">{v.name}</h3>
-                  <p className="text-[13px] text-white/40 leading-relaxed tracking-[-0.01em]">{v.description}</p>
+                  <h3 className="text-[14px] font-semibold tracking-[-0.02em] text-[#0F0E0D]">{v.name}</h3>
+                  <p className="text-[13px] text-[#6B6860] leading-relaxed tracking-[-0.01em]">{v.description}</p>
                 </div>
               </Reveal>
             ))}
@@ -349,40 +334,32 @@ export default function AboutPage() {
         <section className="pb-24 sm:pb-32">
           <Reveal>
             <div
-              className="relative overflow-hidden rounded-3xl p-px"
-              style={{ background: "linear-gradient(135deg, rgba(39,208,237,0.4) 0%, rgba(167,139,250,0.3) 50%, rgba(224,64,251,0.3) 100%)" }}
+              className="relative overflow-hidden rounded-3xl border border-[#E8E6E1] bg-white p-10 py-14 text-center shadow-sm"
             >
-              <div
-                className="relative rounded-[22px] px-10 py-14 text-center overflow-hidden"
-                style={{ background: "linear-gradient(160deg, rgba(14,18,28,0.98) 0%, rgba(10,12,18,0.99) 100%)" }}
-              >
-                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(39,208,237,0.08),transparent_65%)]" />
-                <div className="relative">
-                  <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider mb-5"
-                    style={{ background: "rgba(39,208,237,0.1)", color: "#27d0ed", border: "1px solid rgba(39,208,237,0.2)" }}>
-                    <Star className="size-3" /> Serving clients worldwide
-                  </span>
-                  <h2 className="text-4xl font-bold tracking-[-0.04em] sm:text-5xl">
-                    Ready to work together?
-                  </h2>
-                  <p className="mt-5 text-[15px] text-white/40 max-w-lg mx-auto leading-relaxed tracking-[-0.01em]">
-                    Whether you're a clinic in Bhubaneswar or a startup in Dubai — if you need AI that works and a team that ships, we're your call.
-                  </p>
-                  <div className="mt-8 flex flex-wrap justify-center gap-3">
-                    <Link
-                      href="/contact"
-                      className="inline-flex h-12 items-center gap-2 rounded-xl px-7 text-[13px] font-semibold tracking-[-0.01em] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_24px_rgba(39,208,237,0.3)]"
-                      style={{ background: "linear-gradient(90deg, #27d0ed 0%, #a78bfa 100%)", color: "#06080c" }}
-                    >
-                      Start a project <ArrowRight className="size-4" />
-                    </Link>
-                    <Link
-                      href="/portfolio"
-                      className={cn(buttonVariants({ variant: "outline" }), "h-12 gap-2 px-7 text-[13px] tracking-[-0.01em]")}
-                    >
-                      View our work
-                    </Link>
-                  </div>
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(26,86,219,0.03),transparent_65%)]" />
+              <div className="relative">
+                <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider mb-5 bg-blue-50 text-[#1A56DB] border border-blue-100">
+                  <Star className="size-3" /> Serving clients worldwide
+                </span>
+                <h2 className="text-4xl font-bold tracking-[-0.04em] sm:text-5xl text-[#0F0E0D]">
+                  Ready to work together?
+                </h2>
+                <p className="mt-5 text-[15px] text-[#6B6860] max-w-lg mx-auto leading-relaxed tracking-[-0.01em]">
+                  Whether you're a clinic in Bhubaneswar or a startup in Dubai — if you need AI that works and a team that ships, we're your call.
+                </p>
+                <div className="mt-8 flex flex-wrap justify-center gap-3">
+                  <Link
+                    href="/contact"
+                    className="inline-flex h-12 items-center gap-2 rounded-xl px-7 text-[13px] font-semibold tracking-[-0.01em] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_24px_rgba(26,86,219,0.25)] bg-[#1A56DB] text-white hover:bg-[#1447C0]"
+                  >
+                    Start a project <ArrowRight className="size-4" />
+                  </Link>
+                  <Link
+                    href="/portfolio"
+                    className="inline-flex h-12 items-center gap-2 rounded-xl border border-[#E8E6E1] bg-white px-7 text-[13px] font-semibold text-[#0F0E0D] hover:bg-[#F4F3F0] transition-all duration-200"
+                  >
+                    View our work
+                  </Link>
                 </div>
               </div>
             </div>

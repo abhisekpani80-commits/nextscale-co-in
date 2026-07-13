@@ -613,7 +613,7 @@ export const TESTIMONIALS: Testimonial[] = [
     role: "Cosmetic Therapist, Cuttack",
   },
   {
-    quote: "I was sceptical about AI, but the review manager doubled our Google rating activity. Buildora just delivers.",
+    quote: "I was sceptical about AI, but the review manager doubled our Google rating activity. Nextscale just delivers.",
     author: "A. Patnaik",
     role: "Dental Clinic, Puri",
   },
@@ -641,64 +641,96 @@ export const TIMELINE = [
 export type Role = {
   title: string;
   type: string;
-  compensation: string;
+  openings: number;
   description: string;
   requirements: string[];
-  slug: "sales_rep" | "developer" | "content_creator" | "ai_builder";
+  expect: string[];
+  perks: string[];
+  slug: string;
   status: "Open" | "Coming Soon";
 };
 
 export const ROLES: Role[] = [
   {
     title: "Sales Representative",
-    type: "Commission-Only · Remote",
-    compensation: "₹800–₹2,500 per sale. No cap.",
-    description: "Reach out to clinics and businesses, show them our services, close the deal. All from your phone.",
-    requirements: ["Smartphone + WhatsApp", "Hindi & English communication", "Willingness to make calls", "Based in India"],
+    type: "Commission-Based · Work From Home",
+    openings: 23,
+    description: "Reach out to clinics and local businesses, show them what we've built, and close deals — all from your phone, entirely from home.",
+    requirements: ["Smartphone + WhatsApp", "Good Hindi & English communication", "Willingness to make calls daily", "Based in India", "Self-motivated — no hand-holding"],
+    expect: ["Minimum 10 outreach conversations per day", "Follow up consistently — don't ghost leads", "Track your pipeline in a simple sheet we provide", "Join a weekly 30-min team call", "Represent Nextscale professionally at all times"],
+    perks: ["No cap on earnings — your output, your income", "Flexible hours — morning or night, you choose", "Work from home, hostel, or anywhere in India", "Get featured on our website as a top closer", "Grow into a full-time BD role as we scale"],
     slug: "sales_rep",
     status: "Open",
   },
   {
     title: "Freelance Web Developer",
-    type: "Project-Based · Remote",
-    compensation: "₹2,000–₹5,000 per project",
-    description: "Build client websites using our templates and stack. Flexible hours, real portfolio work.",
-    requirements: ["HTML / CSS / JavaScript", "React preferred", "Mobile-responsive design", "Deliver on time"],
+    type: "Project-Based · Work From Home",
+    openings: 12,
+    description: "Build client websites using our design system and stack. Real portfolio work, flexible deadlines, and you ship things people actually use.",
+    requirements: ["HTML / CSS / JavaScript proficiency", "React or Next.js preferred", "Mobile-responsive design sense", "Ability to deliver on time without reminders", "Own laptop / setup"],
+    expect: ["Complete each site within agreed timeline (usually 7 days)", "Communicate blockers early — not the day before deadline", "Follow our design system and component library", "Test on mobile before marking complete", "Incorporate feedback once, then finalise fast"],
+    perks: ["Your name in the credits of every site you build", "Access to our full component library & templates", "Potential for long-term recurring client work", "Real portfolio of live, shipped projects", "Mentorship from the founder on advanced features"],
     slug: "developer",
     status: "Open",
   },
   {
     title: "Content Creator / Social Manager",
-    type: "Project-Based · Remote",
-    compensation: "Project-based",
-    description: "Create content for client social channels, manage accounts, and run campaigns.",
-    requirements: ["Social media fluency", "Basic Canva/design skills", "Good written English", "Consistent output"],
+    type: "Project-Based · Work From Home",
+    openings: 84,
+    description: "Create scroll-stopping content for our clients' social channels — health tips, business wins, AI explainers. Manage accounts and run campaigns.",
+    requirements: ["Fluent in Instagram, LinkedIn, and YouTube Shorts", "Canva or basic design tools", "Good written English (Hindi a big plus)", "Consistent output — no disappearing mid-project", "Basic understanding of audience and hooks"],
+    expect: ["Minimum 3 posts/week per assigned client", "Write original captions — not copy-paste", "Suggest content ideas proactively each month", "Deliver content in the client's tone, not yours", "Flag what's working and what isn't — be analytical"],
+    perks: ["Build a real social media management portfolio", "Work across industries — clinics, real estate, fashion, more", "Creative freedom within brand guidelines", "Grow into a lead content strategist role", "Work fully from home — async, your own hours"],
     slug: "content_creator",
     status: "Open",
   },
   {
     title: "AI Agent Builder",
-    type: "Project-Based · Remote",
-    compensation: "Competitive",
-    description: "Build and configure AI agents for clients — prompts, integrations, testing, deployment.",
-    requirements: ["API integration experience", "Prompt engineering basics", "Python or JavaScript", "Problem-solver mindset"],
+    type: "Project-Based · Work From Home",
+    openings: 33,
+    description: "Build and configure AI agents for clients — design prompts, wire integrations, test thoroughly, and deploy. The most technically exciting role we have.",
+    requirements: ["API integration experience (REST, webhooks)", "Prompt engineering fundamentals", "Python or JavaScript", "Curiosity about AI tools — Claude, GPT, Gemini", "Debugging mindset — you like solving weird problems"],
+    expect: ["Deliver working agents that handle edge cases gracefully", "Document your prompt logic so we can maintain it", "Test with 20+ real conversation flows before handoff", "Collaborate with the founder on architecture decisions", "Stay current — the AI landscape changes fast"],
+    perks: ["Access to our API keys and AI infrastructure", "Work with cutting-edge models before most teams do", "Co-authorship credit on internal tools you build", "Path to full-time AI engineer role", "Direct mentorship from the founder on every project"],
     slug: "ai_builder",
-    status: "Coming Soon",
+    status: "Open",
+  },
+  {
+    title: "Video Editor",
+    type: "Project-Based · Work From Home",
+    openings: 47,
+    description: "Edit short-form videos for our clients and our own YouTube channel. Reels, Shorts, before-afters, testimonials — fast turnarounds and clean edits.",
+    requirements: ["Proficient in CapCut, Premiere, or DaVinci Resolve", "Experience with reels / short-form formats", "Good eye for pacing, captions, and sound", "Ability to deliver within 24–48 hours per video", "Own laptop with decent specs"],
+    expect: ["Edit 3–5 videos per week per assigned client", "Match the brand's tone — not one-size-fits-all", "Add captions, music, and transitions without being asked", "Accept feedback positively and revise once, quickly", "Maintain consistent quality — every video matters"],
+    perks: ["Build a diverse client reel across industries", "Work from home at your own pace", "Long-term recurring projects if quality is strong", "Grow into a lead editor / creative director role", "Collaborate with our content and social team"],
+    slug: "video_editor",
+    status: "Open",
+  },
+  {
+    title: "SEO Specialist",
+    type: "Project-Based · Work From Home",
+    openings: 18,
+    description: "Improve search rankings for our clients' websites and Google Business profiles. Technical SEO, on-page optimisation, and local search strategies.",
+    requirements: ["Hands-on experience with on-page & local SEO", "Familiar with Google Search Console & Analytics", "Keyword research and competitor analysis skills", "Basic understanding of HTML / site structure", "Results-oriented — you track rankings, not hours"],
+    expect: ["Deliver monthly SEO reports with clear progress metrics", "Optimise each page — title, meta, headings, schema", "Set up and maintain Google Business profiles", "Identify quick wins and communicate them clearly", "Work across 2–4 client sites simultaneously"],
+    perks: ["Work on real sites with real traffic", "Build a proven track record with measurable results", "Access to our SEO tooling and internal playbooks", "Long-term retainer opportunities with top clients", "Fully remote, async workflow"],
+    slug: "seo_specialist",
+    status: "Open",
   },
 ];
 
 export const PROCESS_STEPS = [
-  { step: "01", title: "Apply via form", description: "2 minutes. Just the basics — no lengthy CV required." },
-  { step: "02", title: "WhatsApp screen", description: "A 10-minute call. We want to know why you want in, not just your experience." },
-  { step: "03", title: "Test task", description: "A real, paid 1-hour task. See how we work, and let us see how you work." },
-  { step: "04", title: "You're in", description: "Onboarding call, first project, and you're building with us." },
+  { step: "01", title: "Apply via form", description: "2 minutes. Tell us what role, why you want in, and show us one example of your work." },
+  { step: "02", title: "WhatsApp screen", description: "A quick 10-minute call. We care about mindset and drive — not just your CV." },
+  { step: "03", title: "Paid test task", description: "A real task, paid. See how we work — and let us see how you work. No free labour." },
+  { step: "04", title: "We discuss compensation", description: "We'll get on a call and figure out the right number together based on what you bring." },
 ];
 
 export const WHY_JOIN = [
-  { icon: Rocket, title: "Work from anywhere", description: "100% remote. Work from your hostel, home, or a café in Puri." },
-  { icon: Zap, title: "Flexible hours", description: "No 9–5 here. Deliver results, not attendance." },
-  { icon: Heart, title: "Real commissions", description: "No unpaid internships. Every role pays from day one." },
-  { icon: Bot, title: "AI-native stack", description: "Work with Claude, Deepgram, Supabase, and tools most teams haven't touched yet." },
-  { icon: TrendingUp, title: "Career-defining work", description: "Your name on projects that actually launch. Not side tasks." },
-  { icon: Shield, title: "Built from scratch", description: "Join early. The first 10 people shape how this company works." },
+  { icon: Rocket, title: "100% Work From Home", description: "Every single role is fully remote. No commute, no office politics. Work from your home, hostel, or anywhere in India." },
+  { icon: Zap, title: "Flexible hours", description: "No 9–5. No attendance tracking. Ship results and work when you do your best thinking." },
+  { icon: Heart, title: "Pay discussed on a call", description: "We don't post numbers because we'd rather match the right person to the right number. Let's talk." },
+  { icon: Bot, title: "AI-native from day one", description: "Work with Claude, Deepgram, Supabase, and tools most companies haven't touched yet." },
+  { icon: TrendingUp, title: "Real work, real credit", description: "Your name on projects that launch. Build a portfolio that speaks for itself." },
+  { icon: Shield, title: "Join us early", description: "The first people here shape how this company runs. High ownership, high impact, no hierarchy." },
 ];

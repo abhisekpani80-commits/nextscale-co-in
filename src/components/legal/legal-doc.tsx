@@ -116,7 +116,7 @@ export function LegalDocView({ doc }: { doc: LegalDoc }) {
                     <Fragment key={l.href}>
                       <Link
                         href={l.href}
-                        className="rounded-full border border-border bg-card/60 px-4 py-2 text-sm text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"
+                        className="rounded-full border border-[#E8E6E1] bg-white px-4 py-2 text-sm text-[#6B6860] transition-colors hover:border-[#1A56DB]/50 hover:text-[#0F0E0D]"
                       >
                         {l.label}
                       </Link>

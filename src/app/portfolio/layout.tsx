@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "Portfolio",
+  title: "Portfolio — Websites & AI Agents We've Shipped",
   description:
-    "Real websites, AI agents, and digital-growth projects Buildora has shipped for clinics and businesses across India.",
+    "Real websites, AI agents, and digital-growth projects Nextscale has shipped for clinics, real estate agents, and businesses across India. See results.",
   path: "/portfolio",
-  keywords: ["Buildora portfolio", "AI agent case studies", "clinic website examples India"],
+  keywords: ["website design India", "AI agent case studies", "clinic website India", "Nextscale portfolio", "business website examples"],
 });
 
 export default function PortfolioLayout({ children }: { children: React.ReactNode }) {

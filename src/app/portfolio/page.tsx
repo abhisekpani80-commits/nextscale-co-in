@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { ArrowUpRight, TrendingUp, ChevronDown, ChevronUp } from "lucide-react";
-import { SectionHeading } from "@/components/ui/section-heading";
-import { DotGridBackdrop } from "@/components/ui/dot-grid-backdrop";
+import { PageHero } from "@/components/ui/page-hero";
+import { Reveal } from "@/components/ui/reveal";
 import { PORTFOLIO, STATS } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -14,17 +14,18 @@ type Filter = (typeof FILTERS)[number];
 
 const INITIAL_COUNT = 6;
 
+// Compliant, high-contrast category theme mapping
 const categoryColor: Record<string, string> = {
-  Websites: "rgba(39, 208, 237, 0.15)",
-  "AI Agents": "rgba(224, 64, 251, 0.15)",
-  Products: "rgba(99, 255, 180, 0.15)",
-  "Digital Growth": "rgba(255, 186, 73, 0.15)",
+  Websites: "rgba(26, 86, 219, 0.08)",
+  "AI Agents": "rgba(112, 43, 222, 0.08)",
+  Products: "rgba(11, 122, 86, 0.08)",
+  "Digital Growth": "rgba(180, 83, 9, 0.08)",
 };
 const categoryTextColor: Record<string, string> = {
-  Websites: "#27d0ed",
-  "AI Agents": "#e040fb",
-  Products: "#63ffb4",
-  "Digital Growth": "#ffba49",
+  Websites: "#1A56DB",
+  "AI Agents": "#702BDE",
+  Products: "#0B7A56",
+  "Digital Growth": "#B45309",
 };
 
 export default function PortfolioPage() {
@@ -37,7 +38,6 @@ export default function PortfolioPage() {
   const visible = showAll ? filtered : filtered.slice(0, INITIAL_COUNT);
   const hasMore = filtered.length > INITIAL_COUNT;
 
-  // Reset showAll when filter changes
   const handleFilter = (f: Filter) => {
     setActive(f);
     setShowAll(false);
@@ -45,28 +45,20 @@ export default function PortfolioPage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-border pt-32 pb-16 sm:pt-40 sm:pb-20">
-        <DotGridBackdrop />
-        <div className="pointer-events-none absolute -top-24 left-1/2 h-72 w-[38rem] max-w-full -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
-        <div className="mx-auto max-w-4xl px-5 sm:px-8 text-center">
-          <SectionHeading
-            align="center"
-            kicker="Portfolio"
-            title={<>Real projects. <span className="text-primary">Real results.</span></>}
-            description="Every website, AI agent and product we've shipped — across clinics, real estate, photography and beyond."
-          />
-        </div>
-      </section>
+      <PageHero
+        kicker="Portfolio"
+        title={<>Real projects. <span className="text-primary">Real results.</span></>}
+        description="Every website, AI agent and product we've shipped — across clinics, real estate, photography and beyond."
+      />
 
       {/* Stats */}
-      <section className="border-b border-border bg-card/30">
+      <section className="border-b border-[#E8E6E1] bg-[#F4F3F0]">
         <div className="mx-auto max-w-6xl px-5 py-8 sm:px-8">
           <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
             {STATS.map((s) => (
               <div key={s.label} className="flex flex-col items-center">
-                <span className="font-heading text-2xl font-semibold text-primary">{s.value}{s.suffix}</span>
-                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">{s.label}</span>
+                <span className="font-heading text-2xl font-semibold text-[#1A56DB]">{s.value}{s.suffix}</span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#6B6860]">{s.label}</span>
               </div>
             ))}
           </div>
@@ -83,8 +75,8 @@ export default function PortfolioPage() {
               className={cn(
                 "rounded-full border px-4 py-2 font-mono text-xs uppercase tracking-[0.15em] transition-all duration-200",
                 active === f
-                  ? "border-primary bg-primary/15 text-primary shadow-[0_0_16px_rgba(39,208,237,0.15)]"
-                  : "border-border text-muted-foreground hover:border-primary/40 hover:text-foreground"
+                  ? "border-[#1A56DB] bg-blue-50 text-[#1A56DB] shadow-sm"
+                  : "border-[#E8E6E1] text-[#6B6860] hover:border-[#1A56DB]/40 hover:text-[#0F0E0D]"
               )}
             >
               {f}
@@ -93,11 +85,11 @@ export default function PortfolioPage() {
         </div>
 
         {/* Card Grid */}
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {visible.map((item, i) => {
-            const bgColor = categoryColor[item.category] ?? "rgba(39,208,237,0.1)";
-            const textColor = categoryTextColor[item.category] ?? "#27d0ed";
-            const cardClass = "group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card/60 backdrop-blur-sm transition-all duration-300 hover:border-white/15 hover:shadow-[0_8px_40px_rgba(0,0,0,0.4)] hover:-translate-y-1";
+            const bgColor = categoryColor[item.category] ?? "rgba(26, 86, 219, 0.08)";
+            const textColor = categoryTextColor[item.category] ?? "#1A56DB";
+            const cardClass = "group relative flex flex-col overflow-hidden rounded-2xl border border-[#E8E6E1] bg-white transition-all duration-300 hover:border-[#1A56DB]/30 hover:shadow-md hover:-translate-y-1";
 
             const cardInner = (
               <>
@@ -108,19 +100,16 @@ export default function PortfolioPage() {
                     alt={item.title}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover opacity-75 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-90"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                   />
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0c10] via-[#0a0c10]/20 to-transparent" />
-
                   {/* Category badge */}
-                  <div className="absolute top-3 left-3">
+                  <div className="absolute top-3 left-3 z-10">
                     <span
-                      className="rounded-full px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider backdrop-blur-sm border"
+                      className="rounded-full px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider border shadow-sm"
                       style={{
-                        background: bgColor,
+                        background: "#FFFFFF",
                         color: textColor,
-                        borderColor: `${textColor}30`,
+                        borderColor: "#E8E6E1",
                       }}
                     >
                       {item.category}
@@ -130,7 +119,7 @@ export default function PortfolioPage() {
                   {/* Demo badge */}
                   {item.isDemo && (
                     <div className="absolute top-3 right-3">
-                      <span className="rounded-full bg-white/10 border border-white/15 px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-white/70 backdrop-blur-sm">
+                      <span className="rounded-full bg-black/60 border border-white/20 px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-white backdrop-blur-sm">
                         Demo
                       </span>
                     </div>
@@ -139,41 +128,39 @@ export default function PortfolioPage() {
                   {/* Live URL arrow overlay */}
                   {item.liveUrl && (
                     <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <span className="flex items-center justify-center size-8 rounded-full bg-white/15 border border-white/20 backdrop-blur-sm">
-                        <ArrowUpRight className="size-4 text-white" />
+                      <span className="flex items-center justify-center size-8 rounded-full bg-white/95 border border-[#E8E6E1] shadow-sm">
+                        <ArrowUpRight className="size-4 text-[#0F0E0D]" />
                       </span>
                     </div>
                   )}
                 </div>
 
                 {/* Content */}
-                <div className="flex flex-col gap-2 p-5">
-                  <div className="flex items-start justify-between gap-2">
-                    <h3 className="font-heading text-base font-semibold leading-snug transition-colors duration-300 group-hover:text-primary">
-                      {item.title}
-                    </h3>
-                    {item.liveUrl && (
-                      <ArrowUpRight className="size-4 shrink-0 text-muted-foreground transition-all duration-300 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 mt-0.5" />
-                    )}
+                <div className="flex flex-col gap-2 p-5 flex-1 justify-between">
+                  <div>
+                    <div className="flex items-start justify-between gap-2">
+                      <h3 className="font-heading text-base font-semibold leading-snug text-[#0F0E0D] transition-colors duration-300 group-hover:text-[#1A56DB]">
+                        {item.title}
+                      </h3>
+                      {item.liveUrl && (
+                        <ArrowUpRight className="size-4 shrink-0 text-[#6B6860] transition-all duration-300 group-hover:text-[#1A56DB] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 mt-0.5" />
+                      )}
+                    </div>
+
+                    <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#6B6860] mt-1 mb-2">
+                      {item.clientType}
+                    </p>
+
+                    <p className="text-sm text-[#6B6860] leading-relaxed">
+                      {item.built}
+                    </p>
                   </div>
 
-                  <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground/70">
-                    {item.clientType}
-                  </p>
-
-                  <p className="text-sm text-foreground/70 leading-relaxed">
-                    {item.built}
-                  </p>
-
                   {item.result && (
-                    <div className="mt-1 flex items-center gap-1.5 rounded-lg w-fit px-2.5 py-1.5 border"
-                      style={{
-                        background: "rgba(39,208,237,0.06)",
-                        borderColor: "rgba(39,208,237,0.15)",
-                      }}
+                    <div className="mt-4 flex items-center gap-1.5 rounded-lg w-fit px-2.5 py-1.5 border border-emerald-100 bg-emerald-50/50"
                     >
-                      <TrendingUp className="size-3 text-primary shrink-0" />
-                      <span className="text-[11px] font-semibold text-primary">{item.result}</span>
+                      <TrendingUp className="size-3 text-[#0B7A56] shrink-0" />
+                      <span className="text-[11px] font-semibold text-[#0B7A56]">{item.result}</span>
                     </div>
                   )}
                 </div>
@@ -181,24 +168,22 @@ export default function PortfolioPage() {
             );
 
             return item.liveUrl ? (
-              <a
-                key={`${item.title}-${item.category}-${i}`}
-                href={item.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cardClass}
-                style={{ animationDelay: `${i * 50}ms` }}
-              >
-                {cardInner}
-              </a>
+              <Reveal key={`${item.title}-${item.category}-${i}`} delay={i * 0.05}>
+                <a
+                  href={item.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cardClass}
+                >
+                  {cardInner}
+                </a>
+              </Reveal>
             ) : (
-              <div
-                key={`${item.title}-${item.category}-${i}`}
-                className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card/60 backdrop-blur-sm"
-                style={{ animationDelay: `${i * 50}ms` }}
-              >
-                {cardInner}
-              </div>
+              <Reveal key={`${item.title}-${item.category}-${i}`} delay={i * 0.05}>
+                <div className={cardClass}>
+                  {cardInner}
+                </div>
+              </Reveal>
             );
           })}
         </div>
@@ -208,7 +193,7 @@ export default function PortfolioPage() {
           <div className="mt-12 flex justify-center">
             <button
               onClick={() => setShowAll((v) => !v)}
-              className="group flex items-center gap-2 rounded-full border border-border bg-card/60 px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground backdrop-blur transition-all duration-300 hover:border-primary/40 hover:text-primary hover:shadow-[0_0_20px_rgba(39,208,237,0.1)]"
+              className="group flex items-center gap-2 rounded-full border border-[#E8E6E1] bg-white px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-[#6B6860] transition-all duration-300 hover:border-[#1A56DB] hover:text-[#1A56DB]"
             >
               {showAll ? (
                 <>
@@ -226,18 +211,18 @@ export default function PortfolioPage() {
         )}
 
         {/* CTA */}
-        <div className="mt-20 rounded-2xl border border-primary/15 bg-primary/5 p-10 text-center relative overflow-hidden">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(39,208,237,0.08),transparent_70%)]" />
-          <p className="relative font-mono text-xs uppercase tracking-[0.2em] text-primary mb-3">Want this for your business?</p>
-          <h3 className="relative font-heading text-2xl font-semibold mb-4">
+        <div className="mt-20 rounded-3xl border border-[#E8E6E1] bg-white p-10 text-center relative overflow-hidden shadow-sm">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(26,86,219,0.03),transparent_70%)]" />
+          <p className="relative font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB] mb-3">Want this for your business?</p>
+          <h3 className="relative font-heading text-2xl font-semibold mb-4 text-[#0F0E0D]">
             Let's build something you're proud of.
           </h3>
-          <p className="relative text-muted-foreground mb-6 max-w-md mx-auto text-sm leading-relaxed">
+          <p className="relative text-[#6B6860] mb-6 max-w-md mx-auto text-sm leading-relaxed">
             Website, AI agent, or full digital setup — we ship in days, not months.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_24px_rgba(39,208,237,0.3)] active:scale-[0.98]"
+            className="inline-flex items-center gap-2 rounded-xl bg-[#1A56DB] text-white hover:bg-[#1447C0] px-6 py-3 text-sm font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-sm"
           >
             Start a project <ArrowUpRight className="size-4" />
           </Link>

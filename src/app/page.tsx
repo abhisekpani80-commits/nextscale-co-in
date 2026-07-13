@@ -1,49 +1,48 @@
-import { Hero } from "@/components/home/hero";
-import { TechStack } from "@/components/home/tech-stack";
-import { ProductServiceSplit } from "@/components/home/product-service-split";
-import { PortfolioHighlight } from "@/components/home/portfolio-highlight";
-import { LiveActivity } from "@/components/home/live-activity";
-import { ByTheNumbers } from "@/components/home/by-the-numbers";
-import { YoutubeTeaser } from "@/components/home/youtube-teaser";
-import { HowItWorks } from "@/components/home/how-it-works";
-import { Testimonials } from "@/components/home/testimonials";
-import { CtaBanner } from "@/components/home/cta-banner";
+import { B2BLanding } from "@/components/home/b2b-landing";
 import { JsonLd } from "@/components/seo/json-ld";
 
-const founderFaq = {
+const homeFaq = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
     {
       "@type": "Question",
-      name: "Who is Abhisek Pani?",
+      name: "How much does a business website cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Abhisek Pani is the founder and CEO of Nextscale, an AI products and digital infrastructure company based in Bhubaneswar, Odisha, India. He is a self-taught builder who creates AI agents, SaaS products like ExamOS and Aura, and digital growth solutions for businesses across India and globally.",
+        text: "At Nextscale, a professional business website starts at ₹4,999 for a 5-page starter site and goes up to ₹21,999 for a full-featured site with AI chatbot and advanced SEO. All plans include domain, hosting, WhatsApp integration, and Google Maps. Websites are live in 7 days.",
       },
     },
     {
       "@type": "Question",
-      name: "Who is the founder of Nextscale?",
+      name: "What is a WhatsApp AI receptionist and how does it work?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Nextscale was founded by Abhisek Pani, a self-taught AI builder from Bhubaneswar, Odisha, India. He started Nextscale in 2024 to build world-class AI products and digital infrastructure for businesses across India.",
+        text: "A WhatsApp AI receptionist is an AI agent trained on your business that answers customer queries, books appointments, sends reminders, and follows up — all via WhatsApp, 24/7 without any manual effort. Nextscale builds and deploys these for clinics, salons, real estate agents, and other businesses.",
       },
     },
     {
       "@type": "Question",
-      name: "What is Nextscale?",
+      name: "How fast can you build and launch a website?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Nextscale is an AI products and digital infrastructure company founded by Abhisek Pani in Bhubaneswar, Odisha, India. Nextscale builds AI agents, SaaS products (ExamOS and Aura), professional websites, and digital growth services for clinics, startups, and businesses across India and globally.",
+        text: "Nextscale guarantees websites live in 7 days. AI agents go live within 48 hours. The process: Day 1 is a discovery call, Days 2-4 are design and development, Days 5-6 are your review and revisions, and Day 7 is launch.",
       },
     },
     {
       "@type": "Question",
-      name: "Where is Nextscale based?",
+      name: "Do you build websites for clinics and doctors?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Nextscale is based in Bhubaneswar, Odisha, India, and was founded by Abhisek Pani. The company serves clients across India, the Gulf, UK, Europe, and North America.",
+        text: "Yes — Nextscale specializes in websites for dermatology clinics, dental clinics, physiotherapy centers, cosmetic therapists, and other healthcare professionals. We include Google Maps, WhatsApp booking, review widgets, and appointment forms as standard.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is Nextscale and who runs it?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Nextscale is an AI products and web development company founded by Abhisek Pani. We build custom business websites, WhatsApp AI agents, SaaS products (ExamOS, Aura), and digital growth services for businesses across India and globally. We have shipped 25+ websites and 12+ AI agents.",
       },
     },
   ],
@@ -52,17 +51,8 @@ const founderFaq = {
 export default function Home() {
   return (
     <>
-      <JsonLd schema={[founderFaq]} />
-      <Hero />
-      <TechStack />
-      <ProductServiceSplit />
-      <PortfolioHighlight />
-      <LiveActivity />
-      <ByTheNumbers />
-      <YoutubeTeaser />
-      <HowItWorks />
-      <Testimonials />
-      <CtaBanner />
+      <JsonLd schema={[homeFaq]} />
+      <B2BLanding />
     </>
   );
 }

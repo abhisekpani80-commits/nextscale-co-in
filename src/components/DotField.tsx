@@ -1,6 +1,6 @@
 // @ts-nocheck
 'use client';
-import { useEffect, useRef, memo, useId } from 'react';
+import { useEffect, useRef, memo, useState } from 'react';
 
 import './DotField.css';
 
@@ -32,9 +32,9 @@ const DotField = memo(({
   glowRadius = 160,
   sparkle = false,
   waveAmplitude = 0,
-  gradientFrom = 'rgba(39, 208, 237, 0.3)',
-  gradientTo = 'rgba(112, 43, 222, 0.15)',
-  glowColor = '#06080b',
+  gradientFrom = 'rgba(168, 85, 247, 0.35)',
+  gradientTo = 'rgba(180, 151, 207, 0.25)',
+  glowColor = '#120F17',
   ...rest
 }: DotFieldProps) => {
   const canvasRef = useRef(null);
@@ -49,7 +49,7 @@ const DotField = memo(({
   const propsRef = useRef({});
   propsRef.current = { dotRadius, dotSpacing, cursorRadius, cursorForce, bulgeOnly, bulgeStrength, sparkle, waveAmplitude, gradientFrom, gradientTo };
   const rebuildRef = useRef(null);
-  const glowId = useId();
+  const glowIdRef = useRef(`dot-field-glow-${Math.random().toString(36).slice(2, 9)}`);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -65,9 +65,7 @@ const DotField = memo(({
     }
 
     function doResize() {
-      const parent = canvas.parentElement;
-      if (!parent) return;
-      const rect = parent.getBoundingClientRect();
+      const rect = canvas.parentElement.getBoundingClientRect();
       const w = rect.width;
       const h = rect.height;
 
@@ -211,14 +209,22 @@ const DotField = memo(({
           drawX += Math.cos(d.ay * 0.03 + t * 0.7) * p.waveAmplitude * 0.5;
         }
 
-        let currentRad = rad;
         if (p.sparkle) {
           const hash = ((i * 2654435761) ^ (frameCount >> 3)) >>> 0;
-          if ((hash % 100) < 3) currentRad = rad * 1.8;
+          if ((hash % 100) < 3) {
+            ctx.moveTo(drawX + rad * 1.8, drawY);
+            ctx.arc(drawX, drawY, rad * 1.8, 0, TWO_PI);
+          } else {
+            ctx.moveTo(drawX + rad, drawY);
+            ctx.arc(drawX, drawY, rad, 0, TWO_PI);
+          }
+        } else {
+          ctx.moveTo(drawX + rad, drawY);
+          ctx.arc(drawX, drawY, rad, 0, TWO_PI);
         }
-        // Render crisp high-performance squares instead of circular paths
-        ctx.fillRect(drawX - currentRad, drawY - currentRad, currentRad * 2, currentRad * 2);
       }
+
+      ctx.fill();
 
       rafRef.current = requestAnimationFrame(tick);
     }
@@ -269,7 +275,7 @@ const DotField = memo(({
         }}
       >
         <defs>
-          <radialGradient id={glowId}>
+          <radialGradient id={glowIdRef.current}>
             <stop offset="0%" stopColor={glowColor} />
             <stop offset="100%" stopColor="transparent" />
           </radialGradient>
@@ -279,7 +285,7 @@ const DotField = memo(({
           cx="-9999"
           cy="-9999"
           r={glowRadius}
-          fill={`url(#${glowId})`}
+          fill={`url(#${glowIdRef.current})`}
           style={{ opacity: 0, willChange: 'opacity' }}
         />
       </svg>
@@ -288,8 +294,6 @@ const DotField = memo(({
 });
 
 DotField.displayName = 'DotField';
-
-import { useState } from 'react';
 
 export default function DotFieldWrapper(props: DotFieldProps) {
   const [shouldRender, setShouldRender] = useState(false);
@@ -302,4 +306,3 @@ export default function DotFieldWrapper(props: DotFieldProps) {
   if (!shouldRender) return null;
   return <DotField {...props} />;
 }
-

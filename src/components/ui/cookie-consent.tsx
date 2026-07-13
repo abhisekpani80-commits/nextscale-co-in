@@ -7,7 +7,7 @@ import { Cookie, X } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-const STORAGE_KEY = "buildora-cookie-consent";
+const STORAGE_KEY = "nextscale-cookie-consent";
 
 /**
  * Lightweight, animated cookie-consent banner. Stores the choice in
