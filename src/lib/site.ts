@@ -255,9 +255,10 @@ export const PRICING_AGENTS = {
   tiers: [
     {
       name: "Starter",
-      price: "₹5,999",
+      price: "₹11,999",
+      priceUSD: "$149",
       period: "/month",
-      setupFee: "₹2,999 setup",
+      setupFee: "₹4,999 ($59) setup",
       description: "For solo practitioners and new clinics.",
       popular: false,
       features: [
@@ -274,9 +275,10 @@ export const PRICING_AGENTS = {
     },
     {
       name: "Growth",
-      price: "₹12,999",
+      price: "₹24,999",
+      priceUSD: "$299",
       period: "/month",
-      setupFee: "₹4,999 setup",
+      setupFee: "₹9,999 ($119) setup",
       description: "Best for established clinics ready to scale.",
       popular: true,
       features: [
@@ -293,7 +295,8 @@ export const PRICING_AGENTS = {
     },
     {
       name: "Enterprise",
-      price: "₹24,999",
+      price: "₹49,999",
+      priceUSD: "$599",
       period: "/month",
       setupFee: "Setup waived",
       description: "Full AI stack for multi-location businesses.",
@@ -317,8 +320,9 @@ export const PRICING_WEBSITES = {
   tiers: [
     {
       name: "Starter",
-      price: "₹4,999",
-      period: "1-year plan",
+      price: "₹19,999",
+      priceUSD: "$249",
+      period: "1-year hosting",
       description: "Perfect for new businesses and solo professionals.",
       popular: false,
       features: [
@@ -334,8 +338,9 @@ export const PRICING_WEBSITES = {
     },
     {
       name: "Standard",
-      price: "₹12,999",
-      period: "2-year plan",
+      price: "₹39,999",
+      priceUSD: "$499",
+      period: "1-year hosting",
       description: "For growing businesses that need more reach.",
       popular: true,
       features: [
@@ -351,8 +356,9 @@ export const PRICING_WEBSITES = {
     },
     {
       name: "Premium",
-      price: "₹21,999",
-      period: "2-year plan",
+      price: "₹79,999",
+      priceUSD: "$999",
+      period: "1-year hosting",
       description: "Full-featured site with AI chatbot and advanced SEO.",
       popular: false,
       features: [
@@ -370,11 +376,11 @@ export const PRICING_WEBSITES = {
 };
 
 export const PRICING_ADDONS = [
-  { name: "AI Chatbot (standalone)", price: "₹8,999 one-time" },
-  { name: "Google Business Optimization", price: "₹3,999 one-time" },
-  { name: "Social Media Setup", price: "₹4,999 one-time" },
-  { name: "Annual Renewal (Basic)", price: "₹2,999/year" },
-  { name: "Annual Renewal (Premium)", price: "₹5,999/year" },
+  { name: "AI Chatbot Integration", price: "₹19,999 ($249) one-time" },
+  { name: "Google Business Local SEO Setup", price: "₹7,999 ($99) one-time" },
+  { name: "UI/UX Redesign Audit", price: "₹11,999 ($149) one-time" },
+  { name: "Annual Renewal & Support (Basic)", price: "₹7,999 ($99)/year" },
+  { name: "Annual Renewal & Support (Premium)", price: "₹15,999 ($199)/year" },
 ];
 
 export const PRICING_FAQ = [
@@ -872,7 +878,7 @@ export const INDUSTRIES_DATA: IndustryData[] = [
     workflow: "A patient texts the WhatsApp number -> AI receptionist checks system availability -> Books the slot -> Sends a secure calendar link and pre-consultation checklist -> Automatically creates a record entry in the doctor dashboard.",
     roi: "Reduction of up to 45% in administrative overhead, 30% increase in slot utilization, and zero receptionist booking mistakes.",
     timeline: "3 to 4 weeks from discovery to deployment.",
-    pricing: "Custom pricing starting from ₹18,000/month.",
+    pricing: "Custom pricing starting from ₹35,000 ($420)/month.",
     statistics: "According to industry reports, over 70% of clinic reception workloads involve basic queries and routine scheduling, which can be entirely automated.",
     comparison: "Traditional workflows rely on manual telephone queues and paper ledgers, which lead to booking errors and delayed replies. AI workflows respond instantly, 24/7.",
     faqs: [
@@ -898,7 +904,7 @@ export const INDUSTRIES_DATA: IndustryData[] = [
     workflow: "Client visits clinic site or WhatsApp -> Receives instant treatment info -> Books appointment -> Receives automated WhatsApp reminders -> Review link sent 2 hours after visit.",
     roi: "55% reduction in no-shows, 3x increase in Google reviews activity within 60 days.",
     timeline: "Live in 7 to 10 days.",
-    pricing: "Starts at ₹5,999/month (Starter package).",
+    pricing: "Starts at ₹11,999 ($149)/month (Starter package).",
     statistics: "More than 60% of clinic appointments in metro cities are booked outside standard working hours (after 7 PM or before 9 AM) when manual staff are unavailable.",
     comparison: "Traditional clinics hire full-time staff who can only answer one call at a time during business hours. AI receptionists handle infinite concurrent chats 24/7.",
     faqs: [
@@ -923,7 +929,7 @@ export const INDUSTRIES_DATA: IndustryData[] = [
     workflow: "User clicks Facebook/Google Ad -> WhatsApp agent starts conversation -> Asks for budget & configuration -> Warm lead with details forwarded to sales director.",
     roi: "300% increase in lead response speed and 40% reduction in sales staff cold calling time.",
     timeline: "2 to 3 weeks.",
-    pricing: "Starts from ₹12,999/month.",
+    pricing: "Starts from ₹24,999 ($299)/month.",
     statistics: "Studies show response speeds under 5 minutes increase lead conversion by 391%. Real estate agents using automated text systems close 2.5x more deals.",
     comparison: "Portals send raw lead sheets which are manually called hours later. Next Scale agents qualify leads instantly, filtering out spam or low-budget queries before they reach your sales team.",
     faqs: [
@@ -948,7 +954,7 @@ export const INDUSTRIES_DATA: IndustryData[] = [
     workflow: "Customer leaves cart -> WhatsApp agent ping with cart summary -> Offers easy UPI link checkout -> Order confirmed -> Shipping track link sent automatically.",
     roi: "Recover up to 15% of abandoned carts, decrease support ticket volumes by 40%.",
     timeline: "2 to 3 weeks.",
-    pricing: "Custom pricing + revenue sharing models available.",
+    pricing: "Starts from ₹39,999 ($499)/month + revenue sharing.",
     statistics: "Stores using automated WhatsApp checkout recovery see up to 3x higher conversion rates compared to traditional email-based recovery.",
     comparison: "Email recovery has a 10% open rate. WhatsApp recovery has a 98% open rate, meaning your discount reaches the customer while intent is high.",
     faqs: [
@@ -973,7 +979,7 @@ export const INDUSTRIES_DATA: IndustryData[] = [
     workflow: "Vendor emails quotation -> AI parsing tool extracts pricing & delivery terms -> Validates against purchase order -> Uploads draft into ERP for approval.",
     roi: "Reduce quotation turnaround times by 80%, eliminate paper-based manual entry delays.",
     timeline: "4 to 6 weeks.",
-    pricing: "Enterprise quote-based.",
+    pricing: "Enterprise quote-based (starting from ₹79,999 ($999)/month).",
     statistics: "Digitizing and automating procurement workflows reduces manufacturing inventory costs by up to 20% due to just-in-time coordination.",
     comparison: "Manual vendor management requires days of email follow-ups. Automated systems coordinate with suppliers instantly, flagging delay risks automatically.",
     faqs: [
@@ -998,7 +1004,7 @@ export const INDUSTRIES_DATA: IndustryData[] = [
     workflow: "Driver uploads delivery photo to WhatsApp -> Image AI validates stamp & signature -> Clears invoice in ERP -> Trigger payment notice.",
     roi: "Faster invoice clearance, 20% reduction in vehicle dispatch delays.",
     timeline: "3 to 4 weeks.",
-    pricing: "Starts from ₹24,999/month.",
+    pricing: "Starts from ₹49,999 ($599)/month.",
     statistics: "Real-time dispatch automation and AI coordinate tracking can save logistics firms up to 15% on daily fuel and operation costs.",
     comparison: "Manual tracking involves constant calling. Automated WhatsApp bots collect driver coordinates and POD images in structured formats automatically.",
     faqs: [
@@ -1023,7 +1029,7 @@ export const INDUSTRIES_DATA: IndustryData[] = [
     workflow: "Student registers -> AI agent analyzes baseline score -> Generates customized practice roadmap -> Sends daily revision cards via WhatsApp.",
     roi: "40% increase in student course completion, 2.5x more admission leads qualified.",
     timeline: "3 to 4 weeks.",
-    pricing: "Starts from ₹15,000/month.",
+    pricing: "Starts from ₹29,999 ($359)/month.",
     statistics: "Adaptive learning systems increase student retention scores by 25% compared to static video lecture platforms.",
     comparison: "Static courses offer zero feedback. Next Scale's adaptive engines generate targeted mock tests, identifying specific weak areas for each student.",
     faqs: [
@@ -1048,7 +1054,7 @@ export const INDUSTRIES_DATA: IndustryData[] = [
     workflow: "Customer chats on WhatsApp -> AI books table or takes food order -> Syncs with reservation system -> Sends receipt with directions -> Requests review post-meal.",
     roi: "30% increase in weekend table bookings, zero missed reservation calls.",
     timeline: "7 to 10 days.",
-    pricing: "Starts at ₹8,999/month.",
+    pricing: "Starts at ₹17,999 ($219)/month.",
     statistics: "Over 40% of dine-in reservations are requested during lunch/dinner rushes when hosts are busy managing live guests.",
     comparison: "Phone bookings pull staff away from front-of-house service. Next Scale's AI handles reservations asynchronously, keeping hosts focused on hospitalities.",
     faqs: [
@@ -1099,7 +1105,7 @@ export const LOCATIONS_DATA: LocationData[] = [
       "Custom next.js software platform for a logistics provider in Whitefield.",
       "AI-driven lead qualification for a premium housing builder in Indiranagar."
     ],
-    costs: "AI receptionists start from ₹12,999/month. Custom Next.js web application starts from ₹75,000.",
+    costs: "AI receptionists start from ₹24,999 ($299)/month. Custom Next.js web applications start from ₹79,999 ($999).",
     faqs: [
       { q: "Do you offer developer resource hiring?", a: "We work as a product engineering partner, building and shipping systems as a service rather than supplying body-shopped resources." }
     ]
@@ -1116,7 +1122,7 @@ export const LOCATIONS_DATA: LocationData[] = [
       "Custom lead router and listing site for a real estate builder in Lower Parel.",
       "EHR-integrated scheduler for a specialist surgery clinic in South Mumbai."
     ],
-    costs: "Enterprise solutions starting from ₹45,000/month. Standard website design starts at ₹12,999.",
+    costs: "Enterprise solutions starting from ₹79,999 ($999)/month. Standard website design starts at ₹39,999 ($499).",
     faqs: [
       { q: "Is the system secure enough for banking?", a: "Yes, we build using end-to-end HTTPS, token-based authorization, and secure DB connections." }
     ]
@@ -1133,7 +1139,7 @@ export const LOCATIONS_DATA: LocationData[] = [
       "WhatsApp receptionist managing 10,000+ chats/month for a medical chain in Noida.",
       "Local SEO visibility strategy for a legal consulting firm in Gurgaon."
     ],
-    costs: "AI agents start from ₹8,999/month. Website packages start from ₹5,999.",
+    costs: "AI agents start from ₹17,999 ($219)/month. Website packages start from ₹19,999 ($249).",
     faqs: [
       { q: "Can you handle multi-location operations?", a: "Yes, our systems sync with multi-office branches, routing chats dynamically based on pincode or region." }
     ]
@@ -1150,7 +1156,7 @@ export const LOCATIONS_DATA: LocationData[] = [
       "Logistics dispatcher coordinator WhatsApp agent in Hitech City.",
       "Responsive service listing site for a pharma distributor in Secunderabad."
     ],
-    costs: "Clinic AI bundles start from ₹12,999/month. Web design starts from ₹6,999.",
+    costs: "Clinic AI bundles start from ₹24,999 ($299)/month. Web design starts from ₹19,999 ($249).",
     faqs: [
       { q: "Are you compliant with HIPAA guidelines?", a: "Yes, all healthcare data processing passes through secure encryption endpoints." }
     ]
@@ -1167,7 +1173,7 @@ export const LOCATIONS_DATA: LocationData[] = [
       "Medical booking agent for international patients in Nungambakkam.",
       "SaaS landing page optimized for global conversions in OMR."
     ],
-    costs: "Procurement automations start from ₹25,000. Core website design starts from ₹5,999.",
+    costs: "Procurement automations start from ₹49,999 ($599). Core website design starts from ₹19,999 ($249).",
     faqs: [
       { q: "Does the system support Tamil language?", a: "Yes, our voice and text agents recognize and respond in Tamil, Hindi, and English." }
     ]
@@ -1184,7 +1190,7 @@ export const LOCATIONS_DATA: LocationData[] = [
       "CRM pipeline setup for a manufacturing subcontractor in Chakan.",
       "Doctor appointment scheduling site in Koregaon Park."
     ],
-    costs: "Coaching lead bundles start from ₹8,999/month. Websites start from ₹4,999.",
+    costs: "Coaching lead bundles start from ₹17,999 ($219)/month. Websites start from ₹19,999 ($249).",
     faqs: [
       { q: "How fast can you set up lead qualifying?", a: "Standard lead routing agents can go live within 48 to 72 hours." }
     ]
@@ -1201,7 +1207,7 @@ export const LOCATIONS_DATA: LocationData[] = [
       "Product display website for a jewelry retail brand in Satellite.",
       "WhatsApp ordering system for a local grocery distributor."
     ],
-    costs: "SME automation systems starting from ₹15,000/month. Websites from ₹4,999.",
+    costs: "SME automation systems starting from ₹29,999 ($359)/month. Websites from ₹19,999 ($249).",
     faqs: [
       { q: "Do you offer maintenance support?", a: "Yes, all our plans include ongoing maintenance, security updates, and regular content backup support." }
     ]
@@ -1218,7 +1224,7 @@ export const LOCATIONS_DATA: LocationData[] = [
       "Consulting scheduling page with stripe checkout integration.",
       "Custom medical review collection engine."
     ],
-    costs: "Real estate AI systems starting from ₹12,999/month. Premium sites from ₹12,999.",
+    costs: "Real estate AI systems starting from ₹24,999 ($299)/month. Premium sites from ₹39,999 ($499).",
     faqs: [
       { q: "Can we track ad source details?", a: "Yes, our qualifying agent reads UTM tags to tell you exactly which Facebook or Google ad generated the WhatsApp lead." }
     ]
@@ -1235,7 +1241,7 @@ export const LOCATIONS_DATA: LocationData[] = [
       "Doctor booking WhatsApp receptionist in Sector 15.",
       "Review management collection tool for a retail outlet."
     ],
-    costs: "SEO migration projects start from ₹35,000. Starter website starting from ₹5,999.",
+    costs: "SEO migration projects start from ₹59,999 ($719). Starter websites start from ₹19,999 ($249).",
     faqs: [
       { q: "Is the Next.js site better for SEO?", a: "Yes, Next.js sites are faster and pre-rendered, leading to better search crawlers indexing and higher local ranks." }
     ]
@@ -1252,7 +1258,7 @@ export const LOCATIONS_DATA: LocationData[] = [
       "Tracking dispatch notifications for a logistics distributor in Howrah.",
       "Catalog web display for a boutique label in Ballygunge."
     ],
-    costs: "Clinic AI reception packages start from ₹8,999/month. Website packages from ₹4,999.",
+    costs: "Clinic AI reception packages start from ₹17,999 ($219)/month. Website packages from ₹19,999 ($249).",
     faqs: [
       { q: "Can the AI handle customer support?", a: "Yes, it is trained on your exact business FAQ to answer over 80% of routine questions instantly." }
     ]

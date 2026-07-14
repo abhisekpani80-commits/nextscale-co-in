@@ -10,7 +10,7 @@ const homeFaq = {
       name: "How much does a business website cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "At Nextscale, a professional business website starts at ₹4,999 for a 5-page starter site and goes up to ₹21,999 for a full-featured site with AI chatbot and advanced SEO. All plans include domain, hosting, WhatsApp integration, and Google Maps. Websites are live in 7 days.",
+        text: "At Next Scale, a professional business website starts at ₹19,999 ($249) for a 5-page starter site and goes up to ₹79,999 ($999) for a full-featured site with AI chatbot and advanced SEO. All plans include domain, hosting, WhatsApp integration, and Google Maps. Websites are live in 7 days.",
       },
     },
     {

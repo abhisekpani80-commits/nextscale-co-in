@@ -21,8 +21,8 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { breadcrumbSchema, faqSchema, pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "Pricing — AI Agents from ₹5,999/mo, Websites from ₹4,999",
-  description: "Transparent pricing for custom business websites and WhatsApp AI receptionists. Choose a plan that aligns with your business goals.",
+  title: "Pricing — AI Agents from ₹11,999 ($149)/mo, Websites from ₹19,999 ($249)",
+  description: "Transparent pricing for custom Next.js websites and WhatsApp AI receptionists. Choose a plan that aligns with your business goals.",
   path: "/pricing",
   keywords: ["AI agent pricing", "website development cost India", "business automation packages"]
 });

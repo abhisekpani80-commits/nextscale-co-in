@@ -8,7 +8,7 @@ import { Reveal } from "@/components/ui/reveal";
 const faqs = [
   {
     q: "How much does a custom business website cost?",
-    a: "Our starter business package starts at ₹4,999 for a standard 5-page setup (live in 7 days). Complete enterprise builds with custom UI designs, full-fledged SEO setups, and database backends start from ₹12,999. All packages include secure hosting and SSL.",
+    a: "Our starter business package starts at ₹19,999 ($249) for a standard 5-page setup (live in 7 days). Complete standard packages start from ₹39,999 ($499), and premium enterprise builds with custom UI designs and full database integrations start from ₹79,999 ($999). All packages include secure hosting and SSL.",
   },
   {
     q: "What is a WhatsApp AI receptionist and how does it work?",

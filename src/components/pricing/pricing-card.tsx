@@ -7,6 +7,7 @@ type Feature = { name: string; included?: boolean; value?: string };
 export type PricingTier = {
   name: string;
   price: string;
+  priceUSD: string;
   period?: string;
   setupFee?: string;
   description: string;
@@ -136,25 +137,22 @@ export function PricingCard({
 
           {/* Price block */}
           <div className="mt-6">
-            <div className="flex items-start gap-0.5">
+            <div className="flex items-baseline gap-1.5">
               <span
-                className="mt-1.5 text-lg font-bold"
-                style={{ color: tier.popular ? "#1A56DB" : "#6B6860" }}
+                className="text-[2.2rem] sm:text-[2.6rem] font-extrabold tracking-[-0.04em] leading-none text-[#0F0E0D]"
               >
-                {tier.price.charAt(0)}
+                {tier.price}
               </span>
-              <span
-                className="text-[3.2rem] font-extrabold tracking-[-0.05em] leading-none text-[#0F0E0D]"
-              >
-                {tier.price.slice(1)}
+              <span className="text-sm font-semibold text-[#6B6860] tracking-tight">
+                / {tier.priceUSD}
               </span>
               {inlinePeriod && (
-                <span className="mb-0.5 mt-auto text-sm text-[#6B6860] tracking-tight pb-1.5">{tier.period}</span>
+                <span className="text-xs text-[#6B6860] tracking-tight font-medium ml-0.5">{tier.period}</span>
               )}
             </div>
             {tier.popular && tier.period === "/month" && (
               <p className="mt-1.5 text-[11px] font-medium text-[#1A56DB]/80">
-                ≈ ₹{Math.round(parseInt(tier.price.replace(/[^0-9]/g, "")) / 30).toLocaleString("en-IN")}/day — less than a coffee ☕
+                ≈ ₹{Math.round(parseInt(tier.price.replace(/[^0-9]/g, "")) / 30).toLocaleString("en-IN")} ($9)/day — less than a cup of coffee ☕
               </p>
             )}
             {subNote && (
