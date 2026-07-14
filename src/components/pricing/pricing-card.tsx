@@ -24,7 +24,8 @@ function FeatureRow({
   onFeatureClick?: (name: string) => void;
 }) {
   const isClickable = !!onFeatureClick;
-  
+  const isIncluded = f.included !== false;
+
   return (
     <li className="flex items-center w-full">
       <button 
@@ -37,68 +38,55 @@ function FeatureRow({
         )}
       >
         <div className="flex items-center gap-3">
-          {f.value ? (
-            <span
-              className={cn(
-                "text-[13px] tracking-[-0.01em] flex items-center gap-1.5",
-                dark ? "text-[#C5C2BB] group-hover/row:text-white" : "text-[#6B6860] group-hover/row:text-[#1A56DB]",
-                isClickable && "underline decoration-dashed decoration-current/30 underline-offset-3 group-hover/row:decoration-current"
-              )}
-            >
-              {f.name}
-              {isClickable && <HelpCircle className="size-3 opacity-0 group-hover/row:opacity-100 transition-opacity text-[#1A56DB] shrink-0" />}
-            </span>
-          ) : (
-            <>
-              <span
-                className="flex size-4 shrink-0 items-center justify-center rounded-full"
+          <span
+            className="flex size-4 shrink-0 items-center justify-center rounded-full"
+            style={{
+              background: isIncluded
+                ? dark
+                  ? "rgba(255,255,255,0.15)"
+                  : popular
+                  ? "rgba(26,86,219,0.1)"
+                  : "rgba(15,14,13,0.05)"
+                : "transparent",
+              border: isIncluded ? "none" : dark ? "1px solid #3D3C38" : "1px solid #E8E6E1",
+            }}
+          >
+            {isIncluded ? (
+              <Check
+                className="size-2.5"
+                strokeWidth={3}
                 style={{
-                  background: f.included !== false
-                    ? dark
-                      ? "rgba(255,255,255,0.15)"
-                      : popular
-                      ? "rgba(26,86,219,0.1)"
-                      : "rgba(15,14,13,0.05)"
-                    : "transparent",
-                  border: f.included !== false ? "none" : dark ? "1px solid #3D3C38" : "1px solid #E8E6E1",
+                  color: dark ? "#FFFFFF" : popular ? "#1A56DB" : "#6B6860",
                 }}
-              >
-                {f.included !== false ? (
-                  <Check
-                    className="size-2.5"
-                    strokeWidth={3}
-                    style={{
-                      color: dark ? "#FFFFFF" : popular ? "#1A56DB" : "#6B6860",
-                    }}
-                  />
-                ) : (
-                  <X
-                    className="size-2.5"
-                    strokeWidth={2.5}
-                    style={{ color: dark ? "#4B4A46" : "#C5C2BB" }}
-                  />
-                )}
-              </span>
-              <span
-                className={cn(
-                  "text-[13px] tracking-[-0.01em] flex items-center gap-1.5",
-                  f.included !== false
-                    ? dark
-                      ? "text-[#C5C2BB] group-hover/row:text-white"
-                      : "text-[#0F0E0D] group-hover/row:text-[#1A56DB]"
-                    : dark
-                    ? "text-[#4B4A46] line-through"
-                    : "text-[#C5C2BB] line-through",
-                  isClickable && f.included !== false && "underline decoration-dashed decoration-current/30 underline-offset-3 group-hover/row:decoration-current"
-                )}
-              >
-                {f.name}
-                {isClickable && f.included !== false && (
-                  <HelpCircle className="size-3 opacity-0 group-hover/row:opacity-100 transition-opacity text-[#1A56DB] shrink-0" />
-                )}
-              </span>
-            </>
-          )}
+              />
+            ) : (
+              <X
+                className="size-2.5"
+                strokeWidth={2.5}
+                style={{ color: dark ? "#4B4A46" : "#C5C2BB" }}
+              />
+            )}
+          </span>
+          <span
+            className={cn(
+              "text-[13px] tracking-[-0.01em] flex items-center gap-1.5",
+              isIncluded
+                ? dark
+                  ? "text-[#C5C2BB] group-hover/row:text-white"
+                  : f.value
+                  ? "text-[#6B6860] group-hover/row:text-[#1A56DB]"
+                  : "text-[#0F0E0D] group-hover/row:text-[#1A56DB]"
+                : dark
+                ? "text-[#4B4A46] line-through"
+                : "text-[#C5C2BB] line-through",
+              isClickable && isIncluded && "underline decoration-dashed decoration-current/30 underline-offset-3 group-hover/row:decoration-current"
+            )}
+          >
+            {f.name}
+            {isClickable && isIncluded && (
+              <HelpCircle className="size-3 opacity-0 group-hover/row:opacity-100 transition-opacity text-[#1A56DB] shrink-0" />
+            )}
+          </span>
         </div>
         {f.value && (
           <span
