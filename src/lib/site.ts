@@ -341,7 +341,7 @@ export const PRICING_AGENTS = {
           annual: "Custom",
           setupFee: "Setup waived",
           ctaLabel: "Book a call",
-          ctaLink: "mailto:hello@nextscale.co.in?subject=Enterprise%20Pricing%20Inquiry"
+          ctaLink: "mailto:biz.abhisek@gmail.com?subject=Enterprise%20Pricing%20Inquiry"
         }
       }
     },

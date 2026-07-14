@@ -75,30 +75,30 @@ export default function ToolsDashboard() {
 
   // Calculation utilities
   const monthlyManualCost = salary * staffCount;
-  const aiReceptionistCost = 5999;
+  const aiReceptionistCost = 11999;
   const monthlyRoiSavings = Math.max(0, monthlyManualCost - aiReceptionistCost);
   const annualRoiSavings = monthlyRoiSavings * 12;
 
   const calculateWebCost = () => {
-    let base = 4999;
+    let base = 19999;
     let days = 7;
     if (pages === "5-10") {
-      base = 12999;
+      base = 39999;
       days = 7;
     } else if (pages === "10-20") {
-      base = 21999;
+      base = 79999;
       days = 10;
     }
     if (isEcommerce) {
-      base += 9000;
+      base += 19999;
       days += 3;
     }
     if (isAiAgent) {
-      base += 7000;
+      base += 19999;
       days += 2;
     }
     if (isContent) {
-      base += 5000;
+      base += 7999;
     }
     return { cost: base, days };
   };
@@ -117,7 +117,7 @@ export default function ToolsDashboard() {
 
   const supportSavingsManual = tickets * costPerTicket;
   const supportDeflected = Math.round(tickets * 0.75);
-  const supportSavingsAiCost = 8999;
+  const supportSavingsAiCost = 24999;
   const supportMonthlySavings = Math.max(0, (supportDeflected * costPerTicket) - supportSavingsAiCost);
 
   const getLeadDropoff = () => {
@@ -320,7 +320,7 @@ export default function ToolsDashboard() {
                           onChange={(e) => setIsEcommerce(e.target.checked)}
                           className="accent-primary"
                         />
-                        <span>E-commerce Catalog &amp; Cart Integration (+₹9,000)</span>
+                        <span>E-commerce Catalog &amp; Cart Integration (+₹19,999)</span>
                       </label>
                       <label className="flex items-center gap-3 text-xs font-medium text-[#6B6860] bg-white border border-[#E8E6E1] p-3 rounded-lg cursor-pointer">
                         <input
@@ -329,7 +329,7 @@ export default function ToolsDashboard() {
                           onChange={(e) => setIsAiAgent(e.target.checked)}
                           className="accent-primary"
                         />
-                        <span>WhatsApp AI Agent Integration (+₹7,000)</span>
+                        <span>WhatsApp AI Agent Integration (+₹19,999)</span>
                       </label>
                       <label className="flex items-center gap-3 text-xs font-medium text-[#6B6860] bg-white border border-[#E8E6E1] p-3 rounded-lg cursor-pointer">
                         <input
@@ -338,7 +338,7 @@ export default function ToolsDashboard() {
                           onChange={(e) => setIsContent(e.target.checked)}
                           className="accent-primary"
                         />
-                        <span>Premium Copywriting &amp; SEO Setup (+₹5,000)</span>
+                        <span>Premium Copywriting &amp; SEO Setup (+₹7,999)</span>
                       </label>
                     </div>
                   </div>

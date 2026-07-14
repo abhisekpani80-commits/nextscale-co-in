@@ -381,7 +381,7 @@ export default function PricingPage() {
                 if (isCustomPrice) {
                   ctaHref = isINR 
                     ? `https://wa.me/919556436685?text=${encodeURIComponent(ctaMessage)}`
-                    : `mailto:hello@nextscale.co.in?subject=Enterprise%20AI%20Automation%20Plan%20Inquiry&body=${encodeURIComponent(ctaMessage)}`;
+                    : `mailto:biz.abhisek@gmail.com?subject=Enterprise%20AI%20Automation%20Plan%20Inquiry&body=${encodeURIComponent(ctaMessage)}`;
                 }
 
                 return (
@@ -492,7 +492,7 @@ export default function PricingPage() {
                 href={
                   isINR
                     ? `https://wa.me/919556436685?text=${encodeURIComponent("Hi Next Scale! I'm interested in a custom enterprise solution. I would like to talk about custom automation integrations and scaling digital presence for my business.")}`
-                    : `mailto:hello@nextscale.co.in?subject=Custom%20Enterprise%20Integration%20Inquiry&body=${encodeURIComponent("Hi Next Scale! I'm interested in a custom enterprise solution. I would like to talk about custom automation integrations and scaling digital presence for my business.")}`
+                    : `mailto:biz.abhisek@gmail.com?subject=Custom%20Enterprise%20Integration%20Inquiry&body=${encodeURIComponent("Hi Next Scale! I'm interested in a custom enterprise solution. I would like to talk about custom automation integrations and scaling digital presence for my business.")}`
                 }
                 target="_blank"
                 rel="noopener noreferrer"
