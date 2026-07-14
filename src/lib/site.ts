@@ -255,11 +255,7 @@ export const PRICING_AGENTS = {
   tiers: [
     {
       name: "Starter",
-      price: "₹11,999",
-      priceUSD: "$149",
-      period: "/month",
-      setupFee: "₹4,999 ($59) setup",
-      description: "For solo practitioners and new clinics.",
+      description: "For solo founders and new businesses.",
       popular: false,
       features: [
         { name: "WhatsApp AI Receptionist", included: true },
@@ -272,14 +268,24 @@ export const PRICING_AGENTS = {
         { name: "Analytics Dashboard", value: "Basic" },
         { name: "Support", value: "WhatsApp" },
       ],
+      pricing: {
+        inr: {
+          monthly: "₹11,999",
+          annual: "₹9,999",
+          annualBilled: "₹1,19,988",
+          setupFee: "₹4,999 setup"
+        },
+        usd: {
+          monthly: "$599",
+          annual: "$499",
+          annualBilled: "$5,988",
+          setupFee: "$59 setup"
+        }
+      }
     },
     {
       name: "Growth",
-      price: "₹24,999",
-      priceUSD: "$299",
-      period: "/month",
-      setupFee: "₹9,999 ($119) setup",
-      description: "Best for established clinics ready to scale.",
+      description: "For growing businesses ready to scale.",
       popular: true,
       features: [
         { name: "WhatsApp AI Receptionist", included: true },
@@ -292,14 +298,24 @@ export const PRICING_AGENTS = {
         { name: "Analytics Dashboard", value: "Advanced" },
         { name: "Support", value: "Priority" },
       ],
+      pricing: {
+        inr: {
+          monthly: "₹24,999",
+          annual: "₹20,833",
+          annualBilled: "₹2,49,996",
+          setupFee: "₹9,999 setup"
+        },
+        usd: {
+          monthly: "$1,499",
+          annual: "$1,249",
+          annualBilled: "$14,988",
+          setupFee: "$119 setup"
+        }
+      }
     },
     {
       name: "Enterprise",
-      price: "₹49,999",
-      priceUSD: "$599",
-      period: "/month",
-      setupFee: "Setup waived",
-      description: "Full AI stack for multi-location businesses.",
+      description: "For multi-location and high-volume businesses.",
       popular: false,
       features: [
         { name: "WhatsApp AI Receptionist", included: true },
@@ -312,6 +328,22 @@ export const PRICING_AGENTS = {
         { name: "Analytics Dashboard", value: "Full" },
         { name: "Support", value: "Dedicated" },
       ],
+      pricing: {
+        inr: {
+          monthly: "Custom",
+          annual: "Custom",
+          setupFee: "Setup waived",
+          ctaLabel: "Let's talk",
+          ctaLink: "https://wa.me/917978255979?text=Hi,%20I'm%20interested%20in%20Enterprise%20pricing"
+        },
+        usd: {
+          monthly: "Custom",
+          annual: "Custom",
+          setupFee: "Setup waived",
+          ctaLabel: "Book a call",
+          ctaLink: "mailto:hello@nextscale.co.in?subject=Enterprise%20Pricing%20Inquiry"
+        }
+      }
     },
   ],
 };
@@ -320,9 +352,6 @@ export const PRICING_WEBSITES = {
   tiers: [
     {
       name: "Starter",
-      price: "₹19,999",
-      priceUSD: "$249",
-      period: "1-year hosting",
       description: "Perfect for new businesses and solo professionals.",
       popular: false,
       features: [
@@ -335,12 +364,14 @@ export const PRICING_WEBSITES = {
         { name: "AI Chatbot", included: false },
         { name: "Google Business Setup", included: false },
       ],
+      pricing: {
+        inr: "₹19,999",
+        usd: "$499",
+        period: "1-year hosting"
+      }
     },
     {
       name: "Standard",
-      price: "₹39,999",
-      priceUSD: "$499",
-      period: "1-year hosting",
       description: "For growing businesses that need more reach.",
       popular: true,
       features: [
@@ -353,12 +384,14 @@ export const PRICING_WEBSITES = {
         { name: "AI Chatbot", included: false },
         { name: "Google Business Setup", included: true },
       ],
+      pricing: {
+        inr: "₹39,999",
+        usd: "$999",
+        period: "1-year hosting"
+      }
     },
     {
       name: "Premium",
-      price: "₹79,999",
-      priceUSD: "$999",
-      period: "1-year hosting",
       description: "Full-featured site with AI chatbot and advanced SEO.",
       popular: false,
       features: [
@@ -371,16 +404,21 @@ export const PRICING_WEBSITES = {
         { name: "AI Chatbot", included: true },
         { name: "Google Business Setup", included: true },
       ],
+      pricing: {
+        inr: "₹79,999",
+        usd: "$1,999",
+        period: "1-year hosting"
+      }
     },
   ],
 };
 
 export const PRICING_ADDONS = [
-  { name: "AI Chatbot Integration", price: "₹19,999 ($249) one-time" },
-  { name: "Google Business Local SEO Setup", price: "₹7,999 ($99) one-time" },
-  { name: "UI/UX Redesign Audit", price: "₹11,999 ($149) one-time" },
-  { name: "Annual Renewal & Support (Basic)", price: "₹7,999 ($99)/year" },
-  { name: "Annual Renewal & Support (Premium)", price: "₹15,999 ($199)/year" },
+  { name: "AI Chatbot Integration", inr: "₹19,999 one-time", usd: "$249 one-time" },
+  { name: "Google Business Local SEO Setup", inr: "₹7,999 one-time", usd: "$99 one-time" },
+  { name: "UI/UX Redesign Audit", inr: "₹11,999 one-time", usd: "$149 one-time" },
+  { name: "Annual Renewal & Support Basic", inr: "₹7,999/year", usd: "$99/year" },
+  { name: "Annual Renewal & Support Premium", inr: "₹13,999/year", usd: "$175/year" },
 ];
 
 export const PRICING_FAQ = [

@@ -1,5 +1,7 @@
-import type { Metadata } from "next";
-import { MessageCircle, Zap } from "lucide-react";
+"use client";
+
+import { useEffect, useState } from "react";
+import { MessageCircle, Zap, Globe, ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/ui/page-hero";
 import { Reveal } from "@/components/ui/reveal";
 import { PricingCard } from "@/components/pricing/pricing-card";
@@ -17,61 +19,161 @@ import {
   waLink,
 } from "@/lib/site";
 import { cn } from "@/lib/utils";
-import { JsonLd } from "@/components/seo/json-ld";
-import { breadcrumbSchema, faqSchema, pageMeta } from "@/lib/seo";
-
-export const metadata: Metadata = pageMeta({
-  title: "Pricing — AI Agents from ₹11,999 ($149)/mo, Websites from ₹19,999 ($249)",
-  description: "Transparent pricing for custom Next.js websites and WhatsApp AI receptionists. Choose a plan that aligns with your business goals.",
-  path: "/pricing",
-  keywords: ["AI agent pricing", "website development cost India", "business automation packages"]
-});
 
 export default function PricingPage() {
+  const [isINR, setIsINR] = useState<boolean>(true);
+  const [isAnnual, setIsAnnual] = useState<boolean>(false);
+  const [currencyReady, setCurrencyReady] = useState<boolean>(false);
+
+  useEffect(() => {
+    async function initCurrency() {
+      const saved = localStorage.getItem("currencyPreference");
+      if (saved) {
+        setIsINR(saved === "INR");
+        setCurrencyReady(true);
+        return;
+      }
+
+      try {
+        const res = await fetch("https://ip-api.com/json/?fields=countryCode");
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.countryCode) {
+            setIsINR(data.countryCode === "IN");
+          }
+        }
+      } catch (err) {
+        console.error("Geo IP failed, defaulting to INR", err);
+      } finally {
+        setCurrencyReady(true);
+      }
+    }
+
+    initCurrency();
+  }, []);
+
+  const toggleCurrency = (currency: "INR" | "USD") => {
+    setIsINR(currency === "INR");
+    localStorage.setItem("currencyPreference", currency);
+  };
+
   return (
     <>
-      <JsonLd
-        schema={[
-          breadcrumbSchema([
-            { name: "Home", path: "/" },
-            { name: "Pricing", path: "/pricing" },
-          ]),
-          faqSchema(PRICING_FAQ),
-        ]}
-      />
       <PageHero
         kicker="Pricing"
         title={<>Transparent pricing. <span className="text-primary">No surprises.</span></>}
         description="Everything is public. Pick what your business needs, upgrade anytime, cancel anytime."
       />
 
-      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28 flex flex-col gap-28">
+      <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-20 flex flex-col gap-24">
 
-        {/* AI Agent Bundles */}
+        {/* Toggles */}
+        <div className="flex flex-col items-center justify-center gap-8 mb-4">
+          <div className="flex items-center rounded-full border border-[#E8E6E1] bg-white p-1 shadow-sm">
+            <button
+              onClick={() => toggleCurrency("INR")}
+              className={cn(
+                "px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300",
+                isINR ? "bg-[#1A56DB] text-white shadow-md" : "text-[#6B6860] hover:text-[#0F0E0D]"
+              )}
+            >
+              🇮🇳 INR (₹)
+            </button>
+            <button
+              onClick={() => toggleCurrency("USD")}
+              className={cn(
+                "px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-1.5",
+                !isINR ? "bg-[#1A56DB] text-white shadow-md" : "text-[#6B6860] hover:text-[#0F0E0D]"
+              )}
+            >
+              <Globe className="w-4 h-4" />
+              USD ($)
+            </button>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <span className={cn("text-sm font-medium transition-colors", !isAnnual ? "text-[#0F0E0D]" : "text-[#6B6860]")}>Monthly</span>
+            <button
+              onClick={() => setIsAnnual(!isAnnual)}
+              className="relative inline-flex h-7 w-14 items-center rounded-full bg-[#E8E6E1] transition-colors focus:outline-none"
+              style={{ background: isAnnual ? "#1A56DB" : "#E8E6E1" }}
+            >
+              <span className="sr-only">Toggle annual billing</span>
+              <span
+                className={cn(
+                  "inline-block h-5 w-5 transform rounded-full bg-white transition-transform shadow-sm",
+                  isAnnual ? "translate-x-8" : "translate-x-1"
+                )}
+              />
+            </button>
+            <span className={cn("text-sm font-medium flex items-center gap-2 transition-colors", isAnnual ? "text-[#0F0E0D]" : "text-[#6B6860]")}>
+              Annually
+              <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-[10px] font-bold text-green-700 tracking-wider uppercase">
+                Save 17%
+              </span>
+            </span>
+          </div>
+        </div>
+
+        {/* ROI Stats */}
         <Reveal>
-          <div>
+          <div className="mb-8">
             <div className="mb-10 text-center">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB] mb-3">AI Agent Bundles</p>
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-[#0F0E0D]">Monthly recurring plans</h2>
-              <p className="mt-3 text-base text-[#6B6860] max-w-md mx-auto tracking-tight">
-                Full AI automation for your business. Cancel any time.
-              </p>
+              <h2 className="text-2xl font-bold tracking-tight sm:text-3xl text-[#0F0E0D]">What our clients get back</h2>
             </div>
-            <div className="grid items-stretch gap-4 md:grid-cols-3">
-              {PRICING_AGENTS.tiers.map((tier) => (
-                <PricingCard
-                  key={tier.name}
-                  tier={tier}
-                  ctaMessage={`Hi! I'm interested in the ${tier.name} AI agent plan.`}
-                />
+            <div className="grid gap-4 md:grid-cols-3">
+              {[
+                { title: "3.2x", desc: "more leads captured via AI agent vs contact form" },
+                { title: "18 hours", desc: "saved per month on follow-ups and scheduling" },
+                { title: "6 weeks", desc: "average time to first paid ROI on automation" }
+              ].map((stat, i) => (
+                <div key={i} className="flex flex-col items-center justify-center p-8 rounded-3xl border border-[#E8E6E1] bg-white shadow-sm text-center">
+                  <span className="text-4xl font-extrabold text-[#1A56DB] mb-2">{stat.title}</span>
+                  <span className="text-sm font-medium text-[#6B6860] leading-relaxed max-w-[200px]">{stat.desc}</span>
+                </div>
               ))}
             </div>
           </div>
         </Reveal>
 
-        {/* Website Packages */}
+        {/* AI Agent Bundles (Recurring) */}
         <Reveal>
-          <div>
+          <div id="recurring">
+            <div className="mb-10 text-center">
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB] mb-3">AI Automation Plans</p>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-[#0F0E0D]">Monthly recurring systems</h2>
+              <p className="mt-3 text-base text-[#6B6860] max-w-md mx-auto tracking-tight">
+                Full AI automation for your business. Cancel any time.
+              </p>
+            </div>
+            <div className="grid items-stretch gap-4 md:grid-cols-3">
+              {PRICING_AGENTS.tiers.map((tier) => {
+                const currencyObj = isINR ? tier.pricing.inr : tier.pricing.usd;
+                const displayPrice = isAnnual ? currencyObj.annual || currencyObj.monthly : currencyObj.monthly;
+                const displayPeriod = typeof displayPrice === "string" && displayPrice === "Custom" ? undefined : "/month";
+                const displaySetupFee = isAnnual && currencyObj.annualBilled ? `Billed ${currencyObj.annualBilled}/year` : currencyObj.setupFee;
+                
+                return (
+                  <PricingCard
+                    key={tier.name}
+                    tier={tier}
+                    isEnterprise={tier.name === "Enterprise"}
+                    loading={!currencyReady}
+                    displayPrice={String(displayPrice)}
+                    displayPeriod={displayPeriod}
+                    displaySetupFee={displaySetupFee}
+                    ctaLabel={currencyObj.ctaLabel || "Get started"}
+                    ctaHref={currencyObj.ctaLink}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        </Reveal>
+
+        {/* Website Packages (One-Time) */}
+        <Reveal>
+          <div id="one-time">
             <div className="mb-10 text-center">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB] mb-3">Website Packages</p>
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-[#0F0E0D]">One-time investment</h2>
@@ -80,13 +182,20 @@ export default function PricingPage() {
               </p>
             </div>
             <div className="grid items-stretch gap-4 md:grid-cols-3">
-              {PRICING_WEBSITES.tiers.map((tier) => (
-                <PricingCard
-                  key={tier.name}
-                  tier={tier}
-                  ctaMessage={`Hi! I'm interested in the ${tier.name} website package.`}
-                />
-              ))}
+              {PRICING_WEBSITES.tiers.map((tier) => {
+                const displayPrice = isINR ? tier.pricing.inr : tier.pricing.usd;
+                
+                return (
+                  <PricingCard
+                    key={tier.name}
+                    tier={tier}
+                    loading={!currencyReady}
+                    displayPrice={String(displayPrice)}
+                    displayPeriod={tier.pricing.period}
+                    ctaLabel="Build my website"
+                  />
+                );
+              })}
             </div>
           </div>
         </Reveal>
@@ -110,7 +219,13 @@ export default function PricingPage() {
                   )}
                 >
                   <span className="text-sm text-[#0F0E0D] font-medium tracking-[-0.01em]">{a.name}</span>
-                  <span className="font-mono text-sm font-semibold text-[#1A56DB]">{a.price}</span>
+                  {!currencyReady ? (
+                    <span className="h-5 w-24 rounded bg-gray-100 animate-pulse" />
+                  ) : (
+                    <span className="font-mono text-sm font-semibold text-[#1A56DB] animate-in fade-in">
+                      {isINR ? a.inr : a.usd}
+                    </span>
+                  )}
                 </div>
               ))}
             </div>
@@ -134,13 +249,13 @@ export default function PricingPage() {
                 Multi-location, high volume, or something we haven't thought of yet — let's talk.
               </p>
               <a
-                href={waLink()}
+                href={isINR ? "https://wa.me/917978255979?text=Hi,%20I'm%20interested%20in%20Enterprise%20pricing" : "mailto:hello@nextscale.co.in?subject=Enterprise%20Pricing%20Inquiry"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-6 inline-flex h-11 items-center gap-2 rounded-xl px-6 text-[13px] font-semibold tracking-[-0.01em] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_24px_rgba(26,86,219,0.25)] bg-[#1A56DB] text-white hover:bg-[#1447C0]"
               >
-                <MessageCircle className="size-4" />
-                Chat on WhatsApp
+                {isINR ? <MessageCircle className="size-4" /> : <Globe className="size-4" />}
+                {isINR ? "Chat on WhatsApp" : "Contact Sales"}
               </a>
             </div>
           </div>
@@ -156,8 +271,8 @@ export default function PricingPage() {
             <Accordion className="flex flex-col gap-2">
               {PRICING_FAQ.map((item, i) => (
                 <AccordionItem
-                  key={i}
-                  value={i}
+                  key={i.toString()}
+                  value={i.toString()}
                   className="rounded-2xl px-5 overflow-hidden border border-[#E8E6E1] bg-white shadow-sm"
                 >
                   <AccordionTrigger className="text-[15px] font-semibold py-5 text-left tracking-[-0.02em] text-[#0F0E0D] hover:text-[#1A56DB]">
