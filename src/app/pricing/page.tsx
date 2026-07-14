@@ -156,6 +156,22 @@ export default function PricingPage() {
                   ? `Billed ${currencyObj.annualBilled}/year`
                   : currencyObj.setupFee ?? undefined;
 
+                const currencyLabel = isINR ? "INR" : "USD";
+                const billingCycle = isAnnual ? "Annual" : "Monthly";
+                
+                // Detailed text message for the WhatsApp/Email click
+                const ctaMessage = isCustomPrice
+                  ? `Hi Next Scale! I'm interested in the Enterprise AI Automation Plan. Let's discuss custom integration needs, volume, and specifications for my business.`
+                  : `Hi Next Scale! I'm interested in subscribing to the ${tier.name} AI Automation Plan. [Details: ${currencyLabel} pricing, ${displayPrice}/month under ${billingCycle} billing]. Please let me know how to proceed.`;
+
+                // Handle ctaHref dynamically if Enterprise or custom links exist
+                let ctaHref = undefined;
+                if (isCustomPrice) {
+                  ctaHref = isINR 
+                    ? `https://wa.me/919556436685?text=${encodeURIComponent(ctaMessage)}`
+                    : `mailto:hello@nextscale.co.in?subject=Enterprise%20AI%20Automation%20Plan%20Inquiry&body=${encodeURIComponent(ctaMessage)}`;
+                }
+
                 return (
                   <PricingCard
                     key={tier.name}
@@ -166,7 +182,8 @@ export default function PricingPage() {
                     displayPeriod={displayPeriod}
                     displaySetupFee={displaySetupFee}
                     ctaLabel={currencyObj.ctaLabel ?? "Get started"}
-                    ctaHref={currencyObj.ctaLink}
+                    ctaHref={ctaHref}
+                    ctaMessage={ctaMessage}
                   />
                 );
               })}
@@ -187,7 +204,10 @@ export default function PricingPage() {
             <div className="grid items-stretch gap-4 md:grid-cols-3">
               {PRICING_WEBSITES.tiers.map((tier) => {
                 const displayPrice = isINR ? tier.pricing.inr : tier.pricing.usd;
+                const currencyLabel = isINR ? "INR" : "USD";
                 
+                const ctaMessage = `Hi Next Scale! I'm interested in building a website with you using the ${tier.name} Website Package. [Details: ${currencyLabel} pricing, ${displayPrice} one-time investment]. Please share the next steps.`;
+
                 return (
                   <PricingCard
                     key={tier.name}
@@ -196,6 +216,7 @@ export default function PricingPage() {
                     displayPrice={String(displayPrice)}
                     displayPeriod={tier.pricing.period}
                     ctaLabel="Build my website"
+                    ctaMessage={ctaMessage}
                   />
                 );
               })}
@@ -252,7 +273,11 @@ export default function PricingPage() {
                 Multi-location, high volume, or something we haven't thought of yet — let's talk.
               </p>
               <a
-                href={isINR ? "https://wa.me/917978255979?text=Hi,%20I'm%20interested%20in%20Enterprise%20pricing" : "mailto:hello@nextscale.co.in?subject=Enterprise%20Pricing%20Inquiry"}
+                href={
+                  isINR
+                    ? `https://wa.me/919556436685?text=${encodeURIComponent("Hi Next Scale! I'm interested in a custom enterprise solution. I would like to talk about custom automation integrations and scaling digital presence for my business.")}`
+                    : `mailto:hello@nextscale.co.in?subject=Custom%20Enterprise%20Integration%20Inquiry&body=${encodeURIComponent("Hi Next Scale! I'm interested in a custom enterprise solution. I would like to talk about custom automation integrations and scaling digital presence for my business.")}`
+                }
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-6 inline-flex h-11 items-center gap-2 rounded-xl px-6 text-[13px] font-semibold tracking-[-0.01em] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_24px_rgba(26,86,219,0.25)] bg-[#1A56DB] text-white hover:bg-[#1447C0]"

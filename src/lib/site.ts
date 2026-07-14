@@ -334,7 +334,7 @@ export const PRICING_AGENTS = {
           annual: "Custom",
           setupFee: "Setup waived",
           ctaLabel: "Let's talk",
-          ctaLink: "https://wa.me/917978255979?text=Hi,%20I'm%20interested%20in%20Enterprise%20pricing"
+          ctaLink: "https://wa.me/919556436685?text=Hi,%20I'm%20interested%20in%20Enterprise%20pricing"
         },
         usd: {
           monthly: "Custom",
