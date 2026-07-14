@@ -9,19 +9,38 @@ export type PricingTier = {
   description: string;
   popular?: boolean;
   features: Feature[];
-  pricing?: any; // To allow passing raw data if needed
+  pricing?: any;
 };
 
-function FeatureRow({ f, popular }: { f: Feature; popular?: boolean }) {
+function FeatureRow({
+  f,
+  popular,
+  dark,
+}: {
+  f: Feature;
+  popular?: boolean;
+  dark?: boolean;
+}) {
   if (f.value) {
     return (
       <li className="flex items-center justify-between gap-3 py-2.5">
-        <span className="text-[13px] text-[#6B6860] tracking-[-0.01em]">{f.name}</span>
+        <span
+          className={cn(
+            "text-[13px] tracking-[-0.01em]",
+            dark ? "text-[#C5C2BB]" : "text-[#6B6860]"
+          )}
+        >
+          {f.name}
+        </span>
         <span
           className="rounded-md px-2 py-0.5 text-[11px] font-semibold tracking-wide"
           style={{
-            background: popular ? "rgba(26,86,219,0.08)" : "rgba(15,14,13,0.05)",
-            color: popular ? "#1A56DB" : "#0F0E0D",
+            background: dark
+              ? "rgba(255,255,255,0.1)"
+              : popular
+              ? "rgba(26,86,219,0.08)"
+              : "rgba(15,14,13,0.05)",
+            color: dark ? "#FFFFFF" : popular ? "#1A56DB" : "#0F0E0D",
           }}
         >
           {f.value}
@@ -37,28 +56,38 @@ function FeatureRow({ f, popular }: { f: Feature; popular?: boolean }) {
         className="flex size-4 shrink-0 items-center justify-center rounded-full"
         style={{
           background: included
-            ? popular
+            ? dark
+              ? "rgba(255,255,255,0.15)"
+              : popular
               ? "rgba(26,86,219,0.1)"
               : "rgba(15,14,13,0.05)"
             : "transparent",
-          border: included ? "none" : "1px solid #E8E6E1",
+          border: included ? "none" : dark ? "1px solid #3D3C38" : "1px solid #E8E6E1",
         }}
       >
         {included ? (
           <Check
             className="size-2.5"
             strokeWidth={3}
-            style={{ color: popular ? "#1A56DB" : "#6B6860" }}
+            style={{
+              color: dark ? "#FFFFFF" : popular ? "#1A56DB" : "#6B6860",
+            }}
           />
         ) : (
-          <X className="size-2.5 text-[#C5C2BB]" strokeWidth={2.5} />
+          <X
+            className="size-2.5"
+            strokeWidth={2.5}
+            style={{ color: dark ? "#4B4A46" : "#C5C2BB" }}
+          />
         )}
       </span>
       <span
-        className={cn(
-          "text-[13px] tracking-[-0.01em]",
-          included ? "text-[#0F0E0D]" : "text-[#C5C2BB] line-through"
-        )}
+        className={cn("text-[13px] tracking-[-0.01em]", {
+          "text-white": included && dark,
+          "text-[#0F0E0D]": included && !dark,
+          "text-[#4B4A46] line-through": !included && dark,
+          "text-[#C5C2BB] line-through": !included && !dark,
+        })}
       >
         {f.name}
       </span>
@@ -89,27 +118,32 @@ export function PricingCard({
   isEnterprise?: boolean;
   loading?: boolean;
 }) {
-  const inlinePeriod = displayPeriod?.startsWith("/");
-  const subNote = [!inlinePeriod ? displayPeriod : null, displaySetupFee]
+  const isCustom = displayPrice === "Custom";
+  const inlinePeriod = !isCustom && displayPeriod?.startsWith("/");
+  const subNote = [
+    !inlinePeriod && !isCustom ? displayPeriod : null,
+    displaySetupFee,
+  ]
     .filter(Boolean)
     .join(" · ");
 
-  // Default CTA href logic for non-enterprise (uses standard waLink)
-  const finalHref = ctaHref || waLink(ctaMessage || `Hi! I'm interested in the ${tier.name} plan.`);
+  const finalHref =
+    ctaHref ||
+    waLink(ctaMessage || `Hi! I'm interested in the ${tier.name} plan.`);
 
   return (
     <div
       className={cn(
         "relative flex h-full flex-col rounded-3xl p-px transition-all duration-300",
         isEnterprise
-          ? "hover:shadow-[0_20px_50px_rgba(15,14,13,0.15)]"
+          ? "hover:shadow-[0_20px_50px_rgba(15,14,13,0.3)]"
           : tier.popular
-          ? "shadow-[0_20px_50px_rgba(26,86,219,0.12)] hover:shadow-[0_20px_50px_rgba(26,86,219,0.18)]"
-          : "hover:shadow-[0_15px_30px_rgba(0,0,0,0.04)]"
+          ? "shadow-[0_20px_50px_rgba(26,86,219,0.12)] hover:shadow-[0_20px_50px_rgba(26,86,219,0.20)]"
+          : "hover:shadow-[0_15px_30px_rgba(0,0,0,0.06)]"
       )}
       style={{
         background: isEnterprise
-          ? "linear-gradient(135deg, #2D2C28 0%, #0F0E0D 100%)"
+          ? "linear-gradient(135deg, #3D3C38 0%, #1a1917 100%)"
           : tier.popular
           ? "linear-gradient(135deg, #1A56DB 0%, #702BDE 50%, rgba(26,86,219,0.3) 100%)"
           : "linear-gradient(135deg, #E8E6E1 0%, rgba(232,230,225,0.3) 100%)",
@@ -117,12 +151,12 @@ export function PricingCard({
     >
       {/* Inner card */}
       <div
-        className={cn("relative flex h-full flex-col rounded-[22px] p-7", isEnterprise ? "text-white" : "")}
+        className="relative flex h-full flex-col rounded-[22px] p-7"
         style={{
           background: isEnterprise ? "#0F0E0D" : "#FFFFFF",
         }}
       >
-        {/* Popular subtle glow blob inside card */}
+        {/* Popular glow blob */}
         {tier.popular && !isEnterprise && (
           <div
             className="pointer-events-none absolute -top-16 left-1/2 -translate-x-1/2 h-48 w-48 rounded-full blur-[60px]"
@@ -135,12 +169,19 @@ export function PricingCard({
           <div className="flex items-center justify-between gap-2">
             <span
               className="text-[11px] font-semibold uppercase tracking-[0.15em]"
-              style={{ color: isEnterprise ? "#E8E6E1" : tier.popular ? "#1A56DB" : "#6B6860" }}
+              style={{
+                color: isEnterprise
+                  ? "#9CA3AF"
+                  : tier.popular
+                  ? "#1A56DB"
+                  : "#6B6860",
+              }}
             >
               {tier.name}
             </span>
             {tier.popular && !isEnterprise && (
-              <span className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-wider"
+              <span
+                className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-wider"
                 style={{
                   background: "rgba(26,86,219,0.06)",
                   color: "#1A56DB",
@@ -157,30 +198,61 @@ export function PricingCard({
           <div className="mt-6 min-h-[80px]">
             {loading ? (
               <div className="flex flex-col gap-2">
-                <div className="h-10 w-24 rounded-lg bg-gray-200 animate-pulse" style={{ background: isEnterprise ? "#2D2C28" : undefined }} />
-                <div className="h-4 w-32 rounded bg-gray-100 animate-pulse" style={{ background: isEnterprise ? "#1F1E1B" : undefined }} />
+                <div
+                  className="h-10 w-28 rounded-lg animate-pulse"
+                  style={{
+                    background: isEnterprise ? "#2D2C28" : "#E8E6E1",
+                  }}
+                />
+                <div
+                  className="h-4 w-36 rounded animate-pulse"
+                  style={{
+                    background: isEnterprise ? "#1F1E1B" : "#F0EDE8",
+                  }}
+                />
               </div>
             ) : (
-              <div className="animate-in fade-in duration-500">
-                <div className="flex items-baseline gap-1.5">
+              <div>
+                <div className="flex items-baseline gap-1.5 flex-wrap">
                   <span
-                    className={cn("text-[2.2rem] sm:text-[2.6rem] font-extrabold tracking-[-0.04em] leading-none", isEnterprise ? "text-white" : "text-[#0F0E0D]")}
+                    className={cn(
+                      "font-extrabold tracking-[-0.04em] leading-none",
+                      isCustom
+                        ? "text-[1.8rem] sm:text-[2.2rem]"
+                        : "text-[2.2rem] sm:text-[2.6rem]",
+                      isEnterprise ? "text-white" : "text-[#0F0E0D]"
+                    )}
                   >
                     {displayPrice}
                   </span>
-                  {displayPriceSub && (
-                    <span className={cn("text-sm font-semibold tracking-tight", isEnterprise ? "text-[#C5C2BB]" : "text-[#6B6860]")}>
+                  {displayPriceSub && !isCustom && (
+                    <span
+                      className={cn(
+                        "text-sm font-semibold tracking-tight",
+                        isEnterprise ? "text-[#9CA3AF]" : "text-[#6B6860]"
+                      )}
+                    >
                       / {displayPriceSub}
                     </span>
                   )}
                   {inlinePeriod && (
-                    <span className={cn("text-xs tracking-tight font-medium ml-0.5", isEnterprise ? "text-[#C5C2BB]" : "text-[#6B6860]")}>
+                    <span
+                      className={cn(
+                        "text-xs tracking-tight font-medium ml-0.5",
+                        isEnterprise ? "text-[#9CA3AF]" : "text-[#6B6860]"
+                      )}
+                    >
                       {displayPeriod}
                     </span>
                   )}
                 </div>
                 {subNote && (
-                  <p className={cn("mt-2 text-[11px] tracking-[0.02em] font-medium", isEnterprise ? "text-[#C5C2BB]" : "text-[#6B6860]/80")}>
+                  <p
+                    className={cn(
+                      "mt-2 text-[11px] tracking-[0.01em] font-medium",
+                      isEnterprise ? "text-[#9CA3AF]" : "text-[#6B6860]/80"
+                    )}
+                  >
                     {subNote}
                   </p>
                 )}
@@ -188,7 +260,12 @@ export function PricingCard({
             )}
           </div>
 
-          <p className={cn("mt-4 text-[13px] leading-relaxed tracking-[-0.01em]", isEnterprise ? "text-[#C5C2BB]" : "text-[#6B6860]")}>
+          <p
+            className={cn(
+              "mt-4 text-[13px] leading-relaxed tracking-[-0.01em]",
+              isEnterprise ? "text-[#9CA3AF]" : "text-[#6B6860]"
+            )}
+          >
             {tier.description}
           </p>
         </div>
@@ -207,7 +284,8 @@ export function PricingCard({
                 }
               : tier.popular
               ? {
-                  background: "linear-gradient(90deg, #1A56DB 0%, #702BDE 100%)",
+                  background:
+                    "linear-gradient(90deg, #1A56DB 0%, #702BDE 100%)",
                   color: "#FFFFFF",
                   boxShadow: "0 4px 15px rgba(26,86,219,0.2)",
                 }
@@ -222,6 +300,7 @@ export function PricingCard({
             {ctaLabel}
             <ArrowRight className="size-3.5 transition-transform group-hover/cta:translate-x-0.5" />
           </span>
+          {/* Hover overlay */}
           {isEnterprise && (
             <div
               className="absolute inset-0 opacity-0 group-hover/cta:opacity-100 transition-opacity duration-300"
@@ -249,9 +328,19 @@ export function PricingCard({
         />
 
         {/* Features */}
-        <ul className="flex flex-1 flex-col divide-y divide-[#F4F3F0]" style={{ borderColor: isEnterprise ? "#2D2C28" : "#F4F3F0" }}>
+        <ul
+          className="flex flex-1 flex-col"
+          style={{
+            borderColor: isEnterprise ? "#2D2C28" : "#F4F3F0",
+          }}
+        >
           {tier.features.map((f) => (
-            <FeatureRow key={f.name} f={f} popular={tier.popular} />
+            <FeatureRow
+              key={f.name}
+              f={f}
+              popular={tier.popular}
+              dark={isEnterprise}
+            />
           ))}
         </ul>
       </div>

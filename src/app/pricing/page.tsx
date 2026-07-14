@@ -16,7 +16,6 @@ import {
   PRICING_WEBSITES,
   PRICING_ADDONS,
   PRICING_FAQ,
-  waLink,
 } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -149,20 +148,24 @@ export default function PricingPage() {
             <div className="grid items-stretch gap-4 md:grid-cols-3">
               {PRICING_AGENTS.tiers.map((tier) => {
                 const currencyObj = isINR ? tier.pricing.inr : tier.pricing.usd;
-                const displayPrice = isAnnual ? currencyObj.annual || currencyObj.monthly : currencyObj.monthly;
-                const displayPeriod = typeof displayPrice === "string" && displayPrice === "Custom" ? undefined : "/month";
-                const displaySetupFee = isAnnual && currencyObj.annualBilled ? `Billed ${currencyObj.annualBilled}/year` : currencyObj.setupFee;
-                
+                const rawPrice = isAnnual ? (currencyObj.annual ?? currencyObj.monthly) : currencyObj.monthly;
+                const displayPrice = String(rawPrice);
+                const isCustomPrice = displayPrice === "Custom";
+                const displayPeriod = isCustomPrice ? undefined : "/month";
+                const displaySetupFee = isAnnual && currencyObj.annualBilled
+                  ? `Billed ${currencyObj.annualBilled}/year`
+                  : currencyObj.setupFee ?? undefined;
+
                 return (
                   <PricingCard
                     key={tier.name}
                     tier={tier}
                     isEnterprise={tier.name === "Enterprise"}
                     loading={!currencyReady}
-                    displayPrice={String(displayPrice)}
+                    displayPrice={displayPrice}
                     displayPeriod={displayPeriod}
                     displaySetupFee={displaySetupFee}
-                    ctaLabel={currencyObj.ctaLabel || "Get started"}
+                    ctaLabel={currencyObj.ctaLabel ?? "Get started"}
                     ctaHref={currencyObj.ctaLink}
                   />
                 );
