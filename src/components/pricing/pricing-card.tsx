@@ -1,4 +1,4 @@
-import { Check, X, ArrowRight, Sparkles } from "lucide-react";
+import { Check, X, ArrowRight, Sparkles, HelpCircle } from "lucide-react";
 import { waLink } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -16,81 +16,106 @@ function FeatureRow({
   f,
   popular,
   dark,
+  onFeatureClick,
 }: {
   f: Feature;
   popular?: boolean;
   dark?: boolean;
+  onFeatureClick?: (name: string) => void;
 }) {
-  if (f.value) {
-    return (
-      <li className="flex items-center justify-between gap-3 py-2.5">
-        <span
-          className={cn(
-            "text-[13px] tracking-[-0.01em]",
-            dark ? "text-[#C5C2BB]" : "text-[#6B6860]"
-          )}
-        >
-          {f.name}
-        </span>
-        <span
-          className="rounded-md px-2 py-0.5 text-[11px] font-semibold tracking-wide"
-          style={{
-            background: dark
-              ? "rgba(255,255,255,0.1)"
-              : popular
-              ? "rgba(26,86,219,0.08)"
-              : "rgba(15,14,13,0.05)",
-            color: dark ? "#FFFFFF" : popular ? "#1A56DB" : "#0F0E0D",
-          }}
-        >
-          {f.value}
-        </span>
-      </li>
-    );
-  }
-
-  const included = f.included !== false;
+  const isClickable = !!onFeatureClick;
+  
   return (
-    <li className="flex items-center gap-3 py-2.5">
-      <span
-        className="flex size-4 shrink-0 items-center justify-center rounded-full"
-        style={{
-          background: included
-            ? dark
-              ? "rgba(255,255,255,0.15)"
-              : popular
-              ? "rgba(26,86,219,0.1)"
-              : "rgba(15,14,13,0.05)"
-            : "transparent",
-          border: included ? "none" : dark ? "1px solid #3D3C38" : "1px solid #E8E6E1",
-        }}
-      >
-        {included ? (
-          <Check
-            className="size-2.5"
-            strokeWidth={3}
-            style={{
-              color: dark ? "#FFFFFF" : popular ? "#1A56DB" : "#6B6860",
-            }}
-          />
-        ) : (
-          <X
-            className="size-2.5"
-            strokeWidth={2.5}
-            style={{ color: dark ? "#4B4A46" : "#C5C2BB" }}
-          />
+    <li className="flex items-center w-full">
+      <button 
+        type="button"
+        disabled={!isClickable}
+        onClick={() => onFeatureClick?.(f.name)}
+        className={cn(
+          "flex w-full items-center justify-between gap-3 py-2.5 text-left border-none bg-transparent p-0 outline-none select-none",
+          isClickable && "cursor-pointer group/row transition-all duration-200"
         )}
-      </span>
-      <span
-        className={cn("text-[13px] tracking-[-0.01em]", {
-          "text-white": included && dark,
-          "text-[#0F0E0D]": included && !dark,
-          "text-[#4B4A46] line-through": !included && dark,
-          "text-[#C5C2BB] line-through": !included && !dark,
-        })}
       >
-        {f.name}
-      </span>
+        <div className="flex items-center gap-3">
+          {f.value ? (
+            <span
+              className={cn(
+                "text-[13px] tracking-[-0.01em] flex items-center gap-1.5",
+                dark ? "text-[#C5C2BB] group-hover/row:text-white" : "text-[#6B6860] group-hover/row:text-[#1A56DB]",
+                isClickable && "underline decoration-dashed decoration-current/30 underline-offset-3 group-hover/row:decoration-current"
+              )}
+            >
+              {f.name}
+              {isClickable && <HelpCircle className="size-3 opacity-0 group-hover/row:opacity-100 transition-opacity text-[#1A56DB] shrink-0" />}
+            </span>
+          ) : (
+            <>
+              <span
+                className="flex size-4 shrink-0 items-center justify-center rounded-full"
+                style={{
+                  background: f.included !== false
+                    ? dark
+                      ? "rgba(255,255,255,0.15)"
+                      : popular
+                      ? "rgba(26,86,219,0.1)"
+                      : "rgba(15,14,13,0.05)"
+                    : "transparent",
+                  border: f.included !== false ? "none" : dark ? "1px solid #3D3C38" : "1px solid #E8E6E1",
+                }}
+              >
+                {f.included !== false ? (
+                  <Check
+                    className="size-2.5"
+                    strokeWidth={3}
+                    style={{
+                      color: dark ? "#FFFFFF" : popular ? "#1A56DB" : "#6B6860",
+                    }}
+                  />
+                ) : (
+                  <X
+                    className="size-2.5"
+                    strokeWidth={2.5}
+                    style={{ color: dark ? "#4B4A46" : "#C5C2BB" }}
+                  />
+                )}
+              </span>
+              <span
+                className={cn(
+                  "text-[13px] tracking-[-0.01em] flex items-center gap-1.5",
+                  f.included !== false
+                    ? dark
+                      ? "text-[#C5C2BB] group-hover/row:text-white"
+                      : "text-[#0F0E0D] group-hover/row:text-[#1A56DB]"
+                    : dark
+                    ? "text-[#4B4A46] line-through"
+                    : "text-[#C5C2BB] line-through",
+                  isClickable && f.included !== false && "underline decoration-dashed decoration-current/30 underline-offset-3 group-hover/row:decoration-current"
+                )}
+              >
+                {f.name}
+                {isClickable && f.included !== false && (
+                  <HelpCircle className="size-3 opacity-0 group-hover/row:opacity-100 transition-opacity text-[#1A56DB] shrink-0" />
+                )}
+              </span>
+            </>
+          )}
+        </div>
+        {f.value && (
+          <span
+            className="rounded-md px-2 py-0.5 text-[11px] font-semibold tracking-wide shrink-0"
+            style={{
+              background: dark
+                ? "rgba(255,255,255,0.1)"
+                : popular
+                ? "rgba(26,86,219,0.08)"
+                : "rgba(15,14,13,0.05)",
+              color: dark ? "#FFFFFF" : popular ? "#1A56DB" : "#0F0E0D",
+            }}
+          >
+            {f.value}
+          </span>
+        )}
+      </button>
     </li>
   );
 }
@@ -106,6 +131,8 @@ export function PricingCard({
   ctaHref,
   isEnterprise = false,
   loading = false,
+  outcomeHighlight,
+  onFeatureClick,
 }: {
   tier: PricingTier;
   displayPrice: string;
@@ -117,6 +144,8 @@ export function PricingCard({
   ctaHref?: string;
   isEnterprise?: boolean;
   loading?: boolean;
+  outcomeHighlight?: string;
+  onFeatureClick?: (featureName: string) => void;
 }) {
   const isCustom = displayPrice === "Custom";
   const inlinePeriod = !isCustom && displayPeriod?.startsWith("/");
@@ -270,6 +299,32 @@ export function PricingCard({
           </p>
         </div>
 
+        {/* Outcome Highlight Box */}
+        {outcomeHighlight && !loading && (
+          <div
+            className="mt-5 rounded-xl p-3.5 text-center text-xs font-semibold leading-relaxed tracking-tight border shadow-xs"
+            style={{
+              background: isEnterprise
+                ? "rgba(255,255,255,0.04)"
+                : tier.popular
+                ? "rgba(26,86,219,0.04)"
+                : "rgba(15,14,13,0.02)",
+              color: isEnterprise
+                ? "#FFFFFF"
+                : tier.popular
+                ? "#1A56DB"
+                : "#0F0E0D",
+              borderColor: isEnterprise
+                ? "rgba(255,255,255,0.08)"
+                : tier.popular
+                ? "rgba(26,86,219,0.12)"
+                : "#E8E6E1",
+            }}
+          >
+            {outcomeHighlight}
+          </div>
+        )}
+
         {/* CTA */}
         <a
           href={finalHref}
@@ -340,6 +395,7 @@ export function PricingCard({
               f={f}
               popular={tier.popular}
               dark={isEnterprise}
+              onFeatureClick={onFeatureClick}
             />
           ))}
         </ul>
