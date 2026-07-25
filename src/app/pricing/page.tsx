@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { MessageCircle, Zap, Globe, Check, X } from "lucide-react";
+import { MessageCircle, Zap, Globe, Check, X, PhoneCall, HelpCircle } from "lucide-react";
 import { PageHero } from "@/components/ui/page-hero";
 import { Reveal } from "@/components/ui/reveal";
 import { PricingCard } from "@/components/pricing/pricing-card";
@@ -14,8 +14,11 @@ import {
 import {
   PRICING_AGENTS,
   PRICING_WEBSITES,
+  PRICING_MARKETING,
+  PRICING_CONTENT,
   PRICING_ADDONS,
   PRICING_FAQ,
+  waLink,
 } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -182,11 +185,160 @@ const FEATURE_DETAILS: Record<string, FeatureDetail> = {
       "Triggers more phone call leads directly from search",
       "Creates the foundation for local SEO reviews"
     ]
+  },
+
+  // Marketing & Growth features:
+  "SEO Audit & On-page Optimization": {
+    outcome: "Get found where your customers are searching.",
+    description: "Complete technical and on-page SEO audit with actionable recommendations. Covers site speed, meta tags, schema markup, heading structure, and keyword targeting.",
+    benefits: [
+      "Identifies quick wins for immediate ranking improvements",
+      "Comprehensive technical health check",
+      "Keyword gap analysis against competitors"
+    ]
+  },
+  "Content Calendar (1 platform)": {
+    outcome: "Stay consistently visible on your primary channel.",
+    description: "A structured monthly content plan for one social platform with post topics, formats, and scheduling.",
+    benefits: [
+      "Never run out of content ideas",
+      "Consistent brand presence builds trust",
+      "Aligned with SEO and business goals"
+    ]
+  },
+  "Content Calendar (3 platforms)": {
+    outcome: "Multi-channel presence that drives leads everywhere.",
+    description: "Strategic content calendars across three platforms (e.g. Instagram, LinkedIn, YouTube) with cross-platform repurposing.",
+    benefits: [
+      "3x the reach with coordinated messaging",
+      "Platform-specific content optimization",
+      "Weekly scheduling and performance tracking"
+    ]
+  },
+  "Content Calendar (all platforms)": {
+    outcome: "Full omnichannel content domination.",
+    description: "Comprehensive content strategy across all relevant platforms with dedicated production and scheduling.",
+    benefits: [
+      "Complete brand presence across every channel",
+      "Dedicated content team managing output",
+      "Real-time trend integration and pivoting"
+    ]
+  },
+  "Google / Meta Ads Management": {
+    outcome: "Turn ad spend into qualified leads.",
+    description: "Full-service Google Ads and Meta (Facebook/Instagram) campaign management including targeting, creative, A/B testing, and budget optimization.",
+    benefits: [
+      "Data-driven targeting reduces wasted spend",
+      "Continuous A/B testing improves conversion rates",
+      "Monthly reporting with clear ROI metrics"
+    ]
+  },
+  "Email Marketing Automation": {
+    outcome: "Nurture leads while you sleep.",
+    description: "Automated email sequences for lead nurturing, onboarding, re-engagement, and promotional campaigns.",
+    benefits: [
+      "Drip sequences that convert over time",
+      "Segmented lists for personalized messaging",
+      "Automated triggers based on user behavior"
+    ]
+  },
+  "Monthly Performance Reports": {
+    outcome: "Know exactly what's working and what's not.",
+    description: "Detailed monthly analytics reports covering traffic, conversions, ad performance, and growth metrics with actionable insights.",
+    benefits: [
+      "Clear visibility into ROI of every channel",
+      "Data-backed recommendations for next month",
+      "Executive summary format for quick review"
+    ]
+  },
+  "Dedicated Strategist": {
+    outcome: "A growth partner, not just a vendor.",
+    description: "A dedicated marketing strategist who understands your business, sets quarterly goals, and proactively recommends optimizations.",
+    benefits: [
+      "Single point of contact for all marketing",
+      "Proactive strategy adjustments based on data",
+      "Quarterly planning sessions and reviews"
+    ]
+  },
+
+  // Content & Copy features:
+  "Website Copy (homepage or landing page)": {
+    outcome: "Words that convert visitors into customers.",
+    description: "Professional conversion-focused copywriting for your homepage or landing page. Includes headline, value proposition, feature sections, and CTAs.",
+    benefits: [
+      "Conversion-optimized messaging framework",
+      "Brand voice development included",
+      "A/B testable headline variants"
+    ]
+  },
+  "Blog Content (4 SEO articles)": {
+    outcome: "Rank for keywords your customers are searching.",
+    description: "Four professionally written, SEO-optimized blog articles per project targeting your key search terms.",
+    benefits: [
+      "Keyword-targeted for organic traffic",
+      "Establishes thought leadership",
+      "Internal linking strategy included"
+    ]
+  },
+  "Blog Content (8 SEO articles/mo)": {
+    outcome: "Consistent content engine that drives organic growth.",
+    description: "Eight SEO articles per month with an editorial calendar aligned to your business goals and search opportunities.",
+    benefits: [
+      "Doubles your content output",
+      "Monthly editorial calendar provided",
+      "Performance tracking on each article"
+    ]
+  },
+  "Blog Content (unlimited)": {
+    outcome: "Dominate your niche with content at scale.",
+    description: "Unlimited blog content production with a dedicated writing team and editorial oversight.",
+    benefits: [
+      "Scale content without hiring writers",
+      "Full editorial team managing quality",
+      "Rapid response to trending topics"
+    ]
+  },
+  "Email Sequences": {
+    outcome: "Automated emails that sell while you sleep.",
+    description: "Strategic email sequence copywriting for onboarding, nurture, re-engagement, and promotional campaigns.",
+    benefits: [
+      "Conversion-optimized subject lines and CTAs",
+      "Segmentation strategy included",
+      "A/B testing recommendations"
+    ]
+  },
+  "Social Media Copy": {
+    outcome: "Scroll-stopping posts that build your brand.",
+    description: "Platform-native social media copy including captions, hashtag strategies, and content hooks.",
+    benefits: [
+      "Platform-specific optimization",
+      "Consistent brand voice across channels",
+      "Engagement-focused writing style"
+    ]
+  },
+  "Content Strategy": {
+    outcome: "A roadmap that turns content into revenue.",
+    description: "Comprehensive content strategy including audience research, keyword mapping, content pillars, and distribution plan.",
+    benefits: [
+      "Data-driven content decisions",
+      "Clear content-to-conversion pathway",
+      "Quarterly strategy reviews and pivots"
+    ]
+  },
+  "Revisions": {
+    outcome: "We iterate until it's perfect.",
+    description: "Revision rounds to refine and polish all deliverables until they match your vision and brand standards.",
+    benefits: [
+      "Collaborative feedback process",
+      "Quick turnaround on revisions",
+      "Final approval before any publication"
+    ]
   }
 };
 
 export default function PricingPage() {
-  const [isINR, setIsINR] = useState<boolean>(true);
+  // Default to USD ($) for international B2B positioning as per pricing-strategy.md
+  const [isINR, setIsINR] = useState<boolean>(false);
   const [isAnnual, setIsAnnual] = useState<boolean>(false);
   const [currencyReady, setCurrencyReady] = useState<boolean>(false);
   const [activeFeature, setActiveFeature] = useState<string | null>(null);
@@ -200,19 +352,9 @@ export default function PricingPage() {
         return;
       }
 
-      try {
-        const res = await fetch("https://ip-api.com/json/?fields=countryCode");
-        if (res.ok) {
-          const data = await res.json();
-          if (data && data.countryCode) {
-            setIsINR(data.countryCode === "IN");
-          }
-        }
-      } catch (err) {
-        console.error("Geo IP failed, defaulting to INR", err);
-      } finally {
-        setCurrencyReady(true);
-      }
+      // Default to USD ($) internationally, or INR if local preference saved
+      setIsINR(false);
+      setCurrencyReady(true);
     }
 
     initCurrency();
@@ -232,15 +374,15 @@ export default function PricingPage() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Determine helper descriptions for highlights
+  // Determine helper outcome descriptions matching pricing-strategy.md
   const getOutcomeHighlight = (tierName: string) => {
     switch (tierName) {
       case "Starter":
-        return "Costs less than a receptionist & works 24/7";
+        return "Single-workflow agent (1 WhatsApp responder or lead capture flow)";
       case "Growth":
-        return "Typically pays for itself with 2–5 new clients/mo";
+        return "Multi-step agent connected to CRM + WhatsApp + Calendar + Reviews";
       case "Enterprise":
-        return "Dedicated AI pipelines, custom workflows & SLAs";
+        return "Multi-agent systems, custom LLM integration & dedicated SLA";
       default:
         return undefined;
     }
@@ -249,38 +391,62 @@ export default function PricingPage() {
   const getWebsiteOutcomeHighlight = (tierName: string) => {
     switch (tierName) {
       case "Starter":
-        return "Launch online in 7 days with active lead capture";
-      case "Standard":
-        return "Built for search ranks & local customer calls";
-      case "Premium":
-        return "Interactive web presence with integrated AI chat";
+        return "Single landing page or 3–5 page site, live in 7 days";
+      case "Growth":
+        return "Full custom Next.js web application with CMS & lead funnels";
+      case "Enterprise":
+        return "SaaS MVP, complex backend & white-label agency retainers";
       default:
         return undefined;
     }
   };
 
+  const getMarketingOutcomeHighlight = (tierName: string) => {
+    switch (tierName) {
+      case "Starter":
+        return "One channel — SEO, ads, or social media setup & management";
+      case "Growth":
+        return "Multi-channel: SEO + email + social + ads with monthly reports";
+      case "Enterprise":
+        return "Full-service growth retainer with dedicated strategy team";
+      default:
+        return undefined;
+    }
+  };
+
+  const getContentOutcomeHighlight = (tierName: string) => {
+    switch (tierName) {
+      case "Starter":
+        return "Single deliverable — landing page copy, blog batch, or email sequence";
+      case "Growth":
+        return "Ongoing multi-format content production with editorial calendar";
+      case "Enterprise":
+        return "Full content system — strategy + production + distribution";
+      default:
+        return undefined;
+    }
+  };
+
+  const JUMP_LINKS = [
+    { id: "one-time", label: "Websites" },
+    { id: "recurring", label: "AI Agents" },
+    { id: "marketing", label: "Marketing" },
+    { id: "content", label: "Content" },
+  ];
+
   return (
     <>
       <PageHero
-        kicker="Pricing"
-        title={<>Transparent pricing. <span className="text-primary">No surprises.</span></>}
-        description="Everything is public. Pick what your business needs, upgrade anytime, cancel anytime."
+        kicker="Pricing Strategy & Models"
+        title={<>Transparent pricing. <span className="text-primary">Built for scale.</span></>}
+        description="Clear starter entry points, standard growth suites, and custom enterprise builds. No hidden fees."
       />
 
       <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-20 flex flex-col gap-24 relative">
 
-        {/* Toggles */}
+        {/* Currency & Billing Toggles */}
         <div className="flex flex-col items-center justify-center gap-8 mb-4">
           <div className="flex items-center rounded-full border border-[#E8E6E1] bg-white p-1 shadow-sm">
-            <button
-              onClick={() => toggleCurrency("INR")}
-              className={cn(
-                "px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer",
-                isINR ? "bg-[#1A56DB] text-white shadow-md" : "text-[#6B6860] hover:text-[#0F0E0D]"
-              )}
-            >
-              🇮🇳 INR (₹)
-            </button>
             <button
               onClick={() => toggleCurrency("USD")}
               className={cn(
@@ -289,7 +455,16 @@ export default function PricingPage() {
               )}
             >
               <Globe className="w-4 h-4" />
-              USD ($)
+              USD ($) International
+            </button>
+            <button
+              onClick={() => toggleCurrency("INR")}
+              className={cn(
+                "px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer",
+                isINR ? "bg-[#1A56DB] text-white shadow-md" : "text-[#6B6860] hover:text-[#0F0E0D]"
+              )}
+            >
+              🇮🇳 INR (₹)
             </button>
           </div>
 
@@ -315,6 +490,19 @@ export default function PricingPage() {
               </span>
             </span>
           </div>
+
+          {/* Jump Links */}
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            {JUMP_LINKS.map((link) => (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                className="inline-flex items-center rounded-full border border-[#E8E6E1] bg-white px-4 py-1.5 text-xs font-semibold text-[#6B6860] transition-all hover:border-[#1A56DB] hover:text-[#1A56DB] hover:shadow-sm"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
         </div>
 
         {/* ROI Stats */}
@@ -338,14 +526,67 @@ export default function PricingPage() {
           </div>
         </Reveal>
 
-        {/* AI Agent Bundles (Recurring) */}
+        {/* Web & Product Development (Scoped Builds) */}
+        <Reveal>
+          <div id="one-time">
+            <div className="mb-10 text-center">
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB] mb-3">Web & Product Development</p>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-[#0F0E0D]">Custom Web Applications & Next.js Builds</h2>
+              <p className="mt-3 text-base text-[#6B6860] max-w-md mx-auto tracking-tight">
+                Mobile-first, SEO-ready, high-conversion web platforms built to scale.
+              </p>
+            </div>
+            <div className="grid items-stretch gap-4 md:grid-cols-3">
+              {PRICING_WEBSITES.tiers.map((tier) => {
+                const displayPrice = isINR ? tier.pricing.inr : tier.pricing.usd;
+                const currencyLabel = isINR ? "INR" : "USD";
+                
+                const ctaMessage = `Hi NextScale! I'm interested in building a website with you using the ${tier.name} tier. [Details: ${currencyLabel} pricing, ${displayPrice}]. Please share the next steps.`;
+
+                return (
+                  <PricingCard
+                    key={tier.name}
+                    tier={tier}
+                    isEnterprise={tier.name === "Enterprise"}
+                    loading={!currencyReady}
+                    displayPrice={String(displayPrice)}
+                    displayPeriod={tier.pricing.period}
+                    ctaLabel={tier.name === "Enterprise" ? "Talk to Us →" : "Build My Website"}
+                    ctaMessage={ctaMessage}
+                    outcomeHighlight={getWebsiteOutcomeHighlight(tier.name)}
+                    onFeatureClick={(featureName) => setActiveFeature(featureName)}
+                  />
+                );
+              })}
+            </div>
+
+            {/* Persistent Guidance Box */}
+            <div className="mt-8 rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50/80 via-white to-purple-50/80 p-6 text-center shadow-xs">
+              <p className="text-sm font-semibold text-[#0F0E0D]">
+                &ldquo;Not sure which fits? Tell us your budget and goals — we&apos;ll recommend the right scope, no upsell pressure.&rdquo;
+              </p>
+              <div className="mt-3">
+                <a
+                  href={waLink("Hi NextScale! I'm evaluating web dev options and not sure which tier fits my business. Can we talk about custom scoping?")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#1A56DB] px-5 py-2 text-xs font-bold text-white transition-all hover:bg-[#1447C0]"
+                >
+                  Talk to Us →
+                </a>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+
+        {/* AI Agents & Automation (Recurring / Retainers) */}
         <Reveal>
           <div id="recurring">
             <div className="mb-10 text-center">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB] mb-3">AI Automation Plans</p>
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-[#0F0E0D]">Your 24/7 AI-powered team</h2>
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB] mb-3">AI Agents & Automation</p>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-[#0F0E0D]">24/7 Autonomous Software Agents</h2>
               <p className="mt-3 text-base text-[#6B6860] max-w-md mx-auto tracking-tight">
-                Full AI automation systems for your business. Cancel any time.
+                Autonomous AI receptionist, booking & lead qualification systems.
               </p>
             </div>
             <div className="grid items-stretch gap-4 md:grid-cols-3">
@@ -353,16 +594,16 @@ export default function PricingPage() {
                 const currencyObj = isINR ? tier.pricing.inr : tier.pricing.usd;
                 const rawPrice = isAnnual ? (currencyObj.annual ?? currencyObj.monthly) : currencyObj.monthly;
                 const displayPrice = String(rawPrice);
-                const isCustomPrice = displayPrice === "Custom";
+                const isCustomPrice = displayPrice.includes("Custom");
                 const displayPeriod = isCustomPrice ? undefined : "/month";
                 
                 // Calculate dynamic annual savings label
                 let savingsText = undefined;
                 if (isAnnual && tier.name !== "Enterprise") {
                   if (tier.name === "Starter") {
-                    savingsText = isINR ? "Save ₹24,000/year" : "Save $1,200/year";
+                    savingsText = isINR ? "Save ₹60,000/year" : "Save $1,800/year";
                   } else if (tier.name === "Growth") {
-                    savingsText = isINR ? "Save ₹50,000/year" : "Save $3,000/year";
+                    savingsText = isINR ? "Save ₹1,80,000/year" : "Save $6,000/year";
                   }
                 }
 
@@ -374,14 +615,14 @@ export default function PricingPage() {
                 const billingCycle = isAnnual ? "Annual" : "Monthly";
                 
                 const ctaMessage = isCustomPrice
-                  ? `Hi Next Scale! I'm interested in the Enterprise AI Automation Plan. Let's discuss custom integration needs, volume, and specifications for my business.`
-                  : `Hi Next Scale! I'm interested in subscribing to the ${tier.name} AI Automation Plan. [Details: ${currencyLabel} pricing, ${displayPrice}/month under ${billingCycle} billing]. Please let me know how to proceed.`;
+                  ? `Hi NextScale! I'm interested in the Enterprise AI Agent System. Let's discuss custom integration needs, volume, and specifications for my business.`
+                  : `Hi NextScale! I'm interested in subscribing to the ${tier.name} AI Agent Tier. [Details: ${currencyLabel} pricing, ${displayPrice} under ${billingCycle} billing]. Please let me know how to proceed.`;
 
                 let ctaHref = undefined;
                 if (isCustomPrice) {
                   ctaHref = isINR 
                     ? `https://wa.me/919556436685?text=${encodeURIComponent(ctaMessage)}`
-                    : `mailto:biz.abhisek@gmail.com?subject=Enterprise%20AI%20Automation%20Plan%20Inquiry&body=${encodeURIComponent(ctaMessage)}`;
+                    : `mailto:biz.abhisek@gmail.com?subject=Enterprise%20AI%20Agent%20Plan%20Inquiry&body=${encodeURIComponent(ctaMessage)}`;
                 }
 
                 return (
@@ -393,7 +634,7 @@ export default function PricingPage() {
                     displayPrice={displayPrice}
                     displayPeriod={displayPeriod}
                     displaySetupFee={displaySetupFee}
-                    ctaLabel={currencyObj.ctaLabel ?? "Get started"}
+                    ctaLabel={currencyObj.ctaLabel ?? "Get Started"}
                     ctaHref={ctaHref}
                     ctaMessage={ctaMessage}
                     outcomeHighlight={getOutcomeHighlight(tier.name)}
@@ -402,40 +643,155 @@ export default function PricingPage() {
                 );
               })}
             </div>
+
+            {/* Persistent Guidance Box */}
+            <div className="mt-8 rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50/80 via-white to-purple-50/80 p-6 text-center shadow-xs">
+              <p className="text-sm font-semibold text-[#0F0E0D]">
+                &ldquo;Not sure which fits? Tell us your budget and goals — we&apos;ll recommend the right scope, no upsell pressure.&rdquo;
+              </p>
+              <div className="mt-3">
+                <a
+                  href={waLink("Hi NextScale! I'm evaluating AI agent deployment and not sure which tier fits my workflow. Can we talk about custom scoping?")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#1A56DB] px-5 py-2 text-xs font-bold text-white transition-all hover:bg-[#1447C0]"
+                >
+                  Talk to Us →
+                </a>
+              </div>
+            </div>
           </div>
         </Reveal>
 
-        {/* Website Packages (One-Time) */}
+        {/* Marketing & Growth */}
         <Reveal>
-          <div id="one-time">
+          <div id="marketing">
             <div className="mb-10 text-center">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB] mb-3">Website Packages</p>
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-[#0F0E0D]">Launch your business online in 7 days</h2>
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB] mb-3">Marketing & Growth</p>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-[#0F0E0D]">Digital Marketing & Growth Engine</h2>
               <p className="mt-3 text-base text-[#6B6860] max-w-md mx-auto tracking-tight">
-                Mobile-first, SEO-ready, built to convert.
+                SEO, paid ads, email automation, and social media — managed end to end.
               </p>
             </div>
             <div className="grid items-stretch gap-4 md:grid-cols-3">
-              {PRICING_WEBSITES.tiers.map((tier) => {
-                const displayPrice = isINR ? tier.pricing.inr : tier.pricing.usd;
+              {PRICING_MARKETING.tiers.map((tier) => {
+                const currencyObj = isINR ? tier.pricing.inr : tier.pricing.usd;
+                const rawPrice = isAnnual ? (currencyObj.annual ?? currencyObj.monthly) : currencyObj.monthly;
+                const displayPrice = String(rawPrice);
+                const isCustomPrice = displayPrice.includes("Custom");
+                const displayPeriod = isCustomPrice ? undefined : "/month";
+
+                let savingsText = undefined;
+                if (isAnnual && tier.name !== "Enterprise") {
+                  if (tier.name === "Starter") {
+                    savingsText = isINR ? "Save ₹60,000/year" : "Save $840/year";
+                  } else if (tier.name === "Growth") {
+                    savingsText = isINR ? "Save ₹1,80,000/year" : "Save $3,000/year";
+                  }
+                }
+
+                const displaySetupFee = isAnnual && currencyObj.annualBilled
+                  ? `Billed ${currencyObj.annualBilled}/year${savingsText ? ` · ${savingsText}` : ""}`
+                  : currencyObj.setupFee ?? undefined;
+
                 const currencyLabel = isINR ? "INR" : "USD";
-                
-                const ctaMessage = `Hi Next Scale! I'm interested in building a website with you using the ${tier.name} Website Package. [Details: ${currencyLabel} pricing, ${displayPrice} one-time investment]. Please share the next steps.`;
+                const billingCycle = isAnnual ? "Annual" : "Monthly";
+
+                const ctaMessage = isCustomPrice
+                  ? `Hi NextScale! I'm interested in Enterprise Marketing & Growth services. Let's discuss my business goals and growth strategy.`
+                  : `Hi NextScale! I'm interested in the ${tier.name} Marketing & Growth plan. [Details: ${currencyLabel} pricing, ${displayPrice} under ${billingCycle} billing]. Please share the next steps.`;
 
                 return (
                   <PricingCard
                     key={tier.name}
                     tier={tier}
+                    isEnterprise={tier.name === "Enterprise"}
                     loading={!currencyReady}
-                    displayPrice={String(displayPrice)}
-                    displayPeriod={tier.pricing.period}
-                    ctaLabel="Build my website"
+                    displayPrice={displayPrice}
+                    displayPeriod={displayPeriod}
+                    displaySetupFee={displaySetupFee}
+                    ctaLabel={currencyObj.ctaLabel ?? "Get Started"}
                     ctaMessage={ctaMessage}
-                    outcomeHighlight={getWebsiteOutcomeHighlight(tier.name)}
+                    outcomeHighlight={getMarketingOutcomeHighlight(tier.name)}
                     onFeatureClick={(featureName) => setActiveFeature(featureName)}
                   />
                 );
               })}
+            </div>
+
+            {/* Guidance Box */}
+            <div className="mt-8 rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50/80 via-white to-purple-50/80 p-6 text-center shadow-xs">
+              <p className="text-sm font-semibold text-[#0F0E0D]">
+                &ldquo;Not sure which marketing package fits? Tell us your goals and budget — we&apos;ll recommend the right plan.&rdquo;
+              </p>
+              <div className="mt-3">
+                <a
+                  href={waLink("Hi NextScale! I'm evaluating marketing options and need help choosing the right plan for my business. Can we talk?")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#1A56DB] px-5 py-2 text-xs font-bold text-white transition-all hover:bg-[#1447C0]"
+                >
+                  Talk to Us →
+                </a>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+
+        {/* Content & Copy */}
+        <Reveal>
+          <div id="content">
+            <div className="mb-10 text-center">
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB] mb-3">Content & Copywriting</p>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-[#0F0E0D]">Words That Convert</h2>
+              <p className="mt-3 text-base text-[#6B6860] max-w-md mx-auto tracking-tight">
+                Website copy, blog content, email sequences & social media — written to sell.
+              </p>
+            </div>
+            <div className="grid items-stretch gap-4 md:grid-cols-3">
+              {PRICING_CONTENT.tiers.map((tier) => {
+                const displayPrice = isINR ? String(tier.pricing.inr) : String(tier.pricing.usd);
+                const isCustomPrice = displayPrice.includes("Custom");
+                const displayPeriod = isCustomPrice ? undefined : tier.pricing.period;
+
+                const currencyLabel = isINR ? "INR" : "USD";
+
+                const ctaMessage = isCustomPrice
+                  ? `Hi NextScale! I'm interested in Enterprise Content & Copywriting services. Let's discuss the scope for my business.`
+                  : `Hi NextScale! I'm interested in the ${tier.name} Content & Copy plan. [Details: ${currencyLabel} pricing, ${displayPrice} ${tier.pricing.period}]. Please share the next steps.`;
+
+                return (
+                  <PricingCard
+                    key={tier.name}
+                    tier={tier}
+                    isEnterprise={tier.name === "Enterprise"}
+                    loading={!currencyReady}
+                    displayPrice={displayPrice}
+                    displayPeriod={displayPeriod}
+                    ctaLabel={tier.name === "Enterprise" ? "Talk to Us →" : "Get Started"}
+                    ctaMessage={ctaMessage}
+                    outcomeHighlight={getContentOutcomeHighlight(tier.name)}
+                    onFeatureClick={(featureName) => setActiveFeature(featureName)}
+                  />
+                );
+              })}
+            </div>
+
+            {/* Guidance Box */}
+            <div className="mt-8 rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50/80 via-white to-purple-50/80 p-6 text-center shadow-xs">
+              <p className="text-sm font-semibold text-[#0F0E0D]">
+                &ldquo;Need a content sample first? We&apos;ll write a free 200-word sample in your brand voice — no commitment.&rdquo;
+              </p>
+              <div className="mt-3">
+                <a
+                  href={waLink("Hi NextScale! I'd like a free content sample before committing. Can you share a 200-word sample in my brand voice?")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#1A56DB] px-5 py-2 text-xs font-bold text-white transition-all hover:bg-[#1447C0]"
+                >
+                  Request Free Sample →
+                </a>
+              </div>
             </div>
           </div>
         </Reveal>
@@ -472,7 +828,7 @@ export default function PricingPage() {
           </div>
         </Reveal>
 
-        {/* Custom */}
+        {/* Custom Enterprise Banner */}
         <Reveal>
           <div
             className="relative overflow-hidden rounded-3xl border border-[#E8E6E1] bg-white p-10 text-center shadow-sm"
@@ -482,17 +838,17 @@ export default function PricingPage() {
               <span className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider mb-4 bg-blue-50 text-[#1A56DB] border border-blue-100"
               >
                 <Zap className="size-3" />
-                Enterprise
+                Enterprise Solutions
               </span>
               <h3 className="text-2xl font-bold tracking-tight text-[#0F0E0D]">Need something custom?</h3>
               <p className="mt-3 text-[#6B6860] max-w-sm mx-auto text-sm leading-relaxed tracking-tight">
-                Multi-location, high volume, or something we haven't thought of yet — let's talk.
+                Multi-location, high volume, or custom workflow builds — let's talk.
               </p>
               <a
                 href={
                   isINR
-                    ? `https://wa.me/919556436685?text=${encodeURIComponent("Hi Next Scale! I'm interested in a custom enterprise solution. I would like to talk about custom automation integrations and scaling digital presence for my business.")}`
-                    : `mailto:biz.abhisek@gmail.com?subject=Custom%20Enterprise%20Integration%20Inquiry&body=${encodeURIComponent("Hi Next Scale! I'm interested in a custom enterprise solution. I would like to talk about custom automation integrations and scaling digital presence for my business.")}`
+                    ? `https://wa.me/919556436685?text=${encodeURIComponent("Hi NextScale! I'm interested in a custom enterprise solution. I would like to talk about custom automation integrations and scaling digital presence for my business.")}`
+                    : `mailto:biz.abhisek@gmail.com?subject=Custom%20Enterprise%20Integration%20Inquiry&body=${encodeURIComponent("Hi NextScale! I'm interested in a custom enterprise solution. I would like to talk about custom automation integrations and scaling digital presence for my business.")}`
                 }
                 target="_blank"
                 rel="noopener noreferrer"

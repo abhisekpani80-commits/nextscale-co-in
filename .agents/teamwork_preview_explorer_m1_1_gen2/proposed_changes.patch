@@ -1,0 +1,228 @@
+diff --git a/src/app/globals.css b/src/app/globals.css
+index a412c9b..b95c328 100644
+--- a/src/app/globals.css
++++ b/src/app/globals.css
+@@ -53,6 +53,6 @@
+ /*
+-  Brand palette — "Engineered nightfall".
+-  Near-black cool canvas, electric-cyan primary, a magenta accent that
+-  echoes the hero shader. Both :root and .dark carry the dark values so
+-  there is no flash and shadcn's dark: utilities stay active.
++  Brand palette — "Engineered Daybreak" / "Light Neutral Palette".
++  A crisp light neutral background canvas, dark slate/charcoal foreground text for readability,
++  and a deep professional primary accent. Both :root and .dark carry the light values so
++  there is no flash and standard theme variables remain active.
+ */
+@@ -130,5 +130,3 @@
+   .text-glow {
+-    text-shadow:
+-      0 0 24px color-mix(in oklch, var(--primary) 55%, transparent),
+-      0 0 64px color-mix(in oklch, var(--primary) 25%, transparent);
++    text-shadow: none;
+   }
+
+diff --git a/playwright.config.ts b/playwright.config.ts
+index c92db33..fb36d01 100644
+--- a/playwright.config.ts
++++ b/playwright.config.ts
+@@ -37,3 +37,3 @@ export default defineConfig({
+   webServer: {
+-    command: 'npm run dev',
++    command: 'npm run build && npm run start',
+     url: 'http://localhost:3000',
+@@ -40,3 +40,3 @@ export default defineConfig({
+     reuseExistingServer: !process.env.CI,
+-    timeout: 120000,
++    timeout: 180000,
+   },
+
+diff --git a/src/components/layout/PillNav.tsx b/src/components/layout/PillNav.tsx
+index 4b95f2d..3f8d9b8 100644
+--- a/src/components/layout/PillNav.tsx
++++ b/src/components/layout/PillNav.tsx
+@@ -28,6 +28,6 @@ const PillNav = ({
+   ease = 'power3.easeOut',
+-  baseColor = '#0d1016',
+-  pillColor = '#161a23',
+-  hoveredPillTextColor = '#06080c',
+-  pillTextColor = '#94a3b8',
++  baseColor = 'var(--background)',
++  pillColor = 'var(--primary)',
++  hoveredPillTextColor = 'var(--primary-foreground)',
++  pillTextColor = 'var(--muted-foreground)',
+   initialLoadAnimation = true
+
+diff --git a/src/components/layout/PillNav.css b/src/components/layout/PillNav.css
+index e56b823..9a1c8f3 100644
+--- a/src/components/layout/PillNav.css
++++ b/src/components/layout/PillNav.css
+@@ -45,3 +45,3 @@
+   padding: 0.6rem 1rem;
+-  background: rgba(10, 12, 16, 0.96);
++  background: rgba(var(--background), 0.96);
+   backdrop-filter: blur(24px) saturate(180%);
+@@ -48,3 +48,3 @@
+   -webkit-backdrop-filter: blur(24px) saturate(180%);
+-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
++  border-bottom: 1px solid var(--border);
+   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+@@ -58,4 +58,4 @@
+   height: var(--nav-h);
+-  background: rgba(22, 28, 38, 0.85);
++  background: rgba(var(--background), 0.85);
+   border-radius: 9999px;
+-  border: 1px solid rgba(255, 255, 255, 0.08);
++  border: 1px solid var(--border);
+   backdrop-filter: blur(20px) saturate(180%);
+@@ -65,3 +65,3 @@
+     0 8px 32px 0 rgba(0, 0, 0, 0.37),
+-    inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
++    inset 0 1px 0 0 var(--border);
+ }
+@@ -73,4 +73,4 @@
+   padding: 0 14px 0 8px;
+   border-radius: 9999px;
+-  background: rgba(22, 28, 38, 0.85);
+-  border: 1px solid rgba(255, 255, 255, 0.08);
++  background: rgba(var(--background), 0.85);
++  border: 1px solid var(--border);
+   display: inline-flex;
+@@ -82,3 +82,3 @@
+     0 8px 32px 0 rgba(0, 0, 0, 0.37),
+-    inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
++    inset 0 1px 0 0 var(--border);
+   text-decoration: none;
+@@ -101,3 +101,3 @@
+   letter-spacing: 0.06em;
+-  color: #ffffff;
++  color: var(--foreground);
+   white-space: nowrap;
+@@ -106,3 +106,3 @@
+ .pill-logo:hover {
+-  border-color: rgba(39, 208, 237, 0.3);
++  border-color: var(--primary);
+   box-shadow: 
+@@ -110,2 +110,2 @@
+     0 8px 32px 0 rgba(39, 208, 237, 0.1),
+-    inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
++    inset 0 1px 0 0 var(--border);
+ }
+@@ -134,3 +134,3 @@
+   background: transparent;
+-  color: #94a3b8;
++  color: var(--muted-foreground);
+   text-decoration: none;
+@@ -156,3 +156,3 @@
+   border-radius: 50%;
+-  background: #27d0ed;
++  background: var(--primary);
+   z-index: 1;
+@@ -182,3 +182,3 @@
+   top: 0;
+-  color: #06080c;
++  color: var(--primary-foreground);
+   z-index: 3;
+@@ -189,2 +189,2 @@
+ .pill.is-active {
+-  color: #27d0ed;
++  color: var(--primary);
+ }
+@@ -200,3 +200,3 @@
+   height: 4px;
+-  background: #27d0ed;
++  background: var(--primary);
+   border-radius: 50%;
+@@ -227,4 +227,4 @@
+   border-radius: 50%;
+-  background: rgba(22, 28, 38, 0.85);
+-  border: 1px solid rgba(255, 255, 255, 0.08);
++  background: rgba(var(--background), 0.85);
++  border: 1px solid var(--border);
+   display: none;
+@@ -241,3 +241,3 @@
+     0 8px 32px 0 rgba(0, 0, 0, 0.37),
+-    inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
++    inset 0 1px 0 0 var(--border);
+ }
+@@ -253,3 +253,3 @@
+   height: 2px;
+-  background: #27d0ed;
++  background: var(--primary);
+   border-radius: 1px;
+@@ -265,4 +265,4 @@
+   right: 0;
+-  background: rgba(10, 12, 16, 0.95);
+-  border: 1px solid rgba(255, 255, 255, 0.08);
++  background: rgba(var(--background), 0.95);
++  border: 1px solid var(--border);
+   backdrop-filter: blur(24px) saturate(180%);
+@@ -290,3 +290,3 @@
+   padding: 12px 16px;
+-  color: #94a3b8;
++  color: var(--muted-foreground);
+   background-color: transparent;
+@@ -304,3 +304,3 @@
+   cursor: pointer;
+-  background-color: rgba(39, 208, 237, 0.08);
+-  color: #27d0ed;
++  background-color: var(--accent);
++  color: var(--primary);
+ }
+
+diff --git a/src/components/layout/footer.tsx b/src/components/layout/footer.tsx
+index cb12a43..85bf4a9 100644
+--- a/src/components/layout/footer.tsx
++++ b/src/components/layout/footer.tsx
+@@ -59,3 +59,3 @@ function SocialButton({ s }: { s: typeof socials[number] }) {
+         className="grid size-9 place-items-center rounded-xl border text-muted-foreground transition-all duration-200 hover:border-primary/40 hover:text-primary hover:bg-primary/5"
+-        style={{ borderColor: "rgba(255,255,255,0.08)", background: "rgba(16,20,30,0.6)" }}
++        style={{ borderColor: "var(--border)", background: "var(--background)" }}
+       >
+@@ -67,5 +67,5 @@ function SocialButton({ s }: { s: typeof socials[number] }) {
+           className="absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-lg px-3 py-1.5 text-[11px] font-semibold tracking-wide pointer-events-none z-50 animate-fade-in"
+           style={{
+-            background: "rgba(14,18,28,0.97)",
+-            border: "1px solid rgba(39,208,237,0.25)",
+-            color: "#27d0ed",
+-            boxShadow: "0 4px 20px rgba(0,0,0,0.5)",
++            background: "var(--popover)",
++            border: "1px solid var(--border)",
++            color: "var(--primary)",
++            boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
+           }}
+@@ -82,6 +82,6 @@ export function Footer() {
+   return (
+-    <footer className="relative border-t" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
++    <footer className="relative border-t border-border bg-background">
+       {/* Subtle top glow */}
+       <div className="pointer-events-none absolute inset-x-0 top-0 h-px"
+-        style={{ background: "linear-gradient(90deg, transparent 0%, rgba(39,208,237,0.3) 50%, transparent 100%)" }} />
++        style={{ background: "linear-gradient(90deg, transparent 0%, var(--border) 50%, transparent 100%)" }} />
+ 
+@@ -93,3 +93,3 @@ export function Footer() {
+               <NextscaleLogo className="size-8 shrink-0" />
+-              <span className="text-[17px] font-bold tracking-[0.06em] text-white">
++              <span className="text-[17px] font-bold tracking-[0.06em] text-foreground">
+                 NEXTSCALE
+@@ -98,3 +98,3 @@ export function Footer() {
+ 
+-            <p className="mt-4 text-[13px] leading-relaxed text-white/35 tracking-[-0.01em]">
++            <p className="mt-4 text-[13px] leading-relaxed text-muted-foreground tracking-[-0.01em]">
+               AI products & digital infrastructure for ambitious businesses — from Odisha to the world.
+@@ -113,3 +113,3 @@ export function Footer() {
+                 <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-white/25">
+-                  {group.heading}
++                  {group.heading}
+                 </p>
+@@ -119,3 +119,3 @@ export function Footer() {
+                     href={item.href}
+-                    className="text-[13px] text-white/40 transition-colors duration-200 hover:text-white/80 tracking-[-0.01em]"
++                    className="text-[13px] text-muted-foreground transition-colors duration-200 hover:text-foreground tracking-[-0.01em]"
+                   >
+@@ -132,4 +132,4 @@ export function Footer() {
+         <div
+-          className="mt-12 flex flex-col gap-2 pt-6 text-[11px] text-white/20 sm:flex-row sm:items-center sm:justify-between"
+-          style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}
++          className="mt-12 flex flex-col gap-2 pt-6 text-[11px] text-muted-foreground sm:flex-row sm:items-center sm:justify-between"
++          style={{ borderTop: "1px solid var(--border)" }}
+         >

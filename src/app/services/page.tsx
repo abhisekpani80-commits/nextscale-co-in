@@ -1,15 +1,25 @@
-"use client";
-
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { pageMeta } from "@/lib/seo";
 import { PageHero } from "@/components/ui/page-hero";
-import { Reveal } from "@/components/ui/reveal";
-import { ServiceCardElectric, AgentCardSpot } from "@/components/services/cards";
-import { SERVICES, AGENTS, waLink } from "@/lib/site";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { ServicesCatalog } from "@/components/services/ServicesCatalog";
 import { JsonLd } from "@/components/seo/json-ld";
-import { breadcrumbSchema, serviceSchema } from "@/lib/seo";
+import { breadcrumbSchema } from "@/lib/seo";
+
+export const metadata = pageMeta({
+  title: "Services & Turnkey Packages — High-Impact Web & Business Systems",
+  description:
+    "Explore 100+ expert services & turnkey industry packages. Custom Next.js web development, process automation, content copywriting, voice production & 24/7 autonomous AI agents.",
+  path: "/services",
+  keywords: [
+    "Web Development Services India",
+    "Turnkey Industry Packages",
+    "Healthcare Clinic Web Suite",
+    "Real Estate Website Packages",
+    "Process Automation Agency",
+    "Autonomous AI Agents",
+    "Conversion Copywriting",
+    "Voiceover & Audio Production",
+  ],
+});
 
 export default function ServicesPage() {
   return (
@@ -20,60 +30,23 @@ export default function ServicesPage() {
             { name: "Home", path: "/" },
             { name: "Services", path: "/services" },
           ]),
-          ...SERVICES.map(serviceSchema),
         ]}
       />
+
       <PageHero
-        kicker="Our services"
-        title={<>Digital infrastructure for <span className="text-primary">every Indian business</span>.</>}
-        description="From AI agents that never sleep to websites live in a week. We solve the problems that hold small businesses back."
+        kicker="Full Agency & Technical Capabilities"
+        title={
+          <>
+            Digital infrastructure & turnkey suites for{" "}
+            <span className="text-[#1A56DB]">ambitious businesses worldwide</span>.
+          </>
+        }
+        description="From high-speed Next.js web applications and done-for-you conversion engines to 24/7 autonomous AI agents. Explore our complete service catalog."
       />
 
-      {/* Service categories — premium electric-border cards */}
-      <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-        <div className="grid gap-6 md:grid-cols-3">
-          {SERVICES.map((s, i) => (
-            <Reveal key={s.name} delay={i * 0.1}>
-              <ServiceCardElectric service={s} index={i} />
-            </Reveal>
-          ))}
-        </div>
-
-        {/* AI Agents preview */}
-        <div className="mt-24">
-          <Reveal>
-            <div className="flex items-end justify-between mb-8">
-              <div>
-                <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">AI Agents — preview</p>
-                <h2 className="mt-3 font-heading text-2xl font-semibold sm:text-3xl">Five agents, one WhatsApp number.</h2>
-              </div>
-              <Link href="/services/ai-agents" className="hidden sm:flex items-center gap-1.5 text-sm text-primary hover:underline">
-                See all agents <ArrowRight className="size-4" />
-              </Link>
-            </div>
-          </Reveal>
-
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {AGENTS.slice(0, 3).map((a, i) => (
-              <Reveal key={a.name} delay={i * 0.08}>
-                <AgentCardSpot agent={a} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-
-        {/* CTA */}
-        <Reveal className="mt-16 text-center">
-          <a
-            href={waLink("Hi! I'd like to discuss AI services for my business.")}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(buttonVariants({ variant: "default" }), "h-12 gap-2 px-8 text-base")}
-          >
-            Talk to us about your business
-            <ArrowRight className="size-4" />
-          </a>
-        </Reveal>
+      {/* Main Services Catalog & Interactive Navigator */}
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-20 lg:px-8">
+        <ServicesCatalog />
       </section>
     </>
   );

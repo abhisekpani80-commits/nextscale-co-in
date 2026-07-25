@@ -15,6 +15,7 @@ import {
   Shield,
   Rocket,
   Heart,
+  Layers,
   type LucideIcon,
 } from "lucide-react";
 
@@ -173,28 +174,36 @@ export type Service = {
 
 export const SERVICES: Service[] = [
   {
-    name: "AI Agents",
+    name: "Turnkey Industry Packages",
     description:
-      "WhatsApp AI that books, follows up and collects reviews — trained on your business.",
-    href: "/services/ai-agents",
-    icon: Bot,
-    points: ["24/7 WhatsApp receptionist", "Automated booking & reminders", "Review & lead automation"],
+      "Complete done-for-you digital suites for Healthcare, Real Estate, E-Commerce, SaaS & SMBs.",
+    href: "/services",
+    icon: Layers,
+    points: ["All-in-one digital suites", "Website + Automation + Copy", "Market rate pricing"],
   },
   {
-    name: "Websites",
+    name: "Websites & Applications",
     description:
-      "Custom-built business websites, live in 7 days. Mobile-first, SEO-ready, conversion-focused.",
+      "Custom Next.js business websites & SaaS frontends, live in 7 days. Mobile-first & SEO-ready.",
     href: "/services/websites",
     icon: Globe,
-    points: ["Live in 7 days", "WhatsApp + Maps + reviews", "SEO-optimized"],
+    points: ["Live in 7 days", "Next.js & React architecture", "SEO & Core Web Vitals"],
   },
   {
-    name: "Digital Growth",
+    name: "Process Automation",
     description:
-      "Google Business, local SEO and social presence that brings clients to your door.",
+      "Workflow automation, CRM sync, WhatsApp lead sequences, and document processing engines.",
     href: "/services/digital-growth",
     icon: TrendingUp,
-    points: ["Google Business setup", "Local SEO", "Monthly growth reports"],
+    points: ["n8n & Make workflows", "WhatsApp & CRM sync", "Document & RAG systems"],
+  },
+  {
+    name: "Autonomous AI Agents",
+    description:
+      "24/7 Intelligent software agents that book appointments, capture leads & triage support.",
+    href: "/services/ai-agents",
+    icon: Bot,
+    points: ["WhatsApp & Web agents", "Autonomous lead qualification", "24/7 Support triage"],
   },
 ];
 
@@ -255,7 +264,7 @@ export const PRICING_AGENTS = {
   tiers: [
     {
       name: "Starter",
-      description: "For solo founders and new businesses.",
+      description: "Single-workflow agent (1 WhatsApp responder or lead qualification flow).",
       popular: false,
       features: [
         { name: "WhatsApp AI Receptionist", included: true },
@@ -270,22 +279,22 @@ export const PRICING_AGENTS = {
       ],
       pricing: {
         inr: {
-          monthly: "₹11,999",
-          annual: "₹9,999",
-          annualBilled: "₹1,19,988",
-          setupFee: "₹4,999 setup"
+          monthly: "Starting at ₹24,999",
+          annual: "Starting at ₹19,999",
+          annualBilled: "₹2,39,988",
+          setupFee: "Setup included"
         },
         usd: {
-          monthly: "$599",
-          annual: "$499",
-          annualBilled: "$5,988",
-          setupFee: "$59 setup"
+          monthly: "Starting at $799",
+          annual: "Starting at $649",
+          annualBilled: "$7,788",
+          setupFee: "Setup included"
         }
       }
     },
     {
       name: "Growth",
-      description: "For growing businesses ready to scale.",
+      description: "Multi-step agent connected to 2–3 tools (CRM + WhatsApp + Calendar + Reviews).",
       popular: true,
       features: [
         { name: "WhatsApp AI Receptionist", included: true },
@@ -293,29 +302,29 @@ export const PRICING_AGENTS = {
         { name: "Smart Reminders", included: true },
         { name: "Follow-up Agent", included: true },
         { name: "Review Manager", included: true },
-        { name: "Lead Qualifier", included: false },
+        { name: "Lead Qualifier", included: true },
         { name: "Content Agent", included: false },
         { name: "Analytics Dashboard", value: "Advanced" },
         { name: "Support", value: "Priority" },
       ],
       pricing: {
         inr: {
-          monthly: "₹24,999",
-          annual: "₹20,833",
-          annualBilled: "₹2,49,996",
-          setupFee: "₹9,999 setup"
+          monthly: "Starting at ₹79,999",
+          annual: "Starting at ₹64,999",
+          annualBilled: "₹7,79,988",
+          setupFee: "Setup included"
         },
         usd: {
-          monthly: "$1,499",
-          annual: "$1,249",
-          annualBilled: "$14,988",
-          setupFee: "$119 setup"
+          monthly: "Starting at $2,999",
+          annual: "Starting at $2,499",
+          annualBilled: "$29,988",
+          setupFee: "Setup included"
         }
       }
     },
     {
       name: "Enterprise",
-      description: "For multi-location and high-volume businesses.",
+      description: "For multi-location businesses, custom LLM systems & multi-agent orchestration.",
       popular: false,
       features: [
         { name: "WhatsApp AI Receptionist", included: true },
@@ -325,23 +334,23 @@ export const PRICING_AGENTS = {
         { name: "Review Manager", included: true },
         { name: "Lead Qualifier", included: true },
         { name: "Content Agent", included: true },
-        { name: "Analytics Dashboard", value: "Full" },
-        { name: "Support", value: "Dedicated" },
+        { name: "Analytics Dashboard", value: "Full Enterprise" },
+        { name: "Support", value: "Dedicated SLA" },
       ],
       pricing: {
         inr: {
-          monthly: "Custom",
-          annual: "Custom",
-          setupFee: "Setup waived",
-          ctaLabel: "Let's talk",
-          ctaLink: "https://wa.me/919556436685?text=Hi,%20I'm%20interested%20in%20Enterprise%20pricing"
+          monthly: "Custom — Talk to Us",
+          annual: "Custom — Talk to Us",
+          setupFee: "Dedicated SLA",
+          ctaLabel: "Talk to Us →",
+          ctaLink: "https://wa.me/919556436685?text=Hi,%20I'm%20interested%20in%20Enterprise%20AI%20Agent%20pricing"
         },
         usd: {
-          monthly: "Custom",
-          annual: "Custom",
-          setupFee: "Setup waived",
-          ctaLabel: "Book a call",
-          ctaLink: "mailto:biz.abhisek@gmail.com?subject=Enterprise%20Pricing%20Inquiry"
+          monthly: "Custom — Talk to Us",
+          annual: "Custom — Talk to Us",
+          setupFee: "Dedicated SLA",
+          ctaLabel: "Talk to Us →",
+          ctaLink: "mailto:biz.abhisek@gmail.com?subject=Enterprise%20AI%20Agent%20Pricing%20Inquiry"
         }
       }
     },
@@ -352,62 +361,62 @@ export const PRICING_WEBSITES = {
   tiers: [
     {
       name: "Starter",
-      description: "Perfect for new businesses and solo professionals.",
+      description: "Single landing page or 3–5 page site. Template-based design, live in 7 days.",
       popular: false,
       features: [
-        { name: "Pages", value: "5 pages" },
+        { name: "Pages", value: "3–5 pages" },
         { name: "Domain", included: true },
-        { name: "Hosting", value: "Basic" },
+        { name: "Hosting", value: "Global CDN" },
         { name: "WhatsApp Integration", included: true },
         { name: "Google Maps & Reviews", included: true },
-        { name: "SEO Optimization", value: "Basic" },
+        { name: "SEO Optimization", value: "Standard" },
         { name: "AI Chatbot", included: false },
         { name: "Google Business Setup", included: false },
       ],
       pricing: {
-        inr: "₹19,999",
-        usd: "$499",
-        period: "1-year hosting"
+        inr: "Starting at ₹29,999",
+        usd: "Starting at $599",
+        period: "One-time build"
       }
     },
     {
-      name: "Standard",
-      description: "For growing businesses that need more reach.",
+      name: "Growth",
+      description: "Full custom Next.js website & CMS. Up to 10 pages, custom design & lead funnels.",
       popular: true,
       features: [
-        { name: "Pages", value: "8 pages" },
+        { name: "Pages", value: "Up to 10 pages" },
         { name: "Domain", included: true },
-        { name: "Hosting", value: "Premium" },
+        { name: "Hosting", value: "Enterprise CDN" },
         { name: "WhatsApp Integration", included: true },
         { name: "Google Maps & Reviews", included: true },
-        { name: "SEO Optimization", value: "Advanced" },
-        { name: "AI Chatbot", included: false },
-        { name: "Google Business Setup", included: true },
-      ],
-      pricing: {
-        inr: "₹39,999",
-        usd: "$999",
-        period: "1-year hosting"
-      }
-    },
-    {
-      name: "Premium",
-      description: "Full-featured site with AI chatbot and advanced SEO.",
-      popular: false,
-      features: [
-        { name: "Pages", value: "Full site" },
-        { name: "Domain", included: true },
-        { name: "Hosting", value: "Premium" },
-        { name: "WhatsApp Integration", included: true },
-        { name: "Google Maps & Reviews", included: true },
-        { name: "SEO Optimization", value: "Advanced" },
+        { name: "SEO Optimization", value: "Technical & On-page" },
         { name: "AI Chatbot", included: true },
         { name: "Google Business Setup", included: true },
       ],
       pricing: {
-        inr: "₹79,999",
-        usd: "$1,999",
-        period: "1-year hosting"
+        inr: "Starting at ₹89,999",
+        usd: "Starting at $2,499",
+        period: "One-time build"
+      }
+    },
+    {
+      name: "Enterprise",
+      description: "For multi-location businesses, agencies white-labeling & complex SaaS platforms.",
+      popular: false,
+      features: [
+        { name: "Pages", value: "Custom Web App / MVP" },
+        { name: "Domain", included: true },
+        { name: "Hosting", value: "Dedicated Cloud" },
+        { name: "WhatsApp Integration", included: true },
+        { name: "Google Maps & Reviews", included: true },
+        { name: "SEO Optimization", value: "Full Strategy & Audit" },
+        { name: "AI Chatbot", included: true },
+        { name: "Google Business Setup", included: true },
+      ],
+      pricing: {
+        inr: "Custom — Talk to Us",
+        usd: "Custom — Talk to Us",
+        period: "Scope based"
       }
     },
   ],
@@ -420,6 +429,154 @@ export const PRICING_ADDONS = [
   { name: "Annual Renewal & Support Basic", inr: "₹7,999/year", usd: "$99/year" },
   { name: "Annual Renewal & Support Premium", inr: "₹13,999/year", usd: "$175/year" },
 ];
+
+export const PRICING_MARKETING = {
+  tiers: [
+    {
+      name: "Starter",
+      description: "One channel — SEO content, a single ad platform, or social media setup & management.",
+      popular: false,
+      features: [
+        { name: "SEO Audit & On-page Optimization", included: true },
+        { name: "Google Business Setup", included: true },
+        { name: "Content Calendar (1 platform)", included: true },
+        { name: "Google / Meta Ads Management", included: false },
+        { name: "Email Marketing Automation", included: false },
+        { name: "Monthly Performance Reports", value: "Basic" },
+        { name: "Dedicated Strategist", included: false },
+      ],
+      pricing: {
+        inr: {
+          monthly: "Starting at ₹29,999",
+          annual: "Starting at ₹24,999",
+          annualBilled: "₹2,99,988",
+          setupFee: "No setup fee",
+        },
+        usd: {
+          monthly: "Starting at $399",
+          annual: "Starting at $329",
+          annualBilled: "$3,948",
+          setupFee: "No setup fee",
+        },
+      },
+    },
+    {
+      name: "Growth",
+      description: "Multi-channel: SEO + email + social + ads. Monthly reporting & campaign optimization.",
+      popular: true,
+      features: [
+        { name: "SEO Audit & On-page Optimization", included: true },
+        { name: "Google Business Setup", included: true },
+        { name: "Content Calendar (3 platforms)", included: true },
+        { name: "Google / Meta Ads Management", included: true },
+        { name: "Email Marketing Automation", included: true },
+        { name: "Monthly Performance Reports", value: "Advanced" },
+        { name: "Dedicated Strategist", included: true },
+      ],
+      pricing: {
+        inr: {
+          monthly: "Starting at ₹99,999",
+          annual: "Starting at ₹84,999",
+          annualBilled: "₹10,19,988",
+          setupFee: "Setup included",
+        },
+        usd: {
+          monthly: "Starting at $1,499",
+          annual: "Starting at $1,249",
+          annualBilled: "$14,988",
+          setupFee: "Setup included",
+        },
+      },
+    },
+    {
+      name: "Enterprise",
+      description: "Full growth retainer across all channels. Dedicated strategy, creative & performance team.",
+      popular: false,
+      features: [
+        { name: "SEO Audit & On-page Optimization", included: true },
+        { name: "Google Business Setup", included: true },
+        { name: "Content Calendar (all platforms)", included: true },
+        { name: "Google / Meta Ads Management", included: true },
+        { name: "Email Marketing Automation", included: true },
+        { name: "Monthly Performance Reports", value: "Full Enterprise" },
+        { name: "Dedicated Strategist", value: "Dedicated Team" },
+      ],
+      pricing: {
+        inr: {
+          monthly: "Custom — Talk to Us",
+          annual: "Custom — Talk to Us",
+          setupFee: "Dedicated SLA",
+          ctaLabel: "Talk to Us →",
+        },
+        usd: {
+          monthly: "Custom — Talk to Us",
+          annual: "Custom — Talk to Us",
+          setupFee: "Dedicated SLA",
+          ctaLabel: "Talk to Us →",
+        },
+      },
+    },
+  ],
+};
+
+export const PRICING_CONTENT = {
+  tiers: [
+    {
+      name: "Starter",
+      description: "Single deliverable — one landing page copy, one blog batch of 4, or one email sequence.",
+      popular: false,
+      features: [
+        { name: "Website Copy (homepage or landing page)", included: true },
+        { name: "Blog Content (4 SEO articles)", included: true },
+        { name: "Email Sequences", included: false },
+        { name: "Social Media Copy", included: false },
+        { name: "Content Strategy", included: false },
+        { name: "Revisions", value: "2 rounds" },
+      ],
+      pricing: {
+        inr: "Starting at ₹19,999",
+        usd: "Starting at $299",
+        period: "Per project",
+      },
+    },
+    {
+      name: "Growth",
+      description: "Ongoing content production — multiple formats, monthly cadence, SEO-aligned editorial calendar.",
+      popular: true,
+      features: [
+        { name: "Website Copy (homepage or landing page)", included: true },
+        { name: "Blog Content (8 SEO articles/mo)", included: true },
+        { name: "Email Sequences", included: true },
+        { name: "Social Media Copy", included: true },
+        { name: "Content Strategy", value: "Monthly plan" },
+        { name: "Revisions", value: "Unlimited" },
+      ],
+      pricing: {
+        inr: "Starting at ₹69,999",
+        usd: "Starting at $999",
+        period: "/month",
+      },
+    },
+    {
+      name: "Enterprise",
+      description: "Full content system — strategy + production + distribution across all channels.",
+      popular: false,
+      features: [
+        { name: "Website Copy (homepage or landing page)", included: true },
+        { name: "Blog Content (unlimited)", included: true },
+        { name: "Email Sequences", included: true },
+        { name: "Social Media Copy", included: true },
+        { name: "Content Strategy", value: "Full Strategy & Audit" },
+        { name: "Revisions", value: "Unlimited" },
+      ],
+      pricing: {
+        inr: "Custom — Talk to Us",
+        usd: "Custom — Talk to Us",
+        period: "Scope based",
+      },
+    },
+  ],
+};
 
 export const PRICING_FAQ = [
   {

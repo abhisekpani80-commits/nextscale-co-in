@@ -67,7 +67,7 @@ export default function AIAgentsPage() {
                 </div>
                 <p className="text-[#6B6860] text-sm leading-relaxed">{a.detail}</p>
                 <div className="mt-auto pt-4 border-t border-[#E8E6E1]">
-                  <p className="font-mono text-[10px] uppercase tracking-wider text-[#1A56DB] font-semibold">{a.startingPrice}</p>
+                  <p className="font-mono text-[10px] uppercase tracking-wider text-[#1A56DB] font-semibold">Included in plan</p>
                 </div>
               </div>
             </Reveal>
@@ -121,8 +121,8 @@ export default function AIAgentsPage() {
           <a href={waLink()} target="_blank" rel="noopener noreferrer" className="inline-flex h-12 items-center gap-2 rounded-xl bg-[#1A56DB] text-white hover:bg-[#1447C0] px-7 text-base font-semibold shadow-sm transition-all duration-200">
             <MessageCircle className="size-4" /> Start a 2-week free trial
           </a>
-          <Link href="/pricing" className="inline-flex h-12 items-center gap-2 rounded-xl border border-[#E8E6E1] bg-white text-[#0F0E0D] hover:bg-[#F4F3F0] px-7 text-base font-semibold transition-all duration-200">
-            View pricing <ArrowRight className="size-4" />
+          <Link href="/pricing#recurring" className="inline-flex h-12 items-center gap-2 rounded-xl border border-[#E8E6E1] bg-white text-[#0F0E0D] hover:bg-[#F4F3F0] px-7 text-base font-semibold transition-all duration-200">
+            View AI Agent pricing <ArrowRight className="size-4" />
           </Link>
         </Reveal>
       </section>

@@ -163,8 +163,8 @@ export default function WebsitesPage() {
           <a href={waLink("Hi! I'm interested in getting a website built.")} target="_blank" rel="noopener noreferrer" className="inline-flex h-12 items-center gap-2 rounded-xl bg-[#1A56DB] text-white hover:bg-[#1447C0] px-7 text-base font-semibold shadow-sm transition-all duration-200">
             Start your website <ArrowRight className="size-4" />
           </a>
-          <Link href="/pricing" className="inline-flex h-12 items-center gap-2 rounded-xl border border-[#E8E6E1] bg-white text-[#0F0E0D] hover:bg-[#F4F3F0] px-7 text-base font-semibold transition-all duration-200">
-            View pricing
+          <Link href="/pricing#one-time" className="inline-flex h-12 items-center gap-2 rounded-xl border border-[#E8E6E1] bg-white text-[#0F0E0D] hover:bg-[#F4F3F0] px-7 text-base font-semibold transition-all duration-200">
+            View website pricing <ArrowRight className="size-4" />
           </Link>
         </Reveal>
       </section>

@@ -7,9 +7,31 @@ import { SITE, waLink } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const serviceDropdown = [
-  { label: "AI Agents", href: "/services/ai-agents", desc: "24/7 WhatsApp AI receptionist trained on your business rules." },
-  { label: "Websites", href: "/services/websites", desc: "Custom Next.js websites, mobile-optimized, live in 7 days." },
-  { label: "Digital Growth", href: "/services/digital-growth", desc: "Google Business optimization, local SEO, and review systems." },
+  {
+    label: "All Services & Turnkey Suites",
+    href: "/services",
+    desc: "Explore 100+ expert services, industry packages & market rates.",
+  },
+  {
+    label: "Web Development & Apps",
+    href: "/services/websites",
+    desc: "Custom Next.js websites, SaaS frontends & e-commerce applications.",
+  },
+  {
+    label: "Process Automation & Systems",
+    href: "/services/digital-growth",
+    desc: "Workflow automation, CRM sync, WhatsApp sequences & document engines.",
+  },
+  {
+    label: "Autonomous AI Agents",
+    href: "/services/ai-agents",
+    desc: "24/7 Intelligent software agents for Sales, Support & Operations.",
+  },
+  {
+    label: "View Pricing Plans →",
+    href: "/pricing",
+    desc: "Transparent starter, growth & enterprise pricing for all services.",
+  },
 ];
 
 const resourceDropdown = [
@@ -73,19 +95,20 @@ export function Navbar() {
               onMouseEnter={() => setActiveMenu("services")}
               onMouseLeave={() => setActiveMenu(null)}
             >
-              <button
+              <Link
+                href="/services"
                 className={cn(
                   "text-[14px] font-medium text-[#0F0E0D] hover:text-[#1A56DB] flex items-center gap-1 transition-colors duration-200 h-full",
                   activeMenu === "services" && "text-[#1A56DB]"
                 )}
               >
                 Services <ChevronDown className={cn("size-3.5 transition-transform duration-200", activeMenu === "services" && "rotate-180")} />
-              </button>
+              </Link>
 
               {/* Services Dropdown Panel */}
               <div
                 className={cn(
-                  "absolute top-full left-1/2 -translate-x-1/2 w-[340px] bg-white border border-[#E8E6E1] p-4 rounded-2xl shadow-lg transition-all duration-200 flex flex-col gap-1 z-50",
+                  "absolute top-full left-1/2 -translate-x-1/2 w-[360px] bg-white border border-[#E8E6E1] p-3.5 rounded-2xl shadow-lg transition-all duration-200 flex flex-col gap-1 z-50",
                   activeMenu === "services" ? "opacity-100 translate-y-1 visible" : "opacity-0 translate-y-3 invisible pointer-events-none"
                 )}
               >
@@ -96,7 +119,9 @@ export function Navbar() {
                     onClick={() => setActiveMenu(null)}
                     className="flex flex-col p-2.5 rounded-xl hover:bg-[#F4F3F0] transition-colors"
                   >
-                    <span className="text-[13px] font-bold text-[#0F0E0D]">{item.label}</span>
+                    <span className="text-[13px] font-bold text-[#0F0E0D] flex items-center justify-between">
+                      {item.label}
+                    </span>
                     <span className="text-[11px] text-[#6B6860] mt-0.5 leading-relaxed">{item.desc}</span>
                   </Link>
                 ))}
