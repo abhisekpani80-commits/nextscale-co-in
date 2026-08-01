@@ -8,31 +8,18 @@ export function NextscaleLogo({ className = "size-5" }: { className?: string }) 
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      <defs>
-        <linearGradient id="ns-logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#27d0ed" />
-          <stop offset="50%" stopColor="#a78bfa" />
-          <stop offset="100%" stopColor="#e040fb" />
-        </linearGradient>
-      </defs>
-      {/* 
-        Concept 1: Two clean geometric strokes forming an N, 
-        with the diagonal split creating a negative-space S.
-      */}
       <path
-        d="M7 26V6L20 21"
-        stroke="url(#ns-logo-grad)"
-        strokeWidth="4.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        d="M7 5h18a2 2 0 0 1 2 2v18a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"
+        fill="#141414"
       />
       <path
-        d="M12 11L25 26V6"
-        stroke="url(#ns-logo-grad)"
-        strokeWidth="4.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        d="M11 20V11l8 9v-9"
+        stroke="#FF4D00"
+        strokeWidth="2.5"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
       />
+      <circle cx="23.5" cy="8.5" r="1.5" fill="#FFC72E" />
     </svg>
   );
 }

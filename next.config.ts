@@ -13,6 +13,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return { beforeFiles: [{ source: "/pricing", destination: "/pricing-studio" }] };
+  },
   async headers() {
     return [
       {

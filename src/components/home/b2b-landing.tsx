@@ -1,16 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { B2BHero } from "@/components/home/b2b-hero";
-import { B2BClientBar } from "@/components/home/b2b-client-bar";
-import { B2BServices } from "@/components/home/b2b-services";
-import { B2BProcess } from "@/components/home/b2b-process";
-import { B2BWork } from "@/components/home/b2b-work";
-import { B2BTestimonials } from "@/components/home/b2b-testimonials";
-import { B2BStats } from "@/components/home/b2b-stats";
-import { B2BCta } from "@/components/home/b2b-cta";
-
-import { B2BFaq } from "@/components/home/b2b-faq";
+import { AnimatedStudioLanding } from "@/components/home/animated-studio-landing";
 
 export function B2BLanding() {
   useEffect(() => {
@@ -63,15 +54,7 @@ export function B2BLanding() {
 
   return (
     <>
-      <B2BHero />
-      <B2BClientBar />
-      <B2BServices />
-      <B2BProcess />
-      <B2BWork />
-      <B2BTestimonials />
-      <B2BStats />
-      <B2BFaq />
-      <B2BCta />
+      <AnimatedStudioLanding />
     </>
   );
 }

@@ -21,12 +21,12 @@ export default async function Image() {
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-between",
-          backgroundColor: "#0B0F17",
-          backgroundImage:
-            "radial-gradient(circle at 80% 20%, rgba(26, 86, 219, 0.25) 0%, transparent 40%), radial-gradient(circle at 20% 80%, rgba(147, 51, 234, 0.15) 0%, transparent 40%)",
+          backgroundColor: "#FAF3E5",
+          backgroundImage: "radial-gradient(#141414 1px, transparent 1px)",
+          backgroundSize: "20px 20px",
           padding: "60px 70px",
           fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-          color: "#ffffff",
+          color: "#141414",
           boxSizing: "border-box",
         }}
       >
@@ -47,7 +47,7 @@ export default async function Image() {
                 width: "44px",
                 height: "44px",
                 borderRadius: "12px",
-                background: "linear-gradient(135deg, #1A56DB 0%, #7C3AED 100%)",
+                background: "#141414",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -80,7 +80,7 @@ export default async function Image() {
                 margin: 0,
               }}
             >
-              Custom Websites & <span style={{ color: "#38BDF8" }}>WhatsApp AI Agents</span>
+              Websites, <span style={{ color: "#FF4D00" }}>AI Jugaad & Digital Growth</span>
             </h1>
             <p
               style={{
@@ -107,7 +107,7 @@ export default async function Image() {
                   borderRadius: "100px",
                   background: "rgba(26, 86, 219, 0.15)",
                   border: "1px solid rgba(56, 189, 248, 0.3)",
-                  color: "#38BDF8",
+                  color: "#FF4D00",
                   fontSize: "14px",
                   fontWeight: 600,
                 }}
@@ -228,7 +228,7 @@ export default async function Image() {
                 maxWidth: "85%",
               }}
             >
-              Hi! I'd like to book an appointment for tomorrow afternoon.
+              Hi! I&apos;d like to book an appointment for tomorrow afternoon.
             </div>
 
             <div

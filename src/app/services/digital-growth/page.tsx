@@ -84,13 +84,13 @@ export default function DigitalGrowthPage() {
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
             <Reveal key={s.name} delay={i * 0.07}>
-              <div className="flex flex-col gap-4 rounded-2xl border border-[#E8E6E1] bg-white p-6 h-full shadow-sm hover:border-[#1A56DB]/30 transition-all duration-300">
+              <a href={waLink(`Hi! I'd like to know more about ${s.name}.`)} target="_blank" rel="noopener noreferrer" aria-label={`Ask about ${s.name}`} className="group flex h-full flex-col gap-4 rounded-2xl border border-[#E8E6E1] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#FF4D00] hover:bg-[#FFFCF5] hover:shadow-[5px_5px_0_#141414] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF4D00]">
                 <div className="grid size-11 place-items-center rounded-xl bg-blue-50 text-[#1A56DB] border border-blue-100">
                   <s.icon className="size-5" />
                 </div>
                 <h3 className="font-heading text-base font-semibold text-[#0F0E0D]">{s.name}</h3>
                 <p className="text-sm text-[#6B6860] leading-relaxed">{s.description}</p>
-              </div>
+              </a>
             </Reveal>
           ))}
         </div>
@@ -121,7 +121,7 @@ export default function DigitalGrowthPage() {
           <a href={waLink("Hi! I'd like to grow my clinic's online presence.")} target="_blank" rel="noopener noreferrer" className="inline-flex h-12 items-center gap-2 rounded-xl bg-[#1A56DB] text-white hover:bg-[#1447C0] px-7 text-base font-semibold shadow-sm transition-all duration-200">
             Get a free audit <ArrowRight className="size-4" />
           </a>
-          <Link href="/pricing#marketing" className="inline-flex h-12 items-center gap-2 rounded-xl border border-[#E8E6E1] bg-white text-[#0F0E0D] hover:bg-[#F4F3F0] px-7 text-base font-semibold transition-all duration-200">
+          <Link href="/pricing" className="inline-flex h-12 items-center gap-2 rounded-xl border border-[#E8E6E1] bg-white text-[#0F0E0D] hover:bg-[#FFC72E] px-7 text-base font-semibold transition-all duration-200">
             View marketing pricing
           </Link>
         </Reveal>

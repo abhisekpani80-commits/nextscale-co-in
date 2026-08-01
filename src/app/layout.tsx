@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Archivo, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -11,17 +11,17 @@ import { organizationSchema, websiteSchema, founderPersonSchema } from "@/lib/se
 import { SITE } from "@/lib/site";
 import { ClientWrapper } from "@/components/ui/client-wrapper";
 
-const inter = Inter({
-  variable: "--font-inter",
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -82,13 +82,13 @@ export const metadata: Metadata = {
     images: ["/opengraph-image"],
   },
   icons: {
-    icon: [{ url: "/icon.svg", type: "image/svg+xml" }, { url: "/favicon.ico", sizes: "48x48" }],
-    shortcut: "/favicon.ico",
+    icon: [{ url: "/nextscale-favicon.svg", type: "image/svg+xml" }, { url: "/favicon.ico", sizes: "48x48" }],
+    shortcut: "/nextscale-favicon.svg",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F8F7F4",
+  themeColor: "#FAF3E5",
   colorScheme: "light",
 };
 
@@ -96,13 +96,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${plusJakarta.variable} h-full antialiased`}
+      className={`${archivo.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <head>
         <link rel="preconnect" href="https://images.unsplash.com" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
       </head>
-      <body className="min-h-full flex flex-col bg-[#F8F7F4] text-[#0F0E0D] relative">
+      <body className="min-h-full flex flex-col bg-[#FAF3E5] text-[#141414] relative">
         <JsonLd schema={[organizationSchema(), websiteSchema(), founderPersonSchema()]} />
         <ScrollProgress />
         <ClientWrapper>

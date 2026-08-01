@@ -8,12 +8,12 @@ export default function manifest(): MetadataRoute.Manifest {
     description: SITE.description,
     start_url: "/",
     display: "standalone",
-    background_color: "#0a0c10",
-    theme_color: "#0a0c10",
+    background_color: "#FAF3E5",
+    theme_color: "#FAF3E5",
     lang: "en-IN",
     categories: ["business", "productivity", "technology"],
     icons: [
-      { src: "/icon.svg", sizes: "any", type: "image/svg+xml", purpose: "any" },
+      { src: "/nextscale-favicon.svg", sizes: "any", type: "image/svg+xml", purpose: "any" },
       { src: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
     ],
   };

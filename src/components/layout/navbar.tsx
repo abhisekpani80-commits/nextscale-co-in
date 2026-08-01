@@ -1,314 +1,84 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ChevronDown } from "lucide-react";
-import { SITE, waLink } from "@/lib/site";
-import { cn } from "@/lib/utils";
+import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { Menu, X, ArrowUpRight } from "lucide-react";
+import { NextscaleLogo } from "@/components/ui/logo";
+import { waLink } from "@/lib/site";
 
-const serviceDropdown = [
-  {
-    label: "All Services & Turnkey Suites",
-    href: "/services",
-    desc: "Explore 100+ expert services, industry packages & market rates.",
-  },
-  {
-    label: "Web Development & Apps",
-    href: "/services/websites",
-    desc: "Custom Next.js websites, SaaS frontends & e-commerce applications.",
-  },
-  {
-    label: "Process Automation & Systems",
-    href: "/services/digital-growth",
-    desc: "Workflow automation, CRM sync, WhatsApp sequences & document engines.",
-  },
-  {
-    label: "Autonomous AI Agents",
-    href: "/services/ai-agents",
-    desc: "24/7 Intelligent software agents for Sales, Support & Operations.",
-  },
-  {
-    label: "View Pricing Plans →",
-    href: "/pricing",
-    desc: "Transparent starter, growth & enterprise pricing for all services.",
-  },
-];
-
-const resourceDropdown = [
-  { label: "Guides & SOPs", href: "/resources", desc: "Actionable playbooks, checklists, prompt templates and research." },
-  { label: "Calculators & Tools", href: "/tools", desc: "Interactive ROI, web cost, and SEO audit checkers." },
-  { label: "Tech Comparisons", href: "/compare", desc: "Balanced pros/cons comparing Next Scale vs traditional agencies." },
+const links = [
+  { label: "Services", href: "/services" },
+  { label: "Work", href: "/portfolio" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Products", href: "/products" },
+  { label: "About", href: "/about" },
+  { label: "Careers", href: "/careers" },
 ];
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeMenu, setActiveMenu] = useState<"services" | "resources" | null>(null);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (window.location.pathname === "/") {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  };
+  const pathname = usePathname();
 
   return (
     <>
-      <header
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-        style={{
-          background: scrolled || activeMenu ? "#FFFFFF" : "transparent",
-          borderBottom: scrolled || activeMenu ? "1px solid #E8E6E1" : "1px solid transparent",
-          backdropFilter: scrolled || activeMenu ? "blur(8px)" : "none",
-        }}
-      >
-        <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-6">
-          {/* Logo / Wordmark */}
-          <Link
-            href="/"
-            onClick={handleLogoClick}
-            className="text-[18px] font-extrabold tracking-tight text-[#0F0E0D] hover:opacity-80 transition-opacity"
-            aria-label="NextScale home"
-          >
-            NextScale
+      <header className="fixed inset-x-0 top-0 z-50 border-b-2 border-[#141414] bg-[#FAF3E5]/90 shadow-[0_4px_0_rgba(20,20,20,0.06)] backdrop-blur-md transition-[box-shadow,background-color] duration-300">
+        <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-5 sm:px-8">
+          <Link href="/" className="group flex items-center gap-2.5" aria-label="Next Scale home">
+            <NextscaleLogo className="size-8 transition-transform duration-150 group-hover:-rotate-6" />
+            <span className="font-display text-[1.05rem] font-black uppercase tracking-[-0.05em]">Next Scale</span>
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8 h-full" aria-label="Primary navigation">
-            <Link
-              href="/products"
-              className="text-[14px] font-medium text-[#0F0E0D] hover:text-[#1A56DB] transition-colors duration-200"
-            >
-              Products
-            </Link>
-
-            {/* Services Dropdown Parent */}
-            <div
-              className="relative h-full flex items-center"
-              onMouseEnter={() => setActiveMenu("services")}
-              onMouseLeave={() => setActiveMenu(null)}
-            >
-              <Link
-                href="/services"
-                className={cn(
-                  "text-[14px] font-medium text-[#0F0E0D] hover:text-[#1A56DB] flex items-center gap-1 transition-colors duration-200 h-full",
-                  activeMenu === "services" && "text-[#1A56DB]"
-                )}
-              >
-                Services <ChevronDown className={cn("size-3.5 transition-transform duration-200", activeMenu === "services" && "rotate-180")} />
+          <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
+            {links.map((link) => (
+              <Link key={link.href} href={link.href} aria-current={pathname === link.href ? "page" : undefined} className={`relative py-2 font-display text-[0.72rem] font-black uppercase tracking-[0.1em] transition-all duration-300 hover:-translate-y-0.5 hover:text-[#FF4D00] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-[#FF4D00] after:transition-all after:duration-300 ${pathname === link.href ? "text-[#FF4D00] after:w-full" : "after:w-0 hover:after:w-full"}`}>
+                {link.label}
               </Link>
-
-              {/* Services Dropdown Panel */}
-              <div
-                className={cn(
-                  "absolute top-full left-1/2 -translate-x-1/2 w-[360px] bg-white border border-[#E8E6E1] p-3.5 rounded-2xl shadow-lg transition-all duration-200 flex flex-col gap-1 z-50",
-                  activeMenu === "services" ? "opacity-100 translate-y-1 visible" : "opacity-0 translate-y-3 invisible pointer-events-none"
-                )}
-              >
-                {serviceDropdown.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setActiveMenu(null)}
-                    className="flex flex-col p-2.5 rounded-xl hover:bg-[#F4F3F0] transition-colors"
-                  >
-                    <span className="text-[13px] font-bold text-[#0F0E0D] flex items-center justify-between">
-                      {item.label}
-                    </span>
-                    <span className="text-[11px] text-[#6B6860] mt-0.5 leading-relaxed">{item.desc}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <Link
-              href="/portfolio"
-              className="text-[14px] font-medium text-[#0F0E0D] hover:text-[#1A56DB] transition-colors duration-200"
-            >
-              Work
-            </Link>
-
-            <Link
-              href="/pricing"
-              className="text-[14px] font-medium text-[#0F0E0D] hover:text-[#1A56DB] transition-colors duration-200"
-            >
-              Pricing
-            </Link>
-
-            {/* Resources Dropdown Parent */}
-            <div
-              className="relative h-full flex items-center"
-              onMouseEnter={() => setActiveMenu("resources")}
-              onMouseLeave={() => setActiveMenu(null)}
-            >
-              <button
-                className={cn(
-                  "text-[14px] font-medium text-[#0F0E0D] hover:text-[#1A56DB] flex items-center gap-1 transition-colors duration-200 h-full",
-                  activeMenu === "resources" && "text-[#1A56DB]"
-                )}
-              >
-                Resources <ChevronDown className={cn("size-3.5 transition-transform duration-200", activeMenu === "resources" && "rotate-180")} />
-              </button>
-
-              {/* Resources Dropdown Panel */}
-              <div
-                className={cn(
-                  "absolute top-full left-1/2 -translate-x-1/2 w-[340px] bg-white border border-[#E8E6E1] p-4 rounded-2xl shadow-lg transition-all duration-200 flex flex-col gap-1 z-50",
-                  activeMenu === "resources" ? "opacity-100 translate-y-1 visible" : "opacity-0 translate-y-3 invisible pointer-events-none"
-                )}
-              >
-                {resourceDropdown.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setActiveMenu(null)}
-                    className="flex flex-col p-2.5 rounded-xl hover:bg-[#F4F3F0] transition-colors"
-                  >
-                    <span className="text-[13px] font-bold text-[#0F0E0D]">{item.label}</span>
-                    <span className="text-[11px] text-[#6B6860] mt-0.5 leading-relaxed">{item.desc}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <Link
-              href="/about"
-              className="text-[14px] font-medium text-[#0F0E0D] hover:text-[#1A56DB] transition-colors duration-200"
-            >
-              About
-            </Link>
+            ))}
           </nav>
 
-          {/* Right CTA */}
-          <div className="hidden md:flex items-center">
-            <a
-              href={waLink()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-[6px] bg-[#1A56DB] px-5 py-[10px] text-[14px] font-semibold text-white transition-colors duration-200 hover:bg-[#1447C0]"
-            >
-              WhatsApp us →
+          <nav className="absolute inset-x-0 top-full flex items-center gap-6 overflow-x-auto border-t-2 border-[#141414]/15 bg-[#FAF3E5] px-5 py-2.5 lg:hidden" aria-label="Compact navigation">
+            {links.map((link) => (
+              <Link key={link.href} href={link.href} aria-current={pathname === link.href ? "page" : undefined} className={`min-w-max font-display text-[0.68rem] font-black uppercase tracking-[0.1em] transition-colors duration-300 hover:text-[#FF4D00] ${pathname === link.href ? "text-[#FF4D00]" : "text-[#141414]"}`}>
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="hidden items-center gap-3 lg:flex">
+            <span className="hidden text-[0.7rem] font-bold uppercase tracking-[0.12em] text-[#5B5146] lg:inline">India · Everywhere</span>
+            <a href={waLink()} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-full border-2 border-[#141414] bg-[#141414] px-4 py-2 font-display text-[0.72rem] font-black uppercase tracking-[0.06em] text-[#FAF3E5] transition duration-150 hover:-translate-y-0.5 hover:bg-[#FF4D00]">
+              Start a project <ArrowUpRight className="size-3.5" />
             </a>
           </div>
 
-          {/* Mobile Hamburger */}
           <button
-            className="flex md:hidden flex-col items-center justify-center gap-[5px] w-10 h-10 rounded-md"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
+            type="button"
+            className="grid size-10 place-items-center rounded-lg border-2 border-[#141414] bg-[#FFFCF5] lg:hidden"
+            onClick={() => setMobileOpen((open) => !open)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
           >
-            <span
-              className="block h-[2px] w-6 bg-[#0F0E0D] transition-all duration-300 origin-center"
-              style={{
-                transform: mobileOpen ? "rotate(45deg) translate(5px, 5px)" : "none",
-              }}
-            />
-            <span
-              className="block h-[2px] w-6 bg-[#0F0E0D] transition-all duration-300"
-              style={{ opacity: mobileOpen ? 0 : 1 }}
-            />
-            <span
-              className="block h-[2px] w-6 bg-[#0F0E0D] transition-all duration-300 origin-center"
-              style={{
-                transform: mobileOpen ? "rotate(-45deg) translate(5px, -5px)" : "none",
-              }}
-            />
+            {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
         </div>
 
-        {/* Mobile Drawer */}
-        <div
-          className="md:hidden overflow-y-auto transition-all duration-300"
-          style={{
-            maxHeight: mobileOpen ? "85vh" : "0",
-            background: "#FFFFFF",
-            borderBottom: mobileOpen ? "1px solid #E8E6E1" : "none",
-          }}
-        >
-          <nav className="flex flex-col gap-1 px-6 py-4" aria-label="Mobile navigation">
-            <Link
-              href="/products"
-              className="py-2.5 text-[15px] font-bold text-[#0F0E0D] border-b border-[#F4F3F0] transition-colors"
-              onClick={() => setMobileOpen(false)}
-            >
-              Products
-            </Link>
-
-            {/* Mobile Services Header */}
-            <div className="flex flex-col gap-1 py-2.5 border-b border-[#F4F3F0]">
-              <span className="text-[12px] font-mono uppercase tracking-wider text-[#6B6860]">Services</span>
-              {serviceDropdown.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="pl-2 py-1.5 text-[14px] text-[#6B6860] hover:text-primary transition-colors flex flex-col"
-                >
-                  <span className="font-semibold text-[#0F0E0D]">{item.label}</span>
+        {mobileOpen && (
+          <div className="border-t-2 border-[#141414] bg-[#FAF3E5] px-5 py-5 lg:hidden">
+            <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
+              {links.map((link) => (
+                <Link key={link.href} href={link.href} onClick={() => setMobileOpen(false)} className="border-b-2 border-[#141414]/15 py-3 font-display text-xl font-black uppercase tracking-[-0.03em]">
+                  {link.label}
                 </Link>
               ))}
-            </div>
-
-            <Link
-              href="/portfolio"
-              className="py-2.5 text-[15px] font-bold text-[#0F0E0D] border-b border-[#F4F3F0] transition-colors"
-              onClick={() => setMobileOpen(false)}
-            >
-              Work
-            </Link>
-
-            <Link
-              href="/pricing"
-              className="py-2.5 text-[15px] font-bold text-[#0F0E0D] border-b border-[#F4F3F0] transition-colors"
-              onClick={() => setMobileOpen(false)}
-            >
-              Pricing
-            </Link>
-
-            {/* Mobile Resources Header */}
-            <div className="flex flex-col gap-1 py-2.5 border-b border-[#F4F3F0]">
-              <span className="text-[12px] font-mono uppercase tracking-wider text-[#6B6860]">Resources</span>
-              {resourceDropdown.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="pl-2 py-1.5 text-[14px] text-[#6B6860] hover:text-primary transition-colors flex flex-col"
-                >
-                  <span className="font-semibold text-[#0F0E0D]">{item.label}</span>
-                </Link>
-              ))}
-            </div>
-
-            <Link
-              href="/about"
-              className="py-2.5 text-[15px] font-bold text-[#0F0E0D] border-b border-[#F4F3F0] transition-colors"
-              onClick={() => setMobileOpen(false)}
-            >
-              About
-            </Link>
-
-            <a
-              href={waLink()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center justify-center gap-1.5 rounded-[6px] bg-[#1A56DB] px-5 py-3 text-[14px] font-semibold text-white hover:bg-[#1447C0] transition-colors"
-            >
-              WhatsApp us →
-            </a>
-          </nav>
-        </div>
+              <a href={waLink()} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#141414] bg-[#FF4D00] px-4 py-3 font-display text-sm font-black uppercase text-[#141414] shadow-[4px_4px_0_#141414]">
+                Start a project <ArrowUpRight className="size-4" />
+              </a>
+            </nav>
+          </div>
+        )}
       </header>
-      {/* Spacer so content doesn't hide under fixed header */}
-      <div className="h-16" />
+      <div className="h-24 lg:h-16" />
     </>
   );
 }
