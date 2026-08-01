@@ -11,10 +11,8 @@ const links = [
   { label: "Services", href: "/services" },
   { label: "Work", href: "/portfolio" },
   { label: "Pricing", href: "/pricing" },
-  { label: "Products", href: "/products" },
-  { label: "Tools", href: "/tools" },
-  { label: "Compare", href: "/compare" },
   { label: "About", href: "/about" },
+  { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact" },
 ];
 
