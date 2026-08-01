@@ -149,12 +149,20 @@ export default function ProductsPage() {
             <p className="relative text-[#6B6860] mb-6 max-w-md mx-auto text-sm leading-relaxed">
               Whether you want to use our products or need something built just for you — let&apos;s talk.
             </p>
-            <Link
-              href="/contact"
-              className={cn(buttonVariants({ variant: "default" }), "h-12 gap-2 px-8 text-base")}
-            >
-              Get in touch <ArrowRight className="size-4" />
-            </Link>
+            <div className="relative flex flex-wrap items-center justify-center gap-4">
+              <Link
+                href="/contact"
+                className={cn(buttonVariants({ variant: "default" }), "h-12 gap-2 px-8 text-base")}
+              >
+                Get in touch <ArrowRight className="size-4" />
+              </Link>
+              <Link
+                href="/pricing"
+                className={cn(buttonVariants({ variant: "outline" }), "h-12 gap-2 px-8 text-base border-2 border-[#141414]")}
+              >
+                View Build Pricing <ArrowRight className="size-4" />
+              </Link>
+            </div>
           </div>
         </Reveal>
       </section>

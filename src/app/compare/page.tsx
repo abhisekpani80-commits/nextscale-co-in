@@ -94,14 +94,28 @@ export default function ComparePage() {
           <p className="text-xs text-[#6B6860] mb-6">
             Have questions about migrating from legacy CMS systems (like WordPress) or setting up custom software automations?
           </p>
-          <a
-            href={waLink("Hi Abhisek! I would like to consult about replacing traditional agency setup with your modern software / AI solutions.")}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex h-12 items-center gap-2 rounded-xl bg-[#1A56DB] text-white hover:bg-[#1447C0] px-8 text-base font-bold shadow-md hover:scale-[1.02] transition-all duration-200"
-          >
-            Start your consultation <ArrowRight className="size-4" />
-          </a>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <a
+              href={waLink("Hi Abhisek! I would like to consult about replacing traditional agency setup with your modern software / AI solutions.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-12 items-center gap-2 rounded-xl bg-[#1A56DB] text-white hover:bg-[#1447C0] px-8 text-base font-bold shadow-md hover:scale-[1.02] transition-all duration-200"
+            >
+              Start your consultation <ArrowRight className="size-4" />
+            </a>
+            <Link
+              href="/pricing"
+              className="inline-flex h-12 items-center gap-2 rounded-xl border border-[#E8E6E1] bg-white text-[#0F0E0D] hover:bg-[#F8F7F4] px-8 text-base font-bold shadow-sm transition-all duration-200"
+            >
+              Explore Pricing <ArrowRight className="size-4" />
+            </Link>
+            <Link
+              href="/services"
+              className="inline-flex h-12 items-center gap-2 rounded-xl border border-[#E8E6E1] bg-white text-[#0F0E0D] hover:bg-[#F8F7F4] px-8 text-base font-bold shadow-sm transition-all duration-200"
+            >
+              Our Services <ArrowRight className="size-4" />
+            </Link>
+          </div>
         </section>
 
       </main>

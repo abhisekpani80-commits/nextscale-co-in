@@ -35,6 +35,21 @@ export default function ServicesPage() {
           <div className="mt-4 grid gap-4 md:grid-cols-3">
             {[["Websites", "Custom, fast, mobile-first sites.", "/services/websites"], ["AI agents", "WhatsApp automation that works.", "/services/ai-agents"], ["Digital growth", "Get found and get chosen.", "/services/digital-growth"]].map(([title, body, href]) => <Link key={href} href={href} className="group rounded-2xl border-2 border-[#141414] bg-[#FAF3E5] p-5 transition hover:-translate-y-1 hover:bg-[#FFC72E] hover:shadow-[5px_5px_0_#141414]"><span className="flex items-center justify-between font-display text-2xl font-black uppercase"><span>{title}</span><ArrowRight className="size-5 transition-transform group-hover:translate-x-1" /></span><span className="mt-3 block text-sm text-[#5B5146]">{body}</span></Link>)}
           </div>
+
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-4 border-t-2 border-[#141414]/15 pt-10">
+            <Link href="/pricing" className="inline-flex items-center gap-2 rounded-full border-2 border-[#141414] bg-[#FFC72E] px-5 py-2.5 font-display text-xs font-black uppercase shadow-[3px_3px_0_#141414] transition hover:-translate-y-0.5 hover:bg-[#FF4D00] hover:text-white">
+              View Clear Pricing →
+            </Link>
+            <Link href="/tools" className="inline-flex items-center gap-2 rounded-full border-2 border-[#141414] bg-[#9DD9FF] px-5 py-2.5 font-display text-xs font-black uppercase shadow-[3px_3px_0_#141414] transition hover:-translate-y-0.5 hover:bg-[#141414] hover:text-[#FAF3E5]">
+              Try Free Calculators →
+            </Link>
+            <Link href="/portfolio" className="inline-flex items-center gap-2 rounded-full border-2 border-[#141414] bg-[#FFB7C5] px-5 py-2.5 font-display text-xs font-black uppercase shadow-[3px_3px_0_#141414] transition hover:-translate-y-0.5 hover:bg-[#141414] hover:text-[#FAF3E5]">
+              See Shipped Work →
+            </Link>
+            <Link href="/contact" className="inline-flex items-center gap-2 rounded-full border-2 border-[#141414] bg-[#B8E986] px-5 py-2.5 font-display text-xs font-black uppercase shadow-[3px_3px_0_#141414] transition hover:-translate-y-0.5 hover:bg-[#141414] hover:text-[#FAF3E5]">
+              Talk to Us →
+            </Link>
+          </div>
         </div>
       </section>
     </>

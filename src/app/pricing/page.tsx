@@ -444,6 +444,16 @@ export default function PricingPage() {
 
       <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-20 flex flex-col gap-24 relative">
 
+        {/* Cross-Link Banner for India Studio */}
+        <div className="flex justify-center -mt-6 -mb-4">
+          <a
+            href="/pricing-studio"
+            className="inline-flex items-center gap-2 rounded-full border-2 border-[#141414] bg-[#FFC72E] px-4 py-2 text-xs font-black uppercase tracking-[0.08em] shadow-[3px_3px_0_#141414] transition hover:-translate-y-0.5 hover:bg-[#FF4D00] hover:text-white"
+          >
+            <Zap className="size-4" /> Looking for India Launch Pricing? View India Pricing Studio →
+          </a>
+        </div>
+
         {/* Currency & Billing Toggles */}
         <div className="flex flex-col items-center justify-center gap-8 mb-4">
           <div className="flex items-center rounded-full border border-[#E8E6E1] bg-white p-1 shadow-sm">

@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, Check, MessageCircle, Sparkles } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Check, Globe, MessageCircle, Sparkles } from "lucide-react";
 import { waLink } from "@/lib/site";
 
 const plans = [
@@ -59,7 +60,20 @@ export function PricingStudio() {
     <div className="overflow-hidden">
       <section className="dot-grid-soft border-b-2 border-[#141414] px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1280px]">
-          <div className="flex flex-wrap items-center gap-3"><span className="inline-flex items-center gap-2 rounded-full border-2 border-[#141414] bg-[#FF4D00] px-3 py-1.5 font-display text-xs font-black uppercase shadow-[3px_3px_0_#141414]"><Sparkles className="size-3.5" /> India launch pricing</span><span className="font-display text-xs font-black uppercase tracking-[0.12em] text-[#5B5146]">Save up to 50%</span></div>
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="inline-flex items-center gap-2 rounded-full border-2 border-[#141414] bg-[#FF4D00] px-3 py-1.5 font-display text-xs font-black uppercase text-[#FAF3E5] shadow-[3px_3px_0_#141414]">
+                <Sparkles className="size-3.5" /> India launch pricing
+              </span>
+              <span className="font-display text-xs font-black uppercase tracking-[0.12em] text-[#5B5146]">Save up to 50%</span>
+            </div>
+            <Link
+              href="/pricing"
+              className="inline-flex items-center gap-1.5 rounded-full border-2 border-[#141414] bg-[#FFFCF5] px-4 py-2 font-display text-xs font-black uppercase tracking-[0.08em] shadow-[3px_3px_0_#141414] transition hover:bg-[#9DD9FF]"
+            >
+              <Globe className="size-3.5" /> View International Pricing (USD $) →
+            </Link>
+          </div>
           <h1 className="mt-5 max-w-5xl font-display text-[clamp(3.5rem,8vw,7.8rem)] font-black uppercase leading-[0.86] tracking-[-0.08em]">Good work.<br /><span className="text-[#FF4D00]">Fair numbers.</span></h1>
           <div className="mt-8 flex flex-col justify-between gap-6 lg:flex-row lg:items-end"><p className="max-w-2xl text-lg font-medium leading-7 text-[#141414] sm:text-xl">Straightforward Indian pricing for websites, AI automation, and digital growth. Pick the closest fit, then we will make the scope exact.</p><div className="rounded-xl border-2 border-[#141414] bg-[#FFFCF5] p-4 text-sm shadow-[4px_4px_0_#141414]"><p className="font-display text-xs font-black uppercase tracking-[0.1em]">No mystery math</p><p className="mt-1 text-[#5B5146]">Prices shown in INR · GST extra if applicable</p></div></div>
         </div>

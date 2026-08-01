@@ -146,6 +146,38 @@ export default function ResourcesPage() {
           </div>
         </section>
 
+        {/* Bottom Cross-links */}
+        <section className="text-center border-t border-[#E8E6E1] pt-12">
+          <h3 className="font-heading text-lg font-semibold text-[#0F0E0D] mb-2">Want to put these guides into practice?</h3>
+          <p className="text-xs text-[#6B6860] mb-6">Explore our interactive planning tools or talk directly with our engineering team.</p>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/tools"
+              className="inline-flex h-10 items-center justify-center gap-1.5 rounded-xl bg-blue-50 border border-blue-200 px-5 text-xs font-bold text-[#1A56DB] hover:bg-blue-100 transition-all"
+            >
+              Try Free Calculators &amp; Audits →
+            </Link>
+            <Link
+              href="/services"
+              className="inline-flex h-10 items-center justify-center gap-1.5 rounded-xl border border-[#E8E6E1] bg-white px-5 text-xs font-bold text-[#0F0E0D] hover:bg-[#F8F7F4] transition-all"
+            >
+              Explore Services →
+            </Link>
+            <Link
+              href="/pricing"
+              className="inline-flex h-10 items-center justify-center gap-1.5 rounded-xl border border-[#E8E6E1] bg-white px-5 text-xs font-bold text-[#0F0E0D] hover:bg-[#F8F7F4] transition-all"
+            >
+              View Pricing →
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex h-10 items-center justify-center gap-1.5 rounded-xl bg-[#1A56DB] text-white hover:bg-[#1447C0] px-5 text-xs font-bold transition-all"
+            >
+              Contact Team →
+            </Link>
+          </div>
+        </section>
+
       </main>
     </div>
   );

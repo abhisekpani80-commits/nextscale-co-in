@@ -33,7 +33,7 @@ export const SITE = {
   founder: "Abhisek Pani",
   founderSameAs: [
     "https://github.com/abhisekpani80-commits",
-    "https://linkedin.com/in/abhisek-pani",
+    "https://www.linkedin.com/in/abhisek-pani-1b3592329/",
     "https://x.com/abhisekpani",
   ],
   foundingDate: "2024",
@@ -44,7 +44,7 @@ export const SITE = {
   socials: {
     youtube: "https://youtube.com/@nextscale",
     twitter: "https://x.com/abhisekpani",
-    linkedin: "https://linkedin.com/in/abhisek-pani",
+    linkedin: "https://www.linkedin.com/in/abhisek-pani-1b3592329/",
     instagram: "https://instagram.com/nextscale.co.in",
     github: "https://github.com/abhisekpani80-commits",
   },

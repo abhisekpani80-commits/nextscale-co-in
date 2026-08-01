@@ -184,6 +184,24 @@ export default function AboutPage() {
                   <p>
                     We don't compete on size. We compete on <span className="text-[#0F0E0D] font-medium">speed, quality, and outcomes.</span> Every client — whether they're a solo GP in Puri or a startup in Dubai — gets the same standard of work that Silicon Valley teams expect.
                   </p>
+                  <div className="mt-2 flex flex-wrap items-center gap-3">
+                    <a
+                      href="https://www.linkedin.com/in/abhisek-pani-1b3592329/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-[#1A56DB]/30 bg-blue-50 px-4 py-2 text-xs font-bold text-[#1A56DB] hover:bg-[#1A56DB] hover:text-white transition-all shadow-sm"
+                    >
+                      Connect with Abhisek Pani on LinkedIn →
+                    </a>
+                    <a
+                      href="https://github.com/abhisekpani80-commits"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-[#E8E6E1] bg-white px-4 py-2 text-xs font-bold text-[#0F0E0D] hover:bg-[#F4F3F0] transition-all"
+                    >
+                      GitHub Commits
+                    </a>
+                  </div>
                   <p className="text-[13px] text-[#6B6860]/60">
                     Abhisek Pani · Founder of Next Scale · Bhubaneswar, Odisha, India
                   </p>

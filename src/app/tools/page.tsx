@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { PageHero } from "@/components/ui/page-hero";
 import { Reveal } from "@/components/ui/reveal";
@@ -763,14 +764,22 @@ export default function ToolsDashboard() {
               <TrendingUp className="size-4 text-emerald-500" />
               <span>Calculated savings are based on industry benchmarks.</span>
             </div>
-            <a
-              href={waLink(`Hi! I just ran a calculation on your Tools page for my business and would like to review the custom report.`)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-10 items-center justify-center gap-1.5 rounded-xl bg-[#1A56DB] text-white hover:bg-[#1447C0] px-5 text-xs font-bold transition-all duration-200"
-            >
-              Get Custom Report <ArrowRight className="size-3.5" />
-            </a>
+            <div className="flex flex-wrap items-center gap-2">
+              <Link
+                href="/pricing"
+                className="inline-flex h-10 items-center justify-center gap-1 rounded-xl border border-[#E8E6E1] bg-[#F8F7F4] px-4 text-xs font-bold text-[#0F0E0D] hover:bg-[#E8E6E1] transition-all"
+              >
+                View Plans →
+              </Link>
+              <a
+                href={waLink(`Hi! I just ran a calculation on your Tools page for my business and would like to review the custom report.`)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-10 items-center justify-center gap-1.5 rounded-xl bg-[#1A56DB] text-white hover:bg-[#1447C0] px-5 text-xs font-bold transition-all duration-200"
+              >
+                Get Custom Report <ArrowRight className="size-3.5" />
+              </a>
+            </div>
           </div>
 
         </main>
