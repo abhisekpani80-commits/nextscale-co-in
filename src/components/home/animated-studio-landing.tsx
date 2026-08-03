@@ -157,7 +157,7 @@ export function AnimatedStudioLanding() {
   };
 
   const handleHeroMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    if (reducedMotion || !mockupRef.current) return;
+    if (reducedMotion || !mockupRef.current || window.innerWidth < 768) return;
     const rect = mockupRef.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
@@ -180,31 +180,45 @@ export function AnimatedStudioLanding() {
         className="dot-grid relative border-b-2 border-[#141414] overflow-hidden"
       >
         {/* Subtle Ambient Radial Backdrop Glow */}
-        <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-[650px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,77,0,0.14),transparent_65%)] blur-2xl" />
+        <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-[320px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,77,0,0.16),transparent_65%)] blur-xl sm:size-[650px] sm:blur-2xl" />
 
+        {/* Desktop Draggable Stickers */}
         {stickers.map((sticker) => (
           <DraggableSticker key={sticker.id} sticker={sticker} boundsRef={heroRef} onMove={moveSticker} />
         ))}
 
-        <div className="relative mx-auto grid min-h-[calc(100svh-4rem)] max-w-[1280px] items-center gap-12 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[1.02fr_.98fr] lg:gap-20 lg:py-24">
+        <div className="relative mx-auto grid min-h-[calc(100svh-4rem)] max-w-[1280px] items-center gap-8 px-4 py-12 sm:gap-12 sm:px-8 sm:py-20 lg:grid-cols-[1.02fr_.98fr] lg:gap-20 lg:py-24">
           <motion.div
             initial={{ opacity: 0, x: reducedMotion ? 0 : -24 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: reducedMotion ? 0 : 0.7 }}
           >
-            <h1 className="max-w-[760px] font-display text-[clamp(3.8rem,10vw,8.4rem)] font-black uppercase leading-[0.86] tracking-[-0.075em]">
+            {/* Mobile Sticker Ribbon */}
+            <div className="flex flex-wrap items-center gap-2 mb-4 sm:hidden">
+              <span className="rounded-full border-2 border-[#141414] bg-[#FF4D00] px-3 py-1 font-display text-[0.65rem] font-black uppercase text-white shadow-[2px_2px_0_#141414]">
+                MADE IN ODISHA 📍
+              </span>
+              <span className="rounded-full border-2 border-[#141414] bg-[#FFC72E] px-3 py-1 font-display text-[0.65rem] font-black uppercase text-[#141414] shadow-[2px_2px_0_#141414]">
+                WEBSITES 🚀
+              </span>
+              <span className="rounded-full border-2 border-[#141414] bg-[#9DD9FF] px-3 py-1 font-display text-[0.65rem] font-black uppercase text-[#141414] shadow-[2px_2px_0_#141414]">
+                AI JUGAAD 🤖
+              </span>
+            </div>
+
+            <h1 className="max-w-[760px] font-display text-[clamp(2.8rem,9vw,8.4rem)] font-black uppercase leading-[0.88] tracking-[-0.07em]">
               We cook<span className="block text-[#FF4D00]">websites.</span>
               <span className="block">And AI.</span>
             </h1>
-            <p className="mt-7 max-w-[560px] text-lg font-medium leading-7 text-[#141414] sm:text-xl">
+            <p className="mt-5 max-w-[560px] text-base font-medium leading-7 text-[#141414] sm:mt-7 sm:text-xl">
               Digital systems for businesses that want more customers and fewer tabs open. Clever design, useful automation, zero corporate fog.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <a
                 href={waLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#141414] bg-[#141414] px-6 py-3.5 font-display text-sm font-black uppercase tracking-[0.06em] text-[#FAF3E5] shadow-[5px_5px_0_#FF4D00] transition duration-150 hover:-translate-y-1 hover:bg-[#FF4D00]"
+                className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#141414] bg-[#141414] px-6 py-3.5 font-display text-sm font-black uppercase tracking-[0.06em] text-[#FAF3E5] shadow-[4px_4px_0_#FF4D00] transition duration-150 hover:-translate-y-1 hover:bg-[#FF4D00] sm:shadow-[5px_5px_0_#FF4D00]"
               >
                 Start a project <ArrowRight className="size-4" />
               </a>
@@ -215,7 +229,7 @@ export function AnimatedStudioLanding() {
                 See what we do <ArrowRight className="size-4" />
               </Link>
             </div>
-            <div className="mt-8 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.1em] text-[#5B5146]">
+            <div className="mt-6 hidden items-center gap-2 text-xs font-bold uppercase tracking-[0.1em] text-[#5B5146] sm:flex">
               <Move className="size-4" /> Stickers are draggable. The rest is not.
             </div>
           </motion.div>

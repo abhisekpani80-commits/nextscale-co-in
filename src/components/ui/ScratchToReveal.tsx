@@ -210,20 +210,20 @@ export function ScratchToReveal({
               onPointerMove={handlePointerMove}
               onPointerUp={handlePointerUp}
               onPointerLeave={handlePointerUp}
-              className="absolute inset-0 size-full cursor-crosshair touch-none select-none rounded-2xl shadow-[6px_6px_0_#141414]"
+              className="absolute inset-0 size-full cursor-crosshair touch-none select-none rounded-2xl shadow-[4px_4px_0_#141414] sm:shadow-[6px_6px_0_#141414]"
             />
 
             {/* Instant Reveal Floating Pill */}
-            <div className="pointer-events-auto absolute bottom-4 z-30 flex items-center gap-3 rounded-full border-2 border-[#141414] bg-[#FFFCF5] px-4 py-2 shadow-[3px_3px_0_#141414]">
-              <span className="font-display text-[0.68rem] font-black uppercase text-[#5B5146]">
+            <div className="pointer-events-auto absolute bottom-3 z-30 flex flex-wrap items-center justify-center gap-2 rounded-full border-2 border-[#141414] bg-[#FFFCF5] px-3.5 py-1.5 shadow-[3px_3px_0_#141414] sm:bottom-4 sm:gap-3 sm:px-4 sm:py-2">
+              <span className="font-display text-[0.62rem] font-black uppercase text-[#5B5146] sm:text-[0.68rem]">
                 {percentage}% Scratched
               </span>
               <button
                 type="button"
                 onClick={handleInstantReveal}
-                className="inline-flex items-center gap-1.5 rounded-full border-2 border-[#141414] bg-[#FF4D00] px-3 py-1 font-display text-[0.65rem] font-black uppercase text-white transition hover:bg-[#FFC72E] hover:text-[#141414]"
+                className="inline-flex items-center gap-1 rounded-full border-2 border-[#141414] bg-[#FF4D00] px-3 py-1 font-display text-[0.62rem] font-black uppercase text-white transition hover:bg-[#FFC72E] hover:text-[#141414] sm:text-[0.65rem]"
               >
-                <Eye className="size-3" /> Tap to Instant Reveal
+                <Eye className="size-3" /> Tap to Unlock
               </button>
             </div>
           </motion.div>
