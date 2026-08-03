@@ -39,9 +39,33 @@ export function StudioLanding() {
     <div className="overflow-hidden">
       <section className="dot-grid relative border-b-2 border-[#141414]">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#FAF3E5] to-transparent" />
-        <div className="absolute left-[3%] top-[20%] hidden rotate-[-6deg] rounded-full border-2 border-[#141414] bg-[#FFC72E] px-3 py-1.5 font-display text-[0.63rem] font-black tracking-[0.12em] shadow-[3px_3px_0_#141414] sm:block">WEBSITES</div>
-        <div className="absolute right-[3%] top-[18%] hidden rotate-6 rounded-full border-2 border-[#141414] bg-[#FFB7C5] px-3 py-1.5 font-display text-[0.63rem] font-black tracking-[0.12em] shadow-[3px_3px_0_#141414] sm:block">AI JUGAAD</div>
-        <div className="absolute bottom-[13%] left-[7%] hidden rotate-3 rounded-full border-2 border-[#141414] bg-[#B8E986] px-3 py-1.5 font-display text-[0.63rem] font-black tracking-[0.12em] shadow-[3px_3px_0_#141414] sm:block">NO BORING STUFF</div>
+        <motion.div
+          drag
+          dragConstraints={{ left: -200, right: 200, top: -100, bottom: 200 }}
+          whileHover={{ scale: 1.1, rotate: -3 }}
+          whileDrag={{ scale: 1.2, rotate: -12, zIndex: 30 }}
+          className="absolute left-[3%] top-[20%] z-20 hidden cursor-grab active:cursor-grabbing rotate-[-6deg] rounded-full border-2 border-[#141414] bg-[#FFC72E] px-3 py-1.5 font-display text-[0.63rem] font-black tracking-[0.12em] shadow-[3px_3px_0_#141414] sm:block select-none"
+        >
+          ⚡ WEBSITES
+        </motion.div>
+        <motion.div
+          drag
+          dragConstraints={{ left: -200, right: 200, top: -100, bottom: 200 }}
+          whileHover={{ scale: 1.1, rotate: 3 }}
+          whileDrag={{ scale: 1.2, rotate: 12, zIndex: 30 }}
+          className="absolute right-[3%] top-[18%] z-20 hidden cursor-grab active:cursor-grabbing rotate-6 rounded-full border-2 border-[#141414] bg-[#FFB7C5] px-3 py-1.5 font-display text-[0.63rem] font-black tracking-[0.12em] shadow-[3px_3px_0_#141414] sm:block select-none"
+        >
+          🤖 AI JUGAAD
+        </motion.div>
+        <motion.div
+          drag
+          dragConstraints={{ left: -200, right: 200, top: -100, bottom: 200 }}
+          whileHover={{ scale: 1.1, rotate: -2 }}
+          whileDrag={{ scale: 1.2, rotate: -8, zIndex: 30 }}
+          className="absolute bottom-[13%] left-[7%] z-20 hidden cursor-grab active:cursor-grabbing rotate-3 rounded-full border-2 border-[#141414] bg-[#B8E986] px-3 py-1.5 font-display text-[0.63rem] font-black tracking-[0.12em] shadow-[3px_3px_0_#141414] sm:block select-none"
+        >
+          🚀 NO BORING STUFF
+        </motion.div>
         <div className="relative mx-auto grid min-h-[calc(100svh-4rem)] max-w-[1280px] items-center gap-12 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[1.02fr_.98fr] lg:gap-20 lg:py-24">
           <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reducedMotion ? 0 : 0.55 }}>
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border-2 border-[#141414] bg-[#FFFCF5] px-3 py-1.5 font-display text-[0.68rem] font-black uppercase tracking-[0.12em] shadow-[3px_3px_0_#141414]"><Sparkles className="size-3.5 text-[#FF4D00]" /> Next Scale studio</div>

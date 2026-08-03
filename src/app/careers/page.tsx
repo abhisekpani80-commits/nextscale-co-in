@@ -1,19 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Home, Users } from "lucide-react";
+import { ArrowRight, Home, Users, Sparkles, Check, Zap } from "lucide-react";
 import { PageHero } from "@/components/ui/page-hero";
 import { Reveal } from "@/components/ui/reveal";
-import { TiltCard } from "@/components/ui/tilt-card";
 import { ROLES, WHY_JOIN, PROCESS_STEPS } from "@/lib/site";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
   title: "Careers — Join Next Scale",
-  description: "100% work-from-home roles in sales, development, content, AI, video editing, and SEO. Learn about our remote-first, result-oriented career opportunities.",
+  description:
+    "100% work-from-home roles in sales, development, content, AI, video editing, and SEO. Remote-first, outcome-driven team.",
   path: "/careers",
-  keywords: ["remote jobs India", "work from home developer jobs", "sales rep remote India", "AI builder jobs"]
+  keywords: ["remote jobs India", "work from home developer jobs", "sales rep remote India", "AI builder jobs"],
 });
 
 export default function CareersPage() {
@@ -22,37 +20,41 @@ export default function CareersPage() {
   return (
     <>
       <PageHero
-        kicker="Careers"
-        title={<>Work from home. <span className="text-primary">Build something real.</span></>}
-        description="100% remote. Flexible hours. Compensation is discussed personally on a call — we match the right number to the right person."
+        kicker="Careers & Roles"
+        title={<>Work from home. <span className="text-[#FF4D00]">Build real things.</span></>}
+        description="100% remote. Flexible hours. Fair compensation discussed personally on a call — we match numbers to people, not rigid corporate tiers."
       >
         <div className="flex flex-wrap items-center justify-center gap-3">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#E8E6E1] bg-white px-3 py-1.5 text-[12px] font-medium text-[#6B6860]">
-            <Home className="size-3.5 text-[#1A56DB]" /> 100% Work From Home
+          <span className="inline-flex items-center gap-1.5 rounded-full border-2 border-[#141414] bg-[#B8E986] px-3.5 py-1.5 font-display text-xs font-black uppercase text-[#141414] shadow-[3px_3px_0_#141414]">
+            <Home className="size-3.5" /> 100% Work From Home
           </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#E8E6E1] bg-white px-3 py-1.5 text-[12px] font-medium text-[#6B6860]">
-            <Users className="size-3.5 text-[#1A56DB]" /> {totalOpenings}+ open positions
+          <span className="inline-flex items-center gap-1.5 rounded-full border-2 border-[#141414] bg-[#FFC72E] px-3.5 py-1.5 font-display text-xs font-black uppercase text-[#141414] shadow-[3px_3px_0_#141414]">
+            <Users className="size-3.5" /> {totalOpenings}+ Open Positions
           </span>
         </div>
       </PageHero>
 
-      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28 flex flex-col gap-24">
+      <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24 flex flex-col gap-24">
 
         {/* Why join */}
         <div>
           <Reveal>
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB] mb-8">Why join us</p>
+            <p className="section-label mb-3">Why join us</p>
+            <h2 className="font-display text-4xl font-black uppercase leading-none tracking-[-0.06em] sm:text-5xl text-[#141414] mb-8">
+              No corporate fog. Just speed &amp; growth.
+            </h2>
           </Reveal>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {WHY_JOIN.map((w, i) => (
               <Reveal key={w.title} delay={i * 0.07}>
-                <div className="flex gap-4 rounded-xl border border-[#E8E6E1] bg-white p-5 shadow-sm">
-                  <div className="grid size-10 shrink-0 place-items-center rounded-lg bg-blue-50 text-[#1A56DB]">
-                    <w.icon className="size-5" />
+                <div className="flex flex-col justify-between rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[5px_5px_0_#141414] transition hover:-translate-y-1">
+                  <div className="flex size-12 items-center justify-center rounded-xl border-2 border-[#141414] bg-[#FFC72E]">
+                    <w.icon className="size-6 text-[#141414]" />
                   </div>
-                  <div>
-                    <h3 className="font-heading text-sm font-semibold text-[#0F0E0D]">{w.title}</h3>
-                    <p className="mt-1 text-xs text-[#6B6860] leading-relaxed">{w.description}</p>
+                  <div className="mt-5">
+                    <h3 className="font-display text-xl font-black uppercase text-[#141414]">{w.title}</h3>
+                    <p className="mt-2 text-sm font-medium leading-6 text-[#5B5146]">{w.description}</p>
                   </div>
                 </div>
               </Reveal>
@@ -63,95 +65,103 @@ export default function CareersPage() {
         {/* Open roles */}
         <div>
           <Reveal>
-            <div className="mb-8">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB]">Open roles</p>
-              <p className="mt-2 text-sm text-[#6B6860]">Salary &amp; compensation is discussed personally on a call — we match numbers to people, not job titles.</p>
+            <div className="mb-8 flex items-end justify-between gap-4">
+              <div>
+                <p className="section-label">Current Openings</p>
+                <h2 className="mt-2 font-display text-4xl font-black uppercase leading-none tracking-[-0.06em] sm:text-5xl text-[#141414]">
+                  Pick your role.
+                </h2>
+              </div>
+              <span className="hidden font-display text-xs font-black uppercase tracking-[0.1em] text-[#5B5146] sm:block">
+                Compensation discussed on call
+              </span>
             </div>
           </Reveal>
+
           <div className="flex flex-col gap-6">
             {ROLES.map((role, i) => (
               <Reveal key={role.title} delay={i * 0.06}>
-                <TiltCard intensity={3}>
-                  <div className="group rounded-2xl border border-[#E8E6E1] bg-white shadow-sm hover:border-[#1A56DB]/30 transition-all duration-300 overflow-hidden">
-                    {/* Card header */}
-                    <div className="flex flex-col gap-4 p-7 sm:flex-row sm:items-start sm:justify-between border-b border-[#F4F3F0]">
-                      <div className="flex-1">
-                        <div className="flex flex-wrap items-center gap-3">
-                          <h3 className="font-heading text-xl font-semibold text-[#0F0E0D]">{role.title}</h3>
-                          <span className={cn(
-                            "rounded-full px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider",
-                            role.status === "Open"
-                              ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
-                              : "bg-[#F4F3F0] text-[#6B6860] border border-[#E8E6E1]"
-                          )}>
-                            {role.status}
-                          </span>
-                        </div>
-                        <div className="mt-2 flex flex-wrap items-center gap-3">
-                          <p className="font-mono text-xs text-[#6B6860] font-semibold">{role.type}</p>
-                          <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 border border-blue-100 px-2.5 py-0.5 font-mono text-[10px] font-semibold text-[#1A56DB]">
-                            <Users className="size-2.5" />
-                            {role.openings} openings
-                          </span>
-                        </div>
-                        <p className="mt-3 text-sm text-[#6B6860] leading-relaxed">{role.description}</p>
+                <article className="group rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[6px_6px_0_#141414] transition duration-200 hover:-translate-y-1">
+                  {/* Role Header */}
+                  <div className="flex flex-col gap-4 border-b-2 border-[#141414] pb-6 sm:flex-row sm:items-start sm:justify-between">
+                    <div className="flex-1">
+                      <div className="flex flex-wrap items-center gap-3">
+                        <h3 className="font-display text-2xl font-black uppercase tracking-[-0.04em] text-[#141414]">
+                          {role.title}
+                        </h3>
+                        <span className="rounded-full border border-[#141414] bg-[#B8E986] px-3 py-1 font-display text-[0.65rem] font-black uppercase text-[#141414]">
+                          {role.status}
+                        </span>
                       </div>
-                      {role.status === "Open" && (
-                        <div className="shrink-0 mt-1 text-center sm:text-right">
-                          <Link
-                            href={`/careers/apply?role=${role.slug}`}
-                            className="inline-flex h-10 items-center justify-center gap-1.5 rounded-xl bg-[#1A56DB] text-white hover:bg-[#1447C0] px-5 text-sm font-semibold shadow-sm transition-all duration-200"
-                          >
-                            Apply <ArrowRight className="size-3.5" />
-                          </Link>
-                          <p className="mt-2 text-[10px] font-mono text-[#6B6860]">Pay discussed on call</p>
-                        </div>
-                      )}
+                      <div className="mt-2 flex flex-wrap items-center gap-3">
+                        <span className="font-display text-xs font-bold uppercase text-[#5B5146]">{role.type}</span>
+                        <span className="inline-flex items-center gap-1 rounded-full border border-[#141414] bg-[#9DD9FF] px-2.5 py-0.5 font-display text-[0.65rem] font-black uppercase text-[#141414]">
+                          <Users className="size-3" /> {role.openings} openings
+                        </span>
+                      </div>
+                      <p className="mt-3 text-sm leading-6 text-[#5B5146]">{role.description}</p>
                     </div>
 
-                    {/* 3-column details grid */}
-                    <div className="grid sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-[#F4F3F0]">
-                      {/* What we need */}
-                      <div className="p-6">
-                        <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#6B6860] mb-3 font-semibold">What we need</p>
-                        <ul className="flex flex-col gap-1.5">
-                          {role.requirements.map((r) => (
-                            <li key={r} className="flex items-start gap-2 text-xs text-[#6B6860] leading-relaxed">
-                              <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-[#1A56DB]/40" />
-                              {r}
-                            </li>
-                          ))}
-                        </ul>
+                    {role.status === "Open" && (
+                      <div className="shrink-0 sm:text-right">
+                        <Link
+                          href={`/careers/apply?role=${role.slug}`}
+                          className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#141414] bg-[#141414] px-6 py-3 font-display text-xs font-black uppercase text-[#FAF3E5] shadow-[3px_3px_0_#FF4D00] transition hover:bg-[#FF4D00]"
+                        >
+                          Apply Now <ArrowRight className="size-4" />
+                        </Link>
                       </div>
+                    )}
+                  </div>
 
-                      {/* What we expect */}
-                      <div className="p-6">
-                        <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#6B6860] mb-3 font-semibold">What we expect</p>
-                        <ul className="flex flex-col gap-1.5">
-                          {role.expect.map((e) => (
-                            <li key={e} className="flex items-start gap-2 text-xs text-[#6B6860] leading-relaxed">
-                              <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-amber-400/70" />
-                              {e}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                  {/* Details Grid */}
+                  <div className="grid gap-6 pt-6 sm:grid-cols-3">
+                    {/* What we need */}
+                    <div>
+                      <p className="font-display text-xs font-black uppercase tracking-[0.14em] text-[#141414] mb-3">
+                        What We Need
+                      </p>
+                      <ul className="space-y-2">
+                        {role.requirements.map((r) => (
+                          <li key={r} className="flex items-start gap-2 text-xs font-medium text-[#5B5146]">
+                            <Check className="mt-0.5 size-3.5 shrink-0 text-[#FF4D00]" />
+                            {r}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                      {/* What you get */}
-                      <div className="p-6">
-                        <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#6B6860] mb-3 font-semibold">What you get</p>
-                        <ul className="flex flex-col gap-1.5">
-                          {role.perks.map((p) => (
-                            <li key={p} className="flex items-start gap-2 text-xs text-[#6B6860] leading-relaxed">
-                              <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-emerald-500/60" />
-                              {p}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                    {/* What we expect */}
+                    <div>
+                      <p className="font-display text-xs font-black uppercase tracking-[0.14em] text-[#141414] mb-3">
+                        What We Expect
+                      </p>
+                      <ul className="space-y-2">
+                        {role.expect.map((e) => (
+                          <li key={e} className="flex items-start gap-2 text-xs font-medium text-[#5B5146]">
+                            <Zap className="mt-0.5 size-3.5 shrink-0 text-[#FFC72E]" />
+                            {e}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* What you get */}
+                    <div>
+                      <p className="font-display text-xs font-black uppercase tracking-[0.14em] text-[#141414] mb-3">
+                        What You Get
+                      </p>
+                      <ul className="space-y-2">
+                        {role.perks.map((p) => (
+                          <li key={p} className="flex items-start gap-2 text-xs font-medium text-[#5B5146]">
+                            <Sparkles className="mt-0.5 size-3.5 shrink-0 text-[#B8E986]" />
+                            {p}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
-                </TiltCard>
+                </article>
               </Reveal>
             ))}
           </div>
@@ -160,39 +170,47 @@ export default function CareersPage() {
         {/* Process */}
         <div>
           <Reveal>
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB] mb-10">The process</p>
+            <p className="section-label mb-2">Hiring Process</p>
+            <h2 className="font-display text-4xl font-black uppercase leading-none tracking-[-0.06em] sm:text-5xl text-[#141414] mb-10">
+              4 Steps to Join.
+            </h2>
           </Reveal>
+
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {PROCESS_STEPS.map((step, i) => (
               <Reveal key={step.step} delay={i * 0.1}>
-                <div className="flex flex-col gap-4">
-                  <div className="font-heading text-5xl font-semibold text-[#1A56DB]/15">{step.step}</div>
-                  <h4 className="font-heading text-base font-semibold text-[#0F0E0D]">{step.title}</h4>
-                  <p className="text-sm text-[#6B6860]">{step.description}</p>
+                <div className="rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-5 shadow-[4px_4px_0_#141414]">
+                  <span className="font-display text-5xl font-black text-[#FF4D00]">{step.step}</span>
+                  <h4 className="mt-4 font-display text-lg font-black uppercase text-[#141414]">{step.title}</h4>
+                  <p className="mt-2 text-xs font-medium leading-5 text-[#5B5146]">{step.description}</p>
                 </div>
               </Reveal>
             ))}
           </div>
+        </div>
 
-          <Reveal className="mt-16">
-            <div className="rounded-3xl border border-[#E8E6E1] bg-white p-10 text-center relative overflow-hidden shadow-sm">
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(26,86,219,0.03),transparent_70%)]" />
-              <p className="relative font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB] mb-3">Ready to join us?</p>
-              <h3 className="relative font-heading text-2xl font-semibold mb-4 text-[#0F0E0D]">
-                Apply in 2 minutes. Compensation on a call.
-              </h3>
-              <p className="relative text-[#6B6860] mb-6 max-w-md mx-auto text-sm leading-relaxed">
-                No long forms. No corporate process. Tell us who you are and why you want in — we&apos;ll take it from there.
-              </p>
+        {/* Bottom CTA */}
+        <section className="bg-[#141414] rounded-3xl p-8 sm:p-14 text-center text-[#FAF3E5] border-2 border-[#141414] shadow-[8px_8px_0_#FF4D00]">
+          <Reveal>
+            <span className="font-display text-xs font-black uppercase tracking-[0.16em] text-[#FFC72E]">
+              Ready to build?
+            </span>
+            <h2 className="mt-3 font-display text-5xl font-black uppercase leading-[0.88] tracking-[-0.07em] sm:text-7xl">
+              Apply in 2 minutes.
+            </h2>
+            <p className="mx-auto mt-4 max-w-md text-base leading-7 text-[#FAF3E5]/70">
+              No 10-page application forms. Tell us who you are, share your best work, and let&apos;s talk.
+            </p>
+            <div className="mt-7">
               <Link
                 href="/careers/apply"
-                className={cn(buttonVariants({ variant: "default" }), "h-12 gap-2 px-8 text-base")}
+                className="inline-flex items-center gap-2 rounded-full border-2 border-[#FAF3E5] bg-[#FAF3E5] px-7 py-3.5 font-display text-xs font-black uppercase text-[#141414] shadow-[4px_4px_0_#FF4D00] transition hover:-translate-y-1 hover:bg-[#FFC72E]"
               >
-                Apply now <ArrowRight className="size-4" />
+                Apply Now <ArrowRight className="size-4" />
               </Link>
             </div>
           </Reveal>
-        </div>
+        </section>
       </div>
     </>
   );

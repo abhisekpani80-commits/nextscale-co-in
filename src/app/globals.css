@@ -59,6 +59,12 @@
   ::selection { background: var(--yellow); color: var(--ink); }
 }
 
+@media (pointer: fine) {
+  body, a, button, input, select, textarea, [role='button'], .cursor-pointer {
+    cursor: none !important;
+  }
+}
+
 @layer utilities {
   .font-heading, .font-display { font-family: var(--font-archivo), Arial Black, sans-serif; }
   .font-body { font-family: var(--font-space), Arial, sans-serif; }

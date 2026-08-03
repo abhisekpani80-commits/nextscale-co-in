@@ -4,7 +4,7 @@ import { useState } from "react";
 import {
   MessageCircle, Mail, MapPin, Clock,
   CheckCircle, Loader2, Send, ArrowRight,
-  Globe,
+  Globe, Sparkles, Zap, PhoneCall
 } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { PageHero } from "@/components/ui/page-hero";
@@ -20,86 +20,88 @@ export default function ContactPage() {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
-    // Build a WhatsApp message from the form and open it
-    const msg = `Hi Nextscale! I'm ${form.name}.\n\nService interested in: ${form.service || "Not specified"}\n\nMessage: ${form.message}\n\nContact me at: ${form.contact}`;
+    const msg = `Hi Next Scale! I'm ${form.name}.\n\nService interested in: ${form.service || "Not specified"}\n\nMessage: ${form.message}\n\nContact me at: ${form.contact}`;
     window.open(waLink(msg), "_blank");
     await new Promise((r) => setTimeout(r, 800));
     setStatus("done");
   };
 
-  const inputStyle = {
-    width: "100%",
-    background: "#FFFFFF",
-    border: "1px solid #E8E6E1",
-    borderRadius: "12px",
-    padding: "12px 16px",
-    fontSize: "14px",
-    color: "#0F0E0D",
-    outline: "none",
-    transition: "border-color 0.2s, box-shadow 0.2s",
-    fontFamily: "inherit",
-    letterSpacing: "-0.01em",
-  };
-
   const INFO = [
-    { icon: Mail, label: "Email", value: SITE.email, href: `mailto:${SITE.email}` },
-    { icon: MapPin, label: "Based in", value: "Bhubaneswar, Odisha · India" },
-    { icon: Globe, label: "Operating", value: "India · UAE · UK · USA · SEA" },
-    { icon: Clock, label: "Response time", value: "< 1 hour on WhatsApp\n24/7 AI agents active" },
+    { icon: Mail, label: "Email", value: SITE.email, href: `mailto:${SITE.email}`, color: "#FFC72E" },
+    { icon: MapPin, label: "Based in", value: "Bhubaneswar, Odisha · India", color: "#FFB7C5" },
+    { icon: Globe, label: "Operating", value: "India · UAE · UK · USA · SEA", color: "#9DD9FF" },
+    { icon: Clock, label: "Response time", value: "< 1 hour on WhatsApp\n24/7 AI agents active", color: "#B8E986" },
   ];
 
   return (
     <>
       <PageHero
-        kicker="Contact us"
-        title={<>Let&apos;s build something <span className="text-primary">remarkable together.</span></>}
-        description="Whether you're a clinic in Bhubaneswar or a startup in Dubai — we're ready. WhatsApp is fastest, or fill the form below."
+        kicker="Contact Us"
+        title={<>Let&apos;s build something <span className="text-[#FF4D00]">remarkable.</span></>}
+        description="Whether you're a clinic in Bhubaneswar or a startup in Dubai — we are ready. WhatsApp is fastest, or fill the quick form below."
       />
 
       <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
-        <div className="grid gap-8 lg:grid-cols-[340px_1fr]">
+        <div className="grid gap-8 lg:grid-cols-[360px_1fr]">
 
           {/* Left column */}
-          <Reveal className="flex flex-col gap-5">
-            {/* WhatsApp CTA */}
+          <Reveal className="flex flex-col gap-6">
+            {/* WhatsApp Direct CTA Card */}
             <a
               href={waLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative overflow-hidden rounded-2xl p-px transition-all duration-300 hover:shadow-sm"
-              style={{ background: "linear-gradient(135deg, rgba(37,211,102,0.4) 0%, rgba(18,140,126,0.3) 100%)" }}
+              className="group relative flex flex-col justify-between rounded-3xl border-2 border-[#141414] bg-[#B8E986] p-7 shadow-[6px_6px_0_#141414] transition duration-200 hover:-translate-y-1.5"
             >
-              <div className="flex flex-col items-center gap-4 rounded-[14px] p-7 text-center transition-all duration-300 bg-white">
-                <div className="flex size-14 items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-105 bg-green-50 border border-green-200">
-                  <MessageCircle className="size-7 text-[#25D366]" />
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex size-14 items-center justify-center rounded-2xl border-2 border-[#141414] bg-[#141414] text-[#B8E986] shadow-[2px_2px_0_#FAF3E5]">
+                  <MessageCircle className="size-7" />
                 </div>
-                <div>
-                  <p className="text-[16px] font-bold tracking-[-0.03em] text-[#0F0E0D]">WhatsApp us</p>
-                  <p className="mt-1 text-[12px] text-[#6B6860] tracking-[-0.01em]">Fastest. Reply within the hour.</p>
-                </div>
-                <span
-                  className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-[13px] font-semibold text-white transition-transform duration-300 group-hover:scale-[1.02] bg-[#25D366] hover:bg-[#20ba5a]"
-                >
-                  Open WhatsApp <ArrowRight className="size-3.5" />
+                <span className="rounded-full border-2 border-[#141414] bg-[#141414] px-2.5 py-1 font-display text-[0.6rem] font-black uppercase text-[#FAF3E5]">
+                  Fastest
                 </span>
+              </div>
+
+              <div className="mt-8">
+                <h3 className="font-display text-3xl font-black uppercase leading-none tracking-[-0.05em] text-[#141414]">
+                  WhatsApp Us
+                </h3>
+                <p className="mt-2 text-sm font-medium leading-relaxed text-[#141414]">
+                  Direct line to founder & tech team. Reply guaranteed within 1 hour.
+                </p>
+              </div>
+
+              <div className="mt-6 inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#141414] bg-[#141414] px-5 py-3 font-display text-xs font-black uppercase text-[#FAF3E5] transition group-hover:bg-[#FF4D00]">
+                Open WhatsApp <ArrowRight className="size-4" />
               </div>
             </a>
 
             {/* Info cards */}
-            <div className="rounded-2xl p-5 flex flex-col gap-4 border border-[#E8E6E1] bg-white shadow-sm">
+            <div className="space-y-3">
               {INFO.map((info) => (
-                <div key={info.label} className="flex items-start gap-3">
-                  <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-blue-50 border border-blue-100">
-                    <info.icon className="size-4 text-[#1A56DB]" />
+                <div
+                  key={info.label}
+                  style={{ backgroundColor: info.color }}
+                  className="flex items-center gap-3.5 rounded-2xl border-2 border-[#141414] p-4 shadow-[4px_4px_0_#141414]"
+                >
+                  <div className="flex size-10 shrink-0 items-center justify-center rounded-xl border-2 border-[#141414] bg-[#141414] text-[#FAF3E5]">
+                    <info.icon className="size-5" />
                   </div>
                   <div>
-                    <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#6B6860] font-semibold">{info.label}</p>
+                    <p className="font-display text-[0.65rem] font-black uppercase tracking-[0.14em] text-[#141414]">
+                      {info.label}
+                    </p>
                     {info.href ? (
-                      <a href={info.href} className="mt-0.5 block whitespace-pre-line text-[13px] text-[#0F0E0D] font-medium hover:text-[#1A56DB] transition-colors tracking-[-0.01em]">
+                      <a
+                        href={info.href}
+                        className="mt-0.5 block whitespace-pre-line text-sm font-bold text-[#141414] hover:underline"
+                      >
                         {info.value}
                       </a>
                     ) : (
-                      <p className="mt-0.5 whitespace-pre-line text-[13px] text-[#0F0E0D] font-medium tracking-[-0.01em]">{info.value}</p>
+                      <p className="mt-0.5 whitespace-pre-line text-sm font-bold text-[#141414]">
+                        {info.value}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -107,99 +109,116 @@ export default function ContactPage() {
             </div>
           </Reveal>
 
-          {/* Right — Form */}
+          {/* Right — Interactive Form */}
           <Reveal delay={0.1}>
             {status === "done" ? (
-              <div className="flex h-full min-h-[400px] flex-col items-center justify-center gap-5 rounded-2xl text-center border border-[#E8E6E1] bg-white shadow-sm">
-                <div className="flex size-16 items-center justify-center rounded-2xl bg-blue-50 border border-blue-100">
-                  <CheckCircle className="size-8 text-[#1A56DB]" />
+              <div className="flex h-full min-h-[420px] flex-col items-center justify-center gap-5 rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] p-8 text-center shadow-[7px_7px_0_#141414]">
+                <div className="flex size-16 items-center justify-center rounded-2xl border-2 border-[#141414] bg-[#B8E986]">
+                  <CheckCircle className="size-8 text-[#141414]" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold tracking-[-0.04em] text-[#0F0E0D]">Message sent!</h2>
-                  <p className="mt-2 text-[14px] text-[#6B6860] max-w-xs tracking-[-0.01em]">
-                    We've opened WhatsApp for you. We'll reply within the hour.
+                  <h2 className="font-display text-4xl font-black uppercase tracking-[-0.05em] text-[#141414]">
+                    Message Ready!
+                  </h2>
+                  <p className="mt-2 text-base font-medium text-[#5B5146] max-w-sm mx-auto">
+                    We&apos;ve formatted your message and opened WhatsApp. We will respond within the hour.
                   </p>
                 </div>
                 <button
+                  type="button"
                   onClick={() => setStatus("idle")}
-                  className="rounded-xl px-5 py-2 text-[13px] font-semibold bg-blue-50 text-[#1A56DB] border border-blue-100 hover:bg-blue-100 transition-colors duration-200"
+                  className="rounded-full border-2 border-[#141414] bg-[#FFC72E] px-6 py-2.5 font-display text-xs font-black uppercase text-[#141414] shadow-[3px_3px_0_#141414] hover:bg-[#FF4D00] hover:text-white transition"
                 >
-                  Send another
+                  Send another message
                 </button>
               </div>
             ) : (
-              <div className="rounded-2xl p-8 border border-[#E8E6E1] bg-white shadow-sm">
-                <div className="mb-7 flex items-center justify-between border-b border-[#E8E6E1] pb-4">
+              <div className="rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] p-7 shadow-[7px_7px_0_#141414] sm:p-10">
+                <div className="mb-7 flex items-center justify-between border-b-2 border-[#141414] pb-4">
                   <div>
-                    <h2 className="text-[20px] font-bold tracking-[-0.04em] text-[#0F0E0D]">Send a message</h2>
-                    <p className="mt-1 text-[12px] text-[#6B6860] tracking-[-0.01em]">Fills a WhatsApp message for you — no forms lost.</p>
+                    <h2 className="font-display text-3xl font-black uppercase tracking-[-0.05em] text-[#141414]">
+                      Send a message
+                    </h2>
+                    <p className="mt-1 text-sm font-medium text-[#5B5146]">
+                      Direct WhatsApp message dispatch — zero lost leads.
+                    </p>
                   </div>
-                  <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#6B6860] font-semibold">via WhatsApp</span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border-2 border-[#141414] bg-[#FFC72E] px-3 py-1 font-display text-[0.65rem] font-black uppercase text-[#141414]">
+                    <Zap className="size-3" /> Quick Connect
+                  </span>
                 </div>
 
-                <form onSubmit={submit} className="flex flex-col gap-5">
+                <form onSubmit={submit} className="flex flex-col gap-6">
                   <div className="grid gap-5 sm:grid-cols-2">
-                    {[
-                      { k: "name", label: "Your name *", placeholder: "Dr. Priya / Rahul / Sarah" },
-                      { k: "contact", label: "Email or WhatsApp *", placeholder: "+91 98765 or you@email.com" },
-                    ].map((field) => (
-                      <label key={field.k} className="flex flex-col gap-2">
-                        <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#6B6860] font-semibold">{field.label}</span>
-                        <input
-                          required
-                          placeholder={field.placeholder}
-                          value={(form as any)[field.k]}
-                          onChange={set(field.k)}
-                          style={inputStyle}
-                          onFocus={(e) => { e.target.style.borderColor = "#1A56DB"; e.target.style.boxShadow = "0 0 0 3px rgba(26, 86, 219, 0.08)"; }}
-                          onBlur={(e) => { e.target.style.borderColor = "#E8E6E1"; e.target.style.boxShadow = "none"; }}
-                        />
-                      </label>
-                    ))}
+                    <label className="flex flex-col gap-2">
+                      <span className="font-display text-xs font-black uppercase tracking-[0.1em] text-[#141414]">
+                        Your name *
+                      </span>
+                      <input
+                        required
+                        placeholder="Dr. Priya / Rahul / Sarah"
+                        value={form.name}
+                        onChange={set("name")}
+                        className="w-full rounded-xl border-2 border-[#141414] bg-[#FAF3E5] px-4 py-3 text-sm font-bold outline-none shadow-[3px_3px_0_#141414] focus:bg-white focus:shadow-[4px_4px_0_#FF4D00] transition"
+                      />
+                    </label>
+
+                    <label className="flex flex-col gap-2">
+                      <span className="font-display text-xs font-black uppercase tracking-[0.1em] text-[#141414]">
+                        Email or WhatsApp *
+                      </span>
+                      <input
+                        required
+                        placeholder="+91 98765 43210 or name@brand.com"
+                        value={form.contact}
+                        onChange={set("contact")}
+                        className="w-full rounded-xl border-2 border-[#141414] bg-[#FAF3E5] px-4 py-3 text-sm font-bold outline-none shadow-[3px_3px_0_#141414] focus:bg-white focus:shadow-[4px_4px_0_#FF4D00] transition"
+                      />
+                    </label>
                   </div>
 
                   <label className="flex flex-col gap-2">
-                    <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#6B6860] font-semibold">I'm interested in...</span>
+                    <span className="font-display text-xs font-black uppercase tracking-[0.1em] text-[#141414]">
+                      I&apos;m interested in...
+                    </span>
                     <select
                       value={form.service}
                       onChange={set("service")}
-                      style={{ ...inputStyle, appearance: "none" as any }}
-                      onFocus={(e) => { e.target.style.borderColor = "#1A56DB"; e.target.style.boxShadow = "0 0 0 3px rgba(26, 86, 219, 0.08)"; }}
-                      onBlur={(e) => { e.target.style.borderColor = "#E8E6E1"; e.target.style.boxShadow = "none"; }}
+                      className="w-full rounded-xl border-2 border-[#141414] bg-[#FAF3E5] px-4 py-3 text-sm font-bold outline-none shadow-[3px_3px_0_#141414] focus:bg-white focus:shadow-[4px_4px_0_#FF4D00] transition"
                     >
-                      <option value="">Select a service (optional)</option>
-                      <option value="AI Agents">AI Agents</option>
-                      <option value="Website">Website</option>
-                      <option value="Digital Growth">Digital Growth</option>
+                      <option value="">Select a service category</option>
+                      <option value="Website (Live in 7 Days)">Website (Live in 7 Days)</option>
+                      <option value="AI Receptionist / WhatsApp Agent">AI Receptionist / WhatsApp Agent</option>
+                      <option value="Digital Growth & Local SEO">Digital Growth & Local SEO</option>
                       <option value="Products (ExamOS / Aura)">Products (ExamOS / Aura)</option>
-                      <option value="Custom project">Custom project</option>
-                      <option value="Just exploring">Just exploring</option>
+                      <option value="Full Jugaad Suite">Full Jugaad Suite</option>
+                      <option value="Custom Enterprise Build">Custom Enterprise Build</option>
                     </select>
                   </label>
 
                   <label className="flex flex-col gap-2">
-                    <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#6B6860] font-semibold">What do you need? *</span>
+                    <span className="font-display text-xs font-black uppercase tracking-[0.1em] text-[#141414]">
+                      What do you need? *
+                    </span>
                     <textarea
                       required
                       rows={5}
-                      placeholder="Tell us about your business and what you're looking for. The more detail, the better."
+                      placeholder="Tell us about your business goals, timeline, and requirements..."
                       value={form.message}
                       onChange={set("message")}
-                      style={{ ...inputStyle, resize: "none" }}
-                      onFocus={(e) => { e.target.style.borderColor = "#1A56DB"; e.target.style.boxShadow = "0 0 0 3px rgba(26, 86, 219, 0.08)"; }}
-                      onBlur={(e) => { e.target.style.borderColor = "#E8E6E1"; e.target.style.boxShadow = "none"; }}
+                      className="w-full rounded-xl border-2 border-[#141414] bg-[#FAF3E5] px-4 py-3 text-sm font-bold outline-none shadow-[3px_3px_0_#141414] focus:bg-white focus:shadow-[4px_4px_0_#FF4D00] transition resize-none"
                     />
                   </label>
 
                   <button
                     type="submit"
                     disabled={status === "sending"}
-                    className="self-start flex items-center gap-2 rounded-xl px-7 py-3 text-[13px] font-bold tracking-[-0.01em] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 bg-[#1A56DB] text-white hover:bg-[#1447C0]"
+                    className="mt-2 inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#141414] bg-[#FF4D00] px-7 py-4 font-display text-xs font-black uppercase text-[#FAF3E5] shadow-[5px_5px_0_#141414] transition hover:-translate-y-0.5 hover:bg-[#FFC72E] hover:text-[#141414] disabled:opacity-50"
                   >
                     {status === "sending" ? (
                       <><Loader2 className="size-4 animate-spin" /> Opening WhatsApp...</>
                     ) : (
-                      <><Send className="size-4" /> Send via WhatsApp</>
+                      <><Send className="size-4" /> Send via WhatsApp <ArrowRight className="size-4" /></>
                     )}
                   </button>
                 </form>
