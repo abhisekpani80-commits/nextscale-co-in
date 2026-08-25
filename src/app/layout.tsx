@@ -7,7 +7,7 @@ import { WhatsAppFloat } from "@/components/layout/whatsapp-float";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { CookieConsent } from "@/components/ui/cookie-consent";
 import { JsonLd } from "@/components/seo/json-ld";
-import { organizationSchema, websiteSchema, founderPersonSchema } from "@/lib/seo";
+import { organizationSchema, websiteSchema, founderPersonSchema, localBusinessSchema } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 import { ClientWrapper } from "@/components/ui/client-wrapper";
 
@@ -33,20 +33,23 @@ export const metadata: Metadata = {
   description:
     "Next Scale builds custom business websites (live in 7 days) and WhatsApp AI agents for clinics, salons, real estate, and SMBs.",
   applicationName: SITE.name,
-  authors: [{ name: SITE.founder }],
-  creator: SITE.founder,
+  authors: [{ name: SITE.founder, url: `${SITE.url}/about` }],
+  creator: `${SITE.founder} (Founder & CEO)`,
   publisher: SITE.name,
   keywords: [
-    "website for clinic",
-    "WhatsApp AI receptionist",
-    "custom business website",
-    "AI appointment booking",
-    "website design",
-    "AI agents for small business",
-    "website live in 7 days",
-    "ExamOS exam prep",
-    "Next Scale",
     "Abhisek Pani",
+    "Abhisek Pani Next Scale",
+    "Abhisek Pani founder",
+    "Abhisek Pani CEO",
+    "Abhisek Pani Nextscale",
+    "Abhisek Pani Bhubaneswar",
+    "Next Scale",
+    "Next Scale Technologies",
+    "custom business website",
+    "WhatsApp AI receptionist",
+    "AI appointment booking",
+    "Next.js web development agency",
+    "website live in 7 days",
   ],
   formatDetection: {
     email: false,
@@ -103,7 +106,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
       </head>
       <body className="min-h-full flex flex-col bg-[#FAF3E5] text-[#141414] relative">
-        <JsonLd schema={[organizationSchema(), websiteSchema(), founderPersonSchema()]} />
+        <JsonLd schema={[organizationSchema(), websiteSchema(), founderPersonSchema(), localBusinessSchema()]} />
         <ScrollProgress />
         <ClientWrapper>
           <Navbar />

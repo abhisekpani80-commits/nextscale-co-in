@@ -22,10 +22,8 @@ export default async function Image() {
           alignItems: "center",
           justifyContent: "space-between",
           backgroundColor: "#FAF3E5",
-          backgroundImage: "radial-gradient(#141414 1px, transparent 1px)",
-          backgroundSize: "20px 20px",
           padding: "60px 70px",
-          fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+          fontFamily: "sans-serif",
           color: "#141414",
           boxSizing: "border-box",
         }}
@@ -37,31 +35,33 @@ export default async function Image() {
             flexDirection: "column",
             justifyContent: "space-between",
             height: "100%",
-            maxWidth: "680px",
+            maxWidth: "640px",
           }}
         >
           {/* Top Logo */}
           <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
             <div
               style={{
-                width: "44px",
-                height: "44px",
-                borderRadius: "12px",
-                background: "#141414",
+                width: "48px",
+                height: "48px",
+                borderRadius: "14px",
+                background: "#FF4D00",
+                border: "3px solid #141414",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                boxShadow: "0 0 20px rgba(26, 86, 219, 0.5)",
+                boxShadow: "3px 3px 0 #141414",
               }}
             >
-              <span style={{ fontSize: "24px", fontWeight: 900, color: "#ffffff" }}>N</span>
+              <span style={{ fontSize: "26px", fontWeight: 900, color: "#FAF3E5" }}>✦</span>
             </div>
             <span
               style={{
-                fontSize: "26px",
-                fontWeight: 800,
-                letterSpacing: "2px",
-                color: "#ffffff",
+                fontSize: "28px",
+                fontWeight: 900,
+                letterSpacing: "1px",
+                color: "#141414",
+                textTransform: "uppercase",
               }}
             >
               NEXT SCALE
@@ -69,47 +69,50 @@ export default async function Image() {
           </div>
 
           {/* Middle Headline */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "16px", margin: "20px 0" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "14px", margin: "16px 0" }}>
             <h1
               style={{
-                fontSize: "48px",
-                fontWeight: 800,
-                lineHeight: 1.15,
-                color: "#ffffff",
-                letterSpacing: "-1px",
+                fontSize: "52px",
+                fontWeight: 900,
+                lineHeight: 1.05,
+                color: "#141414",
+                letterSpacing: "-2px",
+                textTransform: "uppercase",
                 margin: 0,
               }}
             >
-              Websites, <span style={{ color: "#FF4D00" }}>AI Jugaad & Digital Growth</span>
+              We cook <span style={{ color: "#FF4D00" }}>websites.</span>
+              <br />
+              And AI agents.
             </h1>
             <p
               style={{
                 fontSize: "20px",
-                color: "#94A3B8",
+                color: "#5B5146",
                 lineHeight: 1.4,
                 margin: 0,
-                fontWeight: 500,
+                fontWeight: 600,
               }}
             >
-              We build high-performance digital engines for clinics, real estate & SMBs. Live in 3–7 days.
+              Sub-second Next.js web applications and 24/7 WhatsApp AI receptionists. Live in 7 days flat.
             </p>
           </div>
 
-          {/* Badges & Footer URL */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-            <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+          {/* Badges & URL */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+            <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
               <div
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "8px",
                   padding: "8px 16px",
                   borderRadius: "100px",
-                  background: "rgba(26, 86, 219, 0.15)",
-                  border: "1px solid rgba(56, 189, 248, 0.3)",
-                  color: "#FF4D00",
-                  fontSize: "14px",
-                  fontWeight: 600,
+                  background: "#FFC72E",
+                  border: "2px solid #141414",
+                  color: "#141414",
+                  fontSize: "13px",
+                  fontWeight: 800,
+                  boxShadow: "2px 2px 0 #141414",
                 }}
               >
                 <span>⚡ Live in 7 Days</span>
@@ -119,39 +122,39 @@ export default async function Image() {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "8px",
                   padding: "8px 16px",
                   borderRadius: "100px",
-                  background: "rgba(124, 58, 237, 0.15)",
-                  border: "1px solid rgba(168, 85, 247, 0.3)",
-                  color: "#C084FC",
-                  fontSize: "14px",
-                  fontWeight: 600,
+                  background: "#9DD9FF",
+                  border: "2px solid #141414",
+                  color: "#141414",
+                  fontSize: "13px",
+                  fontWeight: 800,
+                  boxShadow: "2px 2px 0 #141414",
                 }}
               >
-                <span>🤖 24/7 AI Receptionist</span>
+                <span>🤖 24/7 WhatsApp AI</span>
               </div>
 
               <div
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "8px",
                   padding: "8px 16px",
                   borderRadius: "100px",
-                  background: "rgba(34, 197, 94, 0.15)",
-                  border: "1px solid rgba(74, 222, 128, 0.3)",
-                  color: "#4ADE80",
-                  fontSize: "14px",
-                  fontWeight: 600,
+                  background: "#B8E986",
+                  border: "2px solid #141414",
+                  color: "#141414",
+                  fontSize: "13px",
+                  fontWeight: 800,
+                  boxShadow: "2px 2px 0 #141414",
                 }}
               >
-                <span>📈 Verified Business ROI</span>
+                <span>🔒 100% Code Handover</span>
               </div>
             </div>
 
-            <span style={{ fontSize: "16px", fontWeight: 600, color: "#64748B" }}>
-              nextscale.co.in
+            <span style={{ fontSize: "16px", fontWeight: 800, color: "#141414", letterSpacing: "1px" }}>
+              NEXTSCALE.CO.IN · SERVING 8+ COUNTRIES
             </span>
           </div>
         </div>
@@ -161,85 +164,102 @@ export default async function Image() {
           style={{
             display: "flex",
             flexDirection: "column",
-            width: "360px",
+            width: "380px",
             height: "460px",
-            background: "rgba(15, 23, 42, 0.75)",
-            border: "1px solid rgba(255, 255, 255, 0.12)",
-            borderRadius: "24px",
+            background: "#FFFCF5",
+            border: "3px solid #141414",
+            borderRadius: "28px",
             padding: "24px",
-            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
-            backdropFilter: "blur(12px)",
+            boxShadow: "8px 8px 0 #141414",
             justifyContent: "space-between",
           }}
         >
-          {/* Mock Chat Header */}
+          {/* Header */}
           <div
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "12px",
+              justifyContent: "space-between",
               paddingBottom: "16px",
-              borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
+              borderBottom: "2px solid #141414",
             }}
           >
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <div
+                style={{
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "10px",
+                  background: "#FF4D00",
+                  border: "2px solid #141414",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "#FAF3E5",
+                  fontWeight: "bold",
+                  fontSize: "14px",
+                }}
+              >
+                AI
+              </div>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <span style={{ fontSize: "15px", fontWeight: 900, color: "#141414", textTransform: "uppercase" }}>
+                  AI Receptionist
+                </span>
+                <span style={{ fontSize: "11px", color: "#FF4D00", fontWeight: 800 }}>
+                  ● Live 24/7
+                </span>
+              </div>
+            </div>
             <div
               style={{
-                width: "40px",
-                height: "40px",
-                borderRadius: "50%",
-                background: "#25D366",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#ffffff",
-                fontWeight: "bold",
-                fontSize: "18px",
+                borderRadius: "100px",
+                background: "#B8E986",
+                border: "2px solid #141414",
+                padding: "4px 10px",
+                fontSize: "11px",
+                fontWeight: 900,
               }}
             >
-              WA
-            </div>
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <span style={{ fontSize: "16px", fontWeight: 700, color: "#ffffff" }}>
-                WhatsApp AI Receptionist
-              </span>
-              <span style={{ fontSize: "12px", color: "#4ADE80", fontWeight: 600 }}>
-                ● Active 24/7
-              </span>
+              &lt; 2s Reply
             </div>
           </div>
 
-          {/* Mock Chat Bubbles */}
+          {/* Chat Bubbles */}
           <div
             style={{
               display: "flex",
               flexDirection: "column",
               gap: "12px",
-              margin: "20px 0",
+              margin: "16px 0",
             }}
           >
             <div
               style={{
-                background: "rgba(255, 255, 255, 0.06)",
-                padding: "12px 16px",
+                background: "#FAF3E5",
+                border: "2px solid #141414",
+                padding: "12px 14px",
                 borderRadius: "16px",
                 borderBottomLeftRadius: "4px",
-                fontSize: "14px",
-                color: "#CBD5E1",
+                fontSize: "13px",
+                fontWeight: 600,
+                color: "#141414",
                 maxWidth: "85%",
               }}
             >
-              Hi! I&apos;d like to book an appointment for tomorrow afternoon.
+              Hi! Can I book a consultation for tomorrow afternoon?
             </div>
 
             <div
               style={{
-                background: "rgba(26, 86, 219, 0.3)",
-                border: "1px solid rgba(56, 189, 248, 0.3)",
-                padding: "12px 16px",
+                background: "#141414",
+                border: "2px solid #141414",
+                padding: "12px 14px",
                 borderRadius: "16px",
                 borderBottomRightRadius: "4px",
-                fontSize: "14px",
-                color: "#ffffff",
+                fontSize: "13px",
+                color: "#FAF3E5",
+                fontWeight: 600,
                 alignSelf: "flex-end",
                 maxWidth: "90%",
                 display: "flex",
@@ -247,43 +267,44 @@ export default async function Image() {
                 gap: "4px",
               }}
             >
-              <span>Slot confirmed for 3:30 PM! 📅</span>
-              <span style={{ fontSize: "11px", color: "#93C5FD" }}>Calendar invite & reminder sent.</span>
+              <span style={{ color: "#FFC72E", fontWeight: 800 }}>Confirmed for 3:30 PM! 📅</span>
+              <span style={{ fontSize: "11px", color: "#FAF3E5" }}>Calendar synced & WhatsApp reminder sent.</span>
             </div>
           </div>
 
-          {/* Stats Card at bottom of preview */}
+          {/* Metric Bottom Box */}
           <div
             style={{
-              marginTop: "auto",
-              background: "linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%)",
-              border: "1px solid rgba(56, 189, 248, 0.2)",
+              background: "#FFC72E",
+              border: "2px solid #141414",
               borderRadius: "16px",
-              padding: "16px",
+              padding: "14px",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
+              boxShadow: "3px 3px 0 #141414",
             }}
           >
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <span style={{ fontSize: "12px", color: "#94A3B8", textTransform: "uppercase", fontWeight: 600 }}>
-                Booking Conversion
+              <span style={{ fontSize: "11px", color: "#141414", textTransform: "uppercase", fontWeight: 900 }}>
+                Lead Recovery
               </span>
-              <span style={{ fontSize: "24px", fontWeight: 800, color: "#4ADE80" }}>
-                +300%
+              <span style={{ fontSize: "22px", fontWeight: 900, color: "#141414" }}>
+                +3.2x Bookings
               </span>
             </div>
             <div
               style={{
                 padding: "6px 12px",
                 borderRadius: "8px",
-                background: "rgba(74, 222, 128, 0.15)",
-                color: "#4ADE80",
-                fontSize: "12px",
-                fontWeight: 700,
+                background: "#141414",
+                color: "#FAF3E5",
+                fontSize: "11px",
+                fontWeight: 900,
+                textTransform: "uppercase",
               }}
             >
-              Zero Missed Leads
+              Zero Drop-Off
             </div>
           </div>
         </div>
@@ -294,3 +315,4 @@ export default async function Image() {
     }
   );
 }
+

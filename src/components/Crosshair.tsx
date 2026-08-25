@@ -28,9 +28,9 @@ const Crosshair: React.FC<CrosshairProps> = ({ color = 'white', containerRef = n
   const filterXRef = useRef<SVGFETurbulenceElement>(null);
   const filterYRef = useRef<SVGFETurbulenceElement>(null);
 
-  let mouse = { x: 0, y: 0 };
-
   useEffect(() => {
+    let mouse = { x: 0, y: 0 };
+
     const handleMouseMove = (ev: Event) => {
       const mouseEvent = ev as MouseEvent;
       mouse = getMousePos(mouseEvent, containerRef?.current);

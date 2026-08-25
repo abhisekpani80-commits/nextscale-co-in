@@ -18,11 +18,6 @@ import {
   Video,
   Layers,
   Sparkles,
-  Search,
-  CheckCircle2,
-  PhoneCall,
-  MessageSquare,
-  DollarSign,
   type LucideIcon,
 } from "lucide-react";
 

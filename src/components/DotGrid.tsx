@@ -211,9 +211,8 @@ const DotGrid: React.FC<DotGridProps> = ({
       pr.lastY = e.clientY;
       pr.vx = vx;
       pr.vy = vy;
-      pr.speed = speed;
-
-      const rect = canvasRef.current!.getBoundingClientRect();
+      if (!canvasRef.current) return;
+      const rect = canvasRef.current.getBoundingClientRect();
       pr.x = e.clientX - rect.left;
       pr.y = e.clientY - rect.top;
 
@@ -241,7 +240,8 @@ const DotGrid: React.FC<DotGridProps> = ({
     };
 
     const onClick = (e: MouseEvent) => {
-      const rect = canvasRef.current!.getBoundingClientRect();
+      if (!canvasRef.current) return;
+      const rect = canvasRef.current.getBoundingClientRect();
       const cx = e.clientX - rect.left;
       const cy = e.clientY - rect.top;
       for (const dot of dotsRef.current) {
@@ -268,13 +268,33 @@ const DotGrid: React.FC<DotGridProps> = ({
       }
     };
 
+    const onTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        onMove({ clientX: touch.clientX, clientY: touch.clientY } as MouseEvent);
+      }
+    };
+
+    const onTouchStart = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        onClick({ clientX: touch.clientX, clientY: touch.clientY } as MouseEvent);
+      }
+    };
+
     const throttledMove = throttle(onMove, 50);
+    const throttledTouchMove = throttle(onTouchMove, 50);
+
     window.addEventListener('mousemove', throttledMove, { passive: true });
     window.addEventListener('click', onClick);
+    window.addEventListener('touchmove', throttledTouchMove, { passive: true });
+    window.addEventListener('touchstart', onTouchStart, { passive: true });
 
     return () => {
       window.removeEventListener('mousemove', throttledMove);
       window.removeEventListener('click', onClick);
+      window.removeEventListener('touchmove', throttledTouchMove);
+      window.removeEventListener('touchstart', onTouchStart);
     };
   }, [maxSpeed, speedTrigger, proximity, resistance, returnDuration, shockRadius, shockStrength]);
 

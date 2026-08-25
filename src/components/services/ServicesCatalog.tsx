@@ -6,27 +6,9 @@ import {
   CheckCircle2,
   ArrowRight,
   Bot,
-  Layers,
-  Zap,
-  Globe,
-  Mic,
-  PenTool,
-  TrendingUp,
-  BarChart3,
-  MapPin,
   ChevronDown,
   ChevronUp,
   PhoneCall,
-  Stethoscope,
-  Home,
-  GraduationCap,
-  ShoppingBag,
-  Code2,
-  Building2,
-  Briefcase,
-  UserCheck,
-  Video,
-  Info,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
@@ -37,7 +19,6 @@ import {
   ALL_SERVICES,
   AI_AGENT_CATEGORIES,
   type ServiceItem,
-  type IndustryPackage,
 } from "@/lib/servicesData";
 import { BusinessAssessor } from "./BusinessAssessor";
 

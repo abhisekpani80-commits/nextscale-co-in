@@ -1,5 +1,26 @@
+import type { Metadata } from "next";
 import { B2BLanding } from "@/components/home/b2b-landing";
 import { JsonLd } from "@/components/seo/json-ld";
+import { pageMeta } from "@/lib/seo";
+
+export const metadata: Metadata = pageMeta({
+  title: "Next Scale — Custom Websites & WhatsApp AI Agents Live in 7 Days",
+  description:
+    "Next Scale engineers sub-second Next.js web applications, 24/7 WhatsApp AI receptionists, and local SEO growth engines for businesses worldwide. Live in 7 days.",
+  path: "/",
+  keywords: [
+    "Next Scale",
+    "Next Scale Technologies",
+    "custom business website",
+    "WhatsApp AI receptionist",
+    "AI appointment booking",
+    "Next.js web development agency",
+    "AI agents for clinics",
+    "real estate website development",
+    "Abhisek Pani",
+    "website live in 7 days",
+  ],
+});
 
 const homeFaq = {
   "@context": "https://schema.org",
@@ -7,10 +28,10 @@ const homeFaq = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "How much does a business website cost?",
+      name: "How much does a business website cost at Next Scale?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "At Next Scale, a professional business website starts at ₹19,999 ($249) for a 5-page starter site and goes up to ₹79,999 ($999) for a full-featured site with AI chatbot and advanced SEO. All plans include domain, hosting, WhatsApp integration, and Google Maps. Websites are live in 7 days.",
+        text: "At Next Scale, a custom high-performance business website starts at ₹19,999 ($249) for a 5-page starter site and goes up to ₹79,999 ($999) for a full enterprise digital suite with 24/7 WhatsApp AI agents and advanced SEO. All plans include 100% source code handover, edge hosting setup, and guaranteed 7-day delivery.",
       },
     },
     {
@@ -18,31 +39,31 @@ const homeFaq = {
       name: "What is a WhatsApp AI receptionist and how does it work?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A WhatsApp AI receptionist is an AI agent trained on your business that answers customer queries, books appointments, sends reminders, and follows up — all via WhatsApp, 24/7 without any manual effort. Nextscale builds and deploys these for clinics, salons, real estate agents, and other businesses.",
+        text: "A WhatsApp AI receptionist is an autonomous conversational agent connected to the official Meta Cloud WhatsApp API. It answers patient and client inquiries, qualifies budgets, syncs appointments with Google Calendar, and sends reminders 24/7 without manual staff intervention.",
       },
     },
     {
       "@type": "Question",
-      name: "How fast can you build and launch a website?",
+      name: "How fast can Next Scale build and launch our system?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Nextscale guarantees websites live in 7 days. AI agents go live within 48 hours. The process: Day 1 is a discovery call, Days 2-4 are design and development, Days 5-6 are your review and revisions, and Day 7 is launch.",
+        text: "Next Scale delivers websites in 5–7 business days and deploys autonomous WhatsApp AI receptionists within 48–72 hours once business context and calendar availability are connected.",
       },
     },
     {
       "@type": "Question",
-      name: "Do you build websites for clinics and doctors?",
+      name: "Do you work with clinics, healthcare providers, and real estate agencies?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes — Nextscale specializes in websites for dermatology clinics, dental clinics, physiotherapy centers, cosmetic therapists, and other healthcare professionals. We include Google Maps, WhatsApp booking, review widgets, and appointment forms as standard.",
+        text: "Yes — Next Scale specializes in high-conversion web systems and AI receptionists for dermatology clinics, dental centers, physiotherapy practices, luxury real estate developers, and high-growth B2B startups.",
       },
     },
     {
       "@type": "Question",
-      name: "What is Nextscale and who runs it?",
+      name: "Who founded Next Scale and where is the studio located?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Nextscale is an AI products and web development company founded by Abhisek Pani. We build custom business websites, WhatsApp AI agents, SaaS products (ExamOS, Aura), and digital growth services for businesses across India and globally. We have shipped 25+ websites and 12+ AI agents.",
+        text: "Next Scale was founded in 2024 by software architect Abhisek Pani. Headquartered in Bhubaneswar, Odisha (India), the studio operates globally serving clients across India, UAE, UK, USA, and Europe.",
       },
     },
   ],

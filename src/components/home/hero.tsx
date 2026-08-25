@@ -35,12 +35,12 @@ const WORDS = [
 
 export function Hero() {
   const [index, setIndex] = useState(0);
-  const [renderShader, setRenderShader] = useState(false);
+  const [renderShader] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return !window.matchMedia("(max-width: 768px) or (pointer: coarse)").matches;
+  });
 
   useEffect(() => {
-    const isMobile = window.matchMedia("(max-width: 768px) or (pointer: coarse)").matches;
-    setRenderShader(!isMobile);
-
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % WORDS.length);
     }, 2800);

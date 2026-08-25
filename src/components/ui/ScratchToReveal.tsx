@@ -23,6 +23,10 @@ export function ScratchToReveal({
   const [isScratching, setIsScratching] = useState(false);
   const [percentage, setPercentage] = useState(0);
 
+  const lastPosRef = useRef<{ x: number; y: number } | null>(null);
+  const lastCheckTimeRef = useRef<number>(0);
+  const checkTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
   // Initialize canvas scratch mask
   const initCanvas = useCallback(() => {
     const canvas = canvasRef.current;
@@ -30,12 +34,12 @@ export function ScratchToReveal({
     if (!canvas || !container) return;
 
     const rect = container.getBoundingClientRect();
-    const dpr = window.devicePixelRatio || 1;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2); // Cap at 2 for performance on mobile
 
     canvas.width = rect.width * dpr;
     canvas.height = rect.height * dpr;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
     if (!ctx) return;
 
     ctx.scale(dpr, dpr);
@@ -88,44 +92,51 @@ export function ScratchToReveal({
     ctx.font = "700 12px Archivo, sans-serif";
     ctx.fillStyle = "#B8E986";
     ctx.fillText("Drag mouse or finger across to unveil our services", rect.width / 2, boxY + boxH * 0.8);
-
   }, []);
 
   useEffect(() => {
     initCanvas();
     window.addEventListener("resize", initCanvas);
-    return () => window.removeEventListener("resize", initCanvas);
+    return () => {
+      window.removeEventListener("resize", initCanvas);
+      if (checkTimeoutRef.current) clearTimeout(checkTimeoutRef.current);
+    };
   }, [initCanvas]);
 
   const checkScratchPercentage = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas || isDone) return;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
     if (!ctx) return;
 
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    const pixels = imageData.data;
-    let transparentPixels = 0;
+    try {
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const pixels = imageData.data;
+      let transparentPixels = 0;
+      const step = 32; // Sample every 32 bytes for high-performance mobile calculation
 
-    for (let i = 3; i < pixels.length; i += 16) {
-      if (pixels[i] === 0) {
-        transparentPixels++;
+      for (let i = 3; i < pixels.length; i += step) {
+        if (pixels[i] === 0) {
+          transparentPixels++;
+        }
       }
-    }
 
-    const totalSampledPixels = pixels.length / 16;
-    const currentPercent = Math.round((transparentPixels / totalSampledPixels) * 100);
+      const totalSampledPixels = Math.floor(pixels.length / step);
+      const currentPercent = Math.min(100, Math.round((transparentPixels / totalSampledPixels) * 100));
 
-    setPercentage(currentPercent);
+      setPercentage(currentPercent);
 
-    if (currentPercent >= minScratchPercentage && !isDone) {
-      setIsDone(true);
-      if (onReveal) onReveal();
+      if (currentPercent >= minScratchPercentage && !isDone) {
+        setIsDone(true);
+        if (onReveal) onReveal();
+      }
+    } catch {
+      // Ignore reading errors if canvas is cleared/reinitialized
     }
   }, [isDone, minScratchPercentage, onReveal]);
 
-  const scratch = (clientX: number, clientY: number) => {
+  const scratch = (clientX: number, clientY: number, isInitial = false) => {
     const canvas = canvasRef.current;
     const container = containerRef.current;
     if (!canvas || !container || isDone) return;
@@ -134,33 +145,80 @@ export function ScratchToReveal({
     const x = clientX - rect.left;
     const y = clientY - rect.top;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
     if (!ctx) return;
 
-    const dpr = window.devicePixelRatio || 1;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const radius = 42 * dpr;
 
     ctx.save();
     ctx.globalCompositeOperation = "destination-out";
-    ctx.beginPath();
-    ctx.arc(x * dpr, y * dpr, 45 * dpr, 0, Math.PI * 2);
-    ctx.fill();
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    ctx.lineWidth = radius * 2;
+
+    if (isInitial || !lastPosRef.current) {
+      ctx.beginPath();
+      ctx.arc(x * dpr, y * dpr, radius, 0, Math.PI * 2);
+      ctx.fill();
+    } else {
+      ctx.beginPath();
+      ctx.moveTo(lastPosRef.current.x * dpr, lastPosRef.current.y * dpr);
+      ctx.lineTo(x * dpr, y * dpr);
+      ctx.stroke();
+
+      // Ensure smooth endpoints
+      ctx.beginPath();
+      ctx.arc(x * dpr, y * dpr, radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
     ctx.restore();
 
-    checkScratchPercentage();
+    lastPosRef.current = { x, y };
+
+    // Throttle percentage calculation to avoid jank on mobile (max once per 100ms)
+    const now = Date.now();
+    if (now - lastCheckTimeRef.current > 100) {
+      lastCheckTimeRef.current = now;
+      checkScratchPercentage();
+    } else if (!checkTimeoutRef.current) {
+      checkTimeoutRef.current = setTimeout(() => {
+        checkTimeoutRef.current = null;
+        lastCheckTimeRef.current = Date.now();
+        checkScratchPercentage();
+      }, 120);
+    }
   };
 
-  const handlePointerDown = (e: React.PointerEvent) => {
+  const handlePointerDown = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    } catch {
+      // Ignore if pointer capture fails
+    }
     setIsScratching(true);
-    scratch(e.clientX, e.clientY);
+    lastPosRef.current = null;
+    scratch(e.clientX, e.clientY, true);
   };
 
-  const handlePointerMove = (e: React.PointerEvent) => {
+  const handlePointerMove = (e: React.PointerEvent<HTMLCanvasElement>) => {
     if (!isScratching) return;
     scratch(e.clientX, e.clientY);
   };
 
-  const handlePointerUp = () => {
-    setIsScratching(false);
+  const handlePointerUp = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    if (isScratching) {
+      setIsScratching(false);
+      lastPosRef.current = null;
+      checkScratchPercentage();
+    }
+    try {
+      if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+        e.currentTarget.releasePointerCapture(e.pointerId);
+      }
+    } catch {
+      // Ignore
+    }
   };
 
   const handleInstantReveal = () => {

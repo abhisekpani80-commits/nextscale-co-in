@@ -178,7 +178,7 @@ export function Footer() {
       {/* Prominent Yellow Personality Bottom Strip */}
       <div className="border-t-2 border-[#141414] bg-[#FFC72E] px-4 py-3.5 text-center text-[#141414]">
         <p className="font-display text-xs font-black uppercase tracking-[0.14em]">
-          © {new Date().getFullYear()} NEXT SCALE — MADE WITH JUGAAD &amp; CHAI IN ODISHA, INDIA 🇮🇳 · WORKING EVERYWHERE
+          © {new Date().getFullYear()} NEXT SCALE · FOUNDED &amp; CRAFTED BY <Link href="/about" className="underline hover:text-[#FF4D00]">ABHISEK PANI</Link> · BHUBANESWAR, INDIA 🇮🇳 · SERVING 8+ COUNTRIES WORLDWIDE
         </p>
       </div>
     </footer>

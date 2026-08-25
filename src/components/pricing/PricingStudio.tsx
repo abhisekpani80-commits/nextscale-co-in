@@ -55,14 +55,12 @@ const plans = [
 
 export function PricingStudio() {
   const [selected, setSelected] = useState("growth");
-  const [currency, setCurrency] = useState<"INR" | "USD">("INR");
-
-  useEffect(() => {
+  const [currency, setCurrency] = useState<"INR" | "USD">(() => {
+    if (typeof window === "undefined") return "INR";
     const saved = localStorage.getItem("currencyPreference");
-    if (saved === "USD" || saved === "INR") {
-      setCurrency(saved);
-    }
-  }, []);
+    if (saved === "USD" || saved === "INR") return saved;
+    return "INR";
+  });
 
   const handleCurrencyChange = (curr: "INR" | "USD") => {
     setCurrency(curr);

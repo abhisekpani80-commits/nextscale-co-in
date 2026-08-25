@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
-import { SITE, NAV, LEGAL_LINKS, PRODUCTS, SERVICES } from "@/lib/site";
+import { SITE, NAV, LEGAL_LINKS, PRODUCTS, SERVICES, PORTFOLIO, INDUSTRIES_DATA, LOCATIONS_DATA } from "@/lib/site";
+import { RESOURCES_DATA } from "@/lib/resources-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -17,22 +18,56 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  // Additional core routes
+  const extraCore: Entry[] = [
+    { url: url("/tools"), lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: url("/compare"), lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: url("/products"), lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: url("/resources"), lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: url("/careers/apply"), lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+  ];
+
   // Product & service detail pages.
   const detail: Entry[] = [...PRODUCTS, ...SERVICES].map((item) => ({
     url: url(item.href),
+    lastModified: now,
+    changeFrequency: "weekly",
+    priority: 0.8,
+  }));
+
+  // Dynamic Case Studies
+  const caseStudies: Entry[] = PORTFOLIO.filter((p) => p.slug).map((item) => ({
+    url: url(`/case-studies/${item.slug}`),
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.75,
+  }));
+
+  // Dynamic Industry Pages
+  const industries: Entry[] = INDUSTRIES_DATA.map((ind) => ({
+    url: url(`/industries/${ind.slug}`),
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.75,
+  }));
+
+  // Dynamic Location Pages
+  const locations: Entry[] = LOCATIONS_DATA.map((loc) => ({
+    url: url(`/locations/${loc.slug}`),
     lastModified: now,
     changeFrequency: "monthly",
     priority: 0.7,
   }));
 
-  const apply: Entry = {
-    url: url("/careers/apply"),
+  // Dynamic Resources & Guides
+  const resources: Entry[] = RESOURCES_DATA.map((res) => ({
+    url: url(`/resources/${res.category}/${res.slug}`),
     lastModified: now,
     changeFrequency: "monthly",
-    priority: 0.5,
-  };
+    priority: 0.7,
+  }));
 
-  // Legal pages — low priority, rarely change.
+  // Legal pages
   const legal: Entry[] = LEGAL_LINKS.map((l) => ({
     url: url(l.href),
     lastModified: now,
@@ -40,5 +75,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.3,
   }));
 
-  return [home, ...primary, ...detail, apply, ...legal];
+  return [
+    home,
+    ...primary,
+    ...extraCore,
+    ...detail,
+    ...caseStudies,
+    ...industries,
+    ...locations,
+    ...resources,
+    ...legal,
+  ];
 }
+

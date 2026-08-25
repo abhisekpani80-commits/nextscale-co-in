@@ -1,16 +1,25 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { MessageCircle, Zap, Globe, Check, X, PhoneCall, HelpCircle } from "lucide-react";
-import { PageHero } from "@/components/ui/page-hero";
-import { Reveal } from "@/components/ui/reveal";
-import { PricingCard } from "@/components/pricing/pricing-card";
+import Link from "next/link";
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+  MessageCircle,
+  Zap,
+  Globe,
+  Check,
+  X,
+  PhoneCall,
+  HelpCircle,
+  Sparkles,
+  ArrowRight,
+  ShieldCheck,
+  Code2,
+  Clock,
+  CheckCircle2,
+  TrendingUp,
+  Bot,
+  Layers,
+} from "lucide-react";
 import {
   PRICING_AGENTS,
   PRICING_WEBSITES,
@@ -20,9 +29,9 @@ import {
   PRICING_FAQ,
   waLink,
 } from "@/lib/site";
+import { DotGridBackdrop } from "@/components/ui/dot-grid-backdrop";
 import { cn } from "@/lib/utils";
 
-// Detailed marketing outcome-based description copy database
 type FeatureDetail = {
   outcome: string;
   description: string;
@@ -30,342 +39,163 @@ type FeatureDetail = {
 };
 
 const FEATURE_DETAILS: Record<string, FeatureDetail> = {
-  // Recurring AI Agent plans features:
   "WhatsApp AI Receptionist": {
     outcome: "Never miss a lead—even after business hours.",
-    description: "A 24/7 conversational agent integrated directly into your WhatsApp Business number. Trained on your treatments, pricing, and services to answer FAQs, qualify leads, and direct users to booking options.",
+    description:
+      "A 24/7 conversational agent integrated directly into your WhatsApp Business number. Trained on your treatments, pricing, and services to answer FAQs, qualify leads, and direct users to booking options.",
     benefits: [
       "Instantly handles unlimited concurrent chats",
       "Answers common questions without human staff",
-      "Qualifies leads so you only talk to serious clients"
-    ]
+      "Qualifies leads so you only talk to serious clients",
+    ],
   },
   "Appointment Booking": {
     outcome: "Fill your calendar automatically.",
-    description: "Allows leads to schedule consultations or service slots directly within chat. Syncs dynamically with your Google Calendar, Outlook, or booking platforms in real-time.",
+    description:
+      "Allows leads to schedule consultations or service slots directly within chat. Syncs dynamically with your Google Calendar, Outlook, or booking platforms in real-time.",
     benefits: [
       "Eliminates back-and-forth calendar coordination",
       "Blocks double-bookings instantly",
-      "Auto-sends calendar invites to both parties"
-    ]
+      "Auto-sends calendar invites to both parties",
+    ],
   },
   "Smart Reminders": {
     outcome: "Reduce appointment no-shows by up to 50%.",
-    description: "Automatically sends personalized, friendly reminders to clients before their scheduled appointments. Allows them to confirm, reschedule, or cancel directly from their text threads.",
+    description:
+      "Automatically sends personalized, friendly reminders to clients before their scheduled appointments. Allows them to confirm, reschedule, or cancel directly from their text threads.",
     benefits: [
       "Drastically reduces empty slots and missed bookings",
       "Sends timely reminders via WhatsApp, SMS, or Email",
-      "Updates calendar status automatically"
-    ]
+      "Updates calendar status automatically",
+    ],
   },
   "Follow-up Agent": {
     outcome: "Recover leads that normally never reply.",
-    description: "An automated sequence builder that keeps in touch with leads on a regular schedule. Re-engages cold leads, checks in after consultations, and collects post-visit satisfaction data.",
+    description:
+      "An automated sequence builder that keeps in touch with leads on a regular schedule. Re-engages cold leads, checks in after consultations, and collects post-visit satisfaction data.",
     benefits: [
       "Nurtures leads without manual follow-up effort",
       "Re-activates old prospects with custom offers",
-      "Identifies customer satisfaction issues early"
-    ]
+      "Identifies customer satisfaction issues early",
+    ],
   },
   "Review Manager": {
     outcome: "Build instant trust with automated 5-star reviews.",
-    description: "Systematically requests Google reviews and business feedback 2 hours after a successful purchase or appointment. Integrates review aggregation and auto-suggests replies in your brand tone.",
+    description:
+      "Systematically requests Google reviews and business feedback 2 hours after a successful purchase or appointment. Integrates review aggregation and auto-suggests replies in your brand tone.",
     benefits: [
       "Increases Google reviews by 2x to 3x within 60 days",
       "Helps you rank higher on local Google Search results",
-      "Boosts local buyer confidence automatically"
-    ]
+      "Boosts local buyer confidence automatically",
+    ],
   },
   "Lead Qualifier": {
     outcome: "Filter out tire-kickers. Route hot leads only.",
-    description: "Intelligent inbound lead scoring. Automatically chats with prospective clients, scoring them based on budget, urgency, and requirement alignment before passing them to your sales team.",
+    description:
+      "Intelligent inbound lead scoring. Automatically chats with prospective clients, scoring them based on budget, urgency, and requirement alignment before passing them to your sales team.",
     benefits: [
       "Saves up to 80% of sales reps' calling time",
       "Instantly tags leads as hot, warm, or cold",
-      "Forwards high-priority leads with summaries to WhatsApp"
-    ]
+      "Forwards high-priority leads with summaries to WhatsApp",
+    ],
   },
   "Content Agent": {
     outcome: "Launch your content machine on autopilot.",
-    description: "An AI content coordinator that drafts weekly blogs, newsletter articles, and social media posts tailored to your brand voice, industry trends, and local business keyword targets.",
+    description:
+      "An AI content coordinator that drafts weekly blogs, newsletter articles, and social media posts tailored to your brand voice, industry trends, and local business keyword targets.",
     benefits: [
       "Consistent marketing presence without content block",
       "SEO-ready blog drafts mapped to local searches",
-      "Quick approval flow: edit and schedule in seconds"
-    ]
+      "Quick approval flow: edit and schedule in seconds",
+    ],
   },
   "Analytics Dashboard": {
     outcome: "See every missed opportunity in one dashboard.",
-    description: "A centralized dashboard displaying active client conversations, lead capture rates, automated appointments booked, and estimated ROI generated by Next Scale automation systems.",
+    description:
+      "A centralized dashboard displaying active client conversations, lead capture rates, automated appointments booked, and estimated ROI generated by Next Scale automation systems.",
     benefits: [
       "Track exact revenue generated by the AI",
       "Identify conversational drop-off points",
-      "Compare week-over-week performance in real-time"
-    ]
+      "Compare week-over-week performance in real-time",
+    ],
   },
-  "Support": {
+  Support: {
     outcome: "Continuous optimization from dedicated experts.",
-    description: "Ongoing support packages providing regular prompt updates, fine-tuning audits, custom configuration expansions, and active monitoring to ensure your agents are performing at their peak.",
+    description:
+      "Ongoing support packages providing regular prompt updates, fine-tuning audits, custom configuration expansions, and active monitoring to ensure your agents are performing at their peak.",
     benefits: [
       "Prompt tuning based on real-world conversations",
       "Priority assistance over WhatsApp or dedicated Slack channel",
-      "Constant updates aligned with OpenAI/Meta API rollouts"
-    ]
+      "Constant updates aligned with OpenAI/Meta API rollouts",
+    ],
   },
-
-  // Website Packages features:
-  "Pages": {
-    outcome: "Showcase your business with dedicated layouts.",
-    description: "A robust layout design built specifically for your service offerings, company narrative, local map directions, team bios, and dynamic portfolios.",
-    benefits: [
-      "Custom layouts tailored to convert readers",
-      "Responsive, clean formatting across all viewports",
-      "Clean hierarchy that improves readability"
-    ]
-  },
-  "Domain": {
-    outcome: "Establish a professional online home.",
-    description: "Full registration or redirection setup for your custom domain name (.com, .in, .co.in, etc.) with advanced DNS configuration.",
-    benefits: [
-      "Builds branding authority and confidence",
-      "Includes professional SSL certificate for HTTPS",
-      "Configures secure email redirection patterns"
-    ]
-  },
-  "Hosting": {
-    outcome: "Unbelievably fast site load times.",
-    description: "Global CDN-powered hosting utilizing static generation technologies. Your pages will load in milliseconds, ensuring visitors never drop off due to slow loading speeds.",
-    benefits: [
-      "99.9% uptime guaranteed",
-      "Highly secure, serverless infrastructure",
-      "Zero monthly maintenance or server management tasks"
-    ]
-  },
-  "WhatsApp Integration": {
-    outcome: "Let prospects chat with you in one click.",
-    description: "Floating action triggers and custom buttons that redirect visitors directly into your business WhatsApp window with a pre-filled, highly relevant message.",
-    benefits: [
-      "Reduces lead friction significantly",
-      "Saves visitors from copying numbers manually",
-      "Instantly starts conversational relationships"
-    ]
-  },
-  "Google Maps & Reviews": {
-    outcome: "Drive local traffic straight to your door.",
-    description: "Embeds maps coordinates directly in the footer alongside a live feed of your 5-star Google reviews to validate trust instantly.",
-    benefits: [
-      "Boosts local search visibility",
-      "Provides click-to-navigate coordinates",
-      "Builds social proof for local shoppers"
-    ]
-  },
-  "SEO Optimization": {
-    outcome: "Get discovered on the first page of Google.",
-    description: "Technical search engine optimization. High performance scores, descriptive schema markup, meta tags, and structured heading designs that search engine robots love.",
-    benefits: [
-      "Built-in Google Rich Snippets support",
-      "Faster indexation on search consoles",
-      "Optimized for localized keywords"
-    ]
-  },
-  "AI Chatbot": {
-    outcome: "Convert passive readers into qualified buyers.",
-    description: "An interactive website widget that greets readers, answers service pricing questions in real-time, collects contact info, and forwards details directly to your email or WhatsApp.",
-    benefits: [
-      "Captures leads that skip contact forms",
-      "Engages visitors immediately upon landing",
-      "Keeps a record of visitor queries"
-    ]
-  },
-  "Google Business Setup": {
-    outcome: "Dominate your local search queries.",
-    description: "Full optimization of your Google Business Profile (formerly Google My Business) including categories, locations, pictures, and initial review collection strategy.",
-    benefits: [
-      "Puts your business on Google Map pack",
-      "Triggers more phone call leads directly from search",
-      "Creates the foundation for local SEO reviews"
-    ]
-  },
-
-  // Marketing & Growth features:
-  "SEO Audit & On-page Optimization": {
-    outcome: "Get found where your customers are searching.",
-    description: "Complete technical and on-page SEO audit with actionable recommendations. Covers site speed, meta tags, schema markup, heading structure, and keyword targeting.",
-    benefits: [
-      "Identifies quick wins for immediate ranking improvements",
-      "Comprehensive technical health check",
-      "Keyword gap analysis against competitors"
-    ]
-  },
-  "Content Calendar (1 platform)": {
-    outcome: "Stay consistently visible on your primary channel.",
-    description: "A structured monthly content plan for one social platform with post topics, formats, and scheduling.",
-    benefits: [
-      "Never run out of content ideas",
-      "Consistent brand presence builds trust",
-      "Aligned with SEO and business goals"
-    ]
-  },
-  "Content Calendar (3 platforms)": {
-    outcome: "Multi-channel presence that drives leads everywhere.",
-    description: "Strategic content calendars across three platforms (e.g. Instagram, LinkedIn, YouTube) with cross-platform repurposing.",
-    benefits: [
-      "3x the reach with coordinated messaging",
-      "Platform-specific content optimization",
-      "Weekly scheduling and performance tracking"
-    ]
-  },
-  "Content Calendar (all platforms)": {
-    outcome: "Full omnichannel content domination.",
-    description: "Comprehensive content strategy across all relevant platforms with dedicated production and scheduling.",
-    benefits: [
-      "Complete brand presence across every channel",
-      "Dedicated content team managing output",
-      "Real-time trend integration and pivoting"
-    ]
-  },
-  "Google / Meta Ads Management": {
-    outcome: "Turn ad spend into qualified leads.",
-    description: "Full-service Google Ads and Meta (Facebook/Instagram) campaign management including targeting, creative, A/B testing, and budget optimization.",
-    benefits: [
-      "Data-driven targeting reduces wasted spend",
-      "Continuous A/B testing improves conversion rates",
-      "Monthly reporting with clear ROI metrics"
-    ]
-  },
-  "Email Marketing Automation": {
-    outcome: "Nurture leads while you sleep.",
-    description: "Automated email sequences for lead nurturing, onboarding, re-engagement, and promotional campaigns.",
-    benefits: [
-      "Drip sequences that convert over time",
-      "Segmented lists for personalized messaging",
-      "Automated triggers based on user behavior"
-    ]
-  },
-  "Monthly Performance Reports": {
-    outcome: "Know exactly what's working and what's not.",
-    description: "Detailed monthly analytics reports covering traffic, conversions, ad performance, and growth metrics with actionable insights.",
-    benefits: [
-      "Clear visibility into ROI of every channel",
-      "Data-backed recommendations for next month",
-      "Executive summary format for quick review"
-    ]
-  },
-  "Dedicated Strategist": {
-    outcome: "A growth partner, not just a vendor.",
-    description: "A dedicated marketing strategist who understands your business, sets quarterly goals, and proactively recommends optimizations.",
-    benefits: [
-      "Single point of contact for all marketing",
-      "Proactive strategy adjustments based on data",
-      "Quarterly planning sessions and reviews"
-    ]
-  },
-
-  // Content & Copy features:
-  "Website Copy (homepage or landing page)": {
-    outcome: "Words that convert visitors into customers.",
-    description: "Professional conversion-focused copywriting for your homepage or landing page. Includes headline, value proposition, feature sections, and CTAs.",
-    benefits: [
-      "Conversion-optimized messaging framework",
-      "Brand voice development included",
-      "A/B testable headline variants"
-    ]
-  },
-  "Blog Content (4 SEO articles)": {
-    outcome: "Rank for keywords your customers are searching.",
-    description: "Four professionally written, SEO-optimized blog articles per project targeting your key search terms.",
-    benefits: [
-      "Keyword-targeted for organic traffic",
-      "Establishes thought leadership",
-      "Internal linking strategy included"
-    ]
-  },
-  "Blog Content (8 SEO articles/mo)": {
-    outcome: "Consistent content engine that drives organic growth.",
-    description: "Eight SEO articles per month with an editorial calendar aligned to your business goals and search opportunities.",
-    benefits: [
-      "Doubles your content output",
-      "Monthly editorial calendar provided",
-      "Performance tracking on each article"
-    ]
-  },
-  "Blog Content (unlimited)": {
-    outcome: "Dominate your niche with content at scale.",
-    description: "Unlimited blog content production with a dedicated writing team and editorial oversight.",
-    benefits: [
-      "Scale content without hiring writers",
-      "Full editorial team managing quality",
-      "Rapid response to trending topics"
-    ]
-  },
-  "Email Sequences": {
-    outcome: "Automated emails that sell while you sleep.",
-    description: "Strategic email sequence copywriting for onboarding, nurture, re-engagement, and promotional campaigns.",
-    benefits: [
-      "Conversion-optimized subject lines and CTAs",
-      "Segmentation strategy included",
-      "A/B testing recommendations"
-    ]
-  },
-  "Social Media Copy": {
-    outcome: "Scroll-stopping posts that build your brand.",
-    description: "Platform-native social media copy including captions, hashtag strategies, and content hooks.",
-    benefits: [
-      "Platform-specific optimization",
-      "Consistent brand voice across channels",
-      "Engagement-focused writing style"
-    ]
-  },
-  "Content Strategy": {
-    outcome: "A roadmap that turns content into revenue.",
-    description: "Comprehensive content strategy including audience research, keyword mapping, content pillars, and distribution plan.",
-    benefits: [
-      "Data-driven content decisions",
-      "Clear content-to-conversion pathway",
-      "Quarterly strategy reviews and pivots"
-    ]
-  },
-  "Revisions": {
-    outcome: "We iterate until it's perfect.",
-    description: "Revision rounds to refine and polish all deliverables until they match your vision and brand standards.",
-    benefits: [
-      "Collaborative feedback process",
-      "Quick turnaround on revisions",
-      "Final approval before any publication"
-    ]
-  }
 };
 
+const MARQUEE_ITEMS = [
+  "⚡ Transparent Upfront Pricing",
+  "🔒 100% Source Code Handover",
+  "🚀 Shipped in 5 to 7 Days",
+  "🤖 24/7 WhatsApp AI Agents",
+  "💳 Zero Surprise Retainers",
+  "💬 Direct Founder WhatsApp Support",
+  "🌍 Serving Clients in 8+ Countries",
+  "🎯 99/100 Google PageSpeed",
+];
+
+const GUARANTEES = [
+  {
+    icon: Code2,
+    title: "100% Code Ownership",
+    desc: "You own all GitHub repositories, domains, and assets. No proprietary host lock-in.",
+  },
+  {
+    icon: Zap,
+    title: "Sub-Second Load Times",
+    desc: "Mobile-first Next.js architecture ensuring 95+ PageSpeed scores on every device.",
+  },
+  {
+    icon: Clock,
+    title: "7-Day Sprint Delivery",
+    desc: "Rapid deployment cycles. We launch functional systems in days, not months.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Zero Hidden Fees",
+    desc: "Fixed upfront scopes. You will never receive an unexpected maintenance invoice.",
+  },
+  {
+    icon: Sparkles,
+    title: "30-Day Launch Support",
+    desc: "Post-launch prompt tuning, analytics tracking, and bug fixes included at zero cost.",
+  },
+  {
+    icon: PhoneCall,
+    title: "Direct WhatsApp Line",
+    desc: "Direct communication with engineers. Zero account manager telephone games.",
+  },
+];
+
 export default function PricingPage() {
-  // Default to USD ($) for international B2B positioning as per pricing-strategy.md
   const [isINR, setIsINR] = useState<boolean>(false);
   const [isAnnual, setIsAnnual] = useState<boolean>(false);
   const [currencyReady, setCurrencyReady] = useState<boolean>(false);
   const [activeFeature, setActiveFeature] = useState<string | null>(null);
 
   useEffect(() => {
-    async function initCurrency() {
-      const saved = localStorage.getItem("currencyPreference");
-      if (saved) {
-        setIsINR(saved === "INR");
-        setCurrencyReady(true);
-        return;
-      }
-
-      // Default to USD ($) internationally, or INR if local preference saved
+    const saved = localStorage.getItem("currencyPreference");
+    if (saved) {
+      setIsINR(saved === "INR");
+    } else {
       setIsINR(false);
-      setCurrencyReady(true);
     }
-
-    initCurrency();
+    setCurrencyReady(true);
   }, []);
 
-  const toggleCurrency = (currency: "INR" | "USD") => {
-    setIsINR(currency === "INR");
-    localStorage.setItem("currencyPreference", currency);
+  const toggleCurrency = (curr: "INR" | "USD") => {
+    setIsINR(curr === "INR");
+    localStorage.setItem("currencyPreference", curr);
   };
 
-  // Close feature popup on escape key press
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setActiveFeature(null);
@@ -374,594 +204,542 @@ export default function PricingPage() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Determine helper outcome descriptions matching pricing-strategy.md
-  const getOutcomeHighlight = (tierName: string) => {
-    switch (tierName) {
-      case "Starter":
-        return "Single-workflow agent (1 WhatsApp responder or lead capture flow)";
-      case "Growth":
-        return "Multi-step agent connected to CRM + WhatsApp + Calendar + Reviews";
-      case "Enterprise":
-        return "Multi-agent systems, custom LLM integration & dedicated SLA";
-      default:
-        return undefined;
-    }
-  };
-
-  const getWebsiteOutcomeHighlight = (tierName: string) => {
-    switch (tierName) {
-      case "Starter":
-        return "Single landing page or 3–5 page site, live in 7 days";
-      case "Growth":
-        return "Full custom Next.js web application with CMS & lead funnels";
-      case "Enterprise":
-        return "SaaS MVP, complex backend & white-label agency retainers";
-      default:
-        return undefined;
-    }
-  };
-
-  const getMarketingOutcomeHighlight = (tierName: string) => {
-    switch (tierName) {
-      case "Starter":
-        return "One channel — SEO, ads, or social media setup & management";
-      case "Growth":
-        return "Multi-channel: SEO + email + social + ads with monthly reports";
-      case "Enterprise":
-        return "Full-service growth retainer with dedicated strategy team";
-      default:
-        return undefined;
-    }
-  };
-
-  const getContentOutcomeHighlight = (tierName: string) => {
-    switch (tierName) {
-      case "Starter":
-        return "Single deliverable — landing page copy, blog batch, or email sequence";
-      case "Growth":
-        return "Ongoing multi-format content production with editorial calendar";
-      case "Enterprise":
-        return "Full content system — strategy + production + distribution";
-      default:
-        return undefined;
-    }
-  };
-
   const JUMP_LINKS = [
-    { id: "one-time", label: "Websites" },
-    { id: "recurring", label: "AI Agents" },
+    { id: "websites", label: "Websites" },
+    { id: "agents", label: "AI Agents" },
+    { id: "suite", label: "Growth Suite" },
     { id: "marketing", label: "Marketing" },
     { id: "content", label: "Content" },
+    { id: "addons", label: "Add-ons" },
+    { id: "faq", label: "FAQ" },
   ];
 
   return (
-    <>
-      <PageHero
-        kicker="Pricing Strategy & Models"
-        title={<>Transparent pricing. <span className="text-primary">Built for scale.</span></>}
-        description="Clear starter entry points, standard growth suites, and custom enterprise builds. No hidden fees."
-      />
-
-      <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-20 flex flex-col gap-24 relative">
-
-        {/* Cross-Link Banner for India Studio */}
-        <div className="flex justify-center -mt-6 -mb-4">
-          <a
-            href="/pricing-studio"
-            className="inline-flex items-center gap-2 rounded-full border-2 border-[#141414] bg-[#FFC72E] px-4 py-2 text-xs font-black uppercase tracking-[0.08em] shadow-[3px_3px_0_#141414] transition hover:-translate-y-0.5 hover:bg-[#FF4D00] hover:text-white"
-          >
-            <Zap className="size-4" /> Looking for India Launch Pricing? View India Pricing Studio →
-          </a>
-        </div>
-
-        {/* Currency & Billing Toggles */}
-        <div className="flex flex-col items-center justify-center gap-8 mb-4">
-          <div className="flex items-center rounded-full border border-[#E8E6E1] bg-white p-1 shadow-sm">
-            <button
-              onClick={() => toggleCurrency("USD")}
-              className={cn(
-                "px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer",
-                !isINR ? "bg-[#1A56DB] text-white shadow-md" : "text-[#6B6860] hover:text-[#0F0E0D]"
-              )}
-            >
-              <Globe className="w-4 h-4" />
-              USD ($) International
-            </button>
-            <button
-              onClick={() => toggleCurrency("INR")}
-              className={cn(
-                "px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer",
-                isINR ? "bg-[#1A56DB] text-white shadow-md" : "text-[#6B6860] hover:text-[#0F0E0D]"
-              )}
-            >
-              🇮🇳 INR (₹)
-            </button>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <span className={cn("text-sm font-medium transition-colors", !isAnnual ? "text-[#0F0E0D]" : "text-[#6B6860]")}>Monthly</span>
-            <button
-              onClick={() => setIsAnnual(!isAnnual)}
-              className="relative inline-flex h-7 w-14 items-center rounded-full bg-[#E8E6E1] transition-colors focus:outline-none cursor-pointer"
-              style={{ background: isAnnual ? "#1A56DB" : "#E8E6E1" }}
-            >
-              <span className="sr-only">Toggle annual billing</span>
-              <span
-                className={cn(
-                  "inline-block h-5 w-5 transform rounded-full bg-white transition-transform shadow-sm",
-                  isAnnual ? "translate-x-8" : "translate-x-1"
-                )}
-              />
-            </button>
-            <span className={cn("text-sm font-medium flex items-center gap-2 transition-colors", isAnnual ? "text-[#0F0E0D]" : "text-[#6B6860]")}>
-              Annually
-              <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-[10px] font-bold text-green-700 tracking-wider uppercase">
-                Save 17%
-              </span>
+    <div className="overflow-hidden">
+      {/* Ticker Marquee */}
+      <div className="border-b-2 border-[#141414] bg-[#FFC72E] py-2.5 overflow-hidden">
+        <div className="animate-marquee flex items-center gap-8 whitespace-nowrap font-display text-xs font-black uppercase tracking-[0.12em] text-[#141414]">
+          {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
+            <span key={i} className="flex items-center gap-3">
+              <span>{item}</span>
+              <span className="size-1.5 rounded-full bg-[#141414]" />
             </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Hero Section */}
+      <section className="relative border-b-2 border-[#141414] bg-[#FAF3E5] px-5 py-16 sm:px-8 sm:py-24 overflow-hidden">
+        {/* Interactive Physics DotGrid Backdrop from ReactBits */}
+        <DotGridBackdrop />
+
+        <div className="relative z-10 mx-auto max-w-[1280px]">
+          <div className="flex flex-col items-center text-center">
+            <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
+              <span className="inline-flex items-center gap-2 rounded-full border-2 border-[#141414] bg-[#FF4D00] px-3.5 py-1.5 font-display text-xs font-black uppercase text-[#FAF3E5] shadow-[3px_3px_0_#141414]">
+                <Sparkles className="size-3.5" /> Launch Pricing
+              </span>
+              <span className="font-display text-xs font-black uppercase tracking-[0.14em] text-[#5B5146]">
+                Save up to 50%
+              </span>
+            </div>
+
+            <h1 className="max-w-4xl font-display text-[clamp(3.2rem,7.5vw,7rem)] font-black uppercase leading-[0.88] tracking-[-0.07em]">
+              Clear numbers. <br />
+              <span className="text-[#FF4D00]">Compounding ROI.</span>
+            </h1>
+
+            <p className="mt-6 max-w-2xl text-lg font-medium leading-7 text-[#141414] sm:text-xl">
+              Transparent pricing for custom Next.js websites, 24/7 WhatsApp AI receptionists, and digital growth engines. No mystery invoices.
+            </p>
+
+            {/* Currency & Annual Switcher Widget */}
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+              {/* Currency Selector */}
+              <div className="inline-flex items-center rounded-full border-2 border-[#141414] bg-[#FFFCF5] p-1 shadow-[4px_4px_0_#141414]">
+                <button
+                  type="button"
+                  onClick={() => toggleCurrency("USD")}
+                  className={`flex items-center gap-1.5 rounded-full px-4 py-2 font-display text-xs font-black uppercase transition-all ${
+                    !isINR ? "bg-[#141414] text-[#FAF3E5]" : "text-[#141414] hover:bg-[#FAF3E5]"
+                  }`}
+                >
+                  <Globe className="size-3.5" /> USD ($) Global
+                </button>
+                <button
+                  type="button"
+                  onClick={() => toggleCurrency("INR")}
+                  className={`flex items-center gap-1.5 rounded-full px-4 py-2 font-display text-xs font-black uppercase transition-all ${
+                    isINR ? "bg-[#FF4D00] text-white" : "text-[#141414] hover:bg-[#FAF3E5]"
+                  }`}
+                >
+                  🇮🇳 INR (₹) India
+                </button>
+              </div>
+
+              {/* Annual Toggle */}
+              <div className="inline-flex items-center gap-3 rounded-full border-2 border-[#141414] bg-[#FFFCF5] px-4 py-2 shadow-[4px_4px_0_#141414]">
+                <span className={cn("font-display text-xs font-black uppercase", !isAnnual ? "text-[#141414]" : "text-[#5B5146]")}>
+                  Monthly
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setIsAnnual(!isAnnual)}
+                  className="relative inline-flex h-6 w-12 items-center rounded-full border-2 border-[#141414] bg-[#FAF3E5] transition-colors"
+                >
+                  <span
+                    className={cn(
+                      "inline-block size-4 transform rounded-full bg-[#141414] transition-transform",
+                      isAnnual ? "translate-x-6 bg-[#FF4D00]" : "translate-x-1"
+                    )}
+                  />
+                </button>
+                <span className={cn("flex items-center gap-1.5 font-display text-xs font-black uppercase", isAnnual ? "text-[#141414]" : "text-[#5B5146]")}>
+                  Annual
+                  <span className="rounded-full bg-[#B8E986] border border-[#141414] px-2 py-0.5 text-[0.6rem] font-black text-[#141414]">
+                    SAVE 17%
+                  </span>
+                </span>
+              </div>
+            </div>
+
+            {/* Jump Anchor Bar */}
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
+              {JUMP_LINKS.map((j) => (
+                <a
+                  key={j.id}
+                  href={`#${j.id}`}
+                  className="rounded-full border-2 border-[#141414] bg-[#FFFCF5] px-3.5 py-1 font-display text-[0.65rem] font-black uppercase tracking-[0.06em] text-[#141414] shadow-[2px_2px_0_#141414] transition hover:-translate-y-0.5 hover:bg-[#FFC72E]"
+                >
+                  {j.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ROI Proof Stats */}
+      <section className="border-b-2 border-[#141414] bg-[#FFC72E] px-5 py-10 sm:px-8">
+        <div className="mx-auto max-w-[1280px]">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+            <div className="rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[5px_5px_0_#141414]">
+              <span className="font-display text-4xl font-black text-[#FF4D00] sm:text-5xl">3.2x</span>
+              <span className="mt-2 block font-display text-sm font-black uppercase text-[#141414]">
+                More Qualified Leads
+              </span>
+              <p className="mt-1 text-xs text-[#5B5146]">WhatsApp AI capture vs passive contact form drop-off.</p>
+            </div>
+            <div className="rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[5px_5px_0_#141414]">
+              <span className="font-display text-4xl font-black text-[#141414] sm:text-5xl">18+ Hrs</span>
+              <span className="mt-2 block font-display text-sm font-black uppercase text-[#141414]">
+                Saved Weekly
+              </span>
+              <p className="mt-1 text-xs text-[#5B5146]">Automated scheduling, triage, and reminder sequences.</p>
+            </div>
+            <div className="rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[5px_5px_0_#141414]">
+              <span className="font-display text-4xl font-black text-[#141414] sm:text-5xl">&lt; 6 Wks</span>
+              <span className="mt-2 block font-display text-sm font-black uppercase text-[#141414]">
+                Average Payback Time
+              </span>
+              <p className="mt-1 text-xs text-[#5B5146]">Fast ROI on recovered leads and booked appointments.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured All-in-One Growth Suite Spotlight Banner */}
+      <section id="suite" className="border-b-2 border-[#141414] bg-[#FFFCF5] px-5 py-16 sm:px-8 sm:py-20">
+        <div className="mx-auto max-w-[1280px]">
+          <div className="relative overflow-hidden rounded-3xl border-2 border-[#141414] bg-[#141414] p-8 text-[#FAF3E5] shadow-[8px_8px_0_#FF4D00] sm:p-12">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <span className="inline-flex items-center gap-2 rounded-full border-2 border-[#FFC72E] bg-[#FFC72E] px-3.5 py-1 font-display text-xs font-black uppercase text-[#141414]">
+                <Sparkles className="size-3.5" /> Best-Value Recommended Bundle
+              </span>
+              <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 font-mono text-xs uppercase text-[#FAF3E5]">
+                Everything Connected · 1 Team
+              </span>
+            </div>
+
+            <div className="mt-6 grid gap-8 lg:grid-cols-[1.2fr_.8fr] lg:items-center">
+              <div>
+                <h2 className="font-display text-[clamp(2.5rem,5.5vw,4.5rem)] font-black uppercase leading-[0.9] tracking-[-0.06em]">
+                  The Full Growth Suite.
+                </h2>
+                <p className="mt-4 max-w-xl text-base text-[#FAF3E5]/75">
+                  Your complete customer acquisition machine: High-speed Next.js website + 24/7 WhatsApp AI receptionist + Local SEO domination working together.
+                </p>
+
+                <div className="mt-6 grid gap-2 sm:grid-cols-2">
+                  {[
+                    "Custom 10-Page Next.js Web App",
+                    "WhatsApp AI Receptionist & Booking Bot",
+                    "Google Maps & Review Automation",
+                    "Google Calendar & CRM Sync",
+                    "Priority 7-Day Build Queue",
+                    "90 Days Post-Launch Optimization",
+                  ].map((feat) => (
+                    <div key={feat} className="flex items-center gap-2 text-xs font-semibold">
+                      <Check className="size-4 text-[#B8E986] shrink-0" />
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-2xl border-2 border-[#FAF3E5] bg-[#FFFCF5] p-6 text-[#141414] shadow-[5px_5px_0_#FFC72E]">
+                <span className="font-display text-xs font-black uppercase tracking-[0.14em] text-[#5B5146]">
+                  Bundle Launch Deal
+                </span>
+                <div className="mt-2 flex items-baseline gap-2">
+                  <span className="font-display text-4xl font-black sm:text-5xl">
+                    {isINR ? "₹59,999" : "$749"}
+                  </span>
+                  <span className="font-display text-base font-bold line-through text-[#5B5146]">
+                    {isINR ? "₹1,19,999" : "$1,499"}
+                  </span>
+                </div>
+                <p className="mt-2 text-xs text-[#5B5146]">Complete setup & launch with 100% source code ownership.</p>
+
+                <a
+                  href={waLink("Hi Next Scale! I'm interested in the Full Growth Suite bundle (Website + AI Receptionist + Growth). Please share next steps.")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#141414] bg-[#FF4D00] px-5 py-3 font-display text-xs font-black uppercase text-white shadow-[3px_3px_0_#141414] transition hover:-translate-y-0.5 hover:bg-[#141414]"
+                >
+                  Claim Bundle Deal <ArrowRight className="size-4" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 1: Custom Web Development Packages */}
+      <section id="websites" className="border-b-2 border-[#141414] bg-[#FAF3E5] px-5 py-20 sm:px-8 sm:py-28">
+        <div className="mx-auto max-w-[1280px]">
+          <div className="mb-14">
+            <p className="section-label">Scoped Web Builds</p>
+            <h2 className="mt-3 max-w-2xl font-display text-[clamp(2.5rem,5.5vw,4.5rem)] font-black uppercase leading-[0.9] tracking-[-0.06em]">
+              Custom Next.js Websites
+            </h2>
+            <p className="mt-4 max-w-xl text-base text-[#5B5146]">
+              Handcrafted, mobile-first web platforms with sub-second speeds and built-in conversion architecture.
+            </p>
           </div>
 
-          {/* Jump Links */}
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            {JUMP_LINKS.map((link) => (
-              <a
-                key={link.id}
-                href={`#${link.id}`}
-                className="inline-flex items-center rounded-full border border-[#E8E6E1] bg-white px-4 py-1.5 text-xs font-semibold text-[#6B6860] transition-all hover:border-[#1A56DB] hover:text-[#1A56DB] hover:shadow-sm"
+          <div className="grid gap-6 md:grid-cols-3">
+            {PRICING_WEBSITES.tiers.map((tier, idx) => {
+              const displayPrice = isINR ? tier.pricing.inr : tier.pricing.usd;
+              const color = idx === 0 ? "#FFC72E" : idx === 1 ? "#FFB7C5" : "#B8E986";
+
+              return (
+                <div
+                  key={tier.name}
+                  className="flex flex-col justify-between overflow-hidden rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] shadow-[7px_7px_0_#141414] transition hover:-translate-y-1"
+                >
+                  <div>
+                    {/* Header Stripe */}
+                    <div
+                      className="flex items-center justify-between border-b-2 border-[#141414] p-6"
+                      style={{ backgroundColor: color }}
+                    >
+                      <div>
+                        <span className="font-display text-xs font-black uppercase tracking-[0.14em] text-[#141414]/70">
+                          {tier.name} Plan
+                        </span>
+                        <h3 className="mt-1 font-display text-2xl font-black uppercase text-[#141414]">
+                          {tier.name}
+                        </h3>
+                      </div>
+                      {tier.popular && (
+                        <span className="rounded-full border-2 border-[#141414] bg-[#141414] px-2.5 py-0.5 font-display text-[0.6rem] font-black uppercase text-[#FAF3E5]">
+                          Popular
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Body */}
+                    <div className="p-6">
+                      <div className="font-display text-3xl font-black text-[#141414] sm:text-4xl">
+                        {displayPrice}
+                      </div>
+                      <span className="mt-1 block font-mono text-[0.68rem] font-bold uppercase text-[#5B5146]">
+                        {tier.pricing.period}
+                      </span>
+                      <p className="mt-4 text-xs leading-5 text-[#5B5146]">{tier.description}</p>
+
+                      {/* Feature List */}
+                      <div className="mt-6 border-t-2 border-[#141414]/15 pt-5">
+                        <p className="font-display text-[0.68rem] font-black uppercase tracking-[0.1em] text-[#141414]">
+                          Features Included:
+                        </p>
+                        <ul className="mt-3 space-y-2">
+                          {tier.features.map((f) => (
+                            <li key={f.name} className="flex items-center justify-between text-xs">
+                              <span className="flex items-center gap-2">
+                                <Check className="size-3.5 text-[#FF4D00] shrink-0" />
+                                <span className="font-medium text-[#141414]">{f.name}</span>
+                              </span>
+                              {f.value && (
+                                <span className="rounded-md border border-[#141414] bg-[#FAF3E5] px-1.5 py-0.5 font-mono text-[0.6rem] font-bold text-[#141414]">
+                                  {f.value}
+                                </span>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="border-t-2 border-[#141414] bg-[#FAF3E5] p-6">
+                    <a
+                      href={waLink(
+                        `Hi Next Scale! I'm interested in the ${tier.name} Website tier (${displayPrice}). Please share the build timeline.`
+                      )}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#141414] bg-[#141414] px-5 py-3 font-display text-xs font-black uppercase text-[#FAF3E5] shadow-[3px_3px_0_#FF4D00] transition hover:-translate-y-0.5 hover:bg-[#FF4D00]"
+                    >
+                      {tier.name === "Enterprise" ? "Talk Scoping →" : "Build Website →"}
+                    </a>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 2: 24/7 AI Agents & Retainers */}
+      <section id="agents" className="border-b-2 border-[#141414] bg-[#FFFCF5] px-5 py-20 sm:px-8 sm:py-28">
+        <div className="mx-auto max-w-[1280px]">
+          <div className="mb-14">
+            <p className="section-label">Autonomous Retainers</p>
+            <h2 className="mt-3 max-w-2xl font-display text-[clamp(2.5rem,5.5vw,4.5rem)] font-black uppercase leading-[0.9] tracking-[-0.06em]">
+              24/7 WhatsApp AI Agents
+            </h2>
+            <p className="mt-4 max-w-xl text-base text-[#5B5146]">
+              Autonomous customer receptionists trained on your catalog, prices, and booking rules.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {PRICING_AGENTS.tiers.map((tier, idx) => {
+              const currencyObj = isINR ? tier.pricing.inr : tier.pricing.usd;
+              const rawPrice = isAnnual ? currencyObj.annual ?? currencyObj.monthly : currencyObj.monthly;
+              const color = idx === 0 ? "#9DD9FF" : idx === 1 ? "#FFC72E" : "#B8E986";
+
+              return (
+                <div
+                  key={tier.name}
+                  className="flex flex-col justify-between overflow-hidden rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] shadow-[7px_7px_0_#141414] transition hover:-translate-y-1"
+                >
+                  <div>
+                    {/* Header Stripe */}
+                    <div
+                      className="flex items-center justify-between border-b-2 border-[#141414] p-6"
+                      style={{ backgroundColor: color }}
+                    >
+                      <div>
+                        <span className="font-display text-xs font-black uppercase tracking-[0.14em] text-[#141414]/70">
+                          AI System
+                        </span>
+                        <h3 className="mt-1 font-display text-2xl font-black uppercase text-[#141414]">
+                          {tier.name}
+                        </h3>
+                      </div>
+                      {tier.popular && (
+                        <span className="rounded-full border-2 border-[#141414] bg-[#141414] px-2.5 py-0.5 font-display text-[0.6rem] font-black uppercase text-[#FAF3E5]">
+                          Most Popular
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Body */}
+                    <div className="p-6">
+                      <div className="font-display text-3xl font-black text-[#141414] sm:text-4xl">
+                        {String(rawPrice)}
+                      </div>
+                      <span className="mt-1 block font-mono text-[0.68rem] font-bold uppercase text-[#5B5146]">
+                        {currencyObj.setupFee ?? "Monthly Retainer"}
+                      </span>
+                      <p className="mt-4 text-xs leading-5 text-[#5B5146]">{tier.description}</p>
+
+                      {/* Feature List */}
+                      <div className="mt-6 border-t-2 border-[#141414]/15 pt-5">
+                        <p className="font-display text-[0.68rem] font-black uppercase tracking-[0.1em] text-[#141414]">
+                          AI Capabilities:
+                        </p>
+                        <ul className="mt-3 space-y-2">
+                          {tier.features.map((f) => (
+                            <li key={f.name} className="flex items-center justify-between text-xs">
+                              <span className="flex items-center gap-2">
+                                <Check className="size-3.5 text-[#FF4D00] shrink-0" />
+                                <span className="font-medium text-[#141414]">{f.name}</span>
+                              </span>
+                              {f.value && (
+                                <span className="rounded-md border border-[#141414] bg-[#FAF3E5] px-1.5 py-0.5 font-mono text-[0.6rem] font-bold text-[#141414]">
+                                  {f.value}
+                                </span>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="border-t-2 border-[#141414] bg-[#FAF3E5] p-6">
+                    <a
+                      href={waLink(
+                        `Hi Next Scale! I'm interested in deploying the ${tier.name} AI Agent plan (${rawPrice}). Can you walk me through the WhatsApp setup?`
+                      )}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#141414] bg-[#141414] px-5 py-3 font-display text-xs font-black uppercase text-[#FAF3E5] shadow-[3px_3px_0_#FF4D00] transition hover:-translate-y-0.5 hover:bg-[#FF4D00]"
+                    >
+                      {tier.name === "Enterprise" ? "Contact Team →" : "Deploy AI Agent →"}
+                    </a>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3: Modular Add-ons Grid */}
+      <section id="addons" className="border-b-2 border-[#141414] bg-[#FAF3E5] px-5 py-20 sm:px-8 sm:py-28">
+        <div className="mx-auto max-w-[1280px]">
+          <div className="mb-14">
+            <p className="section-label">Modular Add-ons</p>
+            <h2 className="mt-3 max-w-2xl font-display text-[clamp(2.5rem,5.5vw,4.5rem)] font-black uppercase leading-[0.9] tracking-[-0.06em]">
+              Upgrade As You Scale
+            </h2>
+            <p className="mt-4 max-w-xl text-base text-[#5B5146]">
+              Add specialized capabilities to any build without committing to an oversized plan.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {PRICING_ADDONS.map((a) => (
+              <div
+                key={a.name}
+                className="flex items-center justify-between rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-5 shadow-[4px_4px_0_#141414]"
               >
-                {link.label}
-              </a>
+                <div>
+                  <h3 className="font-display text-sm font-black uppercase text-[#141414]">
+                    {a.name}
+                  </h3>
+                  <span className="font-mono text-xs font-bold text-[#FF4D00]">
+                    {isINR ? a.inr : a.usd}
+                  </span>
+                </div>
+                <a
+                  href={waLink(`Hi Next Scale! I'd like to add ${a.name} to my project.`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full border border-[#141414] bg-[#FAF3E5] px-3 py-1 font-display text-[0.62rem] font-black uppercase text-[#141414] transition hover:bg-[#FFC72E]"
+                >
+                  + Add
+                </a>
+              </div>
             ))}
           </div>
         </div>
+      </section>
 
-        {/* ROI Stats */}
-        <Reveal>
-          <div className="mb-8">
-            <div className="mb-10 text-center">
-              <h2 className="text-2xl font-bold tracking-tight sm:text-3xl text-[#0F0E0D]">What our clients get back</h2>
-            </div>
-            <div className="grid gap-4 md:grid-cols-3">
-              {[
-                { title: "3.2x", desc: "more leads captured via AI agent vs contact form" },
-                { title: "18 hours", desc: "saved per month on follow-ups and scheduling" },
-                { title: "6 weeks", desc: "average time to first paid ROI on automation" }
-              ].map((stat, i) => (
-                <div key={i} className="flex flex-col items-center justify-center p-8 rounded-3xl border border-[#E8E6E1] bg-white shadow-sm text-center">
-                  <span className="text-4xl font-extrabold text-[#1A56DB] mb-2">{stat.title}</span>
-                  <span className="text-sm font-medium text-[#6B6860] leading-relaxed max-w-[200px]">{stat.desc}</span>
-                </div>
-              ))}
-            </div>
+      {/* Section 4: What Every Plan Includes (Guarantees) */}
+      <section className="border-b-2 border-[#141414] bg-[#FFFCF5] px-5 py-20 sm:px-8 sm:py-28">
+        <div className="mx-auto max-w-[1280px]">
+          <div className="mb-14 text-center">
+            <p className="section-label">Our Guarantees</p>
+            <h2 className="mt-3 font-display text-[clamp(2.5rem,5vw,4.5rem)] font-black uppercase leading-[0.9] tracking-[-0.06em]">
+              What Every Build Includes
+            </h2>
           </div>
-        </Reveal>
 
-        {/* Web & Product Development (Scoped Builds) */}
-        <Reveal>
-          <div id="one-time">
-            <div className="mb-10 text-center">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB] mb-3">Web & Product Development</p>
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-[#0F0E0D]">Custom Web Applications & Next.js Builds</h2>
-              <p className="mt-3 text-base text-[#6B6860] max-w-md mx-auto tracking-tight">
-                Mobile-first, SEO-ready, high-conversion web platforms built to scale.
-              </p>
-            </div>
-            <div className="grid items-stretch gap-4 md:grid-cols-3">
-              {PRICING_WEBSITES.tiers.map((tier) => {
-                const displayPrice = isINR ? tier.pricing.inr : tier.pricing.usd;
-                const currencyLabel = isINR ? "INR" : "USD";
-                
-                const ctaMessage = `Hi NextScale! I'm interested in building a website with you using the ${tier.name} tier. [Details: ${currencyLabel} pricing, ${displayPrice}]. Please share the next steps.`;
-
-                return (
-                  <PricingCard
-                    key={tier.name}
-                    tier={tier}
-                    isEnterprise={tier.name === "Enterprise"}
-                    loading={!currencyReady}
-                    displayPrice={String(displayPrice)}
-                    displayPeriod={tier.pricing.period}
-                    ctaLabel={tier.name === "Enterprise" ? "Talk to Us →" : "Build My Website"}
-                    ctaMessage={ctaMessage}
-                    outcomeHighlight={getWebsiteOutcomeHighlight(tier.name)}
-                    onFeatureClick={(featureName) => setActiveFeature(featureName)}
-                  />
-                );
-              })}
-            </div>
-
-            {/* Persistent Guidance Box */}
-            <div className="mt-8 rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50/80 via-white to-purple-50/80 p-6 text-center shadow-xs">
-              <p className="text-sm font-semibold text-[#0F0E0D]">
-                &ldquo;Not sure which fits? Tell us your budget and goals — we&apos;ll recommend the right scope, no upsell pressure.&rdquo;
-              </p>
-              <div className="mt-3">
-                <a
-                  href={waLink("Hi NextScale! I'm evaluating web dev options and not sure which tier fits my business. Can we talk about custom scoping?")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#1A56DB] px-5 py-2 text-xs font-bold text-white transition-all hover:bg-[#1447C0]"
-                >
-                  Talk to Us →
-                </a>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-
-        {/* AI Agents & Automation (Recurring / Retainers) */}
-        <Reveal>
-          <div id="recurring">
-            <div className="mb-10 text-center">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB] mb-3">AI Agents & Automation</p>
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-[#0F0E0D]">24/7 Autonomous Software Agents</h2>
-              <p className="mt-3 text-base text-[#6B6860] max-w-md mx-auto tracking-tight">
-                Autonomous AI receptionist, booking & lead qualification systems.
-              </p>
-            </div>
-            <div className="grid items-stretch gap-4 md:grid-cols-3">
-              {PRICING_AGENTS.tiers.map((tier) => {
-                const currencyObj = isINR ? tier.pricing.inr : tier.pricing.usd;
-                const rawPrice = isAnnual ? (currencyObj.annual ?? currencyObj.monthly) : currencyObj.monthly;
-                const displayPrice = String(rawPrice);
-                const isCustomPrice = displayPrice.includes("Custom");
-                const displayPeriod = isCustomPrice ? undefined : "/month";
-                
-                // Calculate dynamic annual savings label
-                let savingsText = undefined;
-                if (isAnnual && tier.name !== "Enterprise") {
-                  if (tier.name === "Starter") {
-                    savingsText = isINR ? "Save ₹60,000/year" : "Save $1,800/year";
-                  } else if (tier.name === "Growth") {
-                    savingsText = isINR ? "Save ₹1,80,000/year" : "Save $6,000/year";
-                  }
-                }
-
-                const displaySetupFee = isAnnual && currencyObj.annualBilled
-                  ? `Billed ${currencyObj.annualBilled}/year${savingsText ? ` · ${savingsText}` : ""}`
-                  : currencyObj.setupFee ?? undefined;
-
-                const currencyLabel = isINR ? "INR" : "USD";
-                const billingCycle = isAnnual ? "Annual" : "Monthly";
-                
-                const ctaMessage = isCustomPrice
-                  ? `Hi NextScale! I'm interested in the Enterprise AI Agent System. Let's discuss custom integration needs, volume, and specifications for my business.`
-                  : `Hi NextScale! I'm interested in subscribing to the ${tier.name} AI Agent Tier. [Details: ${currencyLabel} pricing, ${displayPrice} under ${billingCycle} billing]. Please let me know how to proceed.`;
-
-                let ctaHref = undefined;
-                if (isCustomPrice) {
-                  ctaHref = isINR 
-                    ? `https://wa.me/919556436685?text=${encodeURIComponent(ctaMessage)}`
-                    : `mailto:biz.abhisek@gmail.com?subject=Enterprise%20AI%20Agent%20Plan%20Inquiry&body=${encodeURIComponent(ctaMessage)}`;
-                }
-
-                return (
-                  <PricingCard
-                    key={tier.name}
-                    tier={tier}
-                    isEnterprise={tier.name === "Enterprise"}
-                    loading={!currencyReady}
-                    displayPrice={displayPrice}
-                    displayPeriod={displayPeriod}
-                    displaySetupFee={displaySetupFee}
-                    ctaLabel={currencyObj.ctaLabel ?? "Get Started"}
-                    ctaHref={ctaHref}
-                    ctaMessage={ctaMessage}
-                    outcomeHighlight={getOutcomeHighlight(tier.name)}
-                    onFeatureClick={(featureName) => setActiveFeature(featureName)}
-                  />
-                );
-              })}
-            </div>
-
-            {/* Persistent Guidance Box */}
-            <div className="mt-8 rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50/80 via-white to-purple-50/80 p-6 text-center shadow-xs">
-              <p className="text-sm font-semibold text-[#0F0E0D]">
-                &ldquo;Not sure which fits? Tell us your budget and goals — we&apos;ll recommend the right scope, no upsell pressure.&rdquo;
-              </p>
-              <div className="mt-3">
-                <a
-                  href={waLink("Hi NextScale! I'm evaluating AI agent deployment and not sure which tier fits my workflow. Can we talk about custom scoping?")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#1A56DB] px-5 py-2 text-xs font-bold text-white transition-all hover:bg-[#1447C0]"
-                >
-                  Talk to Us →
-                </a>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-
-        {/* Marketing & Growth */}
-        <Reveal>
-          <div id="marketing">
-            <div className="mb-10 text-center">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB] mb-3">Marketing & Growth</p>
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-[#0F0E0D]">Digital Marketing & Growth Engine</h2>
-              <p className="mt-3 text-base text-[#6B6860] max-w-md mx-auto tracking-tight">
-                SEO, paid ads, email automation, and social media — managed end to end.
-              </p>
-            </div>
-            <div className="grid items-stretch gap-4 md:grid-cols-3">
-              {PRICING_MARKETING.tiers.map((tier) => {
-                const currencyObj = isINR ? tier.pricing.inr : tier.pricing.usd;
-                const rawPrice = isAnnual ? (currencyObj.annual ?? currencyObj.monthly) : currencyObj.monthly;
-                const displayPrice = String(rawPrice);
-                const isCustomPrice = displayPrice.includes("Custom");
-                const displayPeriod = isCustomPrice ? undefined : "/month";
-
-                let savingsText = undefined;
-                if (isAnnual && tier.name !== "Enterprise") {
-                  if (tier.name === "Starter") {
-                    savingsText = isINR ? "Save ₹60,000/year" : "Save $840/year";
-                  } else if (tier.name === "Growth") {
-                    savingsText = isINR ? "Save ₹1,80,000/year" : "Save $3,000/year";
-                  }
-                }
-
-                const displaySetupFee = isAnnual && currencyObj.annualBilled
-                  ? `Billed ${currencyObj.annualBilled}/year${savingsText ? ` · ${savingsText}` : ""}`
-                  : currencyObj.setupFee ?? undefined;
-
-                const currencyLabel = isINR ? "INR" : "USD";
-                const billingCycle = isAnnual ? "Annual" : "Monthly";
-
-                const ctaMessage = isCustomPrice
-                  ? `Hi NextScale! I'm interested in Enterprise Marketing & Growth services. Let's discuss my business goals and growth strategy.`
-                  : `Hi NextScale! I'm interested in the ${tier.name} Marketing & Growth plan. [Details: ${currencyLabel} pricing, ${displayPrice} under ${billingCycle} billing]. Please share the next steps.`;
-
-                return (
-                  <PricingCard
-                    key={tier.name}
-                    tier={tier}
-                    isEnterprise={tier.name === "Enterprise"}
-                    loading={!currencyReady}
-                    displayPrice={displayPrice}
-                    displayPeriod={displayPeriod}
-                    displaySetupFee={displaySetupFee}
-                    ctaLabel={currencyObj.ctaLabel ?? "Get Started"}
-                    ctaMessage={ctaMessage}
-                    outcomeHighlight={getMarketingOutcomeHighlight(tier.name)}
-                    onFeatureClick={(featureName) => setActiveFeature(featureName)}
-                  />
-                );
-              })}
-            </div>
-
-            {/* Guidance Box */}
-            <div className="mt-8 rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50/80 via-white to-purple-50/80 p-6 text-center shadow-xs">
-              <p className="text-sm font-semibold text-[#0F0E0D]">
-                &ldquo;Not sure which marketing package fits? Tell us your goals and budget — we&apos;ll recommend the right plan.&rdquo;
-              </p>
-              <div className="mt-3">
-                <a
-                  href={waLink("Hi NextScale! I'm evaluating marketing options and need help choosing the right plan for my business. Can we talk?")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#1A56DB] px-5 py-2 text-xs font-bold text-white transition-all hover:bg-[#1447C0]"
-                >
-                  Talk to Us →
-                </a>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-
-        {/* Content & Copy */}
-        <Reveal>
-          <div id="content">
-            <div className="mb-10 text-center">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB] mb-3">Content & Copywriting</p>
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-[#0F0E0D]">Words That Convert</h2>
-              <p className="mt-3 text-base text-[#6B6860] max-w-md mx-auto tracking-tight">
-                Website copy, blog content, email sequences & social media — written to sell.
-              </p>
-            </div>
-            <div className="grid items-stretch gap-4 md:grid-cols-3">
-              {PRICING_CONTENT.tiers.map((tier) => {
-                const displayPrice = isINR ? String(tier.pricing.inr) : String(tier.pricing.usd);
-                const isCustomPrice = displayPrice.includes("Custom");
-                const displayPeriod = isCustomPrice ? undefined : tier.pricing.period;
-
-                const currencyLabel = isINR ? "INR" : "USD";
-
-                const ctaMessage = isCustomPrice
-                  ? `Hi NextScale! I'm interested in Enterprise Content & Copywriting services. Let's discuss the scope for my business.`
-                  : `Hi NextScale! I'm interested in the ${tier.name} Content & Copy plan. [Details: ${currencyLabel} pricing, ${displayPrice} ${tier.pricing.period}]. Please share the next steps.`;
-
-                return (
-                  <PricingCard
-                    key={tier.name}
-                    tier={tier}
-                    isEnterprise={tier.name === "Enterprise"}
-                    loading={!currencyReady}
-                    displayPrice={displayPrice}
-                    displayPeriod={displayPeriod}
-                    ctaLabel={tier.name === "Enterprise" ? "Talk to Us →" : "Get Started"}
-                    ctaMessage={ctaMessage}
-                    outcomeHighlight={getContentOutcomeHighlight(tier.name)}
-                    onFeatureClick={(featureName) => setActiveFeature(featureName)}
-                  />
-                );
-              })}
-            </div>
-
-            {/* Guidance Box */}
-            <div className="mt-8 rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50/80 via-white to-purple-50/80 p-6 text-center shadow-xs">
-              <p className="text-sm font-semibold text-[#0F0E0D]">
-                &ldquo;Need a content sample first? We&apos;ll write a free 200-word sample in your brand voice — no commitment.&rdquo;
-              </p>
-              <div className="mt-3">
-                <a
-                  href={waLink("Hi NextScale! I'd like a free content sample before committing. Can you share a 200-word sample in my brand voice?")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#1A56DB] px-5 py-2 text-xs font-bold text-white transition-all hover:bg-[#1447C0]"
-                >
-                  Request Free Sample →
-                </a>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-
-        {/* Add-ons */}
-        <Reveal>
-          <div>
-            <div className="mb-8">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB] mb-3">Add-ons</p>
-              <h2 className="text-2xl font-bold tracking-tight text-[#0F0E0D]">Individual Add-ons</h2>
-            </div>
-            <div
-              className="rounded-2xl overflow-hidden border border-[#E8E6E1] bg-white shadow-sm"
-            >
-              {PRICING_ADDONS.map((a, i) => (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {GUARANTEES.map((g) => {
+              const Icon = g.icon;
+              return (
                 <div
-                  key={a.name}
-                  className={cn(
-                    "flex items-center justify-between px-6 py-4",
-                    i < PRICING_ADDONS.length - 1 && "border-b border-[#E8E6E1]"
-                  )}
+                  key={g.title}
+                  className="rounded-2xl border-2 border-[#141414] bg-[#FAF3E5] p-6 shadow-[5px_5px_0_#141414]"
                 >
-                  <span className="text-sm text-[#0F0E0D] font-medium tracking-[-0.01em]">{a.name}</span>
-                  {!currencyReady ? (
-                    <span className="h-5 w-24 rounded bg-gray-100 animate-pulse" />
-                  ) : (
-                    <span className="font-mono text-sm font-semibold text-[#1A56DB] animate-in fade-in">
-                      {isINR ? a.inr : a.usd}
-                    </span>
-                  )}
+                  <div className="flex size-10 items-center justify-center rounded-xl border-2 border-[#141414] bg-[#FFC72E] shadow-[2px_2px_0_#141414]">
+                    <Icon className="size-5 text-[#141414]" />
+                  </div>
+                  <h3 className="mt-4 font-display text-lg font-black uppercase text-[#141414]">
+                    {g.title}
+                  </h3>
+                  <p className="mt-2 text-xs leading-relaxed text-[#5B5146]">{g.desc}</p>
                 </div>
-              ))}
-            </div>
-          </div>
-        </Reveal>
-
-        {/* Custom Enterprise Banner */}
-        <Reveal>
-          <div
-            className="relative overflow-hidden rounded-3xl border border-[#E8E6E1] bg-white p-10 text-center shadow-sm"
-          >
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(26,86,219,0.03),transparent_65%)]" />
-            <div className="relative">
-              <span className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider mb-4 bg-blue-50 text-[#1A56DB] border border-blue-100"
-              >
-                <Zap className="size-3" />
-                Enterprise Solutions
-              </span>
-              <h3 className="text-2xl font-bold tracking-tight text-[#0F0E0D]">Need something custom?</h3>
-              <p className="mt-3 text-[#6B6860] max-w-sm mx-auto text-sm leading-relaxed tracking-tight">
-                Multi-location, high volume, or custom workflow builds — let's talk.
-              </p>
-              <a
-                href={
-                  isINR
-                    ? `https://wa.me/919556436685?text=${encodeURIComponent("Hi NextScale! I'm interested in a custom enterprise solution. I would like to talk about custom automation integrations and scaling digital presence for my business.")}`
-                    : `mailto:biz.abhisek@gmail.com?subject=Custom%20Enterprise%20Integration%20Inquiry&body=${encodeURIComponent("Hi NextScale! I'm interested in a custom enterprise solution. I would like to talk about custom automation integrations and scaling digital presence for my business.")}`
-                }
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 inline-flex h-11 items-center gap-2 rounded-xl px-6 text-[13px] font-semibold tracking-[-0.01em] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_24px_rgba(26,86,219,0.25)] bg-[#1A56DB] text-white hover:bg-[#1447C0]"
-              >
-                {isINR ? <MessageCircle className="size-4" /> : <Globe className="size-4" />}
-                {isINR ? "Chat on WhatsApp" : "Contact Sales"}
-              </a>
-            </div>
-          </div>
-        </Reveal>
-
-        {/* FAQ */}
-        <Reveal>
-          <div>
-            <div className="mb-8">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB] mb-3">FAQ</p>
-              <h2 className="text-2xl font-bold tracking-tight text-[#0F0E0D]">Frequently asked questions</h2>
-            </div>
-            <Accordion className="flex flex-col gap-2">
-              {PRICING_FAQ.map((item, i) => (
-                <AccordionItem
-                  key={i.toString()}
-                  value={i.toString()}
-                  className="rounded-2xl px-5 overflow-hidden border border-[#E8E6E1] bg-white shadow-sm"
-                >
-                  <AccordionTrigger className="text-[15px] font-semibold py-5 text-left tracking-[-0.02em] text-[#0F0E0D] hover:text-[#1A56DB]">
-                    {item.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-sm text-[#6B6860] leading-relaxed pb-5 tracking-[-0.01em]">
-                    {item.a}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </Reveal>
-      </div>
-
-      {/* Modern Detail Explorer Modal */}
-      {activeFeature && FEATURE_DETAILS[activeFeature] && (
-        <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs transition-opacity duration-300 animate-in fade-in"
-          onClick={() => setActiveFeature(null)}
-        >
-          <div 
-            className="relative w-full max-w-lg rounded-3xl border border-[#E8E6E1] bg-[#F8F7F4] p-8 shadow-2xl text-left transition-all duration-300 scale-in animate-in zoom-in-95 cursor-default"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close Button */}
-            <button
-              onClick={() => setActiveFeature(null)}
-              className="absolute top-5 right-5 p-2 rounded-full border border-[#E8E6E1] bg-white text-[#6B6860] hover:text-[#0F0E0D] hover:scale-105 transition-all duration-200 cursor-pointer shadow-xs"
-              aria-label="Close details"
-            >
-              <X className="size-4" />
-            </button>
-
-            {/* Content header */}
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#1A56DB] mb-2 block">
-              Feature Deep Dive
-            </span>
-            <h3 className="font-heading text-2xl font-bold tracking-tight text-[#0F0E0D]">
-              {activeFeature}
-            </h3>
-            
-            {/* SloganOutcome Highlight Box */}
-            <div className="mt-4 rounded-2xl bg-[#1A56DB]/5 border border-[#1A56DB]/10 p-4 text-sm font-semibold text-[#1A56DB] leading-snug">
-              &ldquo;{FEATURE_DETAILS[activeFeature].outcome}&rdquo;
-            </div>
-
-            {/* Description */}
-            <p className="mt-5 text-sm text-[#6B6860] leading-relaxed tracking-tight">
-              {FEATURE_DETAILS[activeFeature].description}
-            </p>
-
-            {/* Key Benefits */}
-            <div className="mt-6 border-t border-[#E8E6E1] pt-5">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0F0E0D]">
-                Why it drives value:
-              </span>
-              <ul className="mt-3 flex flex-col gap-2.5">
-                {FEATURE_DETAILS[activeFeature].benefits.map((benefit, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-xs text-[#6B6860] leading-relaxed">
-                    <span className="flex size-4.5 items-center justify-center rounded-full bg-green-100 text-green-700 shrink-0 mt-0.5">
-                      <Check className="size-3" strokeWidth={3} />
-                    </span>
-                    <span>{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            {/* Close trigger footer */}
-            <button
-              onClick={() => setActiveFeature(null)}
-              className="mt-8 w-full flex h-11 items-center justify-center gap-2 rounded-xl text-xs font-bold tracking-[-0.01em] bg-white border border-[#E8E6E1] text-[#0F0E0D] hover:bg-[#F4F3F0] transition-colors cursor-pointer"
-            >
-              Got it, thanks!
-            </button>
+              );
+            })}
           </div>
         </div>
-      )}
-    </>
+      </section>
+
+      {/* Section 5: FAQ */}
+      <section id="faq" className="border-b-2 border-[#141414] bg-[#FAF3E5] px-5 py-20 sm:px-8 sm:py-28">
+        <div className="mx-auto max-w-[1000px]">
+          <div className="mb-14">
+            <p className="section-label">Got Questions?</p>
+            <h2 className="mt-3 font-display text-[clamp(2.5rem,5vw,4.5rem)] font-black uppercase leading-[0.9] tracking-[-0.06em]">
+              Frequently Asked Questions
+            </h2>
+          </div>
+
+          <div className="space-y-4">
+            {PRICING_FAQ.map((faq, idx) => (
+              <div
+                key={idx}
+                className="rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[4px_4px_0_#141414]"
+              >
+                <h3 className="font-display text-base font-black uppercase text-[#141414] sm:text-lg">
+                  {faq.q}
+                </h3>
+                <p className="mt-3 text-xs leading-relaxed text-[#5B5146] sm:text-sm">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Bottom CTA Banner */}
+      <section className="bg-[#141414] px-5 py-20 text-[#FAF3E5] sm:px-8 sm:py-28">
+        <div className="mx-auto max-w-[1000px] text-center">
+          <span className="font-display text-xs font-black uppercase tracking-[0.2em] text-[#FFC72E]">
+            Have A Custom Scope In Mind?
+          </span>
+          <h2 className="mt-4 font-display text-[clamp(2.8rem,7vw,6.5rem)] font-black uppercase leading-[0.88] tracking-[-0.07em]">
+            Let&apos;s talk <span className="text-[#FF4D00]">numbers.</span>
+          </h2>
+          <p className="mx-auto mt-6 max-w-xl text-base text-[#FAF3E5]/70 sm:text-lg">
+            Tell us your budget, timeline, and goals on WhatsApp — we will send back a clear scope proposal with zero pushy upsells.
+          </p>
+
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href={waLink("Hi Next Scale! I'd like a custom pricing proposal for my business.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border-2 border-[#FFC72E] bg-[#FFC72E] px-7 py-3.5 font-display text-xs font-black uppercase text-[#141414] shadow-[4px_4px_0_#FF4D00] transition hover:-translate-y-1 hover:bg-[#FF4D00] hover:text-white"
+            >
+              <PhoneCall className="size-4" /> Message Us on WhatsApp
+            </a>
+            <Link
+              href="/tools"
+              className="inline-flex items-center gap-2 rounded-full border-2 border-[#FAF3E5]/40 bg-white/5 px-7 py-3.5 font-display text-xs font-black uppercase text-[#FAF3E5] transition hover:bg-white/10"
+            >
+              Try Free ROI Calculators →
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

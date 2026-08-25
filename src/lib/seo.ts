@@ -62,24 +62,44 @@ export function organizationSchema() {
     name: SITE.name,
     legalName: SITE.legalName,
     url: SITE.url,
-    logo: abs("/icon.svg"),
+    logo: abs("/nextscale-favicon.svg"),
+    image: abs("/opengraph-image"),
     description: SITE.description,
     email: SITE.email,
     foundingDate: SITE.foundingDate,
-    founder: { "@type": "Person", "@id": `${SITE.url}/#founder`, name: SITE.founder },
+    founder: {
+      "@type": "Person",
+      "@id": `${SITE.url}/#founder`,
+      name: SITE.founder,
+      url: `${SITE.url}/about`,
+      sameAs: SITE.founderSameAs,
+    },
     sameAs: SAME_AS,
-    areaServed: { "@type": "Country", name: "India" },
+    areaServed: [
+      { "@type": "Country", name: "India" },
+      { "@type": "Country", name: "United Arab Emirates" },
+      { "@type": "Country", name: "United Kingdom" },
+      { "@type": "Country", name: "United States" },
+    ],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      reviewCount: "50",
+      bestRating: "5",
+      worstRating: "1",
+    },
     contactPoint: {
       "@type": "ContactPoint",
-      contactType: "customer support",
+      contactType: "customer support & sales",
+      telephone: `+91 ${SITE.whatsapp}`,
       email: SITE.email,
-      areaServed: "IN",
-      availableLanguage: ["en", "hi"],
+      areaServed: ["IN", "AE", "GB", "US"],
+      availableLanguage: ["English", "Hindi"],
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       "@id": `${SITE.url}/#offercatalog`,
-      name: "AI Automation & Web Development Services",
+      name: "Next Scale Digital & AI Systems",
       itemListElement: SERVICES.map((s, idx) => ({
         "@type": "Offer",
         position: idx + 1,
@@ -87,9 +107,10 @@ export function organizationSchema() {
           "@type": "Service",
           name: s.name,
           description: s.description,
-        }
-      }))
-    }
+          url: abs(s.href),
+        },
+      })),
+    },
   };
 }
 
@@ -183,15 +204,27 @@ export function founderPersonSchema() {
     "@type": "Person",
     "@id": `${SITE.url}/#founder`,
     name: "Abhisek Pani",
-    alternateName: ["Abhisek", "Abhisek Pani Nextscale"],
+    givenName: "Abhisek",
+    familyName: "Pani",
+    alternateName: [
+      "Abhisek Pani Next Scale",
+      "Abhisek Pani Nextscale",
+      "Abhisek Pani Founder",
+      "Abhisek Pani CEO",
+      "Abhisek",
+    ],
     url: `${SITE.url}/about`,
     email: SITE.email,
-    jobTitle: "Founder & CEO",
+    jobTitle: "Founder & Lead Software Architect",
     description:
-      "Abhisek Pani is the founder and CEO of Next Scale, an AI products and digital infrastructure company in India. He is a builder who creates AI agents, SaaS products, and digital growth systems for businesses across India.",
+      "Abhisek Pani is the founder and CEO of Next Scale (nextscale.co.in). He is a software architect who engineers sub-second Next.js web applications, autonomous WhatsApp AI agents, and digital growth infrastructure for businesses across India and globally.",
     nationality: {
       "@type": "Country",
       name: "India",
+    },
+    homeLocation: {
+      "@type": "Place",
+      name: "Bhubaneswar, Odisha, India",
     },
     worksFor: {
       "@type": "Organization",
@@ -199,21 +232,29 @@ export function founderPersonSchema() {
       name: SITE.name,
       url: SITE.url,
     },
+    founderOf: {
+      "@type": "Organization",
+      "@id": `${SITE.url}/#organization`,
+      name: SITE.name,
+      url: SITE.url,
+    },
     knowsAbout: [
       "Artificial Intelligence",
-      "AI Automation",
-      "Software Development",
-      "Workflow Automation",
-      "Business Process Automation",
-      "Next.js",
-      "React",
-      "Supabase",
+      "Autonomous WhatsApp AI Agents",
+      "Next.js 16 Web Development",
+      "Full-Stack Software Architecture",
+      "Search Engine Optimization (SEO)",
+      "Generative Engine Optimization (GEO)",
+      "Supabase & PostgreSQL Database Design",
+      "Business Automation & Workflow Engineering",
     ],
     sameAs: SITE.founderSameAs,
     image: {
       "@type": "ImageObject",
-      url: abs("/icon.svg"),
+      url: abs("/opengraph-image"),
+      caption: "Abhisek Pani — Founder of Next Scale",
     },
+    mainEntityOfPage: `${SITE.url}/about`,
   };
 }
 
@@ -254,17 +295,48 @@ export function localBusinessSchema() {
     "@type": "ProfessionalService",
     "@id": `${SITE.url}/#localbusiness`,
     name: SITE.name,
-    image: abs("/icon.svg"),
+    legalName: SITE.legalName,
+    image: abs("/opengraph-image"),
+    logo: abs("/nextscale-favicon.svg"),
     priceRange: "$$",
     telephone: `+91 ${SITE.whatsapp}`,
+    email: SITE.email,
     address: {
       "@type": "PostalAddress",
       addressLocality: SITE.region.city,
       addressRegion: SITE.region.state,
       addressCountry: SITE.region.countryCode,
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: "20.2961",
+      longitude: "85.8245",
+    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ],
+        opens: "00:00",
+        closes: "23:59",
+      },
+    ],
     url: SITE.url,
     parentOrganization: { "@id": `${SITE.url}/#organization` },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      reviewCount: "50",
+      bestRating: "5",
+      worstRating: "1",
+    },
   };
 }
 

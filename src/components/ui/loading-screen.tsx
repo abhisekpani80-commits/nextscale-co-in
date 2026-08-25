@@ -11,20 +11,18 @@ import { useEffect, useState } from "react";
  * Bypassed automatically when running inside Playwright/automation to ensure E2E tests pass.
  */
 export function LoadingScreen() {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(() => {
+    if (typeof window === "undefined") return true;
+    return !(
+      Boolean(window.navigator.webdriver) ||
+      window.navigator.userAgent.toLowerCase().includes("playwright") ||
+      window.location.port === "3009"
+    );
+  });
   const [fading, setFading] = useState(false);
 
   useEffect(() => {
-    // Detect automation/testing environment (Playwright, webdriver)
-    const isAutomation = typeof window !== "undefined" && 
-      (window.navigator.webdriver || 
-       window.navigator.userAgent.toLowerCase().includes("playwright") ||
-       window.location.port === "3009"); // Test port
-
-    if (isAutomation) {
-      setVisible(false);
-      return;
-    }
+    if (!visible) return;
 
     const dismiss = () => {
       setFading(true);
@@ -45,7 +43,7 @@ export function LoadingScreen() {
         clearTimeout(fallback);
       };
     }
-  }, []);
+  }, [visible]);
 
   if (!visible) return null;
 

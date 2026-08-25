@@ -34,23 +34,23 @@ export function DotGridBackdrop({
     <div
       aria-hidden
       className={cn(
-        "pointer-events-none absolute inset-0 opacity-70",
+        "pointer-events-none absolute inset-0 opacity-45",
         maskClassName,
         className,
       )}
     >
       <DotGrid
         className="!p-0"
-        dotSize={3}
+        dotSize={2.5}
         gap={26}
-        baseColor="#1b2a33"
-        activeColor="#27d0ed"
-        proximity={120}
-        speedTrigger={100}
+        baseColor="#9E948B"
+        activeColor="#FF4D00"
+        proximity={130}
+        speedTrigger={90}
         shockRadius={220}
         shockStrength={4}
-        resistance={680}
-        returnDuration={1.4}
+        resistance={600}
+        returnDuration={1.2}
         {...props}
       />
     </div>

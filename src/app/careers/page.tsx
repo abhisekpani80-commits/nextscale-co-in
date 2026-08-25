@@ -7,11 +7,11 @@ import { ROLES, WHY_JOIN, PROCESS_STEPS } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "Careers — Join Next Scale",
+  title: "Careers — Join Next Scale Labs",
   description:
-    "100% work-from-home roles in sales, development, content, AI, video editing, and SEO. Remote-first, outcome-driven team.",
+    "100% remote engineering, AI agent development, growth, and creative roles at Next Scale. Build modern Next.js 16 systems and conversational LLMs.",
   path: "/careers",
-  keywords: ["remote jobs India", "work from home developer jobs", "sales rep remote India", "AI builder jobs"],
+  keywords: ["remote AI developer jobs", "Next.js jobs remote", "AI agent engineer India", "growth partner jobs remote"],
 });
 
 export default function CareersPage() {
@@ -20,16 +20,19 @@ export default function CareersPage() {
   return (
     <>
       <PageHero
-        kicker="Careers & Roles"
-        title={<>Work from home. <span className="text-[#FF4D00]">Build real things.</span></>}
-        description="100% remote. Flexible hours. Fair compensation discussed personally on a call — we match numbers to people, not rigid corporate tiers."
+        kicker="Careers & Core Team"
+        title={<>Work from anywhere. <span className="text-[#FF4D00]">Build AI that ships.</span></>}
+        description="We are a lean, engineer-led startup studio. Zero corporate bureaucracy, zero pointless meetings. You work directly with founders, ship real products in 7-day sprints, and get compensated fairly."
       >
         <div className="flex flex-wrap items-center justify-center gap-3">
           <span className="inline-flex items-center gap-1.5 rounded-full border-2 border-[#141414] bg-[#B8E986] px-3.5 py-1.5 font-display text-xs font-black uppercase text-[#141414] shadow-[3px_3px_0_#141414]">
-            <Home className="size-3.5" /> 100% Work From Home
+            <Home className="size-3.5" /> 100% Remote / WFH
           </span>
           <span className="inline-flex items-center gap-1.5 rounded-full border-2 border-[#141414] bg-[#FFC72E] px-3.5 py-1.5 font-display text-xs font-black uppercase text-[#141414] shadow-[3px_3px_0_#141414]">
-            <Users className="size-3.5" /> {totalOpenings}+ Open Positions
+            <Users className="size-3.5" /> {totalOpenings} Active Openings (Hiring Now)
+          </span>
+          <span className="inline-flex items-center gap-1.5 rounded-full border-2 border-[#141414] bg-[#FFB7C5] px-3.5 py-1.5 font-display text-xs font-black uppercase text-[#141414] shadow-[3px_3px_0_#141414]">
+            <Zap className="size-3.5" /> 48h Application Response
           </span>
         </div>
       </PageHero>
@@ -96,7 +99,7 @@ export default function CareersPage() {
                       <div className="mt-2 flex flex-wrap items-center gap-3">
                         <span className="font-display text-xs font-bold uppercase text-[#5B5146]">{role.type}</span>
                         <span className="inline-flex items-center gap-1 rounded-full border border-[#141414] bg-[#9DD9FF] px-2.5 py-0.5 font-display text-[0.65rem] font-black uppercase text-[#141414]">
-                          <Users className="size-3" /> {role.openings} openings
+                          <Users className="size-3" /> {role.openings} {role.openings === 1 ? "Spot Open" : "Spots Open"}
                         </span>
                       </div>
                       <p className="mt-3 text-sm leading-6 text-[#5B5146]">{role.description}</p>
