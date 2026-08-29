@@ -195,8 +195,76 @@ export default function ToolsDashboard() {
         description="Free, interactive calculators and audit checks to measure conversion potential and calculate business cost savings."
       />
 
+      {/* Flagship Dedicated Tools Banner */}
+      <section className="mx-auto max-w-6xl px-5 pt-8">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <Link
+            href="/tools/website-cost-calculator"
+            className="group rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-5 shadow-[4px_4px_0px_#141414] transition-all hover:-translate-y-1 hover:bg-[#FFC72E]"
+          >
+            <span className="rounded bg-[#FF4D00] px-2 py-0.5 text-[10px] font-black uppercase text-white">
+              Calculator
+            </span>
+            <h3 className="font-heading text-base font-black text-[#141414] mt-2">
+              Website Cost Calculator
+            </h3>
+            <p className="text-xs text-[#5B5146] mt-1">Estimate custom Next.js build pricing &amp; timelines.</p>
+            <span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-[#FF4D00] group-hover:text-[#141414]">
+              Open Calculator →
+            </span>
+          </Link>
+
+          <Link
+            href="/tools/seo-audit"
+            className="group rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-5 shadow-[4px_4px_0px_#141414] transition-all hover:-translate-y-1 hover:bg-[#FFC72E]"
+          >
+            <span className="rounded bg-[#25D366] px-2 py-0.5 text-[10px] font-black uppercase text-[#141414]">
+              SEO Diagnostic
+            </span>
+            <h3 className="font-heading text-base font-black text-[#141414] mt-2">
+              Website SEO &amp; AI Audit
+            </h3>
+            <p className="text-xs text-[#5B5146] mt-1">Check Core Web Vitals, Schema, and /llms.txt.</p>
+            <span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-[#FF4D00] group-hover:text-[#141414]">
+              Run Free Audit →
+            </span>
+          </Link>
+
+          <Link
+            href="/tools/ai-roi-calculator"
+            className="group rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-5 shadow-[4px_4px_0px_#141414] transition-all hover:-translate-y-1 hover:bg-[#FFC72E]"
+          >
+            <span className="rounded bg-[#0F6838] px-2 py-0.5 text-[10px] font-black uppercase text-white">
+              ROI Modeler
+            </span>
+            <h3 className="font-heading text-base font-black text-[#141414] mt-2">
+              WhatsApp AI ROI Calculator
+            </h3>
+            <p className="text-xs text-[#5B5146] mt-1">Calculate lead recovery &amp; staff hours saved.</p>
+            <span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-[#FF4D00] group-hover:text-[#141414]">
+              Calculate ROI →
+            </span>
+          </Link>
+
+          <Link
+            href="/tools/local-seo-checker"
+            className="group rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-5 shadow-[4px_4px_0px_#141414] transition-all hover:-translate-y-1 hover:bg-[#FFC72E]"
+          >
+            <span className="rounded bg-[#9DD9FF] px-2 py-0.5 text-[10px] font-black uppercase text-[#141414]">
+              Local Rank
+            </span>
+            <h3 className="font-heading text-base font-black text-[#141414] mt-2">
+              Local SEO Checker
+            </h3>
+            <p className="text-xs text-[#5B5146] mt-1">Diagnose Google Maps pack ranking in your city.</p>
+            <span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-[#FF4D00] group-hover:text-[#141414]">
+              Check Rank Signals →
+            </span>
+          </Link>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-6xl px-5 py-12 sm:py-20 grid gap-8 lg:grid-cols-[1fr_2fr]">
-        
         {/* Left Side: Navigation Sidebar */}
         <nav className="flex flex-col gap-1.5" aria-label="Tools Navigation">
           {toolsList.map((t) => (

@@ -27,6 +27,9 @@ import {
   HeartHandshake,
   Compass,
   PhoneCall,
+  User,
+  Building2,
+  Newspaper,
 } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { DotGridBackdrop } from "@/components/ui/dot-grid-backdrop";
@@ -369,10 +372,12 @@ export function AboutView() {
                   <div className="flex items-center justify-between border-b-2 border-[#141414]/15 pb-4">
                     <div>
                       <span className="font-mono text-[0.62rem] font-bold uppercase tracking-wider text-[#5B5146]">
-                        LEAD ARCHITECT & FOUNDER
+                        LEAD ARCHITECT &amp; FOUNDER
                       </span>
                       <h3 className="font-display text-2xl font-black uppercase text-[#141414]">
-                        Abhisek Pani
+                        <Link href="/about/abhisek-pani" className="hover:text-[#FF4D00] transition-colors">
+                          Abhisek Pani
+                        </Link>
                       </h3>
                     </div>
                     <div className="flex gap-2">
@@ -474,6 +479,116 @@ export function AboutView() {
             ))}
           </div>
         </Reveal>
+      </section>
+
+      {/* Official Entities & Directory Hub */}
+      <section className="border-b-2 border-[#141414] bg-[#FAF3E5] px-5 py-14 sm:px-8 sm:py-20">
+        <div className="mx-auto max-w-[1280px]">
+          <div className="mb-10 text-center">
+            <p className="section-label mb-2 flex items-center justify-center gap-2">
+              <span className="inline-block size-2.5 rounded-full bg-[#FF4D00]" />
+              Entity Directory &amp; Knowledge Base
+            </p>
+            <h2 className="font-display text-3xl font-black uppercase text-[#141414] sm:text-5xl">
+              Meet The People &amp; The Studio
+            </h2>
+            <p className="mx-auto mt-2 max-w-xl text-sm text-[#5B5146]">
+              Explore dedicated entity profiles for founder Abhisek Pani, the Next Scale engineering studio, and official press resources.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {/* Card 1: Founder Entity */}
+            <Link
+              href="/about/abhisek-pani"
+              className="group flex flex-col justify-between rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[5px_5px_0_#141414] transition hover:-translate-y-1.5 hover:shadow-[7px_7px_0_#FF4D00]"
+            >
+              <div>
+                <div className="flex items-center justify-between">
+                  <span className="rounded-full bg-[#FFC72E] px-3 py-1 font-display text-xs font-black uppercase text-[#141414] border border-[#141414]">
+                    Founder Profile
+                  </span>
+                  <div className="grid size-10 place-items-center rounded-xl border-2 border-[#141414] bg-[#FAF3E5] text-[#141414] group-hover:bg-[#FF4D00] group-hover:text-white transition-colors">
+                    <User className="size-5" />
+                  </div>
+                </div>
+
+                <h3 className="mt-5 font-display text-2xl font-black uppercase text-[#141414]">
+                  Abhisek Pani
+                </h3>
+                <p className="mt-1 text-xs font-bold text-[#FF4D00]">Founder &amp; Lead Software Architect</p>
+                <p className="mt-3 text-xs leading-relaxed text-[#5B5146]">
+                  Learn about Abhisek&apos;s story, engineering philosophy, technical stack, flagship products (ExamOS, Aura), and anti-agency doctrine.
+                </p>
+              </div>
+
+              <div className="mt-6 flex items-center gap-1 text-xs font-black uppercase text-[#141414] group-hover:text-[#FF4D00]">
+                <span>View Founder Profile</span>
+                <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+              </div>
+            </Link>
+
+            {/* Card 2: Company Entity */}
+            <Link
+              href="/about/next-scale"
+              className="group flex flex-col justify-between rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[5px_5px_0_#141414] transition hover:-translate-y-1.5 hover:shadow-[7px_7px_0_#FFC72E]"
+            >
+              <div>
+                <div className="flex items-center justify-between">
+                  <span className="rounded-full bg-[#B8E986] px-3 py-1 font-display text-xs font-black uppercase text-[#141414] border border-[#141414]">
+                    Company Profile
+                  </span>
+                  <div className="grid size-10 place-items-center rounded-xl border-2 border-[#141414] bg-[#FAF3E5] text-[#141414] group-hover:bg-[#FFC72E] transition-colors">
+                    <Building2 className="size-5" />
+                  </div>
+                </div>
+
+                <h3 className="mt-5 font-display text-2xl font-black uppercase text-[#141414]">
+                  Next Scale Studio
+                </h3>
+                <p className="mt-1 text-xs font-bold text-[#FF4D00]">Web Engineering &amp; AI Studio</p>
+                <p className="mt-3 text-xs leading-relaxed text-[#5B5146]">
+                  Discover the company background, 7-day velocity standards, 100% source code ownership guarantee, and industry solutions.
+                </p>
+              </div>
+
+              <div className="mt-6 flex items-center gap-1 text-xs font-black uppercase text-[#141414] group-hover:text-[#FF4D00]">
+                <span>Explore Studio Profile</span>
+                <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+              </div>
+            </Link>
+
+            {/* Card 3: Press Kit */}
+            <Link
+              href="/press"
+              className="group flex flex-col justify-between rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[5px_5px_0_#141414] transition hover:-translate-y-1.5 hover:shadow-[7px_7px_0_#141414]"
+            >
+              <div>
+                <div className="flex items-center justify-between">
+                  <span className="rounded-full bg-[#9DD9FF] px-3 py-1 font-display text-xs font-black uppercase text-[#141414] border border-[#141414]">
+                    Media Resources
+                  </span>
+                  <div className="grid size-10 place-items-center rounded-xl border-2 border-[#141414] bg-[#FAF3E5] text-[#141414] group-hover:bg-[#9DD9FF] transition-colors">
+                    <Newspaper className="size-5" />
+                  </div>
+                </div>
+
+                <h3 className="mt-5 font-display text-2xl font-black uppercase text-[#141414]">
+                  Press &amp; Media Kit
+                </h3>
+                <p className="mt-1 text-xs font-bold text-[#5B5146]">Bios, Logos &amp; Fact Sheet</p>
+                <p className="mt-3 text-xs leading-relaxed text-[#5B5146]">
+                  Download vector brand logos, copy official founder &amp; company bios, view fast facts, and submit media interview inquiries.
+                </p>
+              </div>
+
+              <div className="mt-6 flex items-center gap-1 text-xs font-black uppercase text-[#141414] group-hover:text-[#FF4D00]">
+                <span>Access Press Kit</span>
+                <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+              </div>
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* The 4 Anti-Agency Principles */}

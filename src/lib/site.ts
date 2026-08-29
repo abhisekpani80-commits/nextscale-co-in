@@ -81,6 +81,9 @@ export const FOOTER_GROUPS: { heading: string; links: { label: string; href: str
     heading: "Company",
     links: [
       { label: "About", href: "/about" },
+      { label: "Abhisek Pani (Founder)", href: "/about/abhisek-pani" },
+      { label: "Next Scale Studio", href: "/about/next-scale" },
+      { label: "Press & Media", href: "/press" },
       { label: "Portfolio", href: "/portfolio" },
       { label: "Careers", href: "/careers" },
       { label: "Contact", href: "/contact" },

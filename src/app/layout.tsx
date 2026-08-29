@@ -10,6 +10,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { organizationSchema, websiteSchema, founderPersonSchema, localBusinessSchema } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 import { ClientWrapper } from "@/components/ui/client-wrapper";
+import { PromoPopup } from "@/components/ui/promo-popup";
 
 const archivo = Archivo({
   variable: "--font-archivo",
@@ -115,6 +116,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Footer />
         <WhatsAppFloat />
         <CookieConsent />
+        <PromoPopup />
       </body>
     </html>
   );

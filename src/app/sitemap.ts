@@ -18,12 +18,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // Additional core routes
+  // Additional core & entity routes
   const extraCore: Entry[] = [
-    { url: url("/tools"), lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: url("/about/abhisek-pani"), lastModified: now, changeFrequency: "weekly", priority: 0.95 },
+    { url: url("/about/next-scale"), lastModified: now, changeFrequency: "weekly", priority: 0.95 },
+    { url: url("/press"), lastModified: now, changeFrequency: "weekly", priority: 0.85 },
+    { url: url("/tools"), lastModified: now, changeFrequency: "weekly", priority: 0.85 },
+    { url: url("/tools/website-cost-calculator"), lastModified: now, changeFrequency: "weekly", priority: 0.85 },
+    { url: url("/tools/seo-audit"), lastModified: now, changeFrequency: "weekly", priority: 0.85 },
+    { url: url("/tools/ai-roi-calculator"), lastModified: now, changeFrequency: "weekly", priority: 0.85 },
+    { url: url("/tools/local-seo-checker"), lastModified: now, changeFrequency: "weekly", priority: 0.85 },
     { url: url("/compare"), lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: url("/products"), lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    { url: url("/resources"), lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: url("/resources"), lastModified: now, changeFrequency: "weekly", priority: 0.85 },
     { url: url("/careers/apply"), lastModified: now, changeFrequency: "monthly", priority: 0.6 },
   ];
 

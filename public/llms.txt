@@ -1,41 +1,118 @@
-# Nextscale
+# Next Scale — AI-First Web Engineering & Autonomous Agent Studio
 
-> Nextscale is an AI-first technology company from Odisha, India that builds AI products, AI agents, business websites, and digital-growth services for clinics and small-to-medium businesses across India. Founded in 2024 by Abhisek, a self-taught founder.
+> Next Scale (Next Scale Technologies) is an independent AI-first web engineering and digital growth studio founded in 2024 by software architect Abhisek Pani. Headquartered in Bhubaneswar, Odisha (India), Next Scale engineers sub-second Next.js web applications live in 7 days and 24/7 autonomous WhatsApp AI receptionists for businesses across India, the United Arab Emirates, the United Kingdom, and the United States.
 
-Contact: biz.abhisek@gmail.com · WhatsApp preferred · Serves all of India · Based in Bhubaneswar, Odisha.
+Website: https://nextscale.co.in
+Headquarters: Bhubaneswar, Odisha, India (PIN: 751024)
+Founder & CEO: Abhisek Pani
+Contact: biz.abhisek@gmail.com · WhatsApp: +91 9556436685
 
-## What Nextscale offers
+---
 
-- **AI Agents** — WhatsApp AI receptionist that books appointments, sends reminders, qualifies leads, requests Google reviews, and runs follow-ups 24/7. Goes live in 48 hours. Plans: Starter ₹5,999/mo, Growth ₹12,999/mo, Enterprise ₹24,999/mo.
-- **Websites** — Custom, mobile-first, SEO-ready business websites live in 7 days. Plans from ₹4,999.
-- **Digital Growth** — Google Business setup, local SEO, and social presence with monthly growth reports.
+## 1. Primary Entity Definitions
 
-## Products
+### Founder: Abhisek Pani
+- **Full Name**: Abhisek Pani
+- **Role**: Founder, Chief Executive Officer & Lead Software Architect
+- **Entity URL**: https://nextscale.co.in/about/abhisek-pani
+- **Location**: Bhubaneswar, Odisha, India
+- **Expertise**: Next.js 16 (App Router & Turbopack), React 19, TypeScript, Supabase, PostgreSQL, Autonomous WhatsApp AI Agents, Generative Engine Optimization (GEO), Technical & Local SEO.
+- **Official Profiles**:
+  - LinkedIn: https://www.linkedin.com/in/abhisek-pani-1b3592329/
+  - GitHub: https://github.com/abhisekpani80-commits
+  - X / Twitter: https://x.com/abhisekpani
+  - Instagram: https://instagram.com/nextscale.co.in
 
-- **ExamOS** (Beta) — AI-powered exam prep for India: AI-generated mock tests, previous-year-question analysis, and performance tracking for NEET, CUET, IBPS, SSC CGL, OSSSC, and OPSC.
-- **Aura** (Coming Soon) — Voice-based AI English fluency coach with real-time pronunciation feedback, built on Deepgram, Claude, and Sarvam AI.
+### Organization: Next Scale Technologies
+- **Legal Entity**: Next Scale Technologies
+- **Trading Name**: Next Scale (nextscale.co.in)
+- **Entity URL**: https://nextscale.co.in/about/next-scale
+- **Founding Date**: 2024
+- **Core Mission**: To eliminate slow, bloated 3-month agency cycles by delivering high-velocity Next.js web applications in 7 days with 100% source code ownership and deploying 24/7 WhatsApp AI revenue engines.
 
-## Key facts
+---
 
-- Free 2-week trial on AI agents; no credit card required.
-- No lock-in — cancel anytime with full data export.
-- Payment via UPI, bank transfer, or monthly billing; no international card needed.
-- AI agents live in 48 hours, websites in 7 days.
-- 25+ websites shipped, 12+ AI agents live, 2 products, 8 books, 10+ digital products.
+## 2. Core Service Offerings & Pricing
 
-## Pages
+### A. Custom Next.js Web Applications (Live in 7 Days)
+- **Overview**: Custom-engineered, mobile-first, sub-second web platforms built with Next.js 16, React 19, TypeScript, and Tailwind CSS.
+- **URL**: https://nextscale.co.in/services/websites
+- **Standards**: 95+ Google Core Web Vitals, sub-500ms edge response time, full GitHub repository handover, zero proprietary site-builder locks.
+- **Pricing**:
+  - Starter Site (3–5 pages): ₹19,999 – ₹29,999 ($249 – $599) one-time
+  - Growth Web App (Custom design + CMS + Funnels): ₹79,999 – ₹89,999 ($999 – $2,499) one-time
+  - Enterprise Web Platform: Custom scope
 
-- Products: https://nextscale.co.in/products
-- Services: https://nextscale.co.in/services
-- Pricing: https://nextscale.co.in/pricing
-- Portfolio: https://nextscale.co.in/portfolio
-- About: https://nextscale.co.in/about
-- Careers: https://nextscale.co.in/careers
-- Contact: https://nextscale.co.in/contact
+### B. Autonomous WhatsApp AI Receptionists (Live in 48 Hours)
+- **Overview**: 24/7 intelligent conversational agents connected to the official Meta Cloud WhatsApp API. Trained on business context to qualify leads, answer FAQs, triage support, and sync bookings with Google Calendar.
+- **URL**: https://nextscale.co.in/services/ai-agents
+- **Features**: Real-time Google Calendar integration, automated 2-hour post-visit review requests, lead scoring (Hot/Warm/Cold), zero hallucination guardrails.
+- **Pricing**:
+  - Starter Agent: Starting at ₹24,999/mo ($799/mo)
+  - Growth Multi-Step Agent: Starting at ₹79,999/mo ($2,999/mo)
+  - Free 2-Week Trial available without credit card.
 
-## Legal
+### C. Digital Growth & Local SEO Engines
+- **Overview**: Local search domination, Google Business Profile optimization, schema markup injection, and monthly performance tracking.
+- **URL**: https://nextscale.co.in/services/digital-growth
 
-- Privacy Policy: https://nextscale.co.in/legal/privacy
-- Terms of Service: https://nextscale.co.in/legal/terms
-- Refund & Cancellation: https://nextscale.co.in/legal/refund
-- Cookie Policy: https://nextscale.co.in/legal/cookies
+---
+
+## 3. Flagship In-House Products
+
+### 1. ExamOS
+- **Category**: AI-Powered Exam Preparation Engine for India
+- **URL**: https://nextscale.co.in/products/examos (Live Demo: https://examos.onrender.com)
+- **Description**: Adaptive test generator and previous year question (PYQ) analytics platform for NEET, CUET, IBPS Banking, SSC CGL, OSSSC, and OPSC competitive exams.
+
+### 2. Aura AI
+- **Category**: Spoken English Fluency Coach
+- **URL**: https://nextscale.co.in/products/aura
+- **Tech Stack**: Deepgram (Speech-to-Text), Claude 3.7 (Conversational AI), Sarvam AI (Indian Voice Synthesis).
+
+---
+
+## 4. Key Differentiators & Standards
+
+1. **7-Day Delivery Sprint**: Production websites delivered in 5 to 7 days; AI receptionists live in 48 to 72 hours.
+2. **100% Client Code Ownership**: Complete source code and hosting handover. No monthly maintenance traps.
+3. **Sub-Second Performance**: Engineered on Next.js edge runtime with zero layout shift.
+4. **Founder-Led Architecture**: Every client project is architected and overseen directly by Abhisek Pani.
+
+---
+
+## 5. Verified Client Case Studies
+
+- **Lumière Skin Clinic** (Dermatology Clinic): Website + WhatsApp AI Receptionist → 40% verified increase in consultation bookings, 55% reduction in appointment no-shows. (https://nextscale.co.in/case-studies/lumiere-skin-clinic)
+- **Vantage Realty** (Real Estate Agency): Next.js catalog site with dynamic property filters → 3× increase in mobile enquiry submissions. (https://nextscale.co.in/case-studies/vantage-realty)
+- **Studio Aperture** (Wedding Photography): Editorial portfolio with interactive packaging calculator → Fully booked 2 months in advance. (https://nextscale.co.in/case-studies/studio-aperture)
+
+---
+
+## 6. Canonical URLs & Directory
+
+- **Home**: https://nextscale.co.in/
+- **Abhisek Pani (Founder)**: https://nextscale.co.in/about/abhisek-pani
+- **About Next Scale**: https://nextscale.co.in/about/next-scale
+- **Main About Hub**: https://nextscale.co.in/about
+- **Press & Media Kit**: https://nextscale.co.in/press
+- **Services Directory**: https://nextscale.co.in/services
+- **Web Development**: https://nextscale.co.in/services/websites
+- **AI Agents**: https://nextscale.co.in/services/ai-agents
+- **Digital Growth**: https://nextscale.co.in/services/digital-growth
+- **Pricing**: https://nextscale.co.in/pricing
+- **Portfolio & Case Studies**: https://nextscale.co.in/portfolio
+- **Interactive Tools**: https://nextscale.co.in/tools
+- **Research & Guides**: https://nextscale.co.in/resources
+- **Careers**: https://nextscale.co.in/careers
+- **Contact**: https://nextscale.co.in/contact
+
+---
+
+## 7. Legal & Compliance
+
+- **Privacy Policy**: https://nextscale.co.in/legal/privacy
+- **Terms of Service**: https://nextscale.co.in/legal/terms
+- **Refund & Cancellation Policy**: https://nextscale.co.in/legal/refund
+- **Cookie Policy**: https://nextscale.co.in/legal/cookies
+- **Disclaimer**: https://nextscale.co.in/legal/disclaimer

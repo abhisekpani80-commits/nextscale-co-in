@@ -282,7 +282,127 @@ export function profilePageSchema() {
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
-        { "@type": "ListItem", position: 2, name: "About Abhisek Pani", item: `${SITE.url}/about` },
+        { "@type": "ListItem", position: 2, name: "About", item: `${SITE.url}/about` },
+      ],
+    },
+  };
+}
+
+/**
+ * Dedicated Personal ProfilePage Schema for /about/abhisek-pani
+ */
+export function founderDedicatedProfilePageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": `${SITE.url}/about/abhisek-pani#profilepage`,
+    url: `${SITE.url}/about/abhisek-pani`,
+    name: "Abhisek Pani — Founder & Lead Software Architect at Next Scale",
+    description:
+      "Official entity and personal profile of Abhisek Pani, founder and CEO of Next Scale. Software architect engineering custom Next.js websites and autonomous WhatsApp AI agents based in Bhubaneswar, Odisha.",
+    dateCreated: "2024-01-01",
+    dateModified: new Date().toISOString().split("T")[0],
+    inLanguage: "en-IN",
+    isPartOf: { "@id": `${SITE.url}/#website` },
+    about: { "@id": `${SITE.url}/#founder` },
+    mainEntity: {
+      "@type": "Person",
+      "@id": `${SITE.url}/#founder`,
+      name: "Abhisek Pani",
+      givenName: "Abhisek",
+      familyName: "Pani",
+      jobTitle: "Founder & Lead Software Architect",
+      url: `${SITE.url}/about/abhisek-pani`,
+      sameAs: SITE.founderSameAs,
+      worksFor: {
+        "@type": "Organization",
+        "@id": `${SITE.url}/#organization`,
+        name: SITE.name,
+        url: SITE.url,
+      },
+      founderOf: {
+        "@type": "Organization",
+        "@id": `${SITE.url}/#organization`,
+        name: SITE.name,
+        url: SITE.url,
+      },
+      homeLocation: {
+        "@type": "Place",
+        name: "Bhubaneswar, Odisha, India",
+      },
+      knowsAbout: [
+        "Artificial Intelligence",
+        "Autonomous WhatsApp AI Agents",
+        "Next.js 16 Web Engineering",
+        "React 19 & Full-Stack Architecture",
+        "Search Engine Optimization (SEO)",
+        "Generative Engine Optimization (GEO)",
+        "Supabase & PostgreSQL Systems",
+        "Workflow Automation & Anti-Agency Principles",
+      ],
+      mainEntityOfPage: `${SITE.url}/about/abhisek-pani`,
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+        { "@type": "ListItem", position: 2, name: "About", item: `${SITE.url}/about` },
+        { "@type": "ListItem", position: 3, name: "Abhisek Pani", item: `${SITE.url}/about/abhisek-pani` },
+      ],
+    },
+  };
+}
+
+/**
+ * Dedicated Company AboutPage Schema for /about/next-scale
+ */
+export function companyAboutPageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": `${SITE.url}/about/next-scale#aboutpage`,
+    url: `${SITE.url}/about/next-scale`,
+    name: "About Next Scale — AI-First Web Engineering & Digital Growth Studio",
+    description:
+      "Next Scale is an AI-first web engineering and digital growth studio founded by Abhisek Pani in Bhubaneswar, Odisha. Delivering custom Next.js websites live in 7 days and 24/7 autonomous WhatsApp AI receptionists.",
+    inLanguage: "en-IN",
+    isPartOf: { "@id": `${SITE.url}/#website` },
+    about: { "@id": `${SITE.url}/#organization` },
+    mainEntity: { "@id": `${SITE.url}/#organization` },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+        { "@type": "ListItem", position: 2, name: "About", item: `${SITE.url}/about` },
+        { "@type": "ListItem", position: 3, name: "Next Scale Studio", item: `${SITE.url}/about/next-scale` },
+      ],
+    },
+  };
+}
+
+/**
+ * Press & Media Kit Schema for /press
+ */
+export function pressPageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": `${SITE.url}/press#presspage`,
+    url: `${SITE.url}/press`,
+    name: "Next Scale Press Kit & Media Information",
+    description:
+      "Official press kit, brand facts, founder biography, high-resolution logos, and media contact details for Next Scale and founder Abhisek Pani.",
+    inLanguage: "en-IN",
+    isPartOf: { "@id": `${SITE.url}/#website` },
+    about: [
+      { "@id": `${SITE.url}/#organization` },
+      { "@id": `${SITE.url}/#founder` },
+    ],
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+        { "@type": "ListItem", position: 2, name: "Press & Media Kit", item: `${SITE.url}/press` },
       ],
     },
   };
