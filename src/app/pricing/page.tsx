@@ -215,53 +215,53 @@ export default function PricingPage() {
   ];
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden pt-16 sm:pt-20">
       {/* Ticker Marquee */}
-      <div className="border-b-2 border-[#141414] bg-[#FFC72E] py-2.5 overflow-hidden">
-        <div className="animate-marquee flex items-center gap-8 whitespace-nowrap font-display text-xs font-black uppercase tracking-[0.12em] text-[#141414]">
+      <div className="border-b border-slate-200 bg-blue-50/80 py-2.5 overflow-hidden">
+        <div className="animate-marquee flex items-center gap-8 whitespace-nowrap font-mono text-xs font-bold uppercase tracking-wider text-blue-900">
           {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
             <span key={i} className="flex items-center gap-3">
               <span>{item}</span>
-              <span className="size-1.5 rounded-full bg-[#141414]" />
+              <span className="size-1.5 rounded-full bg-blue-600" />
             </span>
           ))}
         </div>
       </div>
 
       {/* Hero Section */}
-      <section className="relative border-b-2 border-[#141414] bg-[#FAF3E5] px-5 py-16 sm:px-8 sm:py-24 overflow-hidden">
+      <section className="relative border-b border-slate-200 bg-slate-50/50 px-5 py-16 sm:px-8 sm:py-24 overflow-hidden">
         {/* Interactive Physics DotGrid Backdrop from ReactBits */}
         <DotGridBackdrop />
 
         <div className="relative z-10 mx-auto max-w-[1280px]">
           <div className="flex flex-col items-center text-center">
             <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
-              <span className="inline-flex items-center gap-2 rounded-full border-2 border-[#141414] bg-[#FF4D00] px-3.5 py-1.5 font-display text-xs font-black uppercase text-[#FAF3E5] shadow-[3px_3px_0_#141414]">
+              <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1.5 font-mono text-xs font-semibold text-blue-700 shadow-xs">
                 <Sparkles className="size-3.5" /> Launch Pricing
               </span>
-              <span className="font-display text-xs font-black uppercase tracking-[0.14em] text-[#5B5146]">
+              <span className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
                 Save up to 50%
               </span>
             </div>
 
-            <h1 className="max-w-4xl font-display text-[clamp(3.2rem,7.5vw,7rem)] font-black uppercase leading-[0.88] tracking-[-0.07em]">
+            <h1 className="max-w-4xl font-heading text-4xl font-extrabold uppercase tracking-tight sm:text-6xl md:text-7xl text-slate-900">
               Clear numbers. <br />
-              <span className="text-[#FF4D00]">Compounding ROI.</span>
+              <span className="text-blue-600">Compounding ROI.</span>
             </h1>
 
-            <p className="mt-6 max-w-2xl text-lg font-medium leading-7 text-[#141414] sm:text-xl">
+            <p className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-slate-600 sm:text-xl">
               Transparent pricing for custom Next.js websites, 24/7 WhatsApp AI receptionists, and digital growth engines. No mystery invoices.
             </p>
 
             {/* Currency & Annual Switcher Widget */}
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               {/* Currency Selector */}
-              <div className="inline-flex items-center rounded-full border-2 border-[#141414] bg-[#FFFCF5] p-1 shadow-[4px_4px_0_#141414]">
+              <div className="inline-flex items-center rounded-full border border-slate-200 bg-white p-1 shadow-xs">
                 <button
                   type="button"
                   onClick={() => toggleCurrency("USD")}
-                  className={`flex items-center gap-1.5 rounded-full px-4 py-2 font-display text-xs font-black uppercase transition-all ${
-                    !isINR ? "bg-[#141414] text-[#FAF3E5]" : "text-[#141414] hover:bg-[#FAF3E5]"
+                  className={`flex items-center gap-1.5 rounded-full px-4 py-2 font-mono text-xs font-bold uppercase transition-all ${
+                    !isINR ? "bg-blue-600 text-white shadow-xs" : "text-slate-600 hover:text-slate-900"
                   }`}
                 >
                   <Globe className="size-3.5" /> USD ($) Global
@@ -269,8 +269,8 @@ export default function PricingPage() {
                 <button
                   type="button"
                   onClick={() => toggleCurrency("INR")}
-                  className={`flex items-center gap-1.5 rounded-full px-4 py-2 font-display text-xs font-black uppercase transition-all ${
-                    isINR ? "bg-[#FF4D00] text-white" : "text-[#141414] hover:bg-[#FAF3E5]"
+                  className={`flex items-center gap-1.5 rounded-full px-4 py-2 font-mono text-xs font-bold uppercase transition-all ${
+                    isINR ? "bg-blue-600 text-white shadow-xs" : "text-slate-600 hover:text-slate-900"
                   }`}
                 >
                   🇮🇳 INR (₹) India
@@ -278,25 +278,25 @@ export default function PricingPage() {
               </div>
 
               {/* Annual Toggle */}
-              <div className="inline-flex items-center gap-3 rounded-full border-2 border-[#141414] bg-[#FFFCF5] px-4 py-2 shadow-[4px_4px_0_#141414]">
-                <span className={cn("font-display text-xs font-black uppercase", !isAnnual ? "text-[#141414]" : "text-[#5B5146]")}>
+              <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-2 shadow-xs">
+                <span className={cn("font-mono text-xs font-bold uppercase", !isAnnual ? "text-slate-900" : "text-slate-400")}>
                   Monthly
                 </span>
                 <button
                   type="button"
                   onClick={() => setIsAnnual(!isAnnual)}
-                  className="relative inline-flex h-6 w-12 items-center rounded-full border-2 border-[#141414] bg-[#FAF3E5] transition-colors"
+                  className="relative inline-flex h-6 w-12 items-center rounded-full bg-slate-200 transition-colors"
                 >
                   <span
                     className={cn(
-                      "inline-block size-4 transform rounded-full bg-[#141414] transition-transform",
-                      isAnnual ? "translate-x-6 bg-[#FF4D00]" : "translate-x-1"
+                      "inline-block size-4 transform rounded-full bg-blue-600 transition-transform",
+                      isAnnual ? "translate-x-6" : "translate-x-1"
                     )}
                   />
                 </button>
-                <span className={cn("flex items-center gap-1.5 font-display text-xs font-black uppercase", isAnnual ? "text-[#141414]" : "text-[#5B5146]")}>
+                <span className={cn("flex items-center gap-1.5 font-mono text-xs font-bold uppercase", isAnnual ? "text-slate-900" : "text-slate-400")}>
                   Annual
-                  <span className="rounded-full bg-[#B8E986] border border-[#141414] px-2 py-0.5 text-[0.6rem] font-black text-[#141414]">
+                  <span className="rounded-full bg-emerald-50 border border-emerald-200 px-2 py-0.5 text-[0.6rem] font-bold text-emerald-800">
                     SAVE 17%
                   </span>
                 </span>
@@ -309,7 +309,7 @@ export default function PricingPage() {
                 <a
                   key={j.id}
                   href={`#${j.id}`}
-                  className="rounded-full border-2 border-[#141414] bg-[#FFFCF5] px-3.5 py-1 font-display text-[0.65rem] font-black uppercase tracking-[0.06em] text-[#141414] shadow-[2px_2px_0_#141414] transition hover:-translate-y-0.5 hover:bg-[#FFC72E]"
+                  className="rounded-full border border-slate-200 bg-white px-3.5 py-1 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.06em] text-slate-700 shadow-xs transition hover:border-blue-400 hover:text-blue-600"
                 >
                   {j.label}
                 </a>
@@ -320,57 +320,57 @@ export default function PricingPage() {
       </section>
 
       {/* ROI Proof Stats */}
-      <section className="border-b-2 border-[#141414] bg-[#FFC72E] px-5 py-10 sm:px-8">
+      <section className="border-b border-slate-200 bg-slate-50/70 px-5 py-10 sm:px-8">
         <div className="mx-auto max-w-[1280px]">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-            <div className="rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[5px_5px_0_#141414]">
-              <span className="font-display text-4xl font-black text-[#FF4D00] sm:text-5xl">3.2x</span>
-              <span className="mt-2 block font-display text-sm font-black uppercase text-[#141414]">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs">
+              <span className="font-heading text-4xl font-extrabold text-blue-600 sm:text-5xl">3.2x</span>
+              <span className="mt-2 block font-heading text-sm font-bold uppercase text-slate-900">
                 More Qualified Leads
               </span>
-              <p className="mt-1 text-xs text-[#5B5146]">WhatsApp AI capture vs passive contact form drop-off.</p>
+              <p className="mt-1 text-xs text-slate-600">WhatsApp AI capture vs passive contact form drop-off.</p>
             </div>
-            <div className="rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[5px_5px_0_#141414]">
-              <span className="font-display text-4xl font-black text-[#141414] sm:text-5xl">18+ Hrs</span>
-              <span className="mt-2 block font-display text-sm font-black uppercase text-[#141414]">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs">
+              <span className="font-heading text-4xl font-extrabold text-slate-900 sm:text-5xl">18+ Hrs</span>
+              <span className="mt-2 block font-heading text-sm font-bold uppercase text-slate-900">
                 Saved Weekly
               </span>
-              <p className="mt-1 text-xs text-[#5B5146]">Automated scheduling, triage, and reminder sequences.</p>
+              <p className="mt-1 text-xs text-slate-600">Automated scheduling, triage, and reminder sequences.</p>
             </div>
-            <div className="rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[5px_5px_0_#141414]">
-              <span className="font-display text-4xl font-black text-[#141414] sm:text-5xl">&lt; 6 Wks</span>
-              <span className="mt-2 block font-display text-sm font-black uppercase text-[#141414]">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs">
+              <span className="font-heading text-4xl font-extrabold text-slate-900 sm:text-5xl">&lt; 6 Wks</span>
+              <span className="mt-2 block font-heading text-sm font-bold uppercase text-slate-900">
                 Average Payback Time
               </span>
-              <p className="mt-1 text-xs text-[#5B5146]">Fast ROI on recovered leads and booked appointments.</p>
+              <p className="mt-1 text-xs text-slate-600">Fast ROI on recovered leads and booked appointments.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Featured All-in-One Growth Suite Spotlight Banner */}
-      <section id="suite" className="border-b-2 border-[#141414] bg-[#FFFCF5] px-5 py-16 sm:px-8 sm:py-20">
+      <section id="suite" className="border-b border-slate-200 bg-white px-5 py-16 sm:px-8 sm:py-20">
         <div className="mx-auto max-w-[1280px]">
-          <div className="relative overflow-hidden rounded-3xl border-2 border-[#141414] bg-[#141414] p-8 text-[#FAF3E5] shadow-[8px_8px_0_#FF4D00] sm:p-12">
+          <div className="relative overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 p-8 text-white shadow-xl shadow-blue-900/10 sm:p-12">
             <div className="flex flex-wrap items-center justify-between gap-4">
-              <span className="inline-flex items-center gap-2 rounded-full border-2 border-[#FFC72E] bg-[#FFC72E] px-3.5 py-1 font-display text-xs font-black uppercase text-[#141414]">
+              <span className="inline-flex items-center gap-2 rounded-full border border-blue-400 bg-blue-500/20 px-3.5 py-1 font-mono text-xs font-semibold text-blue-300">
                 <Sparkles className="size-3.5" /> Best-Value Recommended Bundle
               </span>
-              <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 font-mono text-xs uppercase text-[#FAF3E5]">
+              <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 font-mono text-xs uppercase text-slate-300">
                 Everything Connected · 1 Team
               </span>
             </div>
 
             <div className="mt-6 grid gap-8 lg:grid-cols-[1.2fr_.8fr] lg:items-center">
               <div>
-                <h2 className="font-display text-[clamp(2.5rem,5.5vw,4.5rem)] font-black uppercase leading-[0.9] tracking-[-0.06em]">
+                <h2 className="font-heading text-3xl font-extrabold uppercase tracking-tight sm:text-5xl text-white">
                   The Full Growth Suite.
                 </h2>
-                <p className="mt-4 max-w-xl text-base text-[#FAF3E5]/75">
+                <p className="mt-4 max-w-xl text-base text-slate-300 leading-relaxed">
                   Your complete customer acquisition machine: High-speed Next.js website + 24/7 WhatsApp AI receptionist + Local SEO domination working together.
                 </p>
 
-                <div className="mt-6 grid gap-2 sm:grid-cols-2">
+                <div className="mt-6 grid gap-2.5 sm:grid-cols-2">
                   {[
                     "Custom 10-Page Next.js Web App",
                     "WhatsApp AI Receptionist & Booking Bot",
@@ -379,33 +379,33 @@ export default function PricingPage() {
                     "Priority 7-Day Build Queue",
                     "90 Days Post-Launch Optimization",
                   ].map((feat) => (
-                    <div key={feat} className="flex items-center gap-2 text-xs font-semibold">
-                      <Check className="size-4 text-[#B8E986] shrink-0" />
+                    <div key={feat} className="flex items-center gap-2 text-xs font-semibold text-slate-200">
+                      <Check className="size-4 text-blue-400 shrink-0" />
                       <span>{feat}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="rounded-2xl border-2 border-[#FAF3E5] bg-[#FFFCF5] p-6 text-[#141414] shadow-[5px_5px_0_#FFC72E]">
-                <span className="font-display text-xs font-black uppercase tracking-[0.14em] text-[#5B5146]">
+              <div className="rounded-2xl border border-slate-700 bg-slate-800/80 p-6 text-white shadow-lg">
+                <span className="font-mono text-xs font-bold uppercase tracking-[0.14em] text-blue-400">
                   Bundle Launch Deal
                 </span>
                 <div className="mt-2 flex items-baseline gap-2">
-                  <span className="font-display text-4xl font-black sm:text-5xl">
+                  <span className="font-heading text-4xl font-extrabold sm:text-5xl text-white">
                     {isINR ? "₹59,999" : "$749"}
                   </span>
-                  <span className="font-display text-base font-bold line-through text-[#5B5146]">
+                  <span className="font-mono text-base font-bold line-through text-slate-400">
                     {isINR ? "₹1,19,999" : "$1,499"}
                   </span>
                 </div>
-                <p className="mt-2 text-xs text-[#5B5146]">Complete setup & launch with 100% source code ownership.</p>
+                <p className="mt-2 text-xs text-slate-300">Complete setup & launch with 100% source code ownership.</p>
 
                 <a
                   href={waLink("Hi Next Scale! I'm interested in the Full Growth Suite bundle (Website + AI Receptionist + Growth). Please share next steps.")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#141414] bg-[#FF4D00] px-5 py-3 font-display text-xs font-black uppercase text-white shadow-[3px_3px_0_#141414] transition hover:-translate-y-0.5 hover:bg-[#141414]"
+                  className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 hover:bg-blue-700 px-5 py-3 font-mono text-xs font-bold uppercase tracking-wider text-white shadow-md shadow-blue-500/20 transition hover:-translate-y-0.5"
                 >
                   Claim Bundle Deal <ArrowRight className="size-4" />
                 </a>
@@ -416,44 +416,44 @@ export default function PricingPage() {
       </section>
 
       {/* Section 1: Custom Web Development Packages */}
-      <section id="websites" className="border-b-2 border-[#141414] bg-[#FAF3E5] px-5 py-20 sm:px-8 sm:py-28">
+      <section id="websites" className="border-b border-slate-200 bg-slate-50/50 px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1280px]">
           <div className="mb-14">
-            <p className="section-label">Scoped Web Builds</p>
-            <h2 className="mt-3 max-w-2xl font-display text-[clamp(2.5rem,5.5vw,4.5rem)] font-black uppercase leading-[0.9] tracking-[-0.06em]">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-blue-600 font-semibold">Scoped Web Builds</p>
+            <h2 className="mt-2 font-heading text-3xl font-extrabold uppercase tracking-tight sm:text-4xl text-slate-900">
               Custom Next.js Websites
             </h2>
-            <p className="mt-4 max-w-xl text-base text-[#5B5146]">
+            <p className="mt-4 max-w-xl text-base text-slate-600">
               Handcrafted, mobile-first web platforms with sub-second speeds and built-in conversion architecture.
             </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
-            {PRICING_WEBSITES.tiers.map((tier, idx) => {
+            {PRICING_WEBSITES.tiers.map((tier) => {
               const displayPrice = isINR ? tier.pricing.inr : tier.pricing.usd;
-              const color = idx === 0 ? "#FFC72E" : idx === 1 ? "#FFB7C5" : "#B8E986";
 
               return (
                 <div
                   key={tier.name}
-                  className="flex flex-col justify-between overflow-hidden rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] shadow-[7px_7px_0_#141414] transition hover:-translate-y-1"
+                  className={`flex flex-col justify-between overflow-hidden rounded-2xl border transition duration-200 ${
+                    tier.popular
+                      ? "border-blue-600 bg-white shadow-lg shadow-blue-500/5 -translate-y-1"
+                      : "border-slate-200 bg-white shadow-xs hover:border-blue-300"
+                  }`}
                 >
                   <div>
                     {/* Header Stripe */}
-                    <div
-                      className="flex items-center justify-between border-b-2 border-[#141414] p-6"
-                      style={{ backgroundColor: color }}
-                    >
+                    <div className="flex items-center justify-between border-b border-slate-100 p-6 bg-slate-50/50">
                       <div>
-                        <span className="font-display text-xs font-black uppercase tracking-[0.14em] text-[#141414]/70">
+                        <span className="font-mono text-xs font-bold uppercase tracking-[0.14em] text-blue-600">
                           {tier.name} Plan
                         </span>
-                        <h3 className="mt-1 font-display text-2xl font-black uppercase text-[#141414]">
+                        <h3 className="mt-1 font-heading text-2xl font-bold text-slate-900">
                           {tier.name}
                         </h3>
                       </div>
                       {tier.popular && (
-                        <span className="rounded-full border-2 border-[#141414] bg-[#141414] px-2.5 py-0.5 font-display text-[0.6rem] font-black uppercase text-[#FAF3E5]">
+                        <span className="rounded-full bg-blue-600 px-2.5 py-0.5 font-mono text-[0.6rem] font-bold uppercase text-white shadow-xs">
                           Popular
                         </span>
                       )}
@@ -461,28 +461,28 @@ export default function PricingPage() {
 
                     {/* Body */}
                     <div className="p-6">
-                      <div className="font-display text-3xl font-black text-[#141414] sm:text-4xl">
+                      <div className="font-heading text-3xl font-extrabold text-slate-900 sm:text-4xl">
                         {displayPrice}
                       </div>
-                      <span className="mt-1 block font-mono text-[0.68rem] font-bold uppercase text-[#5B5146]">
+                      <span className="mt-1 block font-mono text-[0.68rem] font-bold uppercase text-slate-500">
                         {tier.pricing.period}
                       </span>
-                      <p className="mt-4 text-xs leading-5 text-[#5B5146]">{tier.description}</p>
+                      <p className="mt-4 text-xs leading-5 text-slate-600">{tier.description}</p>
 
                       {/* Feature List */}
-                      <div className="mt-6 border-t-2 border-[#141414]/15 pt-5">
-                        <p className="font-display text-[0.68rem] font-black uppercase tracking-[0.1em] text-[#141414]">
+                      <div className="mt-6 border-t border-slate-100 pt-5">
+                        <p className="font-mono text-[0.68rem] font-bold uppercase tracking-[0.1em] text-slate-900">
                           Features Included:
                         </p>
                         <ul className="mt-3 space-y-2">
                           {tier.features.map((f) => (
                             <li key={f.name} className="flex items-center justify-between text-xs">
                               <span className="flex items-center gap-2">
-                                <Check className="size-3.5 text-[#FF4D00] shrink-0" />
-                                <span className="font-medium text-[#141414]">{f.name}</span>
+                                <Check className="size-3.5 text-blue-600 shrink-0" />
+                                <span className="font-medium text-slate-700">{f.name}</span>
                               </span>
                               {f.value && (
-                                <span className="rounded-md border border-[#141414] bg-[#FAF3E5] px-1.5 py-0.5 font-mono text-[0.6rem] font-bold text-[#141414]">
+                                <span className="rounded-md border border-slate-200 bg-slate-50 px-1.5 py-0.5 font-mono text-[0.6rem] font-bold text-slate-700">
                                   {f.value}
                                 </span>
                               )}
@@ -493,14 +493,18 @@ export default function PricingPage() {
                     </div>
                   </div>
 
-                  <div className="border-t-2 border-[#141414] bg-[#FAF3E5] p-6">
+                  <div className="border-t border-slate-100 bg-slate-50/50 p-6">
                     <a
                       href={waLink(
                         `Hi Next Scale! I'm interested in the ${tier.name} Website tier (${displayPrice}). Please share the build timeline.`
                       )}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#141414] bg-[#141414] px-5 py-3 font-display text-xs font-black uppercase text-[#FAF3E5] shadow-[3px_3px_0_#FF4D00] transition hover:-translate-y-0.5 hover:bg-[#FF4D00]"
+                      className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 font-mono text-xs font-bold uppercase tracking-wider transition ${
+                        tier.popular
+                          ? "bg-blue-600 hover:bg-blue-700 text-white shadow-sm"
+                          : "border border-slate-200 bg-white hover:bg-slate-50 text-slate-900"
+                      }`}
                     >
                       {tier.name === "Enterprise" ? "Talk Scoping →" : "Build Website →"}
                     </a>
@@ -513,14 +517,14 @@ export default function PricingPage() {
       </section>
 
       {/* Section 2: 24/7 AI Agents & Retainers */}
-      <section id="agents" className="border-b-2 border-[#141414] bg-[#FFFCF5] px-5 py-20 sm:px-8 sm:py-28">
+      <section id="agents" className="border-b border-slate-200 bg-white px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1280px]">
           <div className="mb-14">
-            <p className="section-label">Autonomous Retainers</p>
-            <h2 className="mt-3 max-w-2xl font-display text-[clamp(2.5rem,5.5vw,4.5rem)] font-black uppercase leading-[0.9] tracking-[-0.06em]">
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-blue-600">Autonomous Retainers</p>
+            <h2 className="mt-3 max-w-2xl font-display text-[clamp(2.2rem,5vw,4rem)] font-black leading-[1.05] tracking-tight text-slate-900">
               24/7 WhatsApp AI Agents
             </h2>
-            <p className="mt-4 max-w-xl text-base text-[#5B5146]">
+            <p className="mt-4 max-w-xl text-base text-slate-600">
               Autonomous customer receptionists trained on your catalog, prices, and booking rules.
             </p>
           </div>
@@ -529,29 +533,34 @@ export default function PricingPage() {
             {PRICING_AGENTS.tiers.map((tier, idx) => {
               const currencyObj = isINR ? tier.pricing.inr : tier.pricing.usd;
               const rawPrice = isAnnual ? currencyObj.annual ?? currencyObj.monthly : currencyObj.monthly;
-              const color = idx === 0 ? "#9DD9FF" : idx === 1 ? "#FFC72E" : "#B8E986";
+              const isPopular = tier.popular;
 
               return (
                 <div
                   key={tier.name}
-                  className="flex flex-col justify-between overflow-hidden rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] shadow-[7px_7px_0_#141414] transition hover:-translate-y-1"
+                  className={`flex flex-col justify-between overflow-hidden rounded-3xl border transition duration-300 hover:-translate-y-1 ${
+                    isPopular
+                      ? "border-blue-600 bg-white shadow-xl shadow-blue-500/10"
+                      : "border-slate-200 bg-white shadow-sm hover:border-slate-300 hover:shadow-md"
+                  }`}
                 >
                   <div>
                     {/* Header Stripe */}
                     <div
-                      className="flex items-center justify-between border-b-2 border-[#141414] p-6"
-                      style={{ backgroundColor: color }}
+                      className={`flex items-center justify-between border-b p-6 ${
+                        isPopular ? "border-blue-100 bg-blue-50/60" : "border-slate-100 bg-slate-50/80"
+                      }`}
                     >
                       <div>
-                        <span className="font-display text-xs font-black uppercase tracking-[0.14em] text-[#141414]/70">
+                        <span className="font-mono text-xs font-bold uppercase tracking-wider text-blue-600">
                           AI System
                         </span>
-                        <h3 className="mt-1 font-display text-2xl font-black uppercase text-[#141414]">
+                        <h3 className="mt-1 font-display text-2xl font-bold text-slate-900">
                           {tier.name}
                         </h3>
                       </div>
-                      {tier.popular && (
-                        <span className="rounded-full border-2 border-[#141414] bg-[#141414] px-2.5 py-0.5 font-display text-[0.6rem] font-black uppercase text-[#FAF3E5]">
+                      {isPopular && (
+                        <span className="rounded-full bg-blue-600 px-3 py-1 text-[0.68rem] font-bold uppercase tracking-wider text-white shadow-sm">
                           Most Popular
                         </span>
                       )}
@@ -559,28 +568,28 @@ export default function PricingPage() {
 
                     {/* Body */}
                     <div className="p-6">
-                      <div className="font-display text-3xl font-black text-[#141414] sm:text-4xl">
+                      <div className="font-display text-3xl font-black text-slate-900 sm:text-4xl">
                         {String(rawPrice)}
                       </div>
-                      <span className="mt-1 block font-mono text-[0.68rem] font-bold uppercase text-[#5B5146]">
+                      <span className="mt-1 block font-mono text-[0.68rem] font-bold uppercase text-slate-500">
                         {currencyObj.setupFee ?? "Monthly Retainer"}
                       </span>
-                      <p className="mt-4 text-xs leading-5 text-[#5B5146]">{tier.description}</p>
+                      <p className="mt-4 text-xs leading-relaxed text-slate-600">{tier.description}</p>
 
                       {/* Feature List */}
-                      <div className="mt-6 border-t-2 border-[#141414]/15 pt-5">
-                        <p className="font-display text-[0.68rem] font-black uppercase tracking-[0.1em] text-[#141414]">
+                      <div className="mt-6 border-t border-slate-100 pt-5">
+                        <p className="font-mono text-[0.68rem] font-bold uppercase tracking-wider text-slate-400">
                           AI Capabilities:
                         </p>
-                        <ul className="mt-3 space-y-2">
+                        <ul className="mt-3 space-y-2.5">
                           {tier.features.map((f) => (
                             <li key={f.name} className="flex items-center justify-between text-xs">
                               <span className="flex items-center gap-2">
-                                <Check className="size-3.5 text-[#FF4D00] shrink-0" />
-                                <span className="font-medium text-[#141414]">{f.name}</span>
+                                <Check className="size-4 text-blue-600 shrink-0" />
+                                <span className="font-medium text-slate-800">{f.name}</span>
                               </span>
                               {f.value && (
-                                <span className="rounded-md border border-[#141414] bg-[#FAF3E5] px-1.5 py-0.5 font-mono text-[0.6rem] font-bold text-[#141414]">
+                                <span className="rounded-md border border-slate-200 bg-slate-100 px-2 py-0.5 font-mono text-[0.65rem] font-bold text-slate-700">
                                   {f.value}
                                 </span>
                               )}
@@ -591,14 +600,18 @@ export default function PricingPage() {
                     </div>
                   </div>
 
-                  <div className="border-t-2 border-[#141414] bg-[#FAF3E5] p-6">
+                  <div className="border-t border-slate-100 bg-slate-50/60 p-6">
                     <a
                       href={waLink(
                         `Hi Next Scale! I'm interested in deploying the ${tier.name} AI Agent plan (${rawPrice}). Can you walk me through the WhatsApp setup?`
                       )}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#141414] bg-[#141414] px-5 py-3 font-display text-xs font-black uppercase text-[#FAF3E5] shadow-[3px_3px_0_#FF4D00] transition hover:-translate-y-0.5 hover:bg-[#FF4D00]"
+                      className={`inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-xs font-bold uppercase tracking-wider transition ${
+                        isPopular
+                          ? "bg-blue-600 text-white shadow-md shadow-blue-500/20 hover:bg-blue-700"
+                          : "border border-slate-200 bg-white text-slate-800 hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50/40"
+                      }`}
                     >
                       {tier.name === "Enterprise" ? "Contact Team →" : "Deploy AI Agent →"}
                     </a>
@@ -611,14 +624,14 @@ export default function PricingPage() {
       </section>
 
       {/* Section 3: Modular Add-ons Grid */}
-      <section id="addons" className="border-b-2 border-[#141414] bg-[#FAF3E5] px-5 py-20 sm:px-8 sm:py-28">
+      <section id="addons" className="border-b border-slate-200 bg-slate-50/50 px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1280px]">
           <div className="mb-14">
-            <p className="section-label">Modular Add-ons</p>
-            <h2 className="mt-3 max-w-2xl font-display text-[clamp(2.5rem,5.5vw,4.5rem)] font-black uppercase leading-[0.9] tracking-[-0.06em]">
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-blue-600">Modular Add-ons</p>
+            <h2 className="mt-3 max-w-2xl font-display text-[clamp(2.2rem,5vw,4rem)] font-black leading-[1.05] tracking-tight text-slate-900">
               Upgrade As You Scale
             </h2>
-            <p className="mt-4 max-w-xl text-base text-[#5B5146]">
+            <p className="mt-4 max-w-xl text-base text-slate-600">
               Add specialized capabilities to any build without committing to an oversized plan.
             </p>
           </div>
@@ -627,13 +640,13 @@ export default function PricingPage() {
             {PRICING_ADDONS.map((a) => (
               <div
                 key={a.name}
-                className="flex items-center justify-between rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-5 shadow-[4px_4px_0_#141414]"
+                className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-blue-200 hover:shadow-md"
               >
                 <div>
-                  <h3 className="font-display text-sm font-black uppercase text-[#141414]">
+                  <h3 className="font-display text-sm font-bold text-slate-900">
                     {a.name}
                   </h3>
-                  <span className="font-mono text-xs font-bold text-[#FF4D00]">
+                  <span className="font-mono text-xs font-bold text-blue-600">
                     {isINR ? a.inr : a.usd}
                   </span>
                 </div>
@@ -641,7 +654,7 @@ export default function PricingPage() {
                   href={waLink(`Hi Next Scale! I'd like to add ${a.name} to my project.`)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full border border-[#141414] bg-[#FAF3E5] px-3 py-1 font-display text-[0.62rem] font-black uppercase text-[#141414] transition hover:bg-[#FFC72E]"
+                  className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 font-mono text-[0.68rem] font-bold text-slate-700 transition hover:bg-blue-600 hover:text-white hover:border-blue-600"
                 >
                   + Add
                 </a>
@@ -652,11 +665,11 @@ export default function PricingPage() {
       </section>
 
       {/* Section 4: What Every Plan Includes (Guarantees) */}
-      <section className="border-b-2 border-[#141414] bg-[#FFFCF5] px-5 py-20 sm:px-8 sm:py-28">
+      <section className="border-b border-slate-200 bg-white px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1280px]">
           <div className="mb-14 text-center">
-            <p className="section-label">Our Guarantees</p>
-            <h2 className="mt-3 font-display text-[clamp(2.5rem,5vw,4.5rem)] font-black uppercase leading-[0.9] tracking-[-0.06em]">
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-blue-600">Our Guarantees</p>
+            <h2 className="mt-3 font-display text-[clamp(2.2rem,5vw,4rem)] font-black leading-[1.05] tracking-tight text-slate-900">
               What Every Build Includes
             </h2>
           </div>
@@ -667,15 +680,15 @@ export default function PricingPage() {
               return (
                 <div
                   key={g.title}
-                  className="rounded-2xl border-2 border-[#141414] bg-[#FAF3E5] p-6 shadow-[5px_5px_0_#141414]"
+                  className="rounded-2xl border border-slate-200 bg-slate-50/50 p-6 shadow-sm transition hover:border-blue-200 hover:shadow-md"
                 >
-                  <div className="flex size-10 items-center justify-center rounded-xl border-2 border-[#141414] bg-[#FFC72E] shadow-[2px_2px_0_#141414]">
-                    <Icon className="size-5 text-[#141414]" />
+                  <div className="flex size-11 items-center justify-center rounded-xl bg-blue-50 border border-blue-100 text-blue-600 shadow-sm">
+                    <Icon className="size-5 text-blue-600" />
                   </div>
-                  <h3 className="mt-4 font-display text-lg font-black uppercase text-[#141414]">
+                  <h3 className="mt-4 font-display text-lg font-bold text-slate-900">
                     {g.title}
                   </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-[#5B5146]">{g.desc}</p>
+                  <p className="mt-2 text-xs leading-relaxed text-slate-600">{g.desc}</p>
                 </div>
               );
             })}
@@ -684,11 +697,11 @@ export default function PricingPage() {
       </section>
 
       {/* Section 5: FAQ */}
-      <section id="faq" className="border-b-2 border-[#141414] bg-[#FAF3E5] px-5 py-20 sm:px-8 sm:py-28">
+      <section id="faq" className="border-b border-slate-200 bg-slate-50/50 px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1000px]">
           <div className="mb-14">
-            <p className="section-label">Got Questions?</p>
-            <h2 className="mt-3 font-display text-[clamp(2.5rem,5vw,4.5rem)] font-black uppercase leading-[0.9] tracking-[-0.06em]">
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-blue-600">Got Questions?</p>
+            <h2 className="mt-3 font-display text-[clamp(2.2rem,5vw,4rem)] font-black leading-[1.05] tracking-tight text-slate-900">
               Frequently Asked Questions
             </h2>
           </div>
@@ -697,12 +710,12 @@ export default function PricingPage() {
             {PRICING_FAQ.map((faq, idx) => (
               <div
                 key={idx}
-                className="rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[4px_4px_0_#141414]"
+                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
               >
-                <h3 className="font-display text-base font-black uppercase text-[#141414] sm:text-lg">
+                <h3 className="font-display text-base font-bold text-slate-900 sm:text-lg">
                   {faq.q}
                 </h3>
-                <p className="mt-3 text-xs leading-relaxed text-[#5B5146] sm:text-sm">{faq.a}</p>
+                <p className="mt-3 text-xs leading-relaxed text-slate-600 sm:text-sm">{faq.a}</p>
               </div>
             ))}
           </div>
@@ -710,15 +723,15 @@ export default function PricingPage() {
       </section>
 
       {/* Bottom CTA Banner */}
-      <section className="bg-[#141414] px-5 py-20 text-[#FAF3E5] sm:px-8 sm:py-28">
+      <section className="bg-[#0B0F19] px-5 py-20 text-white sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1000px] text-center">
-          <span className="font-display text-xs font-black uppercase tracking-[0.2em] text-[#FFC72E]">
+          <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-sky-400">
             Have A Custom Scope In Mind?
           </span>
-          <h2 className="mt-4 font-display text-[clamp(2.8rem,7vw,6.5rem)] font-black uppercase leading-[0.88] tracking-[-0.07em]">
-            Let&apos;s talk <span className="text-[#FF4D00]">numbers.</span>
+          <h2 className="mt-4 font-display text-[clamp(2.5rem,6.5vw,5.5rem)] font-black leading-[1.05] tracking-tight text-white">
+            Let&apos;s talk <span className="text-blue-400">numbers.</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-base text-[#FAF3E5]/70 sm:text-lg">
+          <p className="mx-auto mt-6 max-w-xl text-base text-slate-300 sm:text-lg">
             Tell us your budget, timeline, and goals on WhatsApp — we will send back a clear scope proposal with zero pushy upsells.
           </p>
 
@@ -727,13 +740,13 @@ export default function PricingPage() {
               href={waLink("Hi Next Scale! I'd like a custom pricing proposal for my business.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border-2 border-[#FFC72E] bg-[#FFC72E] px-7 py-3.5 font-display text-xs font-black uppercase text-[#141414] shadow-[4px_4px_0_#FF4D00] transition hover:-translate-y-1 hover:bg-[#FF4D00] hover:text-white"
+              className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-blue-500/25 transition hover:-translate-y-0.5 hover:bg-blue-700"
             >
               <PhoneCall className="size-4" /> Message Us on WhatsApp
             </a>
             <Link
               href="/tools"
-              className="inline-flex items-center gap-2 rounded-full border-2 border-[#FAF3E5]/40 bg-white/5 px-7 py-3.5 font-display text-xs font-black uppercase text-[#FAF3E5] transition hover:bg-white/10"
+              className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-white/5 px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-white transition hover:bg-white/10"
             >
               Try Free ROI Calculators →
             </Link>

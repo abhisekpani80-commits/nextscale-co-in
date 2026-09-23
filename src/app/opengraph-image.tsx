@@ -21,10 +21,10 @@ export default async function Image() {
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-between",
-          backgroundColor: "#FAF3E5",
+          backgroundColor: "#FFFFFF",
           padding: "60px 70px",
           fontFamily: "sans-serif",
-          color: "#141414",
+          color: "#0F172A",
           boxSizing: "border-box",
         }}
       >
@@ -45,22 +45,21 @@ export default async function Image() {
                 width: "48px",
                 height: "48px",
                 borderRadius: "14px",
-                background: "#FF4D00",
-                border: "3px solid #141414",
+                background: "#2563EB",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                boxShadow: "3px 3px 0 #141414",
+                boxShadow: "0 10px 15px -3px rgba(37, 99, 235, 0.3)",
               }}
             >
-              <span style={{ fontSize: "26px", fontWeight: 900, color: "#FAF3E5" }}>✦</span>
+              <span style={{ fontSize: "26px", fontWeight: 900, color: "#FFFFFF" }}>✦</span>
             </div>
             <span
               style={{
-                fontSize: "28px",
+                fontSize: "26px",
                 fontWeight: 900,
                 letterSpacing: "1px",
-                color: "#141414",
+                color: "#0F172A",
                 textTransform: "uppercase",
               }}
             >
@@ -74,27 +73,26 @@ export default async function Image() {
               style={{
                 fontSize: "52px",
                 fontWeight: 900,
-                lineHeight: 1.05,
-                color: "#141414",
-                letterSpacing: "-2px",
-                textTransform: "uppercase",
+                lineHeight: 1.08,
+                color: "#0F172A",
+                letterSpacing: "-1.5px",
                 margin: 0,
               }}
             >
-              We cook <span style={{ color: "#FF4D00" }}>websites.</span>
+              High-Conversion <span style={{ color: "#2563EB" }}>Websites</span>
               <br />
-              And AI agents.
+              &amp; 24/7 AI Receptionists.
             </h1>
             <p
               style={{
                 fontSize: "20px",
-                color: "#5B5146",
+                color: "#475569",
                 lineHeight: 1.4,
                 margin: 0,
-                fontWeight: 600,
+                fontWeight: 500,
               }}
             >
-              Sub-second Next.js web applications and 24/7 WhatsApp AI receptionists. Live in 7 days flat.
+              Sub-second Next.js web platforms and autonomous WhatsApp AI agents. Shipped live in 7 days flat.
             </p>
           </div>
 
@@ -107,12 +105,11 @@ export default async function Image() {
                   alignItems: "center",
                   padding: "8px 16px",
                   borderRadius: "100px",
-                  background: "#FFC72E",
-                  border: "2px solid #141414",
-                  color: "#141414",
+                  background: "#EFF6FF",
+                  border: "1.5px solid #BFDBFE",
+                  color: "#1D4ED8",
                   fontSize: "13px",
-                  fontWeight: 800,
-                  boxShadow: "2px 2px 0 #141414",
+                  fontWeight: 700,
                 }}
               >
                 <span>⚡ Live in 7 Days</span>
@@ -124,12 +121,11 @@ export default async function Image() {
                   alignItems: "center",
                   padding: "8px 16px",
                   borderRadius: "100px",
-                  background: "#9DD9FF",
-                  border: "2px solid #141414",
-                  color: "#141414",
+                  background: "#F0FDF4",
+                  border: "1.5px solid #BBF7D0",
+                  color: "#15803D",
                   fontSize: "13px",
-                  fontWeight: 800,
-                  boxShadow: "2px 2px 0 #141414",
+                  fontWeight: 700,
                 }}
               >
                 <span>🤖 24/7 WhatsApp AI</span>
@@ -141,20 +137,19 @@ export default async function Image() {
                   alignItems: "center",
                   padding: "8px 16px",
                   borderRadius: "100px",
-                  background: "#B8E986",
-                  border: "2px solid #141414",
-                  color: "#141414",
+                  background: "#FAF5FF",
+                  border: "1.5px solid #E9D5FF",
+                  color: "#7E22CE",
                   fontSize: "13px",
-                  fontWeight: 800,
-                  boxShadow: "2px 2px 0 #141414",
+                  fontWeight: 700,
                 }}
               >
                 <span>🔒 100% Code Handover</span>
               </div>
             </div>
 
-            <span style={{ fontSize: "16px", fontWeight: 800, color: "#141414", letterSpacing: "1px" }}>
-              NEXTSCALE.CO.IN · SERVING 8+ COUNTRIES
+            <span style={{ fontSize: "15px", fontWeight: 700, color: "#64748B", letterSpacing: "1px" }}>
+              NEXTSCALE.CO.IN · SERVING CLIENTS IN 8+ COUNTRIES
             </span>
           </div>
         </div>
@@ -166,11 +161,11 @@ export default async function Image() {
             flexDirection: "column",
             width: "380px",
             height: "460px",
-            background: "#FFFCF5",
-            border: "3px solid #141414",
+            background: "#FFFFFF",
+            border: "1.5px solid #E2E8F0",
             borderRadius: "28px",
             padding: "24px",
-            boxShadow: "8px 8px 0 #141414",
+            boxShadow: "0 20px 25px -5px rgba(37, 99, 235, 0.1), 0 8px 10px -6px rgba(37, 99, 235, 0.1)",
             justifyContent: "space-between",
           }}
         >
@@ -181,7 +176,7 @@ export default async function Image() {
               alignItems: "center",
               justifyContent: "space-between",
               paddingBottom: "16px",
-              borderBottom: "2px solid #141414",
+              borderBottom: "1px solid #F1F5F9",
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
@@ -190,12 +185,11 @@ export default async function Image() {
                   width: "36px",
                   height: "36px",
                   borderRadius: "10px",
-                  background: "#FF4D00",
-                  border: "2px solid #141414",
+                  background: "#2563EB",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: "#FAF3E5",
+                  color: "#FFFFFF",
                   fontWeight: "bold",
                   fontSize: "14px",
                 }}
@@ -203,22 +197,23 @@ export default async function Image() {
                 AI
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
-                <span style={{ fontSize: "15px", fontWeight: 900, color: "#141414", textTransform: "uppercase" }}>
+                <span style={{ fontSize: "15px", fontWeight: 700, color: "#0F172A" }}>
                   AI Receptionist
                 </span>
-                <span style={{ fontSize: "11px", color: "#FF4D00", fontWeight: 800 }}>
-                  ● Live 24/7
+                <span style={{ fontSize: "11px", color: "#16A34A", fontWeight: 600 }}>
+                  ● Active 24/7
                 </span>
               </div>
             </div>
             <div
               style={{
                 borderRadius: "100px",
-                background: "#B8E986",
-                border: "2px solid #141414",
+                background: "#EFF6FF",
+                border: "1px solid #BFDBFE",
+                color: "#1D4ED8",
                 padding: "4px 10px",
                 fontSize: "11px",
-                fontWeight: 900,
+                fontWeight: 700,
               }}
             >
               &lt; 2s Reply
@@ -236,14 +231,14 @@ export default async function Image() {
           >
             <div
               style={{
-                background: "#FAF3E5",
-                border: "2px solid #141414",
+                background: "#F8FAFC",
+                border: "1px solid #E2E8F0",
                 padding: "12px 14px",
                 borderRadius: "16px",
                 borderBottomLeftRadius: "4px",
                 fontSize: "13px",
-                fontWeight: 600,
-                color: "#141414",
+                fontWeight: 500,
+                color: "#334155",
                 maxWidth: "85%",
               }}
             >
@@ -252,44 +247,43 @@ export default async function Image() {
 
             <div
               style={{
-                background: "#141414",
-                border: "2px solid #141414",
+                background: "#2563EB",
                 padding: "12px 14px",
                 borderRadius: "16px",
                 borderBottomRightRadius: "4px",
                 fontSize: "13px",
-                color: "#FAF3E5",
-                fontWeight: 600,
+                color: "#FFFFFF",
+                fontWeight: 500,
                 alignSelf: "flex-end",
                 maxWidth: "90%",
                 display: "flex",
                 flexDirection: "column",
                 gap: "4px",
+                boxShadow: "0 4px 6px -1px rgba(37, 99, 235, 0.2)",
               }}
             >
-              <span style={{ color: "#FFC72E", fontWeight: 800 }}>Confirmed for 3:30 PM! 📅</span>
-              <span style={{ fontSize: "11px", color: "#FAF3E5" }}>Calendar synced & WhatsApp reminder sent.</span>
+              <span style={{ color: "#BFDBFE", fontWeight: 700 }}>Confirmed for 3:30 PM! 📅</span>
+              <span style={{ fontSize: "11px", color: "#F8FAFC" }}>Calendar synced &amp; WhatsApp reminder sent.</span>
             </div>
           </div>
 
           {/* Metric Bottom Box */}
           <div
             style={{
-              background: "#FFC72E",
-              border: "2px solid #141414",
+              background: "#F8FAFC",
+              border: "1px solid #E2E8F0",
               borderRadius: "16px",
               padding: "14px",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              boxShadow: "3px 3px 0 #141414",
             }}
           >
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <span style={{ fontSize: "11px", color: "#141414", textTransform: "uppercase", fontWeight: 900 }}>
+              <span style={{ fontSize: "11px", color: "#64748B", textTransform: "uppercase", fontWeight: 700 }}>
                 Lead Recovery
               </span>
-              <span style={{ fontSize: "22px", fontWeight: 900, color: "#141414" }}>
+              <span style={{ fontSize: "22px", fontWeight: 900, color: "#2563EB" }}>
                 +3.2x Bookings
               </span>
             </div>
@@ -297,10 +291,10 @@ export default async function Image() {
               style={{
                 padding: "6px 12px",
                 borderRadius: "8px",
-                background: "#141414",
-                color: "#FAF3E5",
+                background: "#2563EB",
+                color: "#FFFFFF",
                 fontSize: "11px",
-                fontWeight: 900,
+                fontWeight: 700,
                 textTransform: "uppercase",
               }}
             >

@@ -43,8 +43,8 @@ export function DotGridBackdrop({
         className="!p-0"
         dotSize={2.5}
         gap={26}
-        baseColor="#9E948B"
-        activeColor="#FF4D00"
+        baseColor="#CBD5E1"
+        activeColor="#2563EB"
         proximity={130}
         speedTrigger={90}
         shockRadius={220}

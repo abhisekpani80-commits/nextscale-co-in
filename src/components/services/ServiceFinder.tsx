@@ -43,10 +43,10 @@ const questions = [
 ];
 
 const recommendations = {
-  website: { eyebrow: "your best first move", title: "A sharp business website", body: "A fast, mobile-first website with WhatsApp, trust signals, maps, and one obvious next step.", href: "/services/websites", label: "Explore websites", color: "#FFC72E" },
-  ai: { eyebrow: "your best first move", title: "A 24/7 AI receptionist", body: "An AI agent that answers questions, qualifies enquiries, books appointments, and follows up on WhatsApp.", href: "/services/ai-agents", label: "Explore AI agents", color: "#9DD9FF" },
-  growth: { eyebrow: "your best first move", title: "A digital growth system", body: "SEO, Google Business, content, and conversion fixes that make your existing attention work harder.", href: "/services/digital-growth", label: "Explore digital growth", color: "#B8E986" },
-  suite: { eyebrow: "your best-fit system", title: "Website + AI + growth", body: "A connected starter system: look credible, get found, and respond before the lead goes cold.", href: "/contact", label: "Talk through the suite", color: "#FFB7C5" },
+  website: { eyebrow: "your best first move", title: "A sharp business website", body: "A fast, mobile-first website with WhatsApp, trust signals, maps, and one obvious next step.", href: "/services/websites", label: "Explore websites", color: "#EFF6FF" },
+  ai: { eyebrow: "your best first move", title: "A 24/7 AI receptionist", body: "An AI agent that answers questions, qualifies enquiries, books appointments, and follows up on WhatsApp.", href: "/services/ai-agents", label: "Explore AI agents", color: "#F0FDF4" },
+  growth: { eyebrow: "your best first move", title: "A digital growth system", body: "SEO, Google Business, content, and conversion fixes that make your existing attention work harder.", href: "/services/digital-growth", label: "Explore digital growth", color: "#FAF5FF" },
+  suite: { eyebrow: "your best-fit system", title: "Website + AI + growth", body: "A connected starter system: look credible, get found, and respond before the lead goes cold.", href: "/contact", label: "Talk through the suite", color: "#EFF6FF" },
 };
 
 function chooseRecommendation(answers: Answers) {
@@ -76,31 +76,101 @@ export function ServiceFinder() {
   };
 
   return (
-    <div className="overflow-hidden rounded-[1.5rem] border-2 border-[#141414] bg-[#FFFCF5] shadow-[8px_8px_0_#141414]">
-      <div className="flex items-center justify-between border-b-2 border-[#141414] bg-[#FFC72E] px-5 py-4 sm:px-7">
-        <div><p className="font-display text-[0.68rem] font-black uppercase tracking-[0.14em]">The Next Scale fit finder</p><p className="mt-1 text-xs font-semibold text-[#5B5146]">Three tiny questions. One useful answer.</p></div>
-        <span className="font-display text-sm font-black">{complete ? "DONE" : `${step + 1} / ${questions.length}`}</span>
+    <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl shadow-blue-500/5">
+      <div className="flex items-center justify-between border-b border-slate-100 bg-blue-50/70 px-5 py-4 sm:px-7">
+        <div>
+          <p className="font-mono text-xs font-bold uppercase tracking-wider text-blue-600">The Next Scale fit finder</p>
+          <p className="mt-0.5 text-xs text-slate-600">Three quick questions. One useful recommendation.</p>
+        </div>
+        <span className="font-mono text-xs font-bold text-blue-700 bg-white border border-blue-200 rounded-full px-2.5 py-0.5">
+          {complete ? "DONE" : `${step + 1} / ${questions.length}`}
+        </span>
       </div>
 
-      <div className="p-5 sm:p-8">
+      <div className="p-6 sm:p-10">
         {!complete ? (
           <div key={question.key} className="animate-[finder-in_350ms_ease-out]">
-            <p className="section-label">{question.eyebrow}</p>
-            <h2 className="mt-3 max-w-2xl font-display text-4xl font-black uppercase leading-[0.92] tracking-[-0.06em] sm:text-6xl">{question.title}</h2>
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            <p className="font-mono text-xs font-bold uppercase tracking-wider text-blue-600">{question.eyebrow}</p>
+            <h2 className="mt-3 max-w-2xl font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              {question.title}
+            </h2>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {question.options.map(([value, label, description]) => (
-                <button key={value} type="button" onClick={() => selectOption(value)} className="group rounded-xl border-2 border-[#141414] bg-[#FAF3E5] p-4 text-left transition duration-200 hover:-translate-y-1 hover:bg-[#FFB7C5] hover:shadow-[4px_4px_0_#141414] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF4D00]">
-                  <span className="flex items-start justify-between gap-3"><span className="font-display text-lg font-black uppercase leading-tight">{label}</span><ArrowRight className="size-5 shrink-0 transition-transform group-hover:translate-x-1" /></span>
-                  <span className="mt-2 block text-sm leading-5 text-[#5B5146]">{description}</span>
+                <button
+                  key={value}
+                  type="button"
+                  onClick={() => selectOption(value)}
+                  className="group rounded-2xl border border-slate-200 bg-slate-50/50 p-5 text-left transition duration-200 hover:-translate-y-0.5 hover:border-blue-500 hover:bg-white hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                >
+                  <span className="flex items-start justify-between gap-3">
+                    <span className="font-display text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                      {label}
+                    </span>
+                    <ArrowRight className="size-4 shrink-0 text-slate-400 transition-transform group-hover:translate-x-1 group-hover:text-blue-600" />
+                  </span>
+                  <span className="mt-2 block text-xs leading-relaxed text-slate-500">{description}</span>
                 </button>
               ))}
             </div>
-            {step > 0 && <button type="button" onClick={() => setStep((current) => current - 1)} className="mt-6 text-xs font-black uppercase tracking-[0.1em] text-[#5B5146] hover:text-[#FF4D00]">← Go back</button>}
+            {step > 0 && (
+              <button
+                type="button"
+                onClick={() => setStep((current) => current - 1)}
+                className="mt-6 font-mono text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-blue-600 transition"
+              >
+                ← Go back
+              </button>
+            )}
           </div>
         ) : (
           <div className="grid gap-8 lg:grid-cols-[1fr_.75fr] lg:items-end">
-            <div><p className="section-label">{recommendation.eyebrow}</p><h2 className="mt-3 max-w-xl font-display text-5xl font-black uppercase leading-[0.9] tracking-[-0.07em] sm:text-7xl">{recommendation.title}</h2><p className="mt-5 max-w-xl text-lg leading-7 text-[#5B5146]">{recommendation.body}</p><div className="mt-7 flex flex-col gap-3 sm:flex-row"><Link href={recommendation.href} className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#141414] bg-[#141414] px-5 py-3 font-display text-sm font-black uppercase text-[#FAF3E5] shadow-[4px_4px_0_#FF4D00] transition hover:-translate-y-1 hover:bg-[#FF4D00]">{recommendation.label} <ArrowRight className="size-4" /></Link><a href={waLink(`Hi Next Scale! I used the fit finder and think I need ${recommendation.title}.`)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#141414] px-5 py-3 font-display text-sm font-black uppercase transition hover:-translate-y-1 hover:bg-[#FFC72E]"><MessageCircle className="size-4" /> Ask a human</a></div><button type="button" onClick={reset} className="mt-5 inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.1em] text-[#5B5146] hover:text-[#FF4D00]"><RotateCcw className="size-3.5" /> Start again</button></div>
-            <div style={{ backgroundColor: recommendation.color }} className="rounded-2xl border-2 border-[#141414] p-5 shadow-[5px_5px_0_#141414]"><p className="font-display text-xs font-black uppercase tracking-[0.12em]">Why this fits</p><ul className="mt-5 space-y-3 text-sm font-bold"><li className="flex gap-2"><Check className="size-4 shrink-0" /> Based on your answers</li><li className="flex gap-2"><Check className="size-4 shrink-0" /> Designed for mobile first</li><li className="flex gap-2"><Check className="size-4 shrink-0" /> Clear next step, no hard sell</li></ul></div>
+            <div>
+              <p className="font-mono text-xs font-bold uppercase tracking-wider text-blue-600">{recommendation.eyebrow}</p>
+              <h2 className="mt-3 max-w-xl font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+                {recommendation.title}
+              </h2>
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-slate-600">{recommendation.body}</p>
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  href={recommendation.href}
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 font-semibold text-xs text-white uppercase tracking-wider shadow-md shadow-blue-500/20 transition hover:bg-blue-700 hover:-translate-y-0.5"
+                >
+                  {recommendation.label} <ArrowRight className="size-4" />
+                </Link>
+                <a
+                  href={waLink(`Hi Next Scale! I used the fit finder and think I need ${recommendation.title}.`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3 font-semibold text-xs text-slate-800 uppercase tracking-wider transition hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50/50"
+                >
+                  <MessageCircle className="size-4" /> Ask a human
+                </a>
+              </div>
+              <button
+                type="button"
+                onClick={reset}
+                className="mt-6 inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-blue-600 transition"
+              >
+                <RotateCcw className="size-3.5" /> Start again
+              </button>
+            </div>
+            <div
+              style={{ backgroundColor: recommendation.color }}
+              className="rounded-2xl border border-slate-200/80 p-6 shadow-sm"
+            >
+              <p className="font-mono text-xs font-bold uppercase tracking-wider text-blue-700">Why this fits</p>
+              <ul className="mt-4 space-y-3 text-sm text-slate-800 font-medium">
+                <li className="flex items-center gap-2.5">
+                  <Check className="size-4 shrink-0 text-blue-600" /> Based on your current priorities
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <Check className="size-4 shrink-0 text-blue-600" /> Engineered for mobile conversion
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <Check className="size-4 shrink-0 text-blue-600" /> Fast delivery with zero lock-in
+                </li>
+              </ul>
+            </div>
           </div>
         )}
       </div>

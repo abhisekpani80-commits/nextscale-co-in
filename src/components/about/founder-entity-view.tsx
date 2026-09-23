@@ -2,24 +2,17 @@
 
 import Link from "next/link";
 import {
-  Code2,
   Globe,
   Sparkles,
-  Bot,
   MapPin,
   ArrowRight,
   ExternalLink,
-  ShieldCheck,
-  Zap,
-  Terminal,
-  CheckCircle2,
   MessageCircle,
-  Briefcase,
-  Layers,
-  GraduationCap,
+  Terminal,
   Cpu,
+  Layers,
 } from "lucide-react";
-import { SITE, waLink } from "@/lib/site";
+import { waLink } from "@/lib/site";
 import { Reveal } from "@/components/ui/reveal";
 import { DotGridBackdrop } from "@/components/ui/dot-grid-backdrop";
 
@@ -55,10 +48,10 @@ const SOCIAL_LINKS = [
 ];
 
 const SKILLS = [
-  { category: "Web Engineering", items: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "Turbopack", "Node.js", "Server Actions"] },
-  { category: "AI & Automation", items: ["OpenAI API", "Claude 3.7", "WhatsApp Cloud API", "Twilio", "Deepgram", "Sarvam AI", "n8n Workflows"] },
-  { category: "Data & Systems", items: ["Supabase", "PostgreSQL", "Edge Caching", "REST APIs", "Webhooks", "JSON-LD Schema"] },
-  { category: "Search & Growth", items: ["Technical SEO", "Generative Engine Optimization (GEO)", "Local SEO", "Core Web Vitals (INP)", "E-E-A-T"] },
+  { category: "Web Architecture", items: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "High-Speed Caching", "API Design"] },
+  { category: "Autonomous Systems", items: ["WhatsApp Cloud API", "Smart Qualification AI", "Automated Scheduling", "CRM Integration", "24/7 Triage"] },
+  { category: "Data & Security", items: ["PostgreSQL", "Cloudflare DNS", "SSL Encryption", "Webhooks", "JSON-LD Schema"] },
+  { category: "Growth & Visibility", items: ["Technical SEO", "Mobile First Design", "Fast Loading Pages", "Google Search Optimization"] },
 ];
 
 const HIGHLIGHTS = [
@@ -66,7 +59,7 @@ const HIGHLIGHTS = [
     title: "Next Scale Studio",
     role: "Founder & Lead Architect",
     period: "2024 — Present",
-    desc: "AI-first web agency delivering custom business websites in 7 days and 24/7 WhatsApp AI receptionists across India, UAE, and USA.",
+    desc: "Revenue architecture studio delivering custom business websites in 7 days and 24/7 WhatsApp AI booking concierges across India, UAE, and USA.",
     link: "/about/next-scale",
     badge: "Active Studio",
   },
@@ -74,7 +67,7 @@ const HIGHLIGHTS = [
     title: "ExamOS",
     role: "Creator & Lead Developer",
     period: "2025 — Present",
-    desc: "AI-powered exam preparation engine for NEET, CUET, IBPS, and OPSC competitive exams with adaptive question generation.",
+    desc: "AI-powered exam preparation engine for competitive exams with adaptive question generation.",
     link: "/products/examos",
     badge: "Beta Platform",
   },
@@ -82,7 +75,7 @@ const HIGHLIGHTS = [
     title: "Aura AI",
     role: "Architect & AI Researcher",
     period: "2025 — Present",
-    desc: "Spoken English fluency coach with real-time phoneme pronunciation feedback powered by Deepgram, Claude, and Sarvam AI.",
+    desc: "Spoken English fluency coach with real-time pronunciation feedback powered by voice intelligence.",
     link: "/products/aura",
     badge: "Coming Soon",
   },
@@ -90,53 +83,53 @@ const HIGHLIGHTS = [
 
 export function FounderEntityView() {
   return (
-    <div className="relative min-h-screen pb-20">
+    <div className="relative min-h-screen pb-20 bg-white text-slate-900">
       {/* Background Decor */}
       <DotGridBackdrop />
 
-      <div className="relative mx-auto max-w-5xl px-4 pt-8 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-5xl px-4 pt-28 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
-        <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs font-semibold text-[#5B5146]">
-          <Link href="/" className="hover:text-[#FF4D00]">Home</Link>
+        <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs font-semibold text-slate-500">
+          <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
           <span>/</span>
-          <Link href="/about" className="hover:text-[#FF4D00]">About</Link>
+          <Link href="/about" className="hover:text-blue-600 transition-colors">About</Link>
           <span>/</span>
-          <span className="text-[#141414]">Abhisek Pani</span>
+          <span className="text-slate-900">Abhisek Pani</span>
         </nav>
 
         {/* Hero Card */}
         <Reveal>
-          <div className="overflow-hidden rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[8px_8px_0px_#141414] sm:p-10">
+          <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow sm:p-10">
             <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
               {/* Profile Intro */}
               <div className="max-w-2xl">
                 <div className="flex flex-wrap items-center gap-2 mb-4">
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-[#141414] bg-[#FFC72E] px-3.5 py-1 text-xs font-black uppercase tracking-wider text-[#141414] shadow-[2px_2px_0px_#141414]">
-                    <Sparkles className="size-3.5 fill-current text-[#141414]" />
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-blue-700">
+                    <Sparkles className="size-3.5 fill-current text-blue-600" />
                     Founder Profile
                   </span>
-                  <span className="inline-flex items-center gap-1 rounded-full border border-[#141414]/20 bg-[#FAF3E5] px-3 py-1 text-xs font-bold text-[#5B5146]">
-                    <MapPin className="size-3 text-[#FF4D00]" />
+                  <span className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-600">
+                    <MapPin className="size-3 text-blue-600" />
                     Bhubaneswar, Odisha, India
                   </span>
                 </div>
 
-                <h1 className="font-heading text-3xl font-black tracking-tight text-[#141414] sm:text-5xl lg:text-6xl">
+                <h1 className="font-heading text-3xl font-black tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
                   Abhisek Pani
                 </h1>
                 
-                <p className="mt-2 text-base font-bold text-[#FF4D00] sm:text-xl">
-                  Founder & Lead Software Architect at{" "}
-                  <Link href="/about/next-scale" className="underline decoration-[#141414] decoration-2 underline-offset-4 hover:text-[#141414]">
+                <p className="mt-2 text-base font-bold text-blue-600 sm:text-xl">
+                  Founder &amp; Lead Architect at{" "}
+                  <Link href="/about/next-scale" className="underline decoration-blue-300 decoration-2 underline-offset-4 hover:text-blue-700">
                     Next Scale
                   </Link>
                 </p>
 
-                <p className="mt-4 text-base leading-relaxed text-[#5B5146] sm:text-lg">
-                  Software architect and AI builder engineering sub-second Next.js web applications, 24/7 autonomous WhatsApp AI receptionists, and digital growth infrastructure. Operating on an anti-agency model: <strong className="text-[#141414]">7-day delivery, 100% source code ownership, and zero recurring lock-ins.</strong>
+                <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+                  Software architect building high-converting digital storefronts and autonomous 24/7 WhatsApp client concierges. Operating on an anti-agency model: <strong className="text-slate-900">7-day guaranteed delivery, 100% full code ownership, and zero ongoing agency hostage fees.</strong>
                 </p>
 
-                {/* Social & Genuine Entity Links */}
+                {/* Social & Entity Links */}
                 <div className="mt-6 flex flex-wrap items-center gap-3">
                   {SOCIAL_LINKS.map((soc) => (
                     <a
@@ -144,11 +137,11 @@ export function FounderEntityView() {
                       href={soc.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-xl border-2 border-[#141414] bg-[#FAF3E5] px-3.5 py-2 text-xs font-bold text-[#141414] shadow-[3px_3px_0px_#141414] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:bg-[#FFC72E] hover:shadow-[1px_1px_0px_#141414]"
+                      className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2 text-xs font-semibold text-slate-700 shadow-2xs transition-all hover:bg-white hover:text-blue-600 hover:border-blue-300"
                     >
                       <soc.icon className="size-3.5" />
                       <span>{soc.name}</span>
-                      <ExternalLink className="size-3 text-[#5B5146]" />
+                      <ExternalLink className="size-3 text-slate-400" />
                     </a>
                   ))}
                 </div>
@@ -156,26 +149,26 @@ export function FounderEntityView() {
 
               {/* Founder Quick Stats Card */}
               <div className="w-full shrink-0 md:w-64">
-                <div className="rounded-2xl border-2 border-[#141414] bg-[#FAF3E5] p-5 shadow-[4px_4px_0px_#141414]">
-                  <h2 className="text-xs font-black uppercase tracking-wider text-[#5B5146]">
-                    Fast Track Record
+                <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-5 shadow-sm">
+                  <h2 className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                    Track Record
                   </h2>
                   <div className="mt-4 space-y-3.5">
                     <div>
-                      <span className="font-heading text-2xl font-black text-[#141414]">25+</span>
-                      <p className="text-xs font-semibold text-[#5B5146]">Websites Delivered</p>
+                      <span className="font-heading text-2xl font-black text-slate-900">25+</span>
+                      <p className="text-xs text-slate-500 font-medium">Websites Delivered</p>
                     </div>
                     <div>
-                      <span className="font-heading text-2xl font-black text-[#FF4D00]">12+</span>
-                      <p className="text-xs font-semibold text-[#5B5146]">Live WhatsApp AI Agents</p>
+                      <span className="font-heading text-2xl font-black text-blue-600">12+</span>
+                      <p className="text-xs text-slate-500 font-medium">WhatsApp AI Concierges Live</p>
                     </div>
                     <div>
-                      <span className="font-heading text-2xl font-black text-[#141414]">7 Days</span>
-                      <p className="text-xs font-semibold text-[#5B5146]">Guaranteed Delivery Velocity</p>
+                      <span className="font-heading text-2xl font-black text-slate-900">7 Days</span>
+                      <p className="text-xs text-slate-500 font-medium">Guaranteed Delivery Velocity</p>
                     </div>
                     <div>
-                      <span className="font-heading text-2xl font-black text-[#0F6838]">100%</span>
-                      <p className="text-xs font-semibold text-[#5B5146]">Client Code Handover</p>
+                      <span className="font-heading text-2xl font-black text-emerald-600">100%</span>
+                      <p className="text-xs text-slate-500 font-medium">Full Code Handover</p>
                     </div>
                   </div>
 
@@ -183,7 +176,7 @@ export function FounderEntityView() {
                     href={waLink("Hi Abhisek! I saw your personal founder profile and would like to discuss a project.")}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-5 flex w-full items-center justify-center gap-1.5 rounded-xl border-2 border-[#141414] bg-[#25D366] py-2.5 text-xs font-black text-[#141414] shadow-[2px_2px_0px_#141414] transition-all hover:bg-[#1ebd5a]"
+                    className="mt-5 flex w-full items-center justify-center gap-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 py-2.5 text-xs font-bold text-white shadow-md shadow-blue-500/20 transition-all active:scale-95"
                   >
                     <MessageCircle className="size-3.5" />
                     Chat with Abhisek
@@ -197,40 +190,40 @@ export function FounderEntityView() {
         {/* Section: The Story & Philosophy */}
         <div className="mt-12">
           <Reveal>
-            <div className="rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[6px_6px_0px_#141414] sm:p-10">
-              <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#FF4D00]">
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow sm:p-10">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-600">
                 <Terminal className="size-4" />
-                <span>The Story & Founder Manifesto</span>
+                <span>The Story &amp; Founder Manifesto</span>
               </div>
 
-              <h2 className="mt-2 font-heading text-2xl font-black text-[#141414] sm:text-3xl">
-                Why I Built Next Scale: The Anti-Agency Doctrine
+              <h2 className="mt-2 font-heading text-2xl font-black text-slate-900 sm:text-3xl">
+                Why I Built Next Scale: The Anti-Agency Model
               </h2>
 
-              <div className="mt-6 space-y-4 text-sm leading-relaxed text-[#5B5146] sm:text-base">
+              <div className="mt-6 space-y-4 text-sm leading-relaxed text-slate-600 sm:text-base">
                 <p>
-                  For years, traditional digital agencies have operated on slow timelines and vendor lock-in. A simple business website would take 3–4 months, cost exorbitant fees, rely on bloated WordPress templates with 40 plugins, and hold the client hostage for every minor text change.
+                  For years, traditional digital agencies have operated on slow timelines and vendor lock-in. A simple business website would take 3–4 months, cost exorbitant fees, rely on bloated templates with dozens of vulnerable plugins, and hold the client hostage for every minor text change.
                 </p>
                 <p>
-                  I created <strong className="text-[#141414]">Next Scale</strong> to completely dismantle that outdated model. By leveraging modern full-stack web architectures (Next.js 16, React 19, TypeScript) and autonomous LLM workflows, we build custom, enterprise-grade software that goes live in <strong className="text-[#FF4D00]">5 to 7 days</strong> with 100% source code ownership handed straight to the client.
+                  I created <strong className="text-slate-900">Next Scale</strong> to dismantle that outdated model. By leveraging modern web architectures and autonomous communication workflows, we build custom, enterprise-grade software that goes live in <strong className="text-blue-600">7 days</strong> with 100% source code ownership handed straight to the client.
                 </p>
                 <p>
-                  As an engineer based in <strong className="text-[#141414]">Bhubaneswar, Odisha</strong>, my goal is to provide ambitious clinics, real estate firms, legal practices, and SMBs across India and globally with the exact same high-speed technological infrastructure used by Silicon Valley startups.
+                  As an engineer based in <strong className="text-slate-900">Bhubaneswar, Odisha</strong>, my goal is to provide ambitious clinics, real estate firms, legal practices, and businesses across India and globally with the exact same high-speed technological infrastructure used by top-tier modern enterprises.
                 </p>
               </div>
 
               <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
-                <div className="rounded-xl border border-[#141414]/20 bg-[#FAF3E5] p-4">
-                  <span className="font-heading text-base font-black text-[#141414]">1. Speed as a Feature</span>
-                  <p className="mt-1 text-xs text-[#5B5146]">Sub-second edge loading, Google Core Web Vitals 95+, and 7-day deployment timelines.</p>
+                <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                  <span className="font-heading text-base font-bold text-slate-900">1. Instant Speed</span>
+                  <p className="mt-1 text-xs text-slate-600">Sub-second page opens, 0 dropped mobile buyers, and 7-day deployment timelines.</p>
                 </div>
-                <div className="rounded-xl border border-[#141414]/20 bg-[#FAF3E5] p-4">
-                  <span className="font-heading text-base font-black text-[#141414]">2. Zero Vendor Lock-in</span>
-                  <p className="mt-1 text-xs text-[#5B5146]">100% clean GitHub repository and hosting transfer. You own your digital assets completely.</p>
+                <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                  <span className="font-heading text-base font-bold text-slate-900">2. Zero Vendor Lock-in</span>
+                  <p className="mt-1 text-xs text-slate-600">100% full repository and account transfer. You own your digital assets completely.</p>
                 </div>
-                <div className="rounded-xl border border-[#141414]/20 bg-[#FAF3E5] p-4">
-                  <span className="font-heading text-base font-black text-[#141414]">3. AI That Drives ROI</span>
-                  <p className="mt-1 text-xs text-[#5B5146]">24/7 WhatsApp AI agents that book calendar slots, qualify high-intent leads, and boost revenue.</p>
+                <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                  <span className="font-heading text-base font-bold text-slate-900">3. AI That Sells</span>
+                  <p className="mt-1 text-xs text-slate-600">24/7 WhatsApp AI concierges that book appointments, qualify high-intent clients, and boost revenue.</p>
                 </div>
               </div>
             </div>
@@ -240,31 +233,31 @@ export function FounderEntityView() {
         {/* Section: Technical Expertise & Stack */}
         <div className="mt-12">
           <Reveal>
-            <div className="rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[6px_6px_0px_#141414] sm:p-10">
-              <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#FF4D00]">
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow sm:p-10">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-600">
                 <Cpu className="size-4" />
-                <span>Technical Mastery</span>
+                <span>Core Capabilities</span>
               </div>
 
-              <h2 className="mt-2 font-heading text-2xl font-black text-[#141414] sm:text-3xl">
-                What Abhisek Pani Engineers
+              <h2 className="mt-2 font-heading text-2xl font-black text-slate-900 sm:text-3xl">
+                What Abhisek Pani &amp; Team Deliver
               </h2>
 
-              <p className="mt-2 text-sm text-[#5B5146]">
-                Deep architectural expertise across modern web standards, generative AI systems, and search intelligence.
+              <p className="mt-2 text-sm text-slate-600">
+                End-to-end expertise across conversion design, modern web architecture, and automated client communication.
               </p>
 
               <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {SKILLS.map((skillGroup) => (
-                  <div key={skillGroup.category} className="rounded-2xl border-2 border-[#141414] bg-[#FAF3E5] p-5 shadow-[3px_3px_0px_#141414]">
-                    <h3 className="font-heading text-base font-black text-[#141414]">
+                  <div key={skillGroup.category} className="rounded-2xl border border-slate-200 bg-slate-50/70 p-5 shadow-2xs">
+                    <h3 className="font-heading text-base font-bold text-slate-900">
                       {skillGroup.category}
                     </h3>
                     <div className="mt-3 flex flex-wrap gap-1.5">
                       {skillGroup.items.map((item) => (
                         <span
                           key={item}
-                          className="rounded-lg border border-[#141414]/20 bg-[#FFFCF5] px-2.5 py-1 text-xs font-bold text-[#141414]"
+                          className="rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-700"
                         >
                           {item}
                         </span>
@@ -280,38 +273,38 @@ export function FounderEntityView() {
         {/* Section: Projects & Built Systems */}
         <div className="mt-12">
           <Reveal>
-            <div className="rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[6px_6px_0px_#141414] sm:p-10">
-              <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#FF4D00]">
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow sm:p-10">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-600">
                 <Layers className="size-4" />
                 <span>Flagship Projects</span>
               </div>
 
-              <h2 className="mt-2 font-heading text-2xl font-black text-[#141414] sm:text-3xl">
-                Systems & Products Built by Abhisek Pani
+              <h2 className="mt-2 font-heading text-2xl font-black text-slate-900 sm:text-3xl">
+                Systems &amp; Products Built by Abhisek Pani
               </h2>
 
               <div className="mt-6 space-y-4">
                 {HIGHLIGHTS.map((proj) => (
                   <div
                     key={proj.title}
-                    className="flex flex-col justify-between gap-4 rounded-2xl border-2 border-[#141414] bg-[#FAF3E5] p-5 shadow-[4px_4px_0px_#141414] sm:flex-row sm:items-center"
+                    className="flex flex-col justify-between gap-4 rounded-2xl border border-slate-200 bg-slate-50/70 p-5 shadow-2xs sm:flex-row sm:items-center hover:border-blue-300 transition-colors"
                   >
                     <div>
                       <div className="flex items-center gap-2">
-                        <h3 className="font-heading text-lg font-black text-[#141414]">
+                        <h3 className="font-heading text-lg font-bold text-slate-900">
                           {proj.title}
                         </h3>
-                        <span className="rounded bg-[#FFC72E] px-2 py-0.5 text-[10px] font-black uppercase text-[#141414] border border-[#141414]">
+                        <span className="rounded-full bg-blue-50 px-2.5 py-0.5 text-[10px] font-bold uppercase text-blue-700 border border-blue-200">
                           {proj.badge}
                         </span>
                       </div>
-                      <p className="text-xs font-bold text-[#FF4D00]">{proj.role} • {proj.period}</p>
-                      <p className="mt-1 text-xs text-[#5B5146] sm:text-sm">{proj.desc}</p>
+                      <p className="text-xs font-semibold text-blue-600 mt-0.5">{proj.role} • {proj.period}</p>
+                      <p className="mt-1 text-xs text-slate-600 sm:text-sm">{proj.desc}</p>
                     </div>
 
                     <Link
                       href={proj.link}
-                      className="inline-flex shrink-0 items-center gap-1 rounded-xl border-2 border-[#141414] bg-[#FFFCF5] px-4 py-2 text-xs font-bold text-[#141414] shadow-[2px_2px_0px_#141414] transition-all hover:bg-[#FFC72E]"
+                      className="inline-flex shrink-0 items-center gap-1 rounded-xl bg-white border border-slate-200 px-4 py-2 text-xs font-bold text-slate-800 shadow-2xs transition-all hover:bg-blue-600 hover:text-white hover:border-blue-600"
                     >
                       <span>Explore</span>
                       <ArrowRight className="size-3.5" />
@@ -326,28 +319,29 @@ export function FounderEntityView() {
         {/* Bottom CTA Block */}
         <div className="mt-12">
           <Reveal>
-            <div className="rounded-3xl border-2 border-[#141414] bg-[#141414] p-8 text-center text-white shadow-[8px_8px_0px_#FF4D00] sm:p-12">
-              <h2 className="font-heading text-2xl font-black sm:text-4xl text-white">
-                Let&apos;s Build Your High-Velocity System
+            <div className="rounded-3xl border border-slate-800 bg-[#0B0F19] p-8 text-center text-white shadow-xl sm:p-12 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-80 h-80 bg-blue-600/15 blur-3xl pointer-events-none" />
+              <h2 className="font-heading text-2xl font-black sm:text-4xl text-white relative z-10">
+                Let&apos;s Build Your High-Velocity Growth System
               </h2>
-              <p className="mx-auto mt-3 max-w-xl text-sm text-white/70 sm:text-base">
-                Whether you need a custom business website live in 7 days or a 24/7 WhatsApp AI receptionist, work directly with founder Abhisek Pani.
+              <p className="mx-auto mt-3 max-w-xl text-sm text-slate-300 sm:text-base relative z-10">
+                Whether you need a custom business storefront live in 7 days or a 24/7 WhatsApp AI concierge, work directly with founder Abhisek Pani.
               </p>
 
-              <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+              <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row relative z-10">
                 <a
                   href={waLink("Hi Abhisek! I would like to discuss building a custom website / AI agent.")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white bg-[#25D366] px-6 py-3.5 text-sm font-black text-[#141414] shadow-[4px_4px_0px_#FFFFFF] transition-all hover:translate-x-[2px] hover:translate-y-[2px]"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-500/25 transition-all hover:brightness-110 active:scale-95"
                 >
-                  <MessageCircle className="size-4.5" />
+                  <MessageCircle className="size-4" />
                   Chat with Abhisek on WhatsApp
                 </a>
 
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white bg-transparent px-6 py-3.5 text-sm font-bold text-white transition-all hover:bg-white/10"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-900/80 px-6 py-3.5 text-sm font-semibold text-slate-200 transition-all hover:bg-slate-800"
                 >
                   <span>Submit Project Scope</span>
                   <ArrowRight className="size-4" />
@@ -355,7 +349,7 @@ export function FounderEntityView() {
               </div>
 
               {/* Entity Schema Note */}
-              <div className="mt-8 border-t border-white/10 pt-4 text-xs text-white/40">
+              <div className="mt-8 border-t border-slate-800 pt-4 text-xs text-slate-400 relative z-10">
                 <span>Entity Authority: Abhisek Pani • Founder of Next Scale • Bhubaneswar, Odisha, India</span>
               </div>
             </div>

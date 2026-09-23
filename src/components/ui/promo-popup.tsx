@@ -79,7 +79,7 @@ export function PromoPopup() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
             onClick={handleClose}
-            className="fixed inset-0 bg-[#141414]/75 backdrop-blur-sm"
+            className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm"
             aria-hidden="true"
           />
 
@@ -93,27 +93,27 @@ export function PromoPopup() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="promo-heading"
-            className="relative w-full max-w-lg overflow-hidden rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[8px_8px_0px_#141414] sm:p-8"
+            className="relative w-full max-w-lg overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl sm:p-8"
           >
             {/* Top decorative accent bar */}
-            <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#FF4D00] via-[#FFC72E] to-[#FF4D00]" />
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-600 via-sky-400 to-blue-600" />
 
             {/* Close Button */}
             <button
               onClick={handleClose}
               aria-label="Close offer popup"
-              className="absolute top-4 right-4 grid size-8 place-items-center rounded-lg border border-[#141414]/20 bg-[#FAF3E5] text-[#141414] transition-all hover:border-[#141414] hover:bg-[#FF4D00] hover:text-white cursor-pointer"
+              className="absolute top-4 right-4 grid size-8 place-items-center rounded-full border border-slate-200 bg-slate-50 text-slate-500 transition hover:border-slate-300 hover:bg-slate-100 hover:text-slate-800 cursor-pointer"
             >
-              <X className="size-4.5" />
+              <X className="size-4" />
             </button>
 
             {/* Header Badge */}
             <div className="mb-4 flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#141414] bg-[#FFC72E] px-3 py-1 text-xs font-black uppercase tracking-wider text-[#141414] shadow-[2px_2px_0px_#141414]">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider text-blue-700 shadow-sm">
                 <Sparkles className="size-3.5 fill-current" />
                 Special Starter Deal
               </span>
-              <span className="inline-flex items-center gap-1 rounded-full border border-[#FF4D00]/20 bg-[#FF4D00]/10 px-2.5 py-0.5 text-xs font-bold text-[#FF4D00]">
+              <span className="inline-flex items-center gap-1 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-0.5 font-mono text-xs font-bold text-emerald-700">
                 <Clock className="size-3" />
                 Limited Slots
               </span>
@@ -122,52 +122,52 @@ export function PromoPopup() {
             {/* Main Offer Headline */}
             <h3
               id="promo-heading"
-              className="text-2xl font-black leading-tight tracking-tight text-[#141414] sm:text-3xl"
+              className="font-display text-2xl font-bold leading-tight tracking-tight text-slate-900 sm:text-3xl"
             >
               Get started with a custom website at just{" "}
-              <span className="relative inline-block text-[#FF4D00] underline decoration-[#FFC72E] decoration-wavy decoration-2 underline-offset-4">
+              <span className="text-blue-600">
                 ₹3,999
               </span>
             </h3>
 
-            <p className="mt-2 text-sm text-[#5B5146] sm:text-base">
+            <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:text-base">
               Supercharge your brand with a lightning-fast, high-converting website built specifically for your business.
             </p>
 
             {/* Pricing Box / Value Banner */}
-            <div className="my-4 rounded-xl border border-[#141414]/20 bg-[#FAF3E5] p-3.5">
+            <div className="my-5 rounded-2xl border border-slate-100 bg-slate-50/80 p-4">
               <div className="flex items-baseline justify-between">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#5B5146]">
+                  <span className="font-mono text-xs font-bold uppercase tracking-wider text-slate-500">
                     One-time Investment
                   </span>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-3xl font-black tracking-tight text-[#141414]">
+                  <div className="flex items-baseline gap-2 mt-1">
+                    <span className="font-display text-3xl font-black tracking-tight text-slate-900">
                       ₹3,999
                     </span>
-                    <span className="text-sm font-semibold text-[#8C827A] line-through">
+                    <span className="text-sm font-semibold text-slate-400 line-through">
                       ₹19,999
                     </span>
-                    <span className="rounded bg-[#B8E986] px-1.5 py-0.5 text-[11px] font-black text-[#141414] border border-[#141414]">
+                    <span className="rounded-full bg-emerald-100 px-2 py-0.5 font-mono text-[11px] font-bold text-emerald-800">
                       SAVE 80%
                     </span>
                   </div>
                 </div>
                 <div className="text-right">
-                  <span className="inline-flex items-center gap-1 text-xs font-bold text-[#0F6838]">
+                  <span className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600">
                     <ShieldCheck className="size-3.5" />
                     100% Code Handover
                   </span>
-                  <p className="text-[11px] text-[#786E64]">No monthly lock-in</p>
+                  <p className="font-mono text-[11px] text-slate-400">Zero lock-in fees</p>
                 </div>
               </div>
             </div>
 
             {/* Feature Highlights */}
-            <div className="mb-6 space-y-2">
+            <div className="mb-6 space-y-2.5">
               {OFFER_PERKS.map((perk, index) => (
-                <div key={index} className="flex items-center gap-2.5 text-xs sm:text-sm font-medium text-[#141414]">
-                  <CheckCircle2 className="size-4 shrink-0 text-[#FF4D00]" />
+                <div key={index} className="flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-700">
+                  <CheckCircle2 className="size-4 shrink-0 text-blue-600" />
                   <span>{perk}</span>
                 </div>
               ))}
@@ -180,16 +180,16 @@ export function PromoPopup() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleClose}
-                className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border-2 border-[#141414] bg-[#25D366] px-5 py-3 text-sm font-black text-[#141414] shadow-[4px_4px_0px_#141414] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#141414] cursor-pointer"
+                className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-blue-500/25 transition hover:bg-blue-700 hover:-translate-y-0.5 cursor-pointer"
               >
-                <MessageCircle className="size-4.5 fill-current" />
+                <MessageCircle className="size-4" />
                 Claim ₹3,999 Deal on WhatsApp
               </a>
 
               <Link
                 href="/contact"
                 onClick={handleClose}
-                className="inline-flex items-center justify-center gap-1.5 rounded-xl border-2 border-[#141414] bg-[#FAF3E5] px-4 py-3 text-sm font-bold text-[#141414] shadow-[4px_4px_0px_#141414] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#141414] hover:bg-[#FFC72E] cursor-pointer"
+                className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 bg-white px-4 py-3 text-xs font-bold uppercase tracking-wider text-slate-800 shadow-sm transition hover:border-blue-600 hover:text-blue-600 cursor-pointer"
               >
                 <span>Contact Form</span>
                 <ArrowRight className="size-4" />
@@ -197,14 +197,14 @@ export function PromoPopup() {
             </div>
 
             {/* Footer Microcopy */}
-            <div className="mt-4 flex items-center justify-between border-t border-[#141414]/10 pt-3 text-[11px] text-[#786E64]">
-              <span className="flex items-center gap-1">
-                <Zap className="size-3 text-[#FF4D00]" />
+            <div className="mt-4 flex items-center justify-between border-t border-slate-100 pt-3 text-[11px] text-slate-500">
+              <span className="flex items-center gap-1 font-mono">
+                <Zap className="size-3 text-blue-600" />
                 Live in 3–5 Business Days
               </span>
               <button
                 onClick={handleClose}
-                className="text-[#786E64] underline hover:text-[#141414] cursor-pointer"
+                className="text-slate-400 underline hover:text-slate-700 cursor-pointer"
               >
                 No thanks, I&apos;ll check later
               </button>

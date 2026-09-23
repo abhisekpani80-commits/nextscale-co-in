@@ -95,7 +95,7 @@ export default function LocalSeoCheckerPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF3E5] text-[#141414] pb-24">
+    <div className="min-h-screen bg-slate-50/40 text-slate-900 pb-24">
       <JsonLd
         schema={[
           toolSchema,
@@ -111,7 +111,7 @@ export default function LocalSeoCheckerPage() {
         kicker="Free Local Growth Tool"
         title={
           <>
-            Local SEO &amp; Google Maps <span className="text-[#FF4D00]">Checker</span>
+            Local SEO &amp; Google Maps <span className="text-blue-600">Checker</span>
           </>
         }
         description="Diagnose your local search visibility, Google Map pack ranking factors, and LocalBusiness Schema opportunities in your city."
@@ -119,18 +119,18 @@ export default function LocalSeoCheckerPage() {
 
       <main className="mx-auto max-w-5xl px-4 py-8 sm:py-14">
         {/* Form Card */}
-        <div className="rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[6px_6px_0px_#141414] sm:p-8">
-          <h2 className="font-heading text-xl font-black text-[#141414] mb-2">
+        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+          <h2 className="font-display text-xl font-bold text-slate-900 mb-2">
             Enter Business Details for Local SEO Audit
           </h2>
-          <p className="text-xs text-[#5B5146] mb-6">
+          <p className="text-xs text-slate-500 mb-6">
             Evaluate local ranking opportunities in Bhubaneswar, Odisha, or any city across India.
           </p>
 
           <form onSubmit={handleRunCheck} className="space-y-4">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
-                <label className="block text-xs font-black uppercase tracking-wider text-[#5B5146] mb-1.5">
+                <label className="block font-mono text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">
                   Business / Practice Name
                 </label>
                 <input
@@ -139,12 +139,12 @@ export default function LocalSeoCheckerPage() {
                   onChange={(e) => setBusinessName(e.target.value)}
                   placeholder="e.g. Apex Dental Clinic"
                   required
-                  className="w-full rounded-xl border-2 border-[#141414] bg-[#FAF3E5] py-2.5 px-3.5 text-xs font-bold text-[#141414] placeholder-[#8C827A] focus:outline-none focus:ring-2 focus:ring-[#FF4D00]"
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50/50 py-2.5 px-3.5 text-xs font-medium text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-black uppercase tracking-wider text-[#5B5146] mb-1.5">
+                <label className="block font-mono text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">
                   Target City / Location
                 </label>
                 <input
@@ -153,20 +153,20 @@ export default function LocalSeoCheckerPage() {
                   onChange={(e) => setCity(e.target.value)}
                   placeholder="e.g. Bhubaneswar, Bangalore, Mumbai"
                   required
-                  className="w-full rounded-xl border-2 border-[#141414] bg-[#FAF3E5] py-2.5 px-3.5 text-xs font-bold text-[#141414] placeholder-[#8C827A] focus:outline-none focus:ring-2 focus:ring-[#FF4D00]"
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50/50 py-2.5 px-3.5 text-xs font-medium text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
-                <label className="block text-xs font-black uppercase tracking-wider text-[#5B5146] mb-1.5">
+                <label className="block font-mono text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">
                   Industry / Business Category
                 </label>
                 <select
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  className="w-full rounded-xl border-2 border-[#141414] bg-[#FAF3E5] py-2.5 px-3.5 text-xs font-bold text-[#141414] focus:outline-none focus:ring-2 focus:ring-[#FF4D00]"
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50/50 py-2.5 px-3.5 text-xs font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white"
                 >
                   <option value="Dermatology / Skin Clinic">Dermatology / Skin Clinic</option>
                   <option value="Dental Clinic / Surgery">Dental Clinic / Surgery</option>
@@ -178,7 +178,7 @@ export default function LocalSeoCheckerPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-black uppercase tracking-wider text-[#5B5146] mb-1.5">
+                <label className="block font-mono text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">
                   Website URL (Optional)
                 </label>
                 <input
@@ -186,7 +186,7 @@ export default function LocalSeoCheckerPage() {
                   value={website}
                   onChange={(e) => setWebsite(e.target.value)}
                   placeholder="e.g. https://example.com"
-                  className="w-full rounded-xl border-2 border-[#141414] bg-[#FAF3E5] py-2.5 px-3.5 text-xs font-bold text-[#141414] placeholder-[#8C827A] focus:outline-none focus:ring-2 focus:ring-[#FF4D00]"
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50/50 py-2.5 px-3.5 text-xs font-medium text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white"
                 />
               </div>
             </div>
@@ -194,7 +194,7 @@ export default function LocalSeoCheckerPage() {
             <button
               type="submit"
               disabled={checking}
-              className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-[#141414] bg-[#FF4D00] px-6 py-3 text-xs font-black text-white shadow-[3px_3px_0px_#141414] transition-all hover:bg-[#e04400] disabled:opacity-50"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-md shadow-blue-500/20 transition-all hover:bg-blue-700 disabled:opacity-50"
             >
               {checking ? "Analyzing Local Competitors..." : `Analyze Local SEO in ${city}`}
               <MapPin className="size-3.5" />
@@ -206,31 +206,31 @@ export default function LocalSeoCheckerPage() {
         {report && (
           <div className="mt-8 space-y-6">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-              <div className="rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[4px_4px_0px_#141414] text-center">
-                <span className="text-xs font-bold uppercase text-[#5B5146]">Local Rank Readiness</span>
-                <div className="font-heading text-5xl font-black mt-2 text-[#FF4D00]">
+              <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm text-center">
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-slate-500">Local Rank Readiness</span>
+                <div className="font-display text-5xl font-black mt-2 text-blue-600">
                   {report.localRankScore}/100
                 </div>
-                <span className="text-[11px] font-bold text-[#5B5146] mt-1 block">
+                <span className="text-[11px] font-medium text-slate-500 mt-1 block">
                   Significant Growth Headroom
                 </span>
               </div>
 
-              <div className="rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[4px_4px_0px_#141414] text-center">
-                <span className="text-xs font-bold uppercase text-[#5B5146]">Location Focus</span>
-                <div className="font-heading text-2xl font-black mt-3 text-[#141414] flex items-center justify-center gap-1.5">
-                  <MapPin className="size-5 text-[#FF4D00]" />
+              <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm text-center">
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-slate-500">Location Focus</span>
+                <div className="font-display text-2xl font-bold mt-3 text-slate-900 flex items-center justify-center gap-1.5">
+                  <MapPin className="size-5 text-blue-600" />
                   {report.city}
                 </div>
-                <span className="text-[11px] font-bold text-[#5B5146] mt-1 block">
+                <span className="text-[11px] font-medium text-slate-500 mt-1 block">
                   Category: {report.category}
                 </span>
               </div>
 
-              <div className="rounded-2xl border-2 border-[#141414] bg-[#FAF3E5] p-6 shadow-[4px_4px_0px_#141414] flex flex-col justify-between">
+              <div className="rounded-2xl border border-slate-200 bg-slate-50/50 p-6 shadow-sm flex flex-col justify-between">
                 <div>
-                  <span className="text-xs font-bold uppercase text-[#5B5146]">Dominate Local Pack</span>
-                  <p className="text-xs font-medium text-[#5B5146] mt-1">
+                  <span className="font-mono text-xs font-bold uppercase tracking-wider text-slate-500">Dominate Local Pack</span>
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">
                     Get custom Next.js speed and local SEO setup to rank in the Google Map 3-pack.
                   </p>
                 </div>
@@ -240,7 +240,7 @@ export default function LocalSeoCheckerPage() {
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 inline-flex items-center justify-center gap-1.5 rounded-xl border-2 border-[#141414] bg-[#25D366] py-2 text-xs font-black text-[#141414] shadow-[2px_2px_0px_#141414]"
+                  className="mt-4 inline-flex items-center justify-center gap-1.5 rounded-xl bg-blue-600 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition hover:bg-blue-700"
                 >
                   <MessageCircle className="size-3.5" />
                   Discuss Local SEO on WhatsApp
@@ -249,8 +249,8 @@ export default function LocalSeoCheckerPage() {
             </div>
 
             {/* Opportunities List */}
-            <div className="rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[6px_6px_0px_#141414] sm:p-8">
-              <h3 className="font-heading text-lg font-black text-[#141414] mb-4">
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+              <h3 className="font-display text-lg font-bold text-slate-900 mb-4">
                 High-Impact Local Growth Opportunities
               </h3>
 
@@ -258,33 +258,33 @@ export default function LocalSeoCheckerPage() {
                 {report.opportunities.map((opp: any, idx: number) => (
                   <div
                     key={idx}
-                    className="rounded-xl border-2 border-[#141414]/20 bg-[#FAF3E5] p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+                    className="rounded-xl border border-slate-200 bg-slate-50/50 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
                   >
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-heading text-xs font-black text-[#141414]">
+                        <span className="font-display text-xs font-bold text-slate-900">
                           {opp.title}
                         </span>
-                        <span className="rounded bg-[#FFC72E] px-2 py-0.5 text-[10px] font-black uppercase text-[#141414] border border-[#141414]">
+                        <span className="rounded-full border border-blue-200 bg-blue-50 px-2 py-0.5 font-mono text-[10px] font-bold uppercase text-blue-700">
                           {opp.status}
                         </span>
                       </div>
-                      <p className="mt-1 text-xs text-[#5B5146]">{opp.action}</p>
+                      <p className="mt-1 text-xs text-slate-500">{opp.action}</p>
                     </div>
                   </div>
                 ))}
               </div>
 
               {/* Local Keywords */}
-              <div className="mt-6 border-t border-[#141414]/10 pt-4">
-                <span className="text-xs font-black uppercase tracking-wider text-[#5B5146] block mb-2">
+              <div className="mt-6 border-t border-slate-100 pt-4">
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
                   High-Intent Keywords to Target in {report.city}:
                 </span>
                 <div className="flex flex-wrap gap-2">
                   {report.keywords.map((kw: string, kIdx: number) => (
                     <span
                       key={kIdx}
-                      className="rounded-lg border border-[#141414]/20 bg-white px-2.5 py-1 text-xs font-bold text-[#141414]"
+                      className="rounded-lg border border-slate-200 bg-white px-2.5 py-1 font-mono text-xs font-medium text-slate-700"
                     >
                       {kw}
                     </span>

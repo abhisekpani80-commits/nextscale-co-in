@@ -52,22 +52,22 @@ export function PageHero({
         {kicker && (
           <motion.span
             variants={item}
-            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB]"
+            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-blue-600 font-semibold"
           >
-            <span className="h-px w-5 bg-[#1A56DB]/60" />
+            <span className="h-px w-5 bg-blue-600/60" />
             <span>{kicker}</span>
           </motion.span>
         )}
         <motion.h1
           variants={item}
-          className="mt-4 font-heading text-3xl font-extrabold leading-[1.1] tracking-tight text-balance sm:text-5xl md:text-6xl text-[#0F0E0D]"
+          className="mt-4 font-heading text-3xl font-extrabold leading-[1.1] tracking-tight text-balance sm:text-5xl md:text-6xl text-slate-900"
         >
           {title}
         </motion.h1>
         {description && (
           <motion.p
             variants={item}
-            className="mt-4 max-w-2xl text-pretty text-base leading-relaxed text-[#6B6860] sm:text-lg"
+            className="mt-4 max-w-2xl text-pretty text-base leading-relaxed text-slate-600 sm:text-lg"
           >
             {description}
           </motion.p>

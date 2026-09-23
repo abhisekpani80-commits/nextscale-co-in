@@ -79,7 +79,7 @@ export default async function ResourcePage({ params }: PageProps) {
   };
 
   return (
-    <article className="min-h-screen bg-[#FAF3E5] text-[#141414] pb-24">
+    <article className="min-h-screen bg-slate-50/40 text-slate-900 pb-24">
       <JsonLd
         schema={[
           articleSchema,
@@ -92,12 +92,12 @@ export default async function ResourcePage({ params }: PageProps) {
       />
 
       {/* Breadcrumb Navigation */}
-      <nav className="mx-auto max-w-5xl px-4 pt-10 text-xs font-semibold text-[#5B5146] flex items-center gap-1.5" aria-label="Breadcrumb">
-        <Link href="/" className="hover:text-[#FF4D00] transition-colors">Home</Link>
+      <nav className="mx-auto max-w-5xl px-4 pt-10 font-mono text-xs font-medium text-slate-500 flex items-center gap-1.5" aria-label="Breadcrumb">
+        <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
         <ChevronRight className="size-3" />
-        <Link href="/resources" className="hover:text-[#FF4D00] transition-colors">Resources</Link>
+        <Link href="/resources" className="hover:text-blue-600 transition-colors">Resources</Link>
         <ChevronRight className="size-3" />
-        <span className="text-[#141414] font-bold">{res.title}</span>
+        <span className="text-slate-900 font-bold">{res.title}</span>
       </nav>
 
       {/* Hero */}
@@ -111,28 +111,28 @@ export default async function ResourcePage({ params }: PageProps) {
         {/* Main Content Body */}
         <section className="flex flex-col gap-8">
           {/* Executive Summary */}
-          <div className="rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[4px_4px_0px_#141414] text-sm text-[#5B5146] leading-relaxed">
-            <span className="font-heading text-xs font-black uppercase tracking-wider text-[#FF4D00] block mb-2">
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm text-sm text-slate-600 leading-relaxed">
+            <span className="font-mono text-xs font-bold uppercase tracking-wider text-blue-600 block mb-2">
               Executive Summary &amp; Key Takeaway:
             </span>
-            <p className="text-sm font-medium text-[#141414] leading-relaxed">{res.summary}</p>
+            <p className="text-sm font-medium text-slate-900 leading-relaxed">{res.summary}</p>
           </div>
 
           {/* Sections */}
           <div className="flex flex-col gap-8">
             {res.sections.map((sect, idx) => (
-              <section key={idx} className="rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[4px_4px_0px_#141414]">
-                <h2 className="font-heading text-xl font-black text-[#141414] border-b-2 border-[#141414]/10 pb-3">
+              <section key={idx} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                <h2 className="font-display text-xl font-bold text-slate-900 border-b border-slate-100 pb-3">
                   {sect.heading}
                 </h2>
-                <p className="mt-4 text-sm text-[#5B5146] leading-relaxed whitespace-pre-line font-medium">
+                <p className="mt-4 text-sm text-slate-600 leading-relaxed whitespace-pre-line font-medium">
                   {sect.content}
                 </p>
                 {sect.list && (
                   <ul className="flex flex-col gap-2 mt-4">
                     {sect.list.map((li, lIdx) => (
-                      <li key={lIdx} className="flex items-start gap-2.5 text-xs text-[#141414] font-bold">
-                        <Check className="size-4 text-[#FF4D00] shrink-0 mt-0.5" />
+                      <li key={lIdx} className="flex items-start gap-2.5 text-xs text-slate-800 font-semibold">
+                        <Check className="size-4 text-blue-600 shrink-0 mt-0.5" />
                         <span>{li}</span>
                       </li>
                     ))}
@@ -144,26 +144,26 @@ export default async function ResourcePage({ params }: PageProps) {
 
           {/* Research Data Table */}
           {res.researchData && (
-            <section className="rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[4px_4px_0px_#141414] flex flex-col gap-4">
-              <h3 className="font-heading text-lg font-black text-[#141414]">
+            <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm flex flex-col gap-4">
+              <h3 className="font-display text-lg font-bold text-slate-900">
                 Empirical Research &amp; Industry Benchmark Metrics
               </h3>
 
-              <div className="overflow-x-auto rounded-xl border-2 border-[#141414]">
+              <div className="overflow-x-auto rounded-xl border border-slate-200">
                 <table className="w-full text-left border-collapse text-xs">
                   <thead>
-                    <tr className="bg-[#FAF3E5] border-b-2 border-[#141414] text-[#141414]">
-                      <th className="p-3.5 font-heading font-black uppercase">Metrics Parameter</th>
-                      <th className="p-3.5 font-heading font-black uppercase">India Benchmark</th>
-                      <th className="p-3.5 font-heading font-black uppercase">Notes</th>
+                    <tr className="bg-slate-50 border-b border-slate-200 text-slate-900">
+                      <th className="p-3.5 font-mono font-bold uppercase text-[11px] text-slate-500">Metrics Parameter</th>
+                      <th className="p-3.5 font-mono font-bold uppercase text-[11px] text-slate-500">India Benchmark</th>
+                      <th className="p-3.5 font-mono font-bold uppercase text-[11px] text-slate-500">Notes</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#141414]/10 bg-white">
+                  <tbody className="divide-y divide-slate-100 bg-white">
                     {res.researchData.map((data, idx) => (
-                      <tr key={idx} className="hover:bg-[#FAF3E5]/50">
-                        <td className="p-3.5 font-bold text-[#141414]">{data.metric}</td>
-                        <td className="p-3.5 font-mono text-[#FF4D00] font-black">{data.valuePlaceholder}</td>
-                        <td className="p-3.5 text-[#5B5146] font-medium">{data.note}</td>
+                      <tr key={idx} className="hover:bg-slate-50/50">
+                        <td className="p-3.5 font-semibold text-slate-900">{data.metric}</td>
+                        <td className="p-3.5 font-mono text-blue-600 font-bold">{data.valuePlaceholder}</td>
+                        <td className="p-3.5 text-slate-500 font-medium">{data.note}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -174,14 +174,14 @@ export default async function ResourcePage({ params }: PageProps) {
 
           {/* Actionable Checklist */}
           {res.checklist && (
-            <section className="rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[4px_4px_0px_#141414]">
-              <h3 className="font-heading text-lg font-black text-[#141414] mb-4">
+            <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+              <h3 className="font-display text-lg font-bold text-slate-900 mb-4">
                 Implementation Checklist
               </h3>
               <ul className="flex flex-col gap-3">
                 {res.checklist.map((item, idx) => (
-                  <li key={idx} className="flex items-center gap-3 text-xs font-bold text-[#141414]">
-                    <div className="size-5 rounded border border-[#141414] flex items-center justify-center bg-[#B8E986] text-[#141414] shrink-0 shadow-[1px_1px_0px_#141414]">
+                  <li key={idx} className="flex items-center gap-3 text-xs font-semibold text-slate-800">
+                    <div className="size-5 rounded border border-blue-200 flex items-center justify-center bg-blue-50 text-blue-600 shrink-0">
                       <Check className="size-3.5" />
                     </div>
                     <span>{item}</span>
@@ -192,31 +192,31 @@ export default async function ResourcePage({ params }: PageProps) {
           )}
 
           {/* Author Box Entity Connection */}
-          <div className="rounded-2xl border-2 border-[#141414] bg-[#FAF3E5] p-6 shadow-[4px_4px_0px_#141414]">
+          <div className="rounded-2xl border border-slate-200 bg-slate-50/50 p-6 shadow-sm">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div>
-                <span className="text-[11px] font-black uppercase tracking-wider text-[#FF4D00]">
+                <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-blue-600">
                   Author &amp; Principal Investigator:
                 </span>
-                <h4 className="font-heading text-xl font-black text-[#141414]">
-                  <Link href="/about/abhisek-pani" className="hover:text-[#FF4D00] transition-colors">
+                <h4 className="font-display text-xl font-bold text-slate-900">
+                  <Link href="/about/abhisek-pani" className="hover:text-blue-600 transition-colors">
                     {res.author}
                   </Link>
                 </h4>
-                <p className="text-xs font-semibold text-[#5B5146] mt-0.5">
+                <p className="text-xs font-medium text-slate-500 mt-0.5">
                   Founder &amp; Lead Software Architect at{" "}
-                  <Link href="/about/next-scale" className="text-[#141414] underline hover:text-[#FF4D00]">
+                  <Link href="/about/next-scale" className="text-slate-900 font-semibold underline hover:text-blue-600">
                     Next Scale
                   </Link>
                 </p>
-                <p className="text-xs text-[#5B5146] mt-2 leading-relaxed">
+                <p className="text-xs text-slate-500 mt-2 leading-relaxed">
                   Software architect based in Bhubaneswar, Odisha. Engineering sub-second Next.js web applications, 24/7 WhatsApp AI agents, and empirical business research.
                 </p>
               </div>
 
               <Link
                 href="/about/abhisek-pani"
-                className="shrink-0 rounded-xl border-2 border-[#141414] bg-[#FFFCF5] px-4 py-2 text-xs font-bold text-[#141414] shadow-[2px_2px_0px_#141414] transition-all hover:bg-[#FFC72E]"
+                className="shrink-0 rounded-xl border border-slate-200 bg-white px-4 py-2 font-mono text-xs font-bold text-slate-800 shadow-sm transition hover:border-blue-600 hover:text-blue-600"
               >
                 View Author Profile →
               </Link>
@@ -226,42 +226,42 @@ export default async function ResourcePage({ params }: PageProps) {
 
         {/* Sidebar E-E-A-T Trust Panel & Internal Graph */}
         <aside className="flex flex-col gap-6 h-fit">
-          <div className="rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[4px_4px_0px_#141414] flex flex-col gap-4">
-            <h3 className="font-heading text-xs uppercase tracking-wider text-[#FF4D00]">
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm flex flex-col gap-4">
+            <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-blue-600">
               E-E-A-T Research Metadata
             </h3>
-            <div className="flex flex-col gap-3 text-xs text-[#5B5146]">
-              <div className="flex justify-between border-b border-[#141414]/10 pb-2">
+            <div className="flex flex-col gap-3 text-xs text-slate-500">
+              <div className="flex justify-between border-b border-slate-100 pb-2">
                 <span>Author:</span>
-                <Link href="/about/abhisek-pani" className="font-bold text-[#141414] hover:text-[#FF4D00]">
+                <Link href="/about/abhisek-pani" className="font-semibold text-slate-900 hover:text-blue-600">
                   {res.author}
                 </Link>
               </div>
-              <div className="flex justify-between border-b border-[#141414]/10 pb-2">
+              <div className="flex justify-between border-b border-slate-100 pb-2">
                 <span>Last Updated:</span>
-                <span className="font-bold text-[#141414]">{res.lastUpdated}</span>
+                <span className="font-medium text-slate-900">{res.lastUpdated}</span>
               </div>
-              <div className="flex justify-between border-b border-[#141414]/10 pb-2">
+              <div className="flex justify-between border-b border-slate-100 pb-2">
                 <span>Next Review Date:</span>
-                <span className="font-bold text-[#141414]">{res.reviewDate}</span>
+                <span className="font-medium text-slate-900">{res.reviewDate}</span>
               </div>
-              <div className="flex justify-between border-b border-[#141414]/10 pb-2">
+              <div className="flex justify-between border-b border-slate-100 pb-2">
                 <span>Read Time:</span>
-                <span className="font-bold text-[#141414]">{res.readTime}</span>
+                <span className="font-medium text-slate-900">{res.readTime}</span>
               </div>
               <div className="flex justify-between">
                 <span>Status:</span>
-                <span className="font-bold text-[#0F6838] flex items-center gap-1">
+                <span className="font-medium text-emerald-600 flex items-center gap-1">
                   <ShieldCheck className="size-3.5" /> Peer Checked &amp; Verified
                 </span>
               </div>
             </div>
 
-            <div className="border-t border-[#141414]/10 pt-4 flex flex-col gap-2">
-              <span className="text-[10px] font-black uppercase tracking-wider text-[#5B5146]">
+            <div className="border-t border-slate-100 pt-4 flex flex-col gap-2">
+              <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-slate-400">
                 Engineering Standard:
               </span>
-              <p className="text-[11px] text-[#5B5146] leading-relaxed bg-[#FAF3E5] p-3 rounded-xl border border-[#141414]/20">
+              <p className="text-[11px] text-slate-600 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-100">
                 Next Scale delivers custom Next.js websites in 7 days and WhatsApp AI receptionists in 48 hours across India with 100% source code ownership.
               </p>
             </div>
@@ -270,35 +270,35 @@ export default async function ResourcePage({ params }: PageProps) {
               href={waLink(`Hi Abhisek! I just read your report on "${res.title}" and would like to discuss implementing this.`)}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex h-11 items-center justify-center gap-1.5 rounded-xl border-2 border-[#141414] bg-[#25D366] text-[#141414] text-xs font-black shadow-[3px_3px_0px_#141414] transition-all hover:bg-[#1ebd5a]"
+              className="w-full flex h-11 items-center justify-center gap-1.5 rounded-xl bg-blue-600 text-white text-xs font-bold uppercase tracking-wider shadow-md shadow-blue-500/20 transition hover:bg-blue-700"
             >
               Discuss With Abhisek <ArrowRight className="size-3.5" />
             </a>
           </div>
 
           {/* Related Tools & Services */}
-          <div className="rounded-2xl border-2 border-[#141414] bg-[#FAF3E5] p-6 shadow-[4px_4px_0px_#141414]">
-            <h4 className="font-heading text-xs font-black uppercase tracking-wider text-[#5B5146] mb-3">
+          <div className="rounded-2xl border border-slate-200 bg-slate-50/50 p-6 shadow-sm">
+            <h4 className="font-mono text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
               Related Systems &amp; Tools
             </h4>
             <div className="flex flex-col gap-2.5 text-xs">
               <Link
                 href="/services/websites"
-                className="font-bold text-[#141414] hover:text-[#FF4D00] flex items-center justify-between p-2.5 rounded-xl bg-white border border-[#141414]/10 hover:border-[#141414]"
+                className="font-semibold text-slate-800 hover:text-blue-600 flex items-center justify-between p-2.5 rounded-xl bg-white border border-slate-200 hover:border-blue-300 transition"
               >
                 <span>7-Day Next.js Websites</span>
                 <ArrowRight className="size-3" />
               </Link>
               <Link
                 href="/services/ai-agents"
-                className="font-bold text-[#141414] hover:text-[#FF4D00] flex items-center justify-between p-2.5 rounded-xl bg-white border border-[#141414]/10 hover:border-[#141414]"
+                className="font-semibold text-slate-800 hover:text-blue-600 flex items-center justify-between p-2.5 rounded-xl bg-white border border-slate-200 hover:border-blue-300 transition"
               >
                 <span>24/7 WhatsApp AI Agents</span>
                 <ArrowRight className="size-3" />
               </Link>
               <Link
                 href="/tools"
-                className="font-bold text-[#141414] hover:text-[#FF4D00] flex items-center justify-between p-2.5 rounded-xl bg-white border border-[#141414]/10 hover:border-[#141414]"
+                className="font-semibold text-slate-800 hover:text-blue-600 flex items-center justify-between p-2.5 rounded-xl bg-white border border-slate-200 hover:border-blue-300 transition"
               >
                 <span>Interactive Cost Calculators</span>
                 <ArrowRight className="size-3" />

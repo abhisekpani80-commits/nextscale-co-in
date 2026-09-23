@@ -70,14 +70,14 @@ export function CustomCursor() {
         animate={{
           scale: isHovered ? 1.6 : isMouseDown ? 0.8 : 0.9,
           opacity: isHovered ? 0.85 : 0.25,
-          borderColor: isHovered ? "#FF4D00" : "#141414",
-          backgroundColor: isHovered ? "rgba(255, 77, 0, 0.12)" : "rgba(20, 20, 20, 0)",
+          borderColor: isHovered ? "#2563EB" : "#94A3B8",
+          backgroundColor: isHovered ? "rgba(37, 99, 235, 0.12)" : "rgba(37, 99, 235, 0)",
         }}
         transition={{ duration: 0.15, ease: "easeOut" }}
         className="fixed top-0 left-0 -ml-4 -mt-4 size-8 rounded-full border-2 transition-colors"
       />
 
-      {/* Main Angled Pointer Cursor (Matching User Design) */}
+      {/* Main Angled Pointer Cursor */}
       <motion.div
         style={{
           x: mouseX,
@@ -96,13 +96,13 @@ export function CustomCursor() {
           viewBox="0 0 28 28"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="drop-shadow-[1.5px_2.5px_5px_rgba(0,0,0,0.4)]"
+          className="drop-shadow-[1.5px_2.5px_5px_rgba(0,0,0,0.3)]"
         >
-          {/* Obsidian dark body with cream outline matching brand theme */}
+          {/* Midnight body with crisp white outline matching brand theme */}
           <path
             d="M3 2.5L22 11.5L13 14.5L9 23.5L3 2.5Z"
-            fill="#141414"
-            stroke="#FAF3E5"
+            fill="#0B0F19"
+            stroke="#FFFFFF"
             strokeWidth="1.8"
             strokeLinejoin="round"
             strokeLinecap="round"
@@ -110,8 +110,8 @@ export function CustomCursor() {
           {/* Inner subtle accent line for depth */}
           <path
             d="M5.5 5.5L17 11L11.5 13L8.5 18.5L5.5 5.5Z"
-            fill="#262626"
-            opacity="0.4"
+            fill="#2563EB"
+            opacity="0.6"
           />
         </svg>
       </motion.div>
@@ -127,7 +127,7 @@ export function CustomCursor() {
           onAnimationComplete={() => {
             setClicks((prev) => prev.filter((item) => item.id !== c.id));
           }}
-          className="fixed -ml-5 -mt-5 size-10 rounded-full border-2 border-[#FF4D00] bg-[#FFC72E]/30"
+          className="fixed -ml-5 -mt-5 size-10 rounded-full border-2 border-[#2563EB] bg-blue-500/20"
         />
       ))}
     </div>

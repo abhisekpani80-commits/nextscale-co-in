@@ -128,28 +128,28 @@ const PROCESS_STEPS = [
     title: "Discovery & Scope",
     time: "Day 1",
     desc: "We analyze your existing workflow, target customers, and revenue bottleneck to propose the leanest, highest-impact system.",
-    color: "#FFC72E",
+    color: "#2563EB",
   },
   {
     step: "02",
     title: "Rapid Build & Copy",
     time: "Days 2–4",
     desc: "We write conversion copy, design custom interfaces, and code the full Next.js site with sub-second performance.",
-    color: "#FFB7C5",
+    color: "#38BDF8",
   },
   {
     step: "03",
     title: "AI Training & Integrations",
     time: "Days 5–6",
     desc: "We tune AI prompts on your FAQs, connect WhatsApp API webhooks, and test booking calendar synchronizations.",
-    color: "#9DD9FF",
+    color: "#60A5FA",
   },
   {
     step: "04",
     title: "Launch & Code Handover",
     time: "Day 7",
     desc: "We point your domain, run 95+ speed audits, and hand over full repository ownership with zero ongoing lock-ins.",
-    color: "#B8E986",
+    color: "#1D4ED8",
   },
 ];
 
@@ -157,7 +157,7 @@ const INDUSTRY_PLAYBOOKS = [
   {
     icon: Stethoscope,
     title: "Clinics & Healthcare",
-    color: "#FFC72E",
+    color: "#2563EB",
     problem: "High no-show rates & missed patient queries after clinic hours.",
     solution: "24/7 WhatsApp AI triage + instant slot booking + SMS reminder sequences.",
     impact: "+40% booked consultations, -55% no-shows",
@@ -165,7 +165,7 @@ const INDUSTRY_PLAYBOOKS = [
   {
     icon: Building2,
     title: "Real Estate & Builders",
-    color: "#9DD9FF",
+    color: "#38BDF8",
     problem: "Sales teams overwhelmed calling unverified, low-budget tire kickers.",
     solution: "Interactive property catalogs + autonomous budget scoring + CRM sync.",
     impact: "3.2x verified site visits, zero manual data entry",
@@ -173,7 +173,7 @@ const INDUSTRY_PLAYBOOKS = [
   {
     icon: Scissors,
     title: "Salons & Studios",
-    color: "#FFB7C5",
+    color: "#60A5FA",
     problem: "Constant phone interruptions during client appointments.",
     solution: "WhatsApp self-service booking bot + automated Google review collector.",
     impact: "+2.5x 5-star Google reviews in 60 days",
@@ -181,7 +181,7 @@ const INDUSTRY_PLAYBOOKS = [
   {
     icon: Rocket,
     title: "Startups & B2B",
-    color: "#B8E986",
+    color: "#1D4ED8",
     problem: "Slow MVP launches and poor conversion rates on paid ad traffic.",
     solution: "High-speed custom Next.js landing pages + interactive ROI calculators.",
     impact: "Live in 7 days with sub-second page loads",
@@ -223,7 +223,7 @@ const GUARANTEES = [
 
 export default function ServicesPage() {
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden pt-16 sm:pt-20">
       <JsonLd
         schema={[
           breadcrumbSchema([
@@ -234,19 +234,19 @@ export default function ServicesPage() {
       />
 
       {/* Marquee Ticker */}
-      <div className="border-b-2 border-[#141414] bg-[#FFC72E] py-2.5 overflow-hidden">
-        <div className="animate-marquee flex items-center gap-8 whitespace-nowrap font-display text-xs font-black uppercase tracking-[0.12em] text-[#141414]">
+      <div className="border-b border-slate-200 bg-blue-50/80 py-2.5 overflow-hidden">
+        <div className="animate-marquee flex items-center gap-8 whitespace-nowrap font-mono text-xs font-bold uppercase tracking-wider text-blue-900">
           {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
             <span key={i} className="flex items-center gap-3">
               <span>{item}</span>
-              <span className="size-1.5 rounded-full bg-[#141414]" />
+              <span className="size-1.5 rounded-full bg-blue-600" />
             </span>
           ))}
         </div>
       </div>
 
       {/* Hero Section */}
-      <section className="relative border-b-2 border-[#141414] bg-[#FAF3E5] px-5 py-16 sm:px-8 sm:py-24 overflow-hidden">
+      <section className="relative border-b border-slate-200 bg-slate-50/40 px-5 py-16 sm:px-8 sm:py-24 overflow-hidden">
         {/* Interactive Physics DotGrid Backdrop from ReactBits */}
         <DotGridBackdrop />
 
@@ -254,20 +254,20 @@ export default function ServicesPage() {
           <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_.9fr]">
             <div>
               <div className="flex flex-wrap items-center gap-3 mb-6">
-                <span className="inline-flex items-center gap-2 rounded-full border-2 border-[#141414] bg-[#FF4D00] px-3.5 py-1.5 font-display text-xs font-black uppercase text-[#FAF3E5] shadow-[3px_3px_0_#141414]">
+                <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1.5 font-mono text-xs font-bold text-blue-700 shadow-sm">
                   <Sparkles className="size-3.5" /> What We Build
                 </span>
-                <span className="font-display text-xs font-black uppercase tracking-[0.14em] text-[#5B5146]">
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-slate-500">
                   Modern Digital Systems
                 </span>
               </div>
 
-              <h1 className="font-display text-[clamp(3rem,7vw,6.5rem)] font-black uppercase leading-[0.88] tracking-[-0.07em]">
+              <h1 className="font-display text-[clamp(2.8rem,6.5vw,5.5rem)] font-black leading-[1.05] tracking-tight text-slate-900">
                 Digital engines <br />
-                built for <span className="text-[#FF4D00]">revenue.</span>
+                built for <span className="text-blue-600">revenue.</span>
               </h1>
 
-              <p className="mt-6 max-w-2xl text-lg font-medium leading-7 text-[#141414] sm:text-xl">
+              <p className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-slate-600 sm:text-xl">
                 From blazing-fast Next.js websites to 24/7 WhatsApp AI receptionists — we replace bloated agency retainers with lean, automated customer machines that work.
               </p>
 
@@ -276,13 +276,13 @@ export default function ServicesPage() {
                   href={waLink("Hi Next Scale! I'm reviewing your services and would like to discuss a project for my business.")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#141414] bg-[#141414] px-6 py-3.5 font-display text-xs font-black uppercase text-[#FAF3E5] shadow-[4px_4px_0_#FF4D00] transition hover:-translate-y-1 hover:bg-[#FF4D00]"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-blue-500/25 transition hover:-translate-y-0.5 hover:bg-blue-700"
                 >
                   Start a Project <ArrowRight className="size-4" />
                 </a>
                 <a
                   href="#service-finder"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#141414] bg-[#FFFCF5] px-6 py-3.5 font-display text-xs font-black uppercase shadow-[3px_3px_0_#141414] transition hover:-translate-y-1 hover:bg-[#FFC72E]"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-slate-800 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-600 hover:text-blue-600"
                 >
                   Take 60s Fit Quiz ↓
                 </a>
@@ -291,36 +291,36 @@ export default function ServicesPage() {
 
             {/* Quick Proof Cards on Right */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-5 shadow-[5px_5px_0_#141414]">
-                <span className="font-display text-3xl font-black text-[#FF4D00] sm:text-4xl">99/100</span>
-                <span className="mt-1 block font-display text-xs font-black uppercase tracking-[0.05em] text-[#141414]">
+              <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-blue-200 hover:shadow-md">
+                <span className="font-display text-3xl font-black text-blue-600 sm:text-4xl">99/100</span>
+                <span className="mt-1 block font-display text-xs font-bold uppercase tracking-wider text-slate-900">
                   PageSpeed Score
                 </span>
-                <p className="mt-2 text-xs text-[#5B5146]">Sub-second loads that keep visitors from bouncing.</p>
+                <p className="mt-2 text-xs text-slate-500">Sub-second loads that keep visitors from bouncing.</p>
               </div>
 
-              <div className="rounded-2xl border-2 border-[#141414] bg-[#9DD9FF] p-5 shadow-[5px_5px_0_#141414]">
-                <span className="font-display text-3xl font-black text-[#141414] sm:text-4xl">&lt; 2s</span>
-                <span className="mt-1 block font-display text-xs font-black uppercase tracking-[0.05em] text-[#141414]">
+              <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-blue-200 hover:shadow-md">
+                <span className="font-display text-3xl font-black text-blue-600 sm:text-4xl">&lt; 2s</span>
+                <span className="mt-1 block font-display text-xs font-bold uppercase tracking-wider text-slate-900">
                   AI Reply Time
                 </span>
-                <p className="mt-2 text-xs text-[#141414]/80">Instant WhatsApp triage day and night.</p>
+                <p className="mt-2 text-xs text-slate-500">Instant WhatsApp triage day and night.</p>
               </div>
 
-              <div className="rounded-2xl border-2 border-[#141414] bg-[#FFB7C5] p-5 shadow-[5px_5px_0_#141414]">
-                <span className="font-display text-3xl font-black text-[#141414] sm:text-4xl">7 Days</span>
-                <span className="mt-1 block font-display text-xs font-black uppercase tracking-[0.05em] text-[#141414]">
+              <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-blue-200 hover:shadow-md">
+                <span className="font-display text-3xl font-black text-blue-600 sm:text-4xl">7 Days</span>
+                <span className="mt-1 block font-display text-xs font-bold uppercase tracking-wider text-slate-900">
                   Launch Timeline
                 </span>
-                <p className="mt-2 text-xs text-[#141414]/80">Rapid turnaround with full code handover.</p>
+                <p className="mt-2 text-xs text-slate-500">Rapid turnaround with full code handover.</p>
               </div>
 
-              <div className="rounded-2xl border-2 border-[#141414] bg-[#B8E986] p-5 shadow-[5px_5px_0_#141414]">
-                <span className="font-display text-3xl font-black text-[#141414] sm:text-4xl">100%</span>
-                <span className="mt-1 block font-display text-xs font-black uppercase tracking-[0.05em] text-[#141414]">
+              <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-blue-200 hover:shadow-md">
+                <span className="font-display text-3xl font-black text-blue-600 sm:text-4xl">100%</span>
+                <span className="mt-1 block font-display text-xs font-bold uppercase tracking-wider text-slate-900">
                   Code Ownership
                 </span>
-                <p className="mt-2 text-xs text-[#141414]/80">You own everything. No monthly host hostage.</p>
+                <p className="mt-2 text-xs text-slate-500">You own everything. No monthly host hostage.</p>
               </div>
             </div>
           </div>
@@ -328,71 +328,78 @@ export default function ServicesPage() {
       </section>
 
       {/* Core Flagship Systems */}
-      <section className="border-b-2 border-[#141414] bg-[#FFFCF5] px-5 py-20 sm:px-8 sm:py-28">
+      <section className="border-b border-slate-200 bg-white px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1280px]">
           <div className="mb-14">
-            <p className="section-label">Core Capabilities</p>
-            <h2 className="mt-3 max-w-2xl font-display text-[clamp(2.5rem,5.5vw,4.8rem)] font-black uppercase leading-[0.9] tracking-[-0.06em]">
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-blue-600">Core Capabilities</p>
+            <h2 className="mt-3 max-w-2xl font-display text-[clamp(2.2rem,5vw,4.2rem)] font-black leading-[1.05] tracking-tight text-slate-900">
               Three focused systems. <br />
               Zero unnecessary fluff.
             </h2>
-            <p className="mt-4 max-w-xl text-base text-[#5B5146]">
+            <p className="mt-4 max-w-xl text-base text-slate-600">
               Every solution is modular — deploy a standalone website, an AI agent, or connect them into an integrated growth machine.
             </p>
           </div>
 
           <div className="grid gap-8 lg:grid-cols-3">
-            {FLAGSHIP_SERVICES.map((s) => {
+            {FLAGSHIP_SERVICES.map((s, idx) => {
               const Icon = s.icon;
+              const isHighlight = idx === 0;
+
               return (
                 <div
                   key={s.id}
-                  className="flex flex-col justify-between overflow-hidden rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] shadow-[8px_8px_0_#141414] transition-transform duration-200 hover:-translate-y-1"
+                  className={`flex flex-col justify-between overflow-hidden rounded-3xl border transition duration-300 hover:-translate-y-1 ${
+                    isHighlight
+                      ? "border-blue-600 bg-white shadow-xl shadow-blue-500/10"
+                      : "border-slate-200 bg-white shadow-sm hover:border-slate-300 hover:shadow-md"
+                  }`}
                 >
                   {/* Card Top Stripe */}
                   <div>
-                    <div
-                      className="flex items-center justify-between border-b-2 border-[#141414] p-6"
-                      style={{ backgroundColor: s.color }}
-                    >
+                    <div className={`flex items-center justify-between border-b p-6 ${
+                      isHighlight ? "border-blue-100 bg-blue-50/60" : "border-slate-100 bg-slate-50/80"
+                    }`}>
                       <div className="flex items-center gap-3">
-                        <div className="flex size-10 items-center justify-center rounded-xl border-2 border-[#141414] bg-[#FFFCF5] shadow-[2px_2px_0_#141414]">
-                          <Icon className="size-5 text-[#141414]" />
+                        <div className="flex size-10 items-center justify-center rounded-xl bg-blue-50 border border-blue-100 text-blue-600 shadow-sm">
+                          <Icon className="size-5 text-blue-600" />
                         </div>
-                        <span className="font-display text-xs font-black uppercase tracking-[0.14em] text-[#141414]/70">
+                        <span className="font-mono text-xs font-bold uppercase tracking-wider text-blue-600">
                           {s.number} / System
                         </span>
                       </div>
-                      <span className="rounded-full border-2 border-[#141414] bg-[#FFFCF5] px-2.5 py-0.5 font-display text-[0.62rem] font-black uppercase text-[#141414]">
+                      <span className={`rounded-full px-2.5 py-0.5 font-mono text-[0.65rem] font-bold uppercase ${
+                        isHighlight ? "bg-blue-600 text-white" : "border border-slate-200 bg-white text-slate-700"
+                      }`}>
                         {s.tag}
                       </span>
                     </div>
 
                     {/* Content */}
                     <div className="p-6 sm:p-7">
-                      <h3 className="font-display text-3xl font-black uppercase leading-[0.92] tracking-[-0.04em] text-[#141414]">
+                      <h3 className="font-display text-2xl font-bold tracking-tight text-slate-900">
                         {s.title}
                       </h3>
-                      <p className="mt-2 font-display text-xs font-bold uppercase text-[#FF4D00]">
+                      <p className="mt-2 font-mono text-xs font-bold uppercase tracking-wider text-blue-600">
                         {s.kicker}
                       </p>
-                      <p className="mt-4 text-sm leading-6 text-[#5B5146]">{s.desc}</p>
+                      <p className="mt-4 text-xs leading-relaxed text-slate-600">{s.desc}</p>
 
-                      <div className="mt-6 rounded-xl border-2 border-[#141414] bg-[#FAF3E5] p-3 text-center">
-                        <span className="font-display text-[0.68rem] font-black uppercase tracking-[0.1em] text-[#141414]">
+                      <div className="mt-6 rounded-xl border border-slate-200 bg-slate-50/60 p-3 text-center">
+                        <span className="font-mono text-[0.68rem] font-bold uppercase tracking-wider text-slate-700">
                           ⏱ Typical Turnaround: {s.timeline}
                         </span>
                       </div>
 
                       {/* Feature Checklist */}
                       <div className="mt-6">
-                        <p className="font-display text-xs font-black uppercase tracking-[0.1em] text-[#141414]">
+                        <p className="font-mono text-xs font-bold uppercase tracking-wider text-slate-400">
                           What&apos;s Included:
                         </p>
                         <ul className="mt-3 space-y-2.5">
-                          {s.features.map((f, idx) => (
-                            <li key={idx} className="flex items-start gap-2 text-xs font-medium text-[#141414]">
-                              <Check className="size-4 shrink-0 text-[#FF4D00] mt-0.5" />
+                          {s.features.map((f, fIdx) => (
+                            <li key={fIdx} className="flex items-start gap-2 text-xs font-medium text-slate-700">
+                              <Check className="size-4 shrink-0 text-blue-600 mt-0.5" />
                               <span>{f}</span>
                             </li>
                           ))}
@@ -404,7 +411,7 @@ export default function ServicesPage() {
                         {s.tech.map((t) => (
                           <span
                             key={t}
-                            className="rounded-md border border-[#141414] bg-white px-2 py-0.5 font-mono text-[0.62rem] font-bold text-[#141414]"
+                            className="rounded-md border border-slate-200 bg-slate-50 px-2 py-0.5 font-mono text-[0.65rem] font-medium text-slate-600"
                           >
                             {t}
                           </span>
@@ -414,10 +421,14 @@ export default function ServicesPage() {
                   </div>
 
                   {/* Card Bottom CTA */}
-                  <div className="border-t-2 border-[#141414] bg-[#FAF3E5] p-6">
+                  <div className="border-t border-slate-100 bg-slate-50/60 p-6">
                     <Link
                       href={s.href}
-                      className="inline-flex w-full items-center justify-between rounded-full border-2 border-[#141414] bg-[#141414] px-5 py-3 font-display text-xs font-black uppercase text-[#FAF3E5] shadow-[3px_3px_0_#FF4D00] transition hover:-translate-y-0.5 hover:bg-[#FF4D00]"
+                      className={`inline-flex w-full items-center justify-between rounded-xl px-5 py-3 text-xs font-bold uppercase tracking-wider transition ${
+                        isHighlight
+                          ? "bg-blue-600 text-white shadow-md shadow-blue-500/20 hover:bg-blue-700"
+                          : "border border-slate-200 bg-white text-slate-800 hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50/40"
+                      }`}
                     >
                       <span>{s.cta}</span>
                       <ArrowRight className="size-4" />
@@ -431,14 +442,14 @@ export default function ServicesPage() {
       </section>
 
       {/* 4-Step Velocity Process */}
-      <section className="border-b-2 border-[#141414] bg-[#FAF3E5] px-5 py-20 sm:px-8 sm:py-28">
+      <section className="border-b border-slate-200 bg-slate-50/50 px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1280px]">
           <div className="mb-14 text-center">
-            <p className="section-label">How We Deliver</p>
-            <h2 className="mt-3 font-display text-[clamp(2.5rem,5vw,4.5rem)] font-black uppercase leading-[0.9] tracking-[-0.06em]">
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-blue-600">How We Deliver</p>
+            <h2 className="mt-3 font-display text-[clamp(2.2rem,5vw,4.2rem)] font-black leading-[1.05] tracking-tight text-slate-900">
               From idea to live in 7 days.
             </h2>
-            <p className="mx-auto mt-3 max-w-xl text-base text-[#5B5146]">
+            <p className="mx-auto mt-3 max-w-xl text-base text-slate-600">
               A proven, sprint-based delivery model that eliminates agency bureaucracy and ships functional code fast.
             </p>
           </div>
@@ -447,25 +458,22 @@ export default function ServicesPage() {
             {PROCESS_STEPS.map((p) => (
               <div
                 key={p.step}
-                className="relative flex flex-col justify-between rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[6px_6px_0_#141414]"
+                className="relative flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-blue-200 hover:shadow-md"
               >
                 <div>
                   <div className="flex items-center justify-between">
-                    <span
-                      className="inline-flex size-10 items-center justify-center rounded-xl border-2 border-[#141414] font-display text-sm font-black shadow-[2px_2px_0_#141414]"
-                      style={{ backgroundColor: p.color }}
-                    >
+                    <span className="inline-flex size-10 items-center justify-center rounded-xl bg-blue-50 border border-blue-100 font-mono text-sm font-bold text-blue-600">
                       {p.step}
                     </span>
-                    <span className="rounded-full border border-[#141414] bg-white px-2.5 py-0.5 font-mono text-[0.65rem] font-bold uppercase text-[#141414]">
+                    <span className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-0.5 font-mono text-[0.65rem] font-bold uppercase text-slate-600">
                       {p.time}
                     </span>
                   </div>
 
-                  <h3 className="mt-5 font-display text-xl font-black uppercase text-[#141414]">
+                  <h3 className="mt-5 font-display text-lg font-bold text-slate-900">
                     {p.title}
                   </h3>
-                  <p className="mt-2 text-xs leading-5 text-[#5B5146]">{p.desc}</p>
+                  <p className="mt-2 text-xs leading-relaxed text-slate-600">{p.desc}</p>
                 </div>
               </div>
             ))}
@@ -474,14 +482,14 @@ export default function ServicesPage() {
       </section>
 
       {/* Industry Playbooks */}
-      <section className="border-b-2 border-[#141414] bg-[#FFFCF5] px-5 py-20 sm:px-8 sm:py-28">
+      <section className="border-b border-slate-200 bg-white px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1280px]">
           <div className="mb-14">
-            <p className="section-label">Tailored For Your Business</p>
-            <h2 className="mt-3 max-w-2xl font-display text-[clamp(2.5rem,5.5vw,4.5rem)] font-black uppercase leading-[0.9] tracking-[-0.06em]">
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-blue-600">Tailored For Your Business</p>
+            <h2 className="mt-3 max-w-2xl font-display text-[clamp(2.2rem,5vw,4.2rem)] font-black leading-[1.05] tracking-tight text-slate-900">
               Industry-Specific Solutions
             </h2>
-            <p className="mt-4 max-w-xl text-base text-[#5B5146]">
+            <p className="mt-4 max-w-xl text-base text-slate-600">
               Pre-architected workflows built specifically for your sector&apos;s customer acquisition funnel.
             </p>
           </div>
@@ -492,39 +500,36 @@ export default function ServicesPage() {
               return (
                 <div
                   key={ind.title}
-                  className="flex flex-col justify-between rounded-2xl border-2 border-[#141414] bg-[#FAF3E5] p-6 shadow-[5px_5px_0_#141414]"
+                  className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-slate-50/50 p-6 shadow-sm transition hover:bg-white hover:border-blue-200 hover:shadow-md"
                 >
                   <div>
-                    <div
-                      className="flex size-11 items-center justify-center rounded-xl border-2 border-[#141414] shadow-[2px_2px_0_#141414]"
-                      style={{ backgroundColor: ind.color }}
-                    >
-                      <Icon className="size-5 text-[#141414]" />
+                    <div className="flex size-11 items-center justify-center rounded-xl bg-blue-50 border border-blue-100 text-blue-600 shadow-sm">
+                      <Icon className="size-5 text-blue-600" />
                     </div>
 
-                    <h3 className="mt-4 font-display text-lg font-black uppercase text-[#141414]">
+                    <h3 className="mt-4 font-display text-lg font-bold text-slate-900">
                       {ind.title}
                     </h3>
 
                     <div className="mt-4 space-y-3">
                       <div>
-                        <span className="font-display text-[0.62rem] font-black uppercase tracking-wider text-[#FF4D00]">
+                        <span className="font-mono text-[0.62rem] font-bold uppercase tracking-wider text-blue-600">
                           The Bottleneck
                         </span>
-                        <p className="text-xs text-[#5B5146] mt-0.5">{ind.problem}</p>
+                        <p className="text-xs text-slate-500 mt-0.5">{ind.problem}</p>
                       </div>
 
                       <div>
-                        <span className="font-display text-[0.62rem] font-black uppercase tracking-wider text-[#141414]">
+                        <span className="font-mono text-[0.62rem] font-bold uppercase tracking-wider text-slate-800">
                           The Next Scale Fix
                         </span>
-                        <p className="text-xs font-semibold text-[#141414] mt-0.5">{ind.solution}</p>
+                        <p className="text-xs font-medium text-slate-700 mt-0.5">{ind.solution}</p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="mt-6 rounded-xl border border-[#141414] bg-white p-2.5 text-center">
-                    <span className="font-display text-[0.65rem] font-black uppercase text-[#141414]">
+                  <div className="mt-6 rounded-xl border border-blue-100 bg-blue-50/60 p-2.5 text-center">
+                    <span className="font-mono text-[0.65rem] font-bold uppercase tracking-wider text-blue-700">
                       ⚡ {ind.impact}
                     </span>
                   </div>
@@ -536,15 +541,15 @@ export default function ServicesPage() {
       </section>
 
       {/* Interactive Service Fit Finder Container */}
-      <section id="service-finder" className="border-b-2 border-[#141414] bg-[#FAF3E5] px-5 py-20 sm:px-8 sm:py-28">
+      <section id="service-finder" className="border-b border-slate-200 bg-slate-50/50 px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1000px]">
           <div className="mb-10 text-center">
-            <p className="section-label">Find Your Best Fit</p>
-            <h2 className="mt-3 font-display text-[clamp(2.2rem,5vw,4.2rem)] font-black uppercase leading-[0.9] tracking-[-0.06em]">
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-blue-600">Find Your Best Fit</p>
+            <h2 className="mt-3 font-display text-[clamp(2.2rem,5vw,4.2rem)] font-black leading-[1.05] tracking-tight text-slate-900">
               Answer 3 Quick Questions. <br />
               Get an Instant Recommendation.
             </h2>
-            <p className="mx-auto mt-3 max-w-lg text-base text-[#5B5146]">
+            <p className="mx-auto mt-3 max-w-lg text-base text-slate-600">
               No sales pressure. Let our interactive fit finder suggest the right scope for your immediate goals.
             </p>
           </div>
@@ -553,11 +558,11 @@ export default function ServicesPage() {
       </section>
 
       {/* The Next Scale Guarantees Grid */}
-      <section className="border-b-2 border-[#141414] bg-[#FFFCF5] px-5 py-20 sm:px-8 sm:py-28">
+      <section className="border-b border-slate-200 bg-white px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1280px]">
           <div className="mb-14 text-center">
-            <p className="section-label">Our Commitments</p>
-            <h2 className="mt-3 font-display text-[clamp(2.5rem,5vw,4.5rem)] font-black uppercase leading-[0.9] tracking-[-0.06em]">
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-blue-600">Our Commitments</p>
+            <h2 className="mt-3 font-display text-[clamp(2.2rem,5vw,4.2rem)] font-black leading-[1.05] tracking-tight text-slate-900">
               What You Always Get With Us
             </h2>
           </div>
@@ -568,15 +573,15 @@ export default function ServicesPage() {
               return (
                 <div
                   key={g.title}
-                  className="rounded-2xl border-2 border-[#141414] bg-[#FAF3E5] p-6 shadow-[5px_5px_0_#141414]"
+                  className="rounded-2xl border border-slate-200 bg-slate-50/50 p-6 shadow-sm transition hover:border-blue-200 hover:shadow-md"
                 >
-                  <div className="flex size-10 items-center justify-center rounded-xl border-2 border-[#141414] bg-[#FFC72E] shadow-[2px_2px_0_#141414]">
-                    <Icon className="size-5 text-[#141414]" />
+                  <div className="flex size-11 items-center justify-center rounded-xl bg-blue-50 border border-blue-100 text-blue-600 shadow-sm">
+                    <Icon className="size-5 text-blue-600" />
                   </div>
-                  <h3 className="mt-4 font-display text-lg font-black uppercase text-[#141414]">
+                  <h3 className="mt-4 font-display text-lg font-bold text-slate-900">
                     {g.title}
                   </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-[#5B5146]">{g.desc}</p>
+                  <p className="mt-2 text-xs leading-relaxed text-slate-600">{g.desc}</p>
                 </div>
               );
             })}
@@ -585,15 +590,15 @@ export default function ServicesPage() {
       </section>
 
       {/* Bottom CTA Banner */}
-      <section className="bg-[#141414] px-5 py-20 text-[#FAF3E5] sm:px-8 sm:py-28">
+      <section className="bg-[#0B0F19] px-5 py-20 text-white sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1000px] text-center">
-          <span className="font-display text-xs font-black uppercase tracking-[0.2em] text-[#FFC72E]">
+          <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-sky-400">
             Ready To Upgrade Your Digital System?
           </span>
-          <h2 className="mt-4 font-display text-[clamp(2.8rem,7vw,6.5rem)] font-black uppercase leading-[0.88] tracking-[-0.07em]">
-            Let&apos;s build something <span className="text-[#FF4D00]">unstoppable.</span>
+          <h2 className="mt-4 font-display text-[clamp(2.5rem,6.5vw,5.5rem)] font-black leading-[1.05] tracking-tight text-white">
+            Let&apos;s build something <span className="text-blue-400">unstoppable.</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-base text-[#FAF3E5]/70 sm:text-lg">
+          <p className="mx-auto mt-6 max-w-xl text-base text-slate-300 sm:text-lg">
             Tell us about your business on WhatsApp and we&apos;ll share a concrete scope proposal within 24 hours.
           </p>
 
@@ -602,13 +607,13 @@ export default function ServicesPage() {
               href={waLink("Hi Next Scale! I'd like to talk through your services and see which plan fits my business.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border-2 border-[#FFC72E] bg-[#FFC72E] px-7 py-3.5 font-display text-xs font-black uppercase text-[#141414] shadow-[4px_4px_0_#FF4D00] transition hover:-translate-y-1 hover:bg-[#FF4D00] hover:text-white"
+              className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-blue-500/25 transition hover:-translate-y-0.5 hover:bg-blue-700"
             >
               <PhoneCall className="size-4" /> Chat on WhatsApp Directly
             </a>
             <Link
               href="/pricing"
-              className="inline-flex items-center gap-2 rounded-full border-2 border-[#FAF3E5]/40 bg-white/5 px-7 py-3.5 font-display text-xs font-black uppercase text-[#FAF3E5] transition hover:bg-white/10"
+              className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-white/5 px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-white transition hover:bg-white/10"
             >
               View Transparent Pricing →
             </Link>

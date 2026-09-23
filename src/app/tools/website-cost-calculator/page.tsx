@@ -91,7 +91,7 @@ export default function WebsiteCostCalculatorPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF3E5] text-[#141414] pb-24">
+    <div className="min-h-screen bg-slate-50/40 text-slate-900 pb-24">
       <JsonLd
         schema={[
           toolSchema,
@@ -108,7 +108,7 @@ export default function WebsiteCostCalculatorPage() {
         kicker="Free Interactive Tool"
         title={
           <>
-            Website Cost <span className="text-[#FF4D00]">Calculator India</span>
+            Website Cost <span className="text-blue-600">Calculator India</span>
           </>
         }
         description="Estimate real development cost, sprint delivery timeline, and feature breakdown for your custom Next.js website. 100% source code ownership, zero agency markup."
@@ -117,19 +117,19 @@ export default function WebsiteCostCalculatorPage() {
       <main className="mx-auto max-w-5xl px-4 py-8 sm:py-14">
         <div className="grid gap-8 lg:grid-cols-[3fr_2fr]">
           {/* Controls */}
-          <div className="rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[6px_6px_0px_#141414] sm:p-8">
-            <div className="flex items-center gap-2 mb-6">
-              <span className="rounded-full bg-[#FFC72E] p-2 border border-[#141414]">
-                <Laptop className="size-4.5 text-[#141414]" />
+          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="rounded-xl bg-blue-50 p-2.5 border border-blue-100 text-blue-600">
+                <Laptop className="size-5" />
               </span>
-              <h2 className="font-heading text-xl font-black text-[#141414]">
+              <h2 className="font-display text-xl font-bold text-slate-900">
                 Select Your Project Requirements
               </h2>
             </div>
 
             {/* Page Count */}
             <div className="mb-6">
-              <label className="block text-xs font-black uppercase tracking-wider text-[#5B5146] mb-2">
+              <label className="block font-mono text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
                 Number of Pages / Views
               </label>
               <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
@@ -143,16 +143,16 @@ export default function WebsiteCostCalculatorPage() {
                     key={item.id}
                     type="button"
                     onClick={() => setPages(item.id)}
-                    className={`rounded-xl border-2 p-3 text-left transition-all ${
+                    className={`rounded-xl border p-3 text-left transition-all ${
                       pages === item.id
-                        ? "border-[#141414] bg-[#FFC72E] shadow-[2px_2px_0px_#141414]"
-                        : "border-[#141414]/20 bg-[#FAF3E5] hover:border-[#141414]"
+                        ? "border-blue-600 bg-blue-50/80 shadow-sm"
+                        : "border-slate-200 bg-slate-50/50 hover:border-slate-300"
                     }`}
                   >
-                    <span className="block font-heading text-xs font-black text-[#141414]">
+                    <span className="block font-display text-xs font-bold text-slate-900">
                       {item.label}
                     </span>
-                    <span className="block text-[10px] text-[#5B5146]">{item.sub}</span>
+                    <span className="block text-[10px] text-slate-500">{item.sub}</span>
                   </button>
                 ))}
               </div>
@@ -160,7 +160,7 @@ export default function WebsiteCostCalculatorPage() {
 
             {/* Addon Features */}
             <div className="space-y-3">
-              <label className="block text-xs font-black uppercase tracking-wider text-[#5B5146]">
+              <label className="block font-mono text-xs font-bold uppercase tracking-wider text-slate-500">
                 Add-on Features &amp; Modules
               </label>
 
@@ -197,31 +197,31 @@ export default function WebsiteCostCalculatorPage() {
                 <div
                   key={idx}
                   onClick={() => addon.setter(!addon.state)}
-                  className={`flex cursor-pointer items-start gap-3 rounded-2xl border-2 p-4 transition-all ${
+                  className={`flex cursor-pointer items-start gap-3 rounded-2xl border p-4 transition-all ${
                     addon.state
-                      ? "border-[#141414] bg-[#FAF3E5] shadow-[2px_2px_0px_#141414]"
-                      : "border-[#141414]/20 bg-white hover:border-[#141414]/50"
+                      ? "border-blue-500 bg-blue-50/40 shadow-sm"
+                      : "border-slate-200 bg-white hover:border-slate-300"
                   }`}
                 >
                   <div
-                    className={`mt-0.5 grid size-5 shrink-0 place-items-center rounded border-2 ${
+                    className={`mt-0.5 grid size-5 shrink-0 place-items-center rounded border transition-colors ${
                       addon.state
-                        ? "border-[#141414] bg-[#FF4D00] text-white"
-                        : "border-[#141414]/30 bg-transparent"
+                        ? "border-blue-600 bg-blue-600 text-white"
+                        : "border-slate-300 bg-white"
                     }`}
                   >
                     {addon.state && <Check className="size-3 stroke-[3]" />}
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between">
-                      <span className="font-heading text-xs font-black text-[#141414]">
+                      <span className="font-display text-xs font-bold text-slate-900">
                         {addon.label}
                       </span>
-                      <span className="font-mono text-xs font-black text-[#FF4D00]">
+                      <span className="font-mono text-xs font-bold text-blue-600">
                         {addon.price}
                       </span>
                     </div>
-                    <p className="mt-1 text-xs text-[#5B5146]">{addon.desc}</p>
+                    <p className="mt-1 text-xs text-slate-500">{addon.desc}</p>
                   </div>
                 </div>
               ))}
@@ -230,38 +230,38 @@ export default function WebsiteCostCalculatorPage() {
 
           {/* Results Summary Box */}
           <div className="flex flex-col gap-6">
-            <div className="rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[6px_6px_0px_#141414] sm:p-8">
-              <span className="text-xs font-black uppercase tracking-wider text-[#FF4D00]">
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+              <span className="font-mono text-xs font-bold uppercase tracking-wider text-blue-600">
                 Estimated Project Scope
               </span>
 
               <div className="mt-4">
-                <span className="text-xs font-bold text-[#5B5146]">Estimated Investment</span>
-                <div className="font-heading text-4xl font-black text-[#141414] sm:text-5xl">
+                <span className="text-xs font-medium text-slate-500">Estimated Investment</span>
+                <div className="font-display text-4xl font-black text-slate-900 sm:text-5xl">
                   ₹{cost.toLocaleString("en-IN")}
                 </div>
-                <p className="text-xs text-[#5B5146] mt-1">One-time fee • 100% Source Code Ownership</p>
+                <p className="text-xs text-slate-500 mt-1">One-time fee • 100% Source Code Ownership</p>
               </div>
 
-              <div className="mt-6 divide-y divide-[#141414]/10 rounded-2xl border-2 border-[#141414] bg-[#FAF3E5] p-4 text-xs font-bold">
+              <div className="mt-6 divide-y divide-slate-100 rounded-2xl border border-slate-200 bg-slate-50/50 p-4 text-xs font-medium">
                 <div className="flex items-center justify-between py-2">
-                  <span className="text-[#5B5146]">Delivery Velocity:</span>
-                  <span className="text-[#141414] font-black flex items-center gap-1">
-                    <Clock className="size-3.5 text-[#FF4D00]" />
+                  <span className="text-slate-500">Delivery Velocity:</span>
+                  <span className="text-slate-900 font-bold flex items-center gap-1">
+                    <Clock className="size-3.5 text-blue-600" />
                     {days} Business Days
                   </span>
                 </div>
                 <div className="flex items-center justify-between py-2">
-                  <span className="text-[#5B5146]">Tech Stack:</span>
-                  <span className="text-[#141414]">Next.js 16 • React 19 • Tailwind</span>
+                  <span className="text-slate-500">Tech Stack:</span>
+                  <span className="text-slate-900 font-medium">Next.js 16 • React 19 • Tailwind</span>
                 </div>
                 <div className="flex items-center justify-between py-2">
-                  <span className="text-[#5B5146]">Hosting &amp; Domain:</span>
-                  <span className="text-[#0F6838]">Cloudflare Edge + SSL Included</span>
+                  <span className="text-slate-500">Hosting &amp; Domain:</span>
+                  <span className="text-emerald-600 font-semibold">Cloudflare Edge + SSL Included</span>
                 </div>
                 <div className="flex items-center justify-between py-2">
-                  <span className="text-[#5B5146]">Ongoing Lock-in:</span>
-                  <span className="text-[#0F6838]">₹0 / month (Zero Hostage Fees)</span>
+                  <span className="text-slate-500">Ongoing Lock-in:</span>
+                  <span className="text-emerald-600 font-semibold">₹0 / month (Zero Hostage Fees)</span>
                 </div>
               </div>
 
@@ -273,28 +273,28 @@ export default function WebsiteCostCalculatorPage() {
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl border-2 border-[#141414] bg-[#25D366] py-3.5 text-xs font-black text-[#141414] shadow-[3px_3px_0px_#141414] transition-all hover:bg-[#1ebd5a]"
+                className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-md shadow-blue-500/20 transition hover:bg-blue-700 hover:-translate-y-0.5"
               >
                 <MessageCircle className="size-4" />
                 Claim This Scope on WhatsApp
               </a>
 
-              <p className="mt-3 text-center text-[11px] text-[#5B5146]">
+              <p className="mt-3 text-center font-mono text-[11px] text-slate-400">
                 Talk directly with founder Abhisek Pani • No sales reps
               </p>
             </div>
 
             {/* Related Research Link */}
-            <div className="rounded-2xl border-2 border-[#141414] bg-[#FAF3E5] p-5 shadow-[3px_3px_0px_#141414]">
-              <h3 className="font-heading text-xs font-black uppercase tracking-wider text-[#141414] mb-1">
+            <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+              <h3 className="font-display text-xs font-bold uppercase tracking-wider text-slate-900 mb-1">
                 Read the 2026 Market Pricing Report
               </h3>
-              <p className="text-xs text-[#5B5146] mb-3">
+              <p className="text-xs text-slate-500 mb-3">
                 See how traditional Indian agencies overcharge for slow WordPress sites vs Next.js standards.
               </p>
               <Link
                 href="/resources/research/india-website-pricing-report-2026"
-                className="inline-flex items-center gap-1 text-xs font-black text-[#FF4D00] hover:underline"
+                className="inline-flex items-center gap-1 font-mono text-xs font-bold text-blue-600 hover:underline"
               >
                 <span>Read India Website Pricing Report 2026</span>
                 <ArrowRight className="size-3" />

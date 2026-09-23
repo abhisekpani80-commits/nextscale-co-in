@@ -7,24 +7,16 @@ import {
   ArrowRight,
   Globe,
   Zap,
-  TrendingUp,
   Bot,
-  Shield,
   Clock,
   Users,
   Sparkles,
   Move,
-  Check,
   Code2,
   Rocket,
   Terminal,
   Star,
-  ExternalLink,
   Flame,
-  Award,
-  BookOpen,
-  MapPin,
-  HeartHandshake,
   Compass,
   PhoneCall,
   User,
@@ -52,13 +44,13 @@ function GithubIcon({ className }: { className?: string }) {
   );
 }
 
-type Sticker = { id: string; label: string; x: number; y: number; rotate: number; color: string };
+type Sticker = { id: string; label: string; x: number; y: number; rotate: number; bg: string; text: string; border: string };
 
 const aboutStickers: Sticker[] = [
-  { id: "founder", label: "FOUNDER-LED ✦", x: 25, y: 12, rotate: -4, color: "#FF4D00" },
-  { id: "handover", label: "100% CODE OWNERSHIP 🔒", x: 6, y: 32, rotate: 6, color: "#FFC72E" },
-  { id: "speed", label: "7-DAY SPRINT 🚀", x: 92, y: 18, rotate: -5, color: "#B8E986" },
-  { id: "no-bs", label: "ZERO JARGON ⚡", x: 10, y: 84, rotate: 4, color: "#FFB7C5" },
+  { id: "founder", label: "FOUNDER-LED ✦", x: 25, y: 12, rotate: -4, bg: "bg-blue-600", text: "text-white", border: "border-blue-700" },
+  { id: "handover", label: "100% CODE OWNERSHIP 🔒", x: 6, y: 32, rotate: 6, bg: "bg-sky-500", text: "text-white", border: "border-sky-600" },
+  { id: "speed", label: "7-DAY SPRINT 🚀", x: 92, y: 18, rotate: -5, bg: "bg-blue-700", text: "text-white", border: "border-blue-800" },
+  { id: "no-bs", label: "ZERO JARGON ⚡", x: 10, y: 84, rotate: 4, bg: "bg-slate-900", text: "text-white", border: "border-slate-800" },
 ];
 
 function DraggableSticker({
@@ -104,13 +96,12 @@ function DraggableSticker({
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       onPointerCancel={handlePointerUp}
-      className={`absolute z-20 hidden touch-none select-none rounded-full border-2 border-[#141414] px-3.5 py-1.5 font-display text-[0.66rem] font-black tracking-[0.1em] shadow-[3px_3px_0_#141414] outline-none transition-shadow sm:block ${
-        dragging ? "cursor-grabbing shadow-[1px_1px_0_#141414]" : "cursor-grab"
+      className={`absolute z-20 hidden touch-none select-none rounded-full border px-3.5 py-1.5 font-mono text-[0.66rem] font-bold tracking-wider shadow-md outline-none transition-shadow sm:block ${sticker.bg} ${sticker.text} ${sticker.border} ${
+        dragging ? "cursor-grabbing shadow-lg" : "cursor-grab"
       }`}
       style={{
         left: `${sticker.x}%`,
         top: `${sticker.y}%`,
-        backgroundColor: sticker.color,
         transform: `translate(-50%, -50%) rotate(${sticker.rotate}deg)`,
       }}
     >
@@ -134,7 +125,6 @@ const ANTI_AGENCY_PRINCIPLES = [
     number: "01",
     title: "Direct Engineer Access",
     tag: "No Telephone Games",
-    color: "#FFC72E",
     icon: Users,
     desc: "You never speak with junior account managers or sales reps who know nothing about code. You collaborate directly with the engineers building your systems over WhatsApp.",
   },
@@ -142,7 +132,6 @@ const ANTI_AGENCY_PRINCIPLES = [
     number: "02",
     title: "100% Full Code Ownership",
     tag: "Zero Lock-In",
-    color: "#9DD9FF",
     icon: Code2,
     desc: "We don't hold your website or bot hostage on proprietary hosting. Upon launch, you receive full GitHub repository handover, DNS keys, and database credentials. You own everything.",
   },
@@ -150,7 +139,6 @@ const ANTI_AGENCY_PRINCIPLES = [
     number: "03",
     title: "AI Built Into The Core",
     tag: "Not A Gimmick",
-    color: "#FFB7C5",
     icon: Bot,
     desc: "We don't slap generic ChatGPT wrappers on static websites. We integrate enterprise Meta Cloud WhatsApp APIs, fine-tuned LLM prompts, and calendar booking webhooks tailored to your business.",
   },
@@ -158,7 +146,6 @@ const ANTI_AGENCY_PRINCIPLES = [
     number: "04",
     title: "7-Day Sprint Delivery",
     tag: "Speed As A Feature",
-    color: "#B8E986",
     icon: Zap,
     desc: "Traditional agencies take 3 to 6 months to ship a website. We plan, write conversion copy, develop in Next.js 16, and deploy your live system within 5 to 7 business days.",
   },
@@ -168,74 +155,65 @@ const TECH_ARSENAL = [
   {
     name: "Next.js 16 & React 19",
     tag: "Frontend Core",
-    color: "#FFC72E",
     icon: Flame,
     desc: "Turbopack bundling, React Server Components, and zero-layout-shift rendering for sub-second page loads and 99/100 PageSpeed scores.",
   },
   {
     name: "Meta Cloud WhatsApp API",
     tag: "Automation Engine",
-    color: "#9DD9FF",
     icon: Bot,
     desc: "Official enterprise WhatsApp webhook infrastructure for 24/7 autonomous triage, appointment scheduling, and customer inquiries.",
   },
   {
     name: "Claude 3.7 & OpenAI",
     tag: "Intelligence Layer",
-    color: "#FFB7C5",
     icon: Sparkles,
     desc: "State-of-the-art LLMs fine-tuned with domain context, booking logic, and custom guardrails for real commercial workflows.",
   },
   {
     name: "Supabase & Postgres",
     tag: "Data & Storage",
-    color: "#B8E986",
     icon: Code2,
     desc: "Scalable vector embeddings, instant webhook triggers, automated backups, and row-level security for appointment logs.",
   },
   {
     name: "Tailwind CSS v4",
     tag: "Design System",
-    color: "#FFC72E",
     icon: Star,
-    desc: "Modern CSS engine producing ultra-lightweight stylesheets with zero runtime penalty and responsive neo-brutalist perfection.",
+    desc: "Clean utility architecture, fluid responsive sizing, dark/light token optimization, and zero CSS bundle bloat.",
   },
   {
-    name: "Vercel Edge Network",
-    tag: "Global Infrastructure",
-    color: "#9DD9FF",
+    name: "Vercel & Cloudflare",
+    tag: "Edge Delivery",
     icon: Globe,
-    desc: "Global edge CDN delivering sub-50ms latency across 100+ worldwide regions with automatic SSL, caching, and 99.9% uptime.",
+    desc: "Global CDN caching, sub-50ms TTFB across Asia, Europe, and the Americas, with automatic DDoS mitigation and 99.99% uptime.",
   },
 ];
 
 const LAB_PRODUCTS = [
   {
     name: "ExamOS",
-    category: "AI EdTech Platform",
-    metric: "500+ Daily Active Learners",
-    desc: "Full-stack AI test generator and real-time assessment platform engineered for Indian competitive exams with instant grading and dynamic feedback.",
-    color: "#FFC72E",
-    tag: "Live Product",
+    tag: "EdTech AI",
+    metric: "3,000+ Mock Tests Generated",
+    desc: "Autonomous competitive exam simulation engine for Indian students. Built with Next.js, Supabase, and dynamic question synthesis.",
     link: "/products/examos",
+    category: "In-House SaaS",
   },
   {
     name: "Aura",
-    category: "Conversational Voice AI",
-    metric: "320ms Voice Latency",
-    desc: "Ultra-low-latency real-time voice fluency coach designed for professional communication and language mastery with natural speech synthesis.",
-    color: "#9DD9FF",
-    tag: "Voice AI Lab",
+    tag: "Marketing AI",
+    metric: "400+ Campaigns Generated",
+    desc: "Instant aesthetic visual and copywriting studio for local retail brands, restaurants, and aesthetics clinics.",
     link: "/products/aura",
+    category: "In-House SaaS",
   },
   {
-    name: "Lumière Triage Bot",
-    category: "Healthcare Automation",
-    metric: "+40% Bookings, -55% No-Shows",
-    desc: "Autonomous 24/7 WhatsApp AI receptionist deployed for dermatology and aesthetic clinics, handling FAQs and syncing with doctor calendars.",
-    color: "#B8E986",
-    tag: "Flagship Client Engine",
-    link: "/case-studies/lumiere-skin-clinic",
+    name: "TriageBot Engine",
+    tag: "Enterprise Core",
+    metric: "Sub-30s Automated Booking",
+    desc: "Our proprietary WhatsApp webhook state-machine that powers client triage, payment routing, and Google Calendar sync.",
+    link: "/services/ai-agents",
+    category: "Internal Infrastructure",
   },
 ];
 
@@ -244,19 +222,16 @@ const MILESTONES = [
     year: "2024",
     title: "The Studio Genesis",
     desc: "Next Scale was founded in Bhubaneswar by Abhisek Pani after witnessing dozens of local and international businesses get overcharged by slow, bloated agencies.",
-    color: "#FFC72E",
   },
   {
     year: "2024 Q3",
     title: "ExamOS & Aura Shipped",
     desc: "Proved our fullstack AI engineering chops by building and shipping ExamOS and Aura in-house, scaling to hundreds of daily users with zero external funding.",
-    color: "#9DD9FF",
   },
   {
     year: "2025",
     title: "50+ Systems Deployed Worldwide",
     desc: "Expanded operations to 8+ countries (India, UAE, UK, USA) serving healthcare clinics, luxury realtors, SaaS founders, and growing enterprises.",
-    color: "#B8E986",
   },
 ];
 
@@ -270,14 +245,14 @@ export function AboutView() {
   };
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden pt-16 sm:pt-20 bg-white text-slate-900">
       {/* Marquee Header Ticker */}
-      <div className="border-b-2 border-[#141414] bg-[#FFC72E] py-2.5 overflow-hidden">
-        <div className="animate-marquee flex items-center gap-8 whitespace-nowrap font-display text-xs font-black uppercase tracking-[0.14em] text-[#141414]">
+      <div className="border-b border-slate-200 bg-blue-50/80 py-2.5 overflow-hidden">
+        <div className="animate-marquee flex items-center gap-8 whitespace-nowrap font-mono text-xs font-bold uppercase tracking-wider text-blue-900">
           {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
             <span key={i} className="flex items-center gap-3">
               <span>{item}</span>
-              <span className="size-1.5 rounded-full bg-[#141414]" />
+              <span className="size-1.5 rounded-full bg-blue-600" />
             </span>
           ))}
         </div>
@@ -286,13 +261,13 @@ export function AboutView() {
       {/* Editorial Hero Section — Distinct Studio Manifesto */}
       <section
         ref={heroRef}
-        className="relative border-b-2 border-[#141414] bg-[#FAF3E5] px-5 py-16 sm:px-8 sm:py-24 overflow-hidden"
+        className="relative border-b border-slate-200 bg-slate-50/60 px-5 py-16 sm:px-8 sm:py-24 overflow-hidden"
       >
         {/* Interactive Physics DotGrid Backdrop from ReactBits */}
         <DotGridBackdrop />
 
-        {/* Ambient Warm Gradient Spotlight */}
-        <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-[320px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,77,0,0.12),transparent_65%)] blur-xl sm:size-[700px] sm:blur-2xl" />
+        {/* Ambient Blue Gradient Spotlight */}
+        <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-[320px] rounded-full bg-blue-500/10 blur-2xl sm:size-[700px] sm:blur-3xl" />
 
         {/* Draggable Editorial Stickers */}
         {stickers.map((s) => (
@@ -306,20 +281,20 @@ export function AboutView() {
             transition={{ duration: 0.6 }}
           >
             <div className="flex flex-wrap items-center gap-2.5 mb-6">
-              <span className="inline-flex items-center gap-1.5 rounded-full border-2 border-[#141414] bg-[#FF4D00] px-3.5 py-1 font-display text-xs font-black uppercase text-[#FAF3E5] shadow-[2.5px_2.5px_0_#141414]">
-                <Compass className="size-3.5" /> Studio Manifesto
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 font-mono text-xs font-semibold text-blue-700 shadow-xs">
+                <Compass className="size-3.5 text-blue-600" /> Studio Manifesto
               </span>
-              <span className="rounded-full border-2 border-[#141414] bg-[#FFFCF5] px-3 py-1 font-display text-xs font-black uppercase text-[#141414] shadow-[2.5px_2.5px_0_#141414]">
+              <span className="rounded-full border border-slate-200 bg-white px-3 py-1 font-mono text-xs font-semibold text-slate-700 shadow-xs">
                 🟢 Est. 2024 · Next Scale Labs
               </span>
             </div>
 
-            <h1 className="max-w-4xl font-display text-[clamp(2.9rem,7.5vw,7rem)] font-black uppercase leading-[0.88] tracking-[-0.07em] text-[#141414]">
+            <h1 className="max-w-4xl font-heading text-4xl font-extrabold uppercase tracking-tight sm:text-6xl md:text-7xl text-slate-900 leading-[1.05]">
               We built the <br />
-              <span className="text-[#FF4D00]">Anti-Agency.</span>
+              <span className="text-blue-600">Anti-Agency.</span>
             </h1>
 
-            <p className="mt-7 max-w-xl text-lg font-medium leading-7 text-[#141414] sm:text-xl">
+            <p className="mt-7 max-w-xl text-lg font-medium leading-relaxed text-slate-600 sm:text-xl">
               Next Scale was founded on one simple rule: <strong>kill the bloated 3-month agency cycle</strong>. We are a sharp engineering studio that designs high-performance websites and deploys 24/7 WhatsApp AI agents in 7 days flat.
             </p>
 
@@ -328,20 +303,20 @@ export function AboutView() {
                 href={waLink("Hi Abhisek! I read the Next Scale studio manifesto and would like to build together.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#141414] bg-[#141414] px-6 py-3.5 font-display text-xs font-black uppercase tracking-[0.06em] text-[#FAF3E5] shadow-[4px_4px_0_#FF4D00] transition hover:-translate-y-1 hover:bg-[#FF4D00]"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3.5 font-display text-xs font-bold uppercase tracking-wider text-white shadow-md shadow-blue-500/20 transition hover:-translate-y-0.5 hover:bg-blue-700"
               >
                 Talk Directly To Founders <ArrowRight className="size-4" />
               </a>
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#141414] bg-[#FFFCF5] px-6 py-3.5 font-display text-xs font-black uppercase tracking-[0.06em] shadow-[3px_3px_0_#141414] transition hover:-translate-y-1 hover:bg-[#FFC72E]"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3.5 font-display text-xs font-bold uppercase tracking-wider text-slate-800 shadow-xs transition hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50/40"
               >
                 Explore Systems <ArrowRight className="size-4" />
               </Link>
             </div>
 
-            <div className="mt-7 hidden items-center gap-2 text-xs font-bold uppercase tracking-[0.1em] text-[#5B5146] sm:flex">
-              <Move className="size-4" /> Stickers are draggable · Swirl mouse over the dot grid ↗
+            <div className="mt-7 hidden items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500 sm:flex">
+              <Move className="size-4 text-blue-600" /> Stickers are draggable · Swirl mouse over the dot grid ↗
             </div>
           </motion.div>
 
@@ -352,30 +327,30 @@ export function AboutView() {
             transition={{ duration: 0.65, delay: 0.1 }}
             className="relative mx-auto w-full max-w-[520px]"
           >
-            <div className="overflow-hidden rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] shadow-[8px_8px_0_#141414]">
+            <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl shadow-blue-900/5">
               {/* Terminal Header */}
-              <div className="flex items-center justify-between border-b-2 border-[#141414] bg-[#141414] px-5 py-3.5 text-[#FAF3E5]">
+              <div className="flex items-center justify-between border-b border-slate-200 bg-slate-900 px-5 py-3.5 text-white">
                 <div className="flex gap-1.5">
-                  <span className="size-2.5 rounded-full bg-[#FF4D00]" />
-                  <span className="size-2.5 rounded-full bg-[#FFC72E]" />
-                  <span className="size-2.5 rounded-full bg-[#B8E986]" />
+                  <span className="size-2.5 rounded-full bg-rose-500" />
+                  <span className="size-2.5 rounded-full bg-amber-500" />
+                  <span className="size-2.5 rounded-full bg-emerald-500" />
                 </div>
-                <div className="flex items-center gap-1.5 rounded-md bg-white/10 px-2.5 py-0.5 font-mono text-[0.65rem] text-[#FAF3E5]">
-                  <Terminal className="size-3 text-[#FFC72E]" />
+                <div className="flex items-center gap-1.5 rounded-md bg-white/10 px-2.5 py-0.5 font-mono text-[0.65rem] text-slate-200">
+                  <Terminal className="size-3 text-sky-400" />
                   <span>STUDIO_DOSSIER_v2.5</span>
                 </div>
               </div>
 
               {/* Dossier Specs */}
               <div className="p-6">
-                <div className="rounded-2xl border-2 border-[#141414] bg-[#FAF3E5] p-5">
-                  <div className="flex items-center justify-between border-b-2 border-[#141414]/15 pb-4">
+                <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-5">
+                  <div className="flex items-center justify-between border-b border-slate-200 pb-4">
                     <div>
-                      <span className="font-mono text-[0.62rem] font-bold uppercase tracking-wider text-[#5B5146]">
+                      <span className="font-mono text-[0.62rem] font-bold uppercase tracking-wider text-blue-600">
                         LEAD ARCHITECT &amp; FOUNDER
                       </span>
-                      <h3 className="font-display text-2xl font-black uppercase text-[#141414]">
-                        <Link href="/about/abhisek-pani" className="hover:text-[#FF4D00] transition-colors">
+                      <h3 className="font-display text-2xl font-bold tracking-tight text-slate-900">
+                        <Link href="/about/abhisek-pani" className="hover:text-blue-600 transition-colors">
                           Abhisek Pani
                         </Link>
                       </h3>
@@ -385,49 +360,49 @@ export function AboutView() {
                         href="https://github.com/abhisekpani80-commits"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex size-9 items-center justify-center rounded-xl border-2 border-[#141414] bg-[#FFFCF5] shadow-[2px_2px_0_#141414] transition hover:bg-[#FFC72E]"
+                        className="flex size-9 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-xs transition hover:text-blue-600 hover:border-blue-300"
                         aria-label="GitHub Profile"
                       >
-                        <GithubIcon className="size-4 text-[#141414]" />
+                        <GithubIcon className="size-4" />
                       </a>
                       <a
                         href="https://linkedin.com/in/abhisekpani"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex size-9 items-center justify-center rounded-xl border-2 border-[#141414] bg-[#FFFCF5] shadow-[2px_2px_0_#141414] transition hover:bg-[#9DD9FF]"
+                        className="flex size-9 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-xs transition hover:text-blue-600 hover:border-blue-300"
                         aria-label="LinkedIn Profile"
                       >
-                        <LinkedinIcon className="size-4 text-[#141414]" />
+                        <LinkedinIcon className="size-4" />
                       </a>
                     </div>
                   </div>
 
                   {/* Key Stats in Dossier */}
                   <div className="mt-4 grid grid-cols-2 gap-3 font-mono text-xs">
-                    <div className="rounded-xl border-2 border-[#141414] bg-[#FFFCF5] p-3">
-                      <span className="block text-[0.6rem] text-[#5B5146] uppercase font-bold">Base Location</span>
-                      <span className="font-display text-sm font-black text-[#141414]">Bhubaneswar, IN</span>
+                    <div className="rounded-xl border border-slate-200 bg-white p-3">
+                      <span className="block text-[0.6rem] text-slate-500 uppercase font-bold">Base Location</span>
+                      <span className="font-display text-sm font-bold text-slate-900">Bhubaneswar, IN</span>
                     </div>
-                    <div className="rounded-xl border-2 border-[#141414] bg-[#FFFCF5] p-3">
-                      <span className="block text-[0.6rem] text-[#5B5146] uppercase font-bold">Global Reach</span>
-                      <span className="font-display text-sm font-black text-[#141414]">8+ Countries</span>
+                    <div className="rounded-xl border border-slate-200 bg-white p-3">
+                      <span className="block text-[0.6rem] text-slate-500 uppercase font-bold">Global Reach</span>
+                      <span className="font-display text-sm font-bold text-slate-900">8+ Countries</span>
                     </div>
-                    <div className="rounded-xl border-2 border-[#141414] bg-[#FFFCF5] p-3">
-                      <span className="block text-[0.6rem] text-[#5B5146] uppercase font-bold">Sprint Speed</span>
-                      <span className="font-display text-sm font-black text-[#FF4D00]">7 Days Live</span>
+                    <div className="rounded-xl border border-slate-200 bg-white p-3">
+                      <span className="block text-[0.6rem] text-slate-500 uppercase font-bold">Sprint Speed</span>
+                      <span className="font-display text-sm font-bold text-blue-600">7 Days Live</span>
                     </div>
-                    <div className="rounded-xl border-2 border-[#141414] bg-[#FFFCF5] p-3">
-                      <span className="block text-[0.6rem] text-[#5B5146] uppercase font-bold">Ownership</span>
-                      <span className="font-display text-sm font-black text-[#141414]">100% Handover</span>
+                    <div className="rounded-xl border border-slate-200 bg-white p-3">
+                      <span className="block text-[0.6rem] text-slate-500 uppercase font-bold">Ownership</span>
+                      <span className="font-display text-sm font-bold text-slate-900">100% Handover</span>
                     </div>
                   </div>
 
                   {/* Core Commitment */}
-                  <div className="mt-4 rounded-xl border-2 border-[#141414] bg-[#141414] p-3.5 text-[#FAF3E5]">
-                    <p className="font-display text-[0.65rem] font-black uppercase tracking-wider text-[#FFC72E]">
+                  <div className="mt-4 rounded-xl border border-slate-200 bg-slate-900 p-3.5 text-white">
+                    <p className="font-mono text-[0.65rem] font-bold uppercase tracking-wider text-sky-400">
                       Studio Philosophy:
                     </p>
-                    <p className="mt-1 text-xs font-medium leading-5 text-[#FAF3E5]/90">
+                    <p className="mt-1 text-xs font-medium leading-relaxed text-slate-300">
                       &ldquo;Code ownership &gt; monthly hostage hosting. Sub-second performance &gt; bloated WordPress themes. Real revenue &gt; vanity agency slides.&rdquo;
                     </p>
                   </div>
@@ -437,7 +412,7 @@ export function AboutView() {
                   href={waLink("Hi Abhisek! I'd like to book a direct discovery call for my business.")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#141414] bg-[#FFC72E] py-3 font-display text-xs font-black uppercase text-[#141414] shadow-[3px_3px_0_#141414] transition hover:bg-[#FF4D00] hover:text-white"
+                  className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 py-3.5 font-display text-xs font-bold uppercase tracking-wider text-white shadow-md shadow-blue-500/20 transition hover:bg-blue-700"
                 >
                   <PhoneCall className="size-3.5" /> Book Direct Line With Founder
                 </a>
@@ -448,7 +423,7 @@ export function AboutView() {
       </section>
 
       {/* Live Animated Metrics Stripe */}
-      <section className="border-b-2 border-[#141414] bg-[#FFC72E] px-5 py-14 sm:px-8 sm:py-18">
+      <section className="border-b border-slate-200 bg-white px-5 py-14 sm:px-8 sm:py-18">
         <Reveal>
           <div className="mx-auto grid max-w-[1280px] grid-cols-2 gap-8 md:grid-cols-4">
             {[
@@ -463,16 +438,16 @@ export function AboutView() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="border-l-2 border-[#141414] pl-5 first:border-l-0 first:pl-0 md:pl-8"
+                className="border-l border-slate-200 pl-5 first:border-l-0 first:pl-0 md:pl-8"
               >
-                <div className="flex size-9 items-center justify-center rounded-xl border-2 border-[#141414] bg-[#141414] text-[#FFC72E] mb-2.5 shadow-[2px_2px_0_#FAF3E5]">
-                  <Icon className="size-4" />
+                <div className="flex size-9 items-center justify-center rounded-xl bg-blue-50 border border-blue-100 text-blue-600 mb-2.5 shadow-xs">
+                  <Icon className="size-4 text-blue-600" />
                 </div>
-                <div className="font-display text-5xl font-black leading-none tracking-[-0.08em] sm:text-6xl text-[#141414]">
+                <div className="font-heading text-4xl font-extrabold leading-none tracking-tight sm:text-5xl text-slate-900">
                   <CountUp to={to} duration={2} />
-                  {suffix}
+                  <span className="text-blue-600">{suffix}</span>
                 </div>
-                <p className="mt-2 font-display text-xs font-black uppercase tracking-[0.06em] text-[#141414]">
+                <p className="mt-2 font-mono text-xs font-semibold uppercase tracking-wider text-slate-500">
                   {label}
                 </p>
               </motion.div>
@@ -482,17 +457,16 @@ export function AboutView() {
       </section>
 
       {/* Official Entities & Directory Hub */}
-      <section className="border-b-2 border-[#141414] bg-[#FAF3E5] px-5 py-14 sm:px-8 sm:py-20">
+      <section className="border-b border-slate-200 bg-slate-50/50 px-5 py-14 sm:px-8 sm:py-20">
         <div className="mx-auto max-w-[1280px]">
           <div className="mb-10 text-center">
-            <p className="section-label mb-2 flex items-center justify-center gap-2">
-              <span className="inline-block size-2.5 rounded-full bg-[#FF4D00]" />
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-2">
               Entity Directory &amp; Knowledge Base
             </p>
-            <h2 className="font-display text-3xl font-black uppercase text-[#141414] sm:text-5xl">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
               Meet The People &amp; The Studio
             </h2>
-            <p className="mx-auto mt-2 max-w-xl text-sm text-[#5B5146]">
+            <p className="mx-auto mt-2 max-w-xl text-sm text-slate-600">
               Explore dedicated entity profiles for founder Abhisek Pani, the Next Scale engineering studio, and official press resources.
             </p>
           </div>
@@ -501,28 +475,28 @@ export function AboutView() {
             {/* Card 1: Founder Entity */}
             <Link
               href="/about/abhisek-pani"
-              className="group flex flex-col justify-between rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[5px_5px_0_#141414] transition hover:-translate-y-1.5 hover:shadow-[7px_7px_0_#FF4D00]"
+              className="group flex flex-col justify-between rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-blue-300 hover:shadow-md"
             >
               <div>
                 <div className="flex items-center justify-between">
-                  <span className="rounded-full bg-[#FFC72E] px-3 py-1 font-display text-xs font-black uppercase text-[#141414] border border-[#141414]">
+                  <span className="rounded-full bg-blue-50 px-3 py-1 font-mono text-xs font-bold uppercase text-blue-700 border border-blue-100">
                     Founder Profile
                   </span>
-                  <div className="grid size-10 place-items-center rounded-xl border-2 border-[#141414] bg-[#FAF3E5] text-[#141414] group-hover:bg-[#FF4D00] group-hover:text-white transition-colors">
+                  <div className="grid size-10 place-items-center rounded-xl bg-slate-50 border border-slate-200 text-slate-700 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                     <User className="size-5" />
                   </div>
                 </div>
 
-                <h3 className="mt-5 font-display text-2xl font-black uppercase text-[#141414]">
+                <h3 className="mt-5 font-display text-2xl font-bold text-slate-900">
                   Abhisek Pani
                 </h3>
-                <p className="mt-1 text-xs font-bold text-[#FF4D00]">Founder &amp; Lead Software Architect</p>
-                <p className="mt-3 text-xs leading-relaxed text-[#5B5146]">
+                <p className="mt-1 text-xs font-semibold text-blue-600">Founder &amp; Lead Software Architect</p>
+                <p className="mt-3 text-xs leading-relaxed text-slate-600">
                   Learn about Abhisek&apos;s story, engineering philosophy, technical stack, flagship products (ExamOS, Aura), and anti-agency doctrine.
                 </p>
               </div>
 
-              <div className="mt-6 flex items-center gap-1 text-xs font-black uppercase text-[#141414] group-hover:text-[#FF4D00]">
+              <div className="mt-6 flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-blue-600 group-hover:text-blue-700">
                 <span>View Founder Profile</span>
                 <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
               </div>
@@ -531,28 +505,28 @@ export function AboutView() {
             {/* Card 2: Company Entity */}
             <Link
               href="/about/next-scale"
-              className="group flex flex-col justify-between rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[5px_5px_0_#141414] transition hover:-translate-y-1.5 hover:shadow-[7px_7px_0_#FFC72E]"
+              className="group flex flex-col justify-between rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-blue-300 hover:shadow-md"
             >
               <div>
                 <div className="flex items-center justify-between">
-                  <span className="rounded-full bg-[#B8E986] px-3 py-1 font-display text-xs font-black uppercase text-[#141414] border border-[#141414]">
+                  <span className="rounded-full bg-blue-50 px-3 py-1 font-mono text-xs font-bold uppercase text-blue-700 border border-blue-100">
                     Company Profile
                   </span>
-                  <div className="grid size-10 place-items-center rounded-xl border-2 border-[#141414] bg-[#FAF3E5] text-[#141414] group-hover:bg-[#FFC72E] transition-colors">
+                  <div className="grid size-10 place-items-center rounded-xl bg-slate-50 border border-slate-200 text-slate-700 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                     <Building2 className="size-5" />
                   </div>
                 </div>
 
-                <h3 className="mt-5 font-display text-2xl font-black uppercase text-[#141414]">
+                <h3 className="mt-5 font-display text-2xl font-bold text-slate-900">
                   Next Scale Studio
                 </h3>
-                <p className="mt-1 text-xs font-bold text-[#FF4D00]">Web Engineering &amp; AI Studio</p>
-                <p className="mt-3 text-xs leading-relaxed text-[#5B5146]">
+                <p className="mt-1 text-xs font-semibold text-blue-600">Web Engineering &amp; AI Studio</p>
+                <p className="mt-3 text-xs leading-relaxed text-slate-600">
                   Discover the company background, 7-day velocity standards, 100% source code ownership guarantee, and industry solutions.
                 </p>
               </div>
 
-              <div className="mt-6 flex items-center gap-1 text-xs font-black uppercase text-[#141414] group-hover:text-[#FF4D00]">
+              <div className="mt-6 flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-blue-600 group-hover:text-blue-700">
                 <span>Explore Studio Profile</span>
                 <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
               </div>
@@ -561,28 +535,28 @@ export function AboutView() {
             {/* Card 3: Press Kit */}
             <Link
               href="/press"
-              className="group flex flex-col justify-between rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[5px_5px_0_#141414] transition hover:-translate-y-1.5 hover:shadow-[7px_7px_0_#141414]"
+              className="group flex flex-col justify-between rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-blue-300 hover:shadow-md"
             >
               <div>
                 <div className="flex items-center justify-between">
-                  <span className="rounded-full bg-[#9DD9FF] px-3 py-1 font-display text-xs font-black uppercase text-[#141414] border border-[#141414]">
+                  <span className="rounded-full bg-slate-100 px-3 py-1 font-mono text-xs font-bold uppercase text-slate-700 border border-slate-200">
                     Media Resources
                   </span>
-                  <div className="grid size-10 place-items-center rounded-xl border-2 border-[#141414] bg-[#FAF3E5] text-[#141414] group-hover:bg-[#9DD9FF] transition-colors">
+                  <div className="grid size-10 place-items-center rounded-xl bg-slate-50 border border-slate-200 text-slate-700 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                     <Newspaper className="size-5" />
                   </div>
                 </div>
 
-                <h3 className="mt-5 font-display text-2xl font-black uppercase text-[#141414]">
+                <h3 className="mt-5 font-display text-2xl font-bold text-slate-900">
                   Press &amp; Media Kit
                 </h3>
-                <p className="mt-1 text-xs font-bold text-[#5B5146]">Bios, Logos &amp; Fact Sheet</p>
-                <p className="mt-3 text-xs leading-relaxed text-[#5B5146]">
+                <p className="mt-1 text-xs font-semibold text-slate-500">Bios, Logos &amp; Fact Sheet</p>
+                <p className="mt-3 text-xs leading-relaxed text-slate-600">
                   Download vector brand logos, copy official founder &amp; company bios, view fast facts, and submit media interview inquiries.
                 </p>
               </div>
 
-              <div className="mt-6 flex items-center gap-1 text-xs font-black uppercase text-[#141414] group-hover:text-[#FF4D00]">
+              <div className="mt-6 flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-blue-600 group-hover:text-blue-700">
                 <span>Access Press Kit</span>
                 <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
               </div>
@@ -592,17 +566,16 @@ export function AboutView() {
       </section>
 
       {/* The 4 Anti-Agency Principles */}
-      <section className="border-b-2 border-[#141414] bg-[#FFFCF5] px-5 py-20 sm:px-8 sm:py-28">
+      <section className="border-b border-slate-200 bg-white px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1280px]">
           <div className="mb-14">
-            <p className="section-label mb-3 flex items-center gap-2">
-              <span className="inline-block size-2.5 rounded-full bg-[#FF4D00]" />
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-2">
               Core Philosophy
             </p>
-            <h2 className="font-display text-[clamp(2.5rem,5.5vw,4.5rem)] font-black uppercase leading-[0.9] tracking-[-0.06em] text-[#141414]">
+            <h2 className="font-display text-[clamp(2.2rem,5vw,4.2rem)] font-bold tracking-tight text-slate-900">
               How We Work Different
             </h2>
-            <p className="mt-4 max-w-xl text-base text-[#5B5146]">
+            <p className="mt-4 max-w-xl text-base text-slate-600">
               Traditional agencies are designed to bill hours and prolong projects. Next Scale is engineered to ship high-impact software fast.
             </p>
           </div>
@@ -613,28 +586,25 @@ export function AboutView() {
               return (
                 <div
                   key={principle.number}
-                  className="flex flex-col justify-between rounded-3xl border-2 border-[#141414] bg-[#FAF3E5] p-6 shadow-[5px_5px_0_#141414] transition hover:-translate-y-1"
+                  className="flex flex-col justify-between rounded-3xl border border-slate-200 bg-slate-50/60 p-6 shadow-sm transition hover:bg-white hover:border-blue-200 hover:shadow-md"
                 >
                   <div>
                     <div className="flex items-center justify-between">
-                      <span className="font-display text-3xl font-black text-[#141414]">
+                      <span className="font-mono text-2xl font-extrabold text-slate-900">
                         {principle.number}
                       </span>
-                      <div
-                        className="flex size-10 items-center justify-center rounded-xl border-2 border-[#141414] shadow-[2px_2px_0_#141414]"
-                        style={{ backgroundColor: principle.color }}
-                      >
-                        <Icon className="size-5 text-[#141414]" />
+                      <div className="flex size-10 items-center justify-center rounded-xl bg-blue-50 border border-blue-100 text-blue-600 shadow-xs">
+                        <Icon className="size-5 text-blue-600" />
                       </div>
                     </div>
 
-                    <h3 className="mt-5 font-display text-xl font-black uppercase leading-[0.95] text-[#141414]">
+                    <h3 className="mt-5 font-display text-xl font-bold text-slate-900">
                       {principle.title}
                     </h3>
-                    <span className="mt-1 block font-mono text-[0.62rem] font-bold uppercase text-[#FF4D00]">
+                    <span className="mt-1 block font-mono text-[0.62rem] font-bold uppercase text-blue-600">
                       ✦ {principle.tag}
                     </span>
-                    <p className="mt-3 text-xs leading-5 text-[#5B5146] font-medium">
+                    <p className="mt-3 text-xs leading-relaxed text-slate-600">
                       {principle.desc}
                     </p>
                   </div>
@@ -646,17 +616,16 @@ export function AboutView() {
       </section>
 
       {/* Technical Arsenal — Deep Tech Matrix */}
-      <section className="border-b-2 border-[#141414] bg-[#FAF3E5] px-5 py-20 sm:px-8 sm:py-28">
+      <section className="border-b border-slate-200 bg-slate-50/50 px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1280px]">
           <div className="mb-14">
-            <p className="section-label mb-3 flex items-center gap-2">
-              <span className="inline-block size-2.5 rounded-full bg-[#FF4D00]" />
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-2">
               Engineering Arsenal
             </p>
-            <h2 className="font-display text-[clamp(2.5rem,5.5vw,4.5rem)] font-black uppercase leading-[0.9] tracking-[-0.06em] text-[#141414]">
+            <h2 className="font-display text-[clamp(2.2rem,5vw,4.2rem)] font-bold tracking-tight text-slate-900">
               Zero Wordpress. Pure Code.
             </h2>
-            <p className="mt-4 max-w-xl text-base text-[#5B5146]">
+            <p className="mt-4 max-w-xl text-base text-slate-600">
               We build on modern developer stacks trusted by high-growth startups and global tech teams.
             </p>
           </div>
@@ -667,24 +636,21 @@ export function AboutView() {
               return (
                 <div
                   key={tech.name}
-                  className="rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[5px_5px_0_#141414] transition hover:-translate-y-1"
+                  className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-blue-200 hover:shadow-md"
                 >
                   <div className="flex items-center justify-between">
-                    <div
-                      className="flex size-10 items-center justify-center rounded-xl border-2 border-[#141414] shadow-[2px_2px_0_#141414]"
-                      style={{ backgroundColor: tech.color }}
-                    >
-                      <Icon className="size-5 text-[#141414]" />
+                    <div className="flex size-10 items-center justify-center rounded-xl bg-blue-50 border border-blue-100 text-blue-600 shadow-xs">
+                      <Icon className="size-5 text-blue-600" />
                     </div>
-                    <span className="rounded-full border border-[#141414] bg-[#FAF3E5] px-2.5 py-0.5 font-mono text-[0.62rem] font-bold uppercase text-[#141414]">
+                    <span className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-0.5 font-mono text-[0.62rem] font-bold uppercase text-slate-600">
                       {tech.tag}
                     </span>
                   </div>
 
-                  <h3 className="mt-5 font-display text-xl font-black uppercase text-[#141414]">
+                  <h3 className="mt-5 font-display text-xl font-bold text-slate-900">
                     {tech.name}
                   </h3>
-                  <p className="mt-2 text-xs leading-5 text-[#5B5146]">
+                  <p className="mt-2 text-xs leading-relaxed text-slate-600">
                     {tech.desc}
                   </p>
                 </div>
@@ -695,17 +661,16 @@ export function AboutView() {
       </section>
 
       {/* Lab Products Section — Proof of Craft */}
-      <section className="border-b-2 border-[#141414] bg-[#FFFCF5] px-5 py-20 sm:px-8 sm:py-28">
+      <section className="border-b border-slate-200 bg-white px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1280px]">
           <div className="mb-14">
-            <p className="section-label mb-3 flex items-center gap-2">
-              <span className="inline-block size-2.5 rounded-full bg-[#FF4D00]" />
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-2">
               In-House Products & Deployments
             </p>
-            <h2 className="font-display text-[clamp(2.5rem,5.5vw,4.5rem)] font-black uppercase leading-[0.9] tracking-[-0.06em] text-[#141414]">
+            <h2 className="font-display text-[clamp(2.2rem,5vw,4.2rem)] font-bold tracking-tight text-slate-900">
               Proof Of Craft
             </h2>
-            <p className="mt-4 max-w-xl text-base text-[#5B5146]">
+            <p className="mt-4 max-w-xl text-base text-slate-600">
               We don&apos;t just build for clients. We design and operate our own software products that serve real users every day.
             </p>
           </div>
@@ -714,36 +679,33 @@ export function AboutView() {
             {LAB_PRODUCTS.map((prod) => (
               <div
                 key={prod.name}
-                className="flex flex-col justify-between rounded-3xl border-2 border-[#141414] bg-[#FAF3E5] p-7 shadow-[6px_6px_0_#141414] transition hover:-translate-y-1"
+                className="flex flex-col justify-between rounded-3xl border border-slate-200 bg-slate-50/50 p-7 shadow-sm transition hover:bg-white hover:border-blue-200 hover:shadow-md"
               >
                 <div>
                   <div className="flex items-center justify-between">
-                    <span
-                      className="rounded-full border-2 border-[#141414] px-3 py-1 font-display text-[0.65rem] font-black uppercase text-[#141414] shadow-[2px_2px_0_#141414]"
-                      style={{ backgroundColor: prod.color }}
-                    >
+                    <span className="rounded-full border border-blue-200 bg-blue-50 px-3 py-1 font-mono text-[0.65rem] font-bold uppercase text-blue-700">
                       {prod.tag}
                     </span>
-                    <span className="font-mono text-[0.62rem] font-bold text-[#5B5146]">
+                    <span className="font-mono text-[0.62rem] font-bold text-slate-500">
                       {prod.category}
                     </span>
                   </div>
 
-                  <h3 className="mt-5 font-display text-2xl font-black uppercase text-[#141414]">
+                  <h3 className="mt-5 font-display text-2xl font-bold text-slate-900">
                     {prod.name}
                   </h3>
-                  <div className="mt-2 inline-block rounded-lg bg-[#141414] px-2.5 py-1 font-mono text-[0.68rem] font-bold text-[#B8E986]">
+                  <div className="mt-2 inline-block rounded-lg bg-blue-50 border border-blue-100 px-2.5 py-1 font-mono text-[0.68rem] font-bold text-blue-700">
                     ⚡ {prod.metric}
                   </div>
-                  <p className="mt-4 text-xs leading-5 text-[#5B5146] font-medium">
+                  <p className="mt-4 text-xs leading-relaxed text-slate-600">
                     {prod.desc}
                   </p>
                 </div>
 
-                <div className="mt-6 border-t-2 border-[#141414]/15 pt-4">
+                <div className="mt-6 border-t border-slate-200 pt-4">
                   <Link
                     href={prod.link}
-                    className="inline-flex items-center gap-1.5 font-display text-xs font-black uppercase text-[#FF4D00] hover:underline"
+                    className="inline-flex items-center gap-1.5 font-display text-xs font-bold uppercase tracking-wider text-blue-600 hover:text-blue-700 transition"
                   >
                     View System Case Study <ArrowRight className="size-3.5" />
                   </Link>
@@ -755,19 +717,18 @@ export function AboutView() {
       </section>
 
       {/* Founder Story & Milestone Timeline */}
-      <section className="border-b-2 border-[#141414] bg-[#FAF3E5] px-5 py-20 sm:px-8 sm:py-28">
+      <section className="border-b border-slate-200 bg-slate-50/50 px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1280px]">
           <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
             <div>
-              <p className="section-label mb-3 flex items-center gap-2">
-                <span className="inline-block size-2.5 rounded-full bg-[#FF4D00]" />
+              <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-2">
                 The Origin Story
               </p>
-              <h2 className="font-display text-4xl font-black uppercase leading-[0.9] tracking-[-0.06em] sm:text-6xl text-[#141414]">
+              <h2 className="font-display text-4xl font-bold tracking-tight sm:text-6xl text-slate-900">
                 Why Next Scale Exists
               </h2>
 
-              <div className="mt-6 space-y-4 text-base leading-7 text-[#5B5146] font-medium">
+              <div className="mt-6 space-y-4 text-base leading-relaxed text-slate-600">
                 <p>
                   Most web agencies are structured for billable hours, not shipping. They assign clients to junior project managers who relay messages to outsourced developers, resulting in slow 4-month builds and 35/100 PageSpeed scores.
                 </p>
@@ -784,7 +745,7 @@ export function AboutView() {
                   href={waLink("Hi Abhisek! I would love to connect and discuss building a system together.")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-[#141414] bg-[#FF4D00] px-5 py-2.5 font-display text-xs font-black uppercase text-white shadow-[3px_3px_0_#141414] transition hover:-translate-y-0.5 hover:bg-[#FFC72E] hover:text-[#141414]"
+                  className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 font-display text-xs font-bold uppercase tracking-wider text-white shadow-md shadow-blue-500/20 transition hover:bg-blue-700"
                 >
                   Chat with Abhisek <ArrowRight className="size-4" />
                 </a>
@@ -796,23 +757,20 @@ export function AboutView() {
               {MILESTONES.map((m) => (
                 <div
                   key={m.year}
-                  className="rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-6 shadow-[5px_5px_0_#141414]"
+                  className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
                 >
                   <div className="flex items-center justify-between">
-                    <span
-                      className="rounded-full border-2 border-[#141414] px-3 py-0.5 font-display text-xs font-black text-[#141414]"
-                      style={{ backgroundColor: m.color }}
-                    >
+                    <span className="rounded-full bg-blue-50 border border-blue-200 px-3 py-0.5 font-mono text-xs font-bold text-blue-700">
                       {m.year}
                     </span>
-                    <span className="font-mono text-[0.65rem] font-bold uppercase text-[#5B5146]">
+                    <span className="font-mono text-[0.65rem] font-bold uppercase text-slate-500">
                       Milestone
                     </span>
                   </div>
-                  <h3 className="mt-3 font-display text-xl font-black uppercase text-[#141414]">
+                  <h3 className="mt-3 font-display text-xl font-bold text-slate-900">
                     {m.title}
                   </h3>
-                  <p className="mt-2 text-xs leading-5 text-[#5B5146] font-medium">
+                  <p className="mt-2 text-xs leading-relaxed text-slate-600">
                     {m.desc}
                   </p>
                 </div>
@@ -823,16 +781,16 @@ export function AboutView() {
       </section>
 
       {/* Bottom Direct Founder CTA */}
-      <section className="bg-[#141414] px-5 py-24 text-[#FAF3E5] sm:px-8 sm:py-32">
+      <section className="bg-[#0B0F19] px-5 py-24 text-white sm:px-8 sm:py-32">
         <Reveal>
           <div className="mx-auto max-w-[900px] text-center">
-            <p className="font-display text-xs font-black uppercase tracking-[0.18em] text-[#FFC72E]">
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-sky-400">
               Skip The Agency Sales Pitch
             </p>
-            <h2 className="mt-4 font-display text-5xl font-black uppercase leading-[0.88] tracking-[-0.08em] sm:text-7xl">
-              Work Directly With Builders.
+            <h2 className="mt-4 font-display text-4xl font-extrabold tracking-tight sm:text-6xl text-white">
+              Work Directly With <span className="text-blue-400">Builders.</span>
             </h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-7 text-[#FAF3E5]/65">
+            <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-slate-300">
               Send us your messy requirements on WhatsApp. We will reply with a crystal clear scope and fixed numbers within 24 hours.
             </p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
@@ -840,13 +798,13 @@ export function AboutView() {
                 href={waLink("Hi Next Scale! I'd like to work directly with your engineering team.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#FAF3E5] bg-[#FAF3E5] px-6 py-3.5 font-display text-sm font-black uppercase text-[#141414] shadow-[5px_5px_0_#FF4D00] transition hover:-translate-y-1 hover:bg-[#FFC72E]"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3.5 font-display text-sm font-bold uppercase tracking-wider text-white shadow-lg shadow-blue-500/25 transition hover:bg-blue-700 hover:-translate-y-0.5"
               >
                 Message On WhatsApp <ArrowRight className="size-4" />
               </a>
               <Link
                 href="/pricing"
-                className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#FAF3E5]/50 px-6 py-3.5 font-display text-sm font-black uppercase transition hover:border-[#FFC72E] hover:text-[#FFC72E]"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-white/5 px-6 py-3.5 font-display text-sm font-bold uppercase tracking-wider text-white transition hover:bg-white/10"
               >
                 View Transparent Pricing <ArrowRight className="size-4" />
               </Link>

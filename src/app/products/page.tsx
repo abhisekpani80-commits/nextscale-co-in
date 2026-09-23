@@ -158,7 +158,7 @@ export default function ProductsPage() {
               </Link>
               <Link
                 href="/pricing"
-                className={cn(buttonVariants({ variant: "outline" }), "h-12 gap-2 px-8 text-base border-2 border-[#141414]")}
+                className={cn(buttonVariants({ variant: "outline" }), "h-12 gap-2 px-8 text-base border border-slate-200 hover:border-blue-600 hover:text-blue-600")}
               >
                 View Build Pricing <ArrowRight className="size-4" />
               </Link>

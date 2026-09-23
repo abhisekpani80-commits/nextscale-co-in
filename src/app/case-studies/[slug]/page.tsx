@@ -52,7 +52,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
   const reviewDate = "2026-07-01";
 
   return (
-    <article className="min-h-screen bg-[#F8F7F4] text-[#0F0E0D]">
+    <article className="min-h-screen bg-slate-50/50 text-slate-900">
       <JsonLd
         schema={[
           breadcrumbSchema([
@@ -64,18 +64,18 @@ export default async function CaseStudyPage({ params }: PageProps) {
       />
 
       {/* Breadcrumb Navigation */}
-      <nav className="mx-auto max-w-6xl px-6 pt-24 text-xs font-medium text-[#6B6860] flex items-center gap-1.5" aria-label="Breadcrumb">
-        <Link href="/" className="hover:text-primary transition-colors">Home</Link>
+      <nav className="mx-auto max-w-6xl px-6 pt-24 text-xs font-medium text-slate-500 flex items-center gap-1.5" aria-label="Breadcrumb">
+        <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
         <ChevronRight className="size-3" />
-        <Link href="/portfolio" className="hover:text-primary transition-colors">Portfolio</Link>
+        <Link href="/portfolio" className="hover:text-blue-600 transition-colors">Portfolio</Link>
         <ChevronRight className="size-3" />
-        <span className="text-[#0F0E0D]">{data.title}</span>
+        <span className="text-slate-900">{data.title}</span>
       </nav>
 
       {/* Hero Section */}
       <PageHero
         kicker={`Case Study — ${data.category}`}
-        title={<>How we delivered <span className="text-primary">{data.title}</span>.</>}
+        title={<>How we delivered <span className="text-blue-600">{data.title}</span>.</>}
         description={`Product build: ${data.built}`}
       />
 
@@ -84,17 +84,17 @@ export default async function CaseStudyPage({ params }: PageProps) {
         {/* Core Overview & Stats */}
         <section className="grid gap-8 md:grid-cols-[3fr_2fr]">
           <div>
-            <h2 className="font-heading text-2xl font-bold tracking-tight text-[#0F0E0D] mb-4">
+            <h2 className="font-heading text-2xl font-bold tracking-tight text-slate-900 mb-4">
               Client Background &amp; Challenges
             </h2>
-            <p className="text-sm text-[#6B6860] leading-relaxed mb-6">
+            <p className="text-sm text-slate-600 leading-relaxed mb-6">
               {data.background}
             </p>
             
-            <h3 className="font-heading text-lg font-bold text-[#0F0E0D] mb-3">Key Obstacles Identified</h3>
-            <ul className="flex flex-col gap-4 text-[#6B6860] text-sm leading-relaxed">
+            <h3 className="font-heading text-lg font-bold text-slate-900 mb-3">Key Obstacles Identified</h3>
+            <ul className="flex flex-col gap-4 text-slate-600 text-sm leading-relaxed">
               {data.challenges?.map((c: string, idx: number) => (
-                <li key={idx} className="flex gap-3 items-start bg-white border border-[#E8E6E1] p-4 rounded-xl shadow-sm">
+                <li key={idx} className="flex gap-3 items-start bg-white border border-slate-200 p-4 rounded-xl shadow-xs">
                   <AlertCircle className="size-5 text-red-500 shrink-0 mt-0.5" />
                   <span>{c}</span>
                 </li>
@@ -102,22 +102,22 @@ export default async function CaseStudyPage({ params }: PageProps) {
             </ul>
           </div>
           
-          <aside className="bg-white border border-[#E8E6E1] p-6 rounded-2xl shadow-sm h-fit">
-            <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB] mb-4">Case Metadata</h3>
-            <div className="flex flex-col gap-4 text-xs text-[#6B6860]">
-              <div className="flex justify-between border-b border-[#F4F3F0] pb-2">
+          <aside className="bg-white border border-slate-200 p-6 rounded-2xl shadow-xs h-fit">
+            <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-blue-600 font-semibold mb-4">Case Metadata</h3>
+            <div className="flex flex-col gap-4 text-xs text-slate-600">
+              <div className="flex justify-between border-b border-slate-100 pb-2">
                 <span>Client Type:</span>
-                <span className="font-semibold text-[#0F0E0D]">{data.clientType}</span>
+                <span className="font-semibold text-slate-900">{data.clientType}</span>
               </div>
-              <div className="flex justify-between border-b border-[#F4F3F0] pb-2">
+              <div className="flex justify-between border-b border-slate-100 pb-2">
                 <span>Deliverable Timeline:</span>
-                <span className="font-semibold text-[#0F0E0D]">{data.timeline}</span>
+                <span className="font-semibold text-slate-900">{data.timeline}</span>
               </div>
-              <div className="flex justify-between border-b border-[#F4F3F0] pb-2">
+              <div className="flex justify-between border-b border-slate-100 pb-2">
                 <span>Last Updated:</span>
-                <span className="font-semibold text-[#0F0E0D]">{reviewDate}</span>
+                <span className="font-semibold text-slate-900">{reviewDate}</span>
               </div>
-              <div className="flex justify-between border-b border-[#F4F3F0] pb-2">
+              <div className="flex justify-between border-b border-slate-100 pb-2">
                 <span>Project Status:</span>
                 <span className="font-semibold text-emerald-600 flex items-center gap-1">
                   <ShieldCheck className="size-3.5" /> Live &amp; Verified
@@ -128,17 +128,17 @@ export default async function CaseStudyPage({ params }: PageProps) {
         </section>
 
         {/* Project Solution */}
-        <section className="bg-white border border-[#E8E6E1] p-8 rounded-3xl shadow-sm relative overflow-hidden">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(26,86,219,0.02),transparent_70%)]" />
-          <h2 className="font-heading text-xl font-bold text-[#0F0E0D] mb-3">Our Solution Strategy</h2>
-          <p className="text-sm text-[#6B6860] leading-relaxed">
+        <section className="bg-white border border-slate-200 p-8 rounded-3xl shadow-xs relative overflow-hidden">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(37,99,235,0.04),transparent_70%)]" />
+          <h2 className="font-heading text-xl font-bold text-slate-900 mb-3">Our Solution Strategy</h2>
+          <p className="text-sm text-slate-600 leading-relaxed">
             {data.solution}
           </p>
 
           <div className="mt-6 flex flex-wrap items-center gap-2">
-            <span className="font-mono text-[10px] uppercase tracking-wider text-[#6B6860] font-semibold mr-2">Technologies Used:</span>
+            <span className="font-mono text-[10px] uppercase tracking-wider text-slate-500 font-semibold mr-2">Technologies Used:</span>
             {data.techUsed?.map((t: string) => (
-              <span key={t} className="rounded-full border border-[#E8E6E1] bg-[#F8F7F4] px-3 py-1 text-xs font-semibold text-[#0F0E0D]">
+              <span key={t} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-900">
                 {t}
               </span>
             ))}
@@ -147,45 +147,45 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
         {/* Dynamic Project Milestones / Process */}
         <section>
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#1A56DB] mb-3">Implementation Roadmap</p>
-          <h2 className="font-heading text-2xl font-bold tracking-tight text-[#0F0E0D] mb-8">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-blue-600 font-semibold mb-3">Implementation Roadmap</p>
+          <h2 className="font-heading text-2xl font-bold tracking-tight text-slate-900 mb-8">
             Step-by-step product implementation
           </h2>
           <div className="grid gap-6 sm:grid-cols-2">
             {data.process?.map((step: string, idx: number) => (
-              <div key={idx} className="bg-white border border-[#E8E6E1] p-6 rounded-2xl shadow-sm flex gap-4">
-                <div className="size-9 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-primary font-bold text-sm shrink-0">
+              <div key={idx} className="bg-white border border-slate-200 p-6 rounded-2xl shadow-xs flex gap-4">
+                <div className="size-9 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm shrink-0">
                   {idx + 1}
                 </div>
-                <p className="text-[#6B6860] text-xs sm:text-sm leading-relaxed">{step}</p>
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">{step}</p>
               </div>
             ))}
           </div>
         </section>
 
         {/* Quantified Outcome */}
-        <section className="bg-white border border-[#E8E6E1] p-8 rounded-3xl shadow-sm">
-          <h3 className="font-heading text-xl font-bold text-[#0F0E0D] mb-4">Quantified Outcomes &amp; ROI</h3>
+        <section className="bg-white border border-slate-200 p-8 rounded-3xl shadow-xs">
+          <h3 className="font-heading text-xl font-bold text-slate-900 mb-4">Quantified Outcomes &amp; ROI</h3>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="max-w-md">
-              <p className="text-sm text-[#6B6860] leading-relaxed">
+              <p className="text-sm text-slate-600 leading-relaxed">
                 In line with our case study verification protocol, metrics are verified post-deployment. We avoid fabricated ROI claims.
               </p>
             </div>
-            <div className="bg-[#ECFDF5] border border-[#D1FAE5] px-6 py-4 rounded-2xl text-center shrink-0">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-[#065F46] font-semibold">Verified Metric</span>
-              <span className="block mt-1 font-heading text-lg font-extrabold text-[#065F46]">{data.roi}</span>
+            <div className="bg-emerald-50 border border-emerald-200 px-6 py-4 rounded-2xl text-center shrink-0">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-800 font-semibold">Verified Metric</span>
+              <span className="block mt-1 font-heading text-lg font-extrabold text-emerald-700">{data.roi}</span>
             </div>
           </div>
         </section>
 
         {/* Lessons learned */}
         <section>
-          <h3 className="font-heading text-lg font-bold text-[#0F0E0D] mb-3">Key Lessons &amp; Operational Takeaways</h3>
-          <ul className="flex flex-col gap-3 text-sm text-[#6B6860]">
+          <h3 className="font-heading text-lg font-bold text-slate-900 mb-3">Key Lessons &amp; Operational Takeaways</h3>
+          <ul className="flex flex-col gap-3 text-sm text-slate-600">
             {data.lessons?.map((les: string, idx: number) => (
               <li key={idx} className="flex gap-2.5 items-start">
-                <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary" />
+                <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-blue-600" />
                 <span>{les}</span>
               </li>
             ))}
@@ -193,27 +193,27 @@ export default async function CaseStudyPage({ params }: PageProps) {
         </section>
 
         {/* Reusable QA & Security E-E-A-T details */}
-        <section className="grid gap-6 sm:grid-cols-2 border-t border-[#E8E6E1] pt-12 text-xs text-[#6B6860] leading-relaxed">
-          <div className="bg-white border border-[#E8E6E1] p-5 rounded-2xl">
-            <h4 className="font-bold text-[#0F0E0D] mb-2">Our QA &amp; Testing Methodology</h4>
+        <section className="grid gap-6 sm:grid-cols-2 border-t border-slate-200 pt-12 text-xs text-slate-600 leading-relaxed">
+          <div className="bg-white border border-slate-200 p-5 rounded-2xl">
+            <h4 className="font-bold text-slate-900 mb-2">Our QA &amp; Testing Methodology</h4>
             <p>Every product rollout passes through a sandbox testing protocol. Integrations are stress-tested for concurrency before launching.</p>
           </div>
-          <div className="bg-white border border-[#E8E6E1] p-5 rounded-2xl">
-            <h4 className="font-bold text-[#0F0E0D] mb-2">Operational Security &amp; Maintenance</h4>
+          <div className="bg-white border border-slate-200 p-5 rounded-2xl">
+            <h4 className="font-bold text-slate-900 mb-2">Operational Security &amp; Maintenance</h4>
             <p>Security is configured via strict HTTP headers and end-to-end token validation endpoints. Ongoing maintenance loops are run monthly.</p>
           </div>
         </section>
 
         {/* Global CTA block */}
         <section className="text-center">
-          <p className="text-xs text-[#6B6860] mb-6">
+          <p className="text-xs text-slate-600 mb-6">
             Want to learn how we can build a custom workflow automation system or website for your business?
           </p>
           <a
             href={waLink(`Hi Abhisek! I just read your case study for "${data.title}" and would like to review my project options.`)}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-12 items-center gap-2 rounded-xl bg-[#1A56DB] text-white hover:bg-[#1447C0] px-8 text-base font-bold shadow-md hover:scale-[1.02] transition-all duration-200"
+            className="inline-flex h-12 items-center gap-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 px-8 text-base font-bold shadow-md hover:scale-[1.02] transition-all duration-200"
           >
             Start your project consultation <ArrowRight className="size-4" />
           </a>

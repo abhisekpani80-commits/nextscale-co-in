@@ -3,23 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowUpRight, TrendingUp, ChevronDown, ChevronUp, Sparkles, Filter as FilterIcon } from "lucide-react";
+import { ArrowUpRight, TrendingUp, ChevronDown, ChevronUp } from "lucide-react";
 import { PageHero } from "@/components/ui/page-hero";
 import { Reveal } from "@/components/ui/reveal";
 import { PORTFOLIO, STATS, waLink } from "@/lib/site";
-import { cn } from "@/lib/utils";
 
 const FILTERS = ["All", "Websites", "AI Agents", "Products", "Digital Growth"] as const;
 type Filter = (typeof FILTERS)[number];
 
 const INITIAL_COUNT = 6;
-
-const categoryColors: Record<string, string> = {
-  Websites: "#FFB7C5",
-  "AI Agents": "#9DD9FF",
-  Products: "#B8E986",
-  "Digital Growth": "#FFC72E",
-};
 
 export default function PortfolioPage() {
   const [active, setActive] = useState<Filter>("All");
@@ -37,23 +29,23 @@ export default function PortfolioPage() {
   };
 
   return (
-    <>
+    <div className="bg-white min-h-screen text-slate-900">
       <PageHero
         kicker="Work & Portfolio"
-        title={<>Real projects. <span className="text-[#FF4D00]">Verified outcomes.</span></>}
+        title={<>Real projects. <span className="text-blue-600">Verified outcomes.</span></>}
         description="Every website, AI agent, and product we have shipped — across clinics, real estate, photography, edtech, and local businesses."
       />
 
       {/* Stats Bar */}
-      <section className="border-b-2 border-[#141414] bg-[#FFC72E] px-5 py-10 sm:px-8">
+      <section className="border-b border-slate-200 bg-slate-50/70 px-5 py-10 sm:px-8">
         <div className="mx-auto max-w-[1280px]">
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
             {STATS.map((s) => (
-              <div key={s.label} className="border-l-2 border-[#141414] pl-4 first:border-l-0 first:pl-0 sm:pl-8">
-                <div className="font-display text-4xl font-black leading-none tracking-[-0.08em] sm:text-6xl text-[#141414]">
-                  {s.value}{s.suffix}
+              <div key={s.label} className="border-l border-slate-200 pl-4 first:border-l-0 first:pl-0 sm:pl-8">
+                <div className="font-heading text-4xl font-extrabold leading-none tracking-tight sm:text-5xl text-slate-900">
+                  {s.value}<span className="text-blue-600">{s.suffix}</span>
                 </div>
-                <div className="mt-2 font-display text-xs font-black uppercase tracking-[0.1em] text-[#141414]">
+                <div className="mt-2 font-mono text-xs font-semibold uppercase tracking-[0.1em] text-slate-500">
                   {s.label}
                 </div>
               </div>
@@ -62,7 +54,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <section className="bg-[#FAF3E5] px-5 py-16 sm:px-8 sm:py-24">
+      <section className="bg-white px-5 py-16 sm:px-8 sm:py-24">
         <div className="mx-auto max-w-[1280px]">
           
           {/* Interactive Filter Tabs */}
@@ -75,15 +67,15 @@ export default function PortfolioPage() {
                 <button
                   key={f}
                   onClick={() => handleFilter(f)}
-                  className={`flex items-center gap-2 rounded-full border-2 border-[#141414] px-4 py-2 font-display text-xs font-black uppercase transition-all ${
+                  className={`flex items-center gap-2 rounded-full px-4 py-2 font-mono text-xs font-bold uppercase tracking-wider transition-all ${
                     isSelected
-                      ? "bg-[#141414] text-[#FAF3E5] shadow-[3px_3px_0_#FF4D00] -translate-y-0.5"
-                      : "bg-[#FFFCF5] text-[#141414] hover:bg-[#FFC72E] shadow-[2px_2px_0_#141414]"
+                      ? "bg-blue-600 text-white shadow-sm -translate-y-0.5"
+                      : "bg-slate-50 text-slate-700 hover:bg-slate-100 border border-slate-200"
                   }`}
                 >
                   <span>{f}</span>
-                  <span className={`rounded-full px-2 py-0.2 font-display text-[0.6rem] font-black ${
-                    isSelected ? "bg-[#FF4D00] text-white" : "bg-[#141414]/10 text-[#141414]"
+                  <span className={`rounded-full px-2 py-0.5 text-[0.65rem] font-bold ${
+                    isSelected ? "bg-white/20 text-white" : "bg-slate-200 text-slate-700"
                   }`}>
                     {count}
                   </span>
@@ -95,13 +87,12 @@ export default function PortfolioPage() {
           {/* Interactive Card Grid */}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {visible.map((item, i) => {
-              const categoryBg = categoryColors[item.category] ?? "#FFFCF5";
-              const cardClass = "group relative flex flex-col overflow-hidden rounded-3xl border-2 border-[#141414] bg-[#FFFCF5] shadow-[5px_5px_0_#141414] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[7px_7px_0_#FF4D00]";
+              const cardClass = "group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-blue-400 hover:shadow-lg";
 
               const cardInner = (
                 <>
                   {/* Image Container */}
-                  <div className="relative h-56 w-full overflow-hidden border-b-2 border-[#141414] bg-[#141414]">
+                  <div className="relative h-56 w-full overflow-hidden border-b border-slate-100 bg-slate-100">
                     <Image
                       src={item.image}
                       alt={item.title}
@@ -112,10 +103,7 @@ export default function PortfolioPage() {
                     
                     {/* Category Badge */}
                     <div className="absolute top-3 left-3 z-10">
-                      <span
-                        style={{ backgroundColor: categoryBg }}
-                        className="rounded-full border-2 border-[#141414] px-3 py-1 font-display text-[0.65rem] font-black uppercase text-[#141414] shadow-[2px_2px_0_#141414]"
-                      >
+                      <span className="rounded-full bg-white/90 backdrop-blur-xs border border-slate-200 px-3 py-1 font-mono text-[0.65rem] font-bold uppercase tracking-wider text-blue-700 shadow-xs">
                         {item.category}
                       </span>
                     </div>
@@ -123,7 +111,7 @@ export default function PortfolioPage() {
                     {/* Demo Badge */}
                     {item.isDemo && (
                       <div className="absolute top-3 right-3 z-10">
-                        <span className="rounded-full border-2 border-[#141414] bg-[#141414] px-2.5 py-1 font-display text-[0.6rem] font-black uppercase text-[#FAF3E5]">
+                        <span className="rounded-full bg-slate-900/80 backdrop-blur-xs px-2.5 py-1 font-mono text-[0.6rem] font-bold uppercase tracking-wider text-white">
                           Demo Site
                         </span>
                       </div>
@@ -132,7 +120,7 @@ export default function PortfolioPage() {
                     {/* Arrow Indicator Overlay */}
                     {(item.liveUrl || item.slug) && (
                       <div className="absolute bottom-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                        <span className="flex size-9 items-center justify-center rounded-full border-2 border-[#141414] bg-[#FF4D00] text-white shadow-[2px_2px_0_#141414]">
+                        <span className="flex size-9 items-center justify-center rounded-full bg-blue-600 text-white shadow-sm">
                           <ArrowUpRight className="size-4" />
                         </span>
                       </div>
@@ -143,27 +131,27 @@ export default function PortfolioPage() {
                   <div className="flex flex-1 flex-col justify-between p-6">
                     <div>
                       <div className="flex items-start justify-between gap-2">
-                        <h3 className="font-display text-2xl font-black uppercase leading-none tracking-[-0.05em] text-[#141414] group-hover:text-[#FF4D00] transition-colors">
+                        <h3 className="font-heading text-xl font-bold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
                           {item.title}
                         </h3>
                         {(item.liveUrl || item.slug) && (
-                          <ArrowUpRight className="size-4 shrink-0 text-[#141414] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                          <ArrowUpRight className="size-4 shrink-0 text-slate-400 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-blue-600" />
                         )}
                       </div>
 
-                      <p className="mt-2 font-display text-xs font-bold uppercase tracking-[0.1em] text-[#5B5146]">
+                      <p className="mt-1 font-mono text-xs font-semibold uppercase tracking-wider text-blue-600">
                         {item.clientType}
                       </p>
 
-                      <p className="mt-3 text-sm font-medium leading-6 text-[#5B5146]">
+                      <p className="mt-3 text-sm text-slate-600 leading-relaxed">
                         {item.built}
                       </p>
                     </div>
 
                     {item.result && (
-                      <div className="mt-5 flex items-center gap-2 rounded-full border-2 border-[#141414] bg-[#B8E986] px-3.5 py-1.5 w-fit shadow-[2px_2px_0_#141414]">
-                        <TrendingUp className="size-3.5 text-[#141414] shrink-0" />
-                        <span className="font-display text-xs font-black uppercase text-[#141414]">
+                      <div className="mt-5 flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3.5 py-1.5 w-fit">
+                        <TrendingUp className="size-3.5 text-emerald-700 shrink-0" />
+                        <span className="font-mono text-xs font-bold uppercase text-emerald-800">
                           {item.result}
                         </span>
                       </div>
@@ -213,7 +201,7 @@ export default function PortfolioPage() {
               <button
                 type="button"
                 onClick={() => setShowAll((v) => !v)}
-                className="inline-flex items-center gap-2 rounded-full border-2 border-[#141414] bg-[#FFFCF5] px-6 py-3 font-display text-xs font-black uppercase text-[#141414] shadow-[4px_4px_0_#141414] transition hover:-translate-y-0.5 hover:bg-[#FFC72E]"
+                className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 hover:bg-slate-100 px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider text-slate-800 transition"
               >
                 {showAll ? (
                   <>
@@ -229,15 +217,15 @@ export default function PortfolioPage() {
           )}
 
           {/* Bottom CTA Card */}
-          <div className="mt-20 rounded-3xl border-2 border-[#141414] bg-[#141414] p-8 sm:p-14 text-center text-[#FAF3E5] shadow-[8px_8px_0_#FF4D00]">
+          <div className="mt-20 rounded-3xl border border-slate-800 bg-slate-900 p-8 sm:p-14 text-center text-white shadow-xl shadow-blue-900/10">
             <Reveal>
-              <span className="font-display text-xs font-black uppercase tracking-[0.16em] text-[#FFC72E]">
+              <span className="font-mono text-xs font-bold uppercase tracking-[0.16em] text-blue-400">
                 Want results like this?
               </span>
-              <h3 className="mt-3 font-display text-5xl font-black uppercase leading-[0.88] tracking-[-0.07em] sm:text-7xl">
+              <h3 className="mt-3 font-heading text-4xl font-extrabold uppercase tracking-tight sm:text-6xl text-white">
                 Let&apos;s build yours next.
               </h3>
-              <p className="mx-auto mt-4 max-w-md text-base leading-7 text-[#FAF3E5]/70">
+              <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-slate-300">
                 Website, AI receptionist, or full digital growth setup — shipped in days, not months.
               </p>
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
@@ -245,7 +233,7 @@ export default function PortfolioPage() {
                   href={waLink("Hi Next Scale! I saw your portfolio and want to discuss a project.")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#FAF3E5] bg-[#FAF3E5] px-6 py-3.5 font-display text-xs font-black uppercase text-[#141414] shadow-[4px_4px_0_#FF4D00] transition hover:-translate-y-1 hover:bg-[#FFC72E]"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 hover:bg-blue-700 px-7 py-3.5 font-mono text-xs font-bold uppercase tracking-wider text-white shadow-md shadow-blue-500/20 transition hover:-translate-y-0.5"
                 >
                   Start a project <ArrowUpRight className="size-4" />
                 </a>
@@ -254,6 +242,6 @@ export default function PortfolioPage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

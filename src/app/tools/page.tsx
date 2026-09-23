@@ -200,64 +200,64 @@ export default function ToolsDashboard() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <Link
             href="/tools/website-cost-calculator"
-            className="group rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-5 shadow-[4px_4px_0px_#141414] transition-all hover:-translate-y-1 hover:bg-[#FFC72E]"
+            className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-blue-300 hover:shadow-md"
           >
-            <span className="rounded bg-[#FF4D00] px-2 py-0.5 text-[10px] font-black uppercase text-white">
+            <span className="rounded-full border border-blue-200 bg-blue-50 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase text-blue-700">
               Calculator
             </span>
-            <h3 className="font-heading text-base font-black text-[#141414] mt-2">
+            <h3 className="font-display text-base font-bold text-slate-900 mt-2">
               Website Cost Calculator
             </h3>
-            <p className="text-xs text-[#5B5146] mt-1">Estimate custom Next.js build pricing &amp; timelines.</p>
-            <span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-[#FF4D00] group-hover:text-[#141414]">
+            <p className="text-xs text-slate-500 mt-1">Estimate custom Next.js build pricing &amp; timelines.</p>
+            <span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-blue-600 group-hover:text-blue-700">
               Open Calculator →
             </span>
           </Link>
 
           <Link
             href="/tools/seo-audit"
-            className="group rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-5 shadow-[4px_4px_0px_#141414] transition-all hover:-translate-y-1 hover:bg-[#FFC72E]"
+            className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-blue-300 hover:shadow-md"
           >
-            <span className="rounded bg-[#25D366] px-2 py-0.5 text-[10px] font-black uppercase text-[#141414]">
+            <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase text-emerald-700">
               SEO Diagnostic
             </span>
-            <h3 className="font-heading text-base font-black text-[#141414] mt-2">
+            <h3 className="font-display text-base font-bold text-slate-900 mt-2">
               Website SEO &amp; AI Audit
             </h3>
-            <p className="text-xs text-[#5B5146] mt-1">Check Core Web Vitals, Schema, and /llms.txt.</p>
-            <span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-[#FF4D00] group-hover:text-[#141414]">
+            <p className="text-xs text-slate-500 mt-1">Check Core Web Vitals, Schema, and /llms.txt.</p>
+            <span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-blue-600 group-hover:text-blue-700">
               Run Free Audit →
             </span>
           </Link>
 
           <Link
             href="/tools/ai-roi-calculator"
-            className="group rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-5 shadow-[4px_4px_0px_#141414] transition-all hover:-translate-y-1 hover:bg-[#FFC72E]"
+            className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-blue-300 hover:shadow-md"
           >
-            <span className="rounded bg-[#0F6838] px-2 py-0.5 text-[10px] font-black uppercase text-white">
+            <span className="rounded-full border border-indigo-200 bg-indigo-50 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase text-indigo-700">
               ROI Modeler
             </span>
-            <h3 className="font-heading text-base font-black text-[#141414] mt-2">
+            <h3 className="font-display text-base font-bold text-slate-900 mt-2">
               WhatsApp AI ROI Calculator
             </h3>
-            <p className="text-xs text-[#5B5146] mt-1">Calculate lead recovery &amp; staff hours saved.</p>
-            <span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-[#FF4D00] group-hover:text-[#141414]">
+            <p className="text-xs text-slate-500 mt-1">Calculate lead recovery &amp; staff hours saved.</p>
+            <span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-blue-600 group-hover:text-blue-700">
               Calculate ROI →
             </span>
           </Link>
 
           <Link
             href="/tools/local-seo-checker"
-            className="group rounded-2xl border-2 border-[#141414] bg-[#FFFCF5] p-5 shadow-[4px_4px_0px_#141414] transition-all hover:-translate-y-1 hover:bg-[#FFC72E]"
+            className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-blue-300 hover:shadow-md"
           >
-            <span className="rounded bg-[#9DD9FF] px-2 py-0.5 text-[10px] font-black uppercase text-[#141414]">
+            <span className="rounded-full border border-sky-200 bg-sky-50 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase text-sky-700">
               Local Rank
             </span>
-            <h3 className="font-heading text-base font-black text-[#141414] mt-2">
+            <h3 className="font-display text-base font-bold text-slate-900 mt-2">
               Local SEO Checker
             </h3>
-            <p className="text-xs text-[#5B5146] mt-1">Diagnose Google Maps pack ranking in your city.</p>
-            <span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-[#FF4D00] group-hover:text-[#141414]">
+            <p className="text-xs text-slate-500 mt-1">Diagnose Google Maps pack ranking in your city.</p>
+            <span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-blue-600 group-hover:text-blue-700">
               Check Rank Signals →
             </span>
           </Link>

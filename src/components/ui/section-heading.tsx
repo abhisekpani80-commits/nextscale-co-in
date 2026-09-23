@@ -32,10 +32,10 @@ export function SectionHeading({
             <span className="h-px w-6 bg-primary/60" />
             <ShinyText
               text={kicker}
-              color="#27d0ed"
-              shineColor="rgba(255,255,255,0.85)"
+              color="#2563eb"
+              shineColor="#38bdf8"
               speed={4}
-              className="font-mono text-xs uppercase tracking-[0.2em]"
+              className="font-mono text-xs uppercase tracking-[0.2em] font-semibold"
             />
           </span>
         </Reveal>

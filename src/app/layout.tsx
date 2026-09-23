@@ -1,122 +1,105 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Space_Grotesk } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
-import { WhatsAppFloat } from "@/components/layout/whatsapp-float";
-import { ScrollProgress } from "@/components/ui/scroll-progress";
-import { CookieConsent } from "@/components/ui/cookie-consent";
-import { JsonLd } from "@/components/seo/json-ld";
-import { organizationSchema, websiteSchema, founderPersonSchema, localBusinessSchema } from "@/lib/seo";
-import { SITE } from "@/lib/site";
-import { ClientWrapper } from "@/components/ui/client-wrapper";
-import { PromoPopup } from "@/components/ui/promo-popup";
+import { ResponsiveFooter } from "@/components/landing/responsive-footer";
 
-const archivo = Archivo({
-  variable: "--font-archivo",
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-heading",
+  weight: ["500", "600", "700", "800"],
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space",
+const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-body",
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://nextscale.co.in"),
   title: {
-    default: `${SITE.name} — Custom Websites & AI Agents for Businesses`,
-    template: `%s — ${SITE.name}`,
+    default: "NextScale — Revenue Architecture & Operational Growth Clinic",
+    template: "%s | NextScale",
   },
   description:
-    "Next Scale builds custom business websites (live in 7 days) and WhatsApp AI agents for clinics, salons, real estate, and SMBs.",
-  applicationName: SITE.name,
-  authors: [{ name: SITE.founder, url: `${SITE.url}/about` }],
-  creator: `${SITE.founder} (Founder & CEO)`,
-  publisher: SITE.name,
+    "NextScale engineers high-converting Digital Front Doors and autonomous Back Office AI systems for growing B2B businesses. Zero leaks. Shipped in 7 days.",
   keywords: [
+    "Revenue Architecture",
+    "Operational Growth Clinic",
+    "Digital Front Door",
+    "Automated Back Office",
+    "custom website development",
+    "WhatsApp AI agent for business",
+    "high-performance websites",
     "Abhisek Pani",
-    "Abhisek Pani Next Scale",
-    "Abhisek Pani founder",
-    "Abhisek Pani CEO",
-    "Abhisek Pani Nextscale",
-    "Abhisek Pani Bhubaneswar",
-    "Next Scale",
-    "Next Scale Technologies",
-    "custom business website",
-    "WhatsApp AI receptionist",
-    "AI appointment booking",
-    "Next.js web development agency",
-    "website live in 7 days",
+    "NextScale",
   ],
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  metadataBase: new URL(SITE.url),
-  alternates: {
-    canonical: "./",
-  },
+  authors: [{ name: "NextScale Studio" }],
+  creator: "NextScale Studio",
+  publisher: "NextScale Technologies",
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
+    url: "https://nextscale.co.in",
+    title: "NextScale — Revenue Architecture & Operational Growth Clinic",
+    description:
+      "NextScale engineers high-converting Digital Front Doors and autonomous Back Office AI systems for growing B2B businesses. Zero leaks. Shipped in 7 days.",
+    siteName: "NextScale",
     locale: "en_IN",
-    url: SITE.url,
-    siteName: SITE.name,
-    title: `${SITE.name} — Custom Websites & WhatsApp AI Agents`,
-    description: "Custom business websites and 24/7 WhatsApp AI receptionists. Live in 3–7 days with verified ROI.",
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Next Scale — Custom Websites & WhatsApp AI Agents for Businesses",
-        type: "image/png",
+        alt: "NextScale — Revenue Architecture & Operational Growth Clinic",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE.name} — Custom Websites & WhatsApp AI Agents`,
-    description: "Custom business websites and 24/7 WhatsApp AI receptionists. Live in 3–7 days with verified ROI.",
-    creator: "@abhisekpani",
+    title: "NextScale — Revenue Architecture & Operational Growth Clinic",
+    description:
+      "NextScale engineers high-converting Digital Front Doors and autonomous Back Office AI systems for growing B2B businesses. Zero leaks. Shipped in 7 days.",
     images: ["/opengraph-image"],
   },
-  icons: {
-    icon: [{ url: "/nextscale-favicon.svg", type: "image/svg+xml" }, { url: "/favicon.ico", sizes: "48x48" }],
-    shortcut: "/nextscale-favicon.svg",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FAF3E5",
+  themeColor: "#ffffff",
   colorScheme: "light",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${archivo.variable} ${spaceGrotesk.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`${plusJakarta.variable} ${inter.variable}`}>
       <head>
-        <link rel="preconnect" href="https://images.unsplash.com" />
-        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <meta name="geo.region" content="IN-OR" />
+        <meta name="geo.placename" content="Bhubaneswar" />
       </head>
-      <body className="min-h-full flex flex-col bg-[#FAF3E5] text-[#141414] relative">
-        <JsonLd schema={[organizationSchema(), websiteSchema(), founderPersonSchema(), localBusinessSchema()]} />
-        <ScrollProgress />
-        <ClientWrapper>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-        </ClientWrapper>
-        <Footer />
-        <WhatsAppFloat />
-        <CookieConsent />
-        <PromoPopup />
+      <body className="bg-white text-slate-900 antialiased selection:bg-blue-600 selection:text-white min-h-screen flex flex-col justify-between">
+        <Navbar />
+        <main className="flex-1 w-full">
+          {children}
+        </main>
+        <ResponsiveFooter />
       </body>
     </html>
   );

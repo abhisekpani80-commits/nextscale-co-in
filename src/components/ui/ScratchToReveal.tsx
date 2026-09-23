@@ -45,12 +45,12 @@ export function ScratchToReveal({
     ctx.scale(dpr, dpr);
 
     // High-energy brand foil pattern
-    ctx.fillStyle = "#FFC72E";
+    ctx.fillStyle = "#2563EB";
     ctx.fillRect(0, 0, rect.width, rect.height);
 
     // Diagonal multi-color stripe patterns
     const stripeWidth = 60;
-    const colors = ["#FF4D00", "#141414", "#9DD9FF", "#FFB7C5", "#FFC72E"];
+    const colors = ["#2563EB", "#38BDF8", "#0B0F19", "#60A5FA", "#1D4ED8"];
     for (let i = -rect.height; i < rect.width + rect.height; i += stripeWidth) {
       ctx.fillStyle = colors[Math.floor(Math.abs(i / stripeWidth)) % colors.length];
       ctx.globalAlpha = 0.85;
@@ -64,34 +64,34 @@ export function ScratchToReveal({
     }
     ctx.globalAlpha = 1.0;
 
-    // Dark obsidian center badge box
+    // Dark executive center badge box
     const boxW = Math.min(rect.width * 0.85, 480);
     const boxH = Math.min(rect.height * 0.6, 160);
     const boxX = (rect.width - boxW) / 2;
     const boxY = (rect.height - boxH) / 2;
 
-    ctx.fillStyle = "#141414";
+    ctx.fillStyle = "#0B0F19";
     ctx.fillRect(boxX, boxY, boxW, boxH);
 
-    ctx.strokeStyle = "#FF4D00";
-    ctx.lineWidth = 4;
+    ctx.strokeStyle = "#2563EB";
+    ctx.lineWidth = 3;
     ctx.strokeRect(boxX + 6, boxY + 6, boxW - 12, boxH - 12);
 
     // Instruction text overlay
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
-    ctx.font = "900 13px Archivo, sans-serif";
-    ctx.fillStyle = "#FFC72E";
-    ctx.fillText("★ TOP SECRET SAUCE ★", rect.width / 2, boxY + boxH * 0.28);
+    ctx.font = "700 12px sans-serif";
+    ctx.fillStyle = "#38BDF8";
+    ctx.fillText("★ INTERACTIVE PREVIEW ★", rect.width / 2, boxY + boxH * 0.28);
 
-    ctx.font = "900 28px Archivo, sans-serif";
-    ctx.fillStyle = "#FAF3E5";
+    ctx.font = "800 24px sans-serif";
+    ctx.fillStyle = "#FFFFFF";
     ctx.fillText("SCRATCH TO REVEAL ✦", rect.width / 2, boxY + boxH * 0.54);
 
-    ctx.font = "700 12px Archivo, sans-serif";
-    ctx.fillStyle = "#B8E986";
-    ctx.fillText("Drag mouse or finger across to unveil our services", rect.width / 2, boxY + boxH * 0.8);
+    ctx.font = "500 12px sans-serif";
+    ctx.fillStyle = "#93C5FD";
+    ctx.fillText("Drag mouse or finger across to unveil our systems", rect.width / 2, boxY + boxH * 0.8);
   }, []);
 
   useEffect(() => {
@@ -238,16 +238,16 @@ export function ScratchToReveal({
             initial={{ opacity: 0, y: -12, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0 }}
-            className="pointer-events-none mb-3 flex items-center justify-between rounded-xl border-2 border-[#141414] bg-[#FFC72E] px-4 py-2 shadow-[3px_3px_0_#141414]"
+            className="pointer-events-none mb-3 flex items-center justify-between rounded-xl border border-blue-200 bg-blue-50 px-4 py-2 shadow-sm"
           >
             <div className="flex items-center gap-2">
-              <Sparkles className="size-4 animate-bounce text-[#FF4D00]" />
-              <span className="font-display text-xs font-black uppercase tracking-[0.1em] text-[#141414]">
+              <Sparkles className="size-4 animate-bounce text-blue-600" />
+              <span className="font-mono text-xs font-bold uppercase tracking-wider text-blue-900">
                 🎉 100% Unlocked! Full Menu Revealed
               </span>
             </div>
-            <span className="rounded-full border border-[#141414] bg-[#141414] px-2.5 py-0.5 font-display text-[0.6rem] font-black uppercase text-[#FAF3E5]">
-              Secret Sauced
+            <span className="rounded-full bg-blue-600 px-2.5 py-0.5 font-mono text-[0.6rem] font-bold uppercase text-white shadow-sm">
+              Revealed
             </span>
           </motion.div>
         )}
@@ -268,18 +268,18 @@ export function ScratchToReveal({
               onPointerMove={handlePointerMove}
               onPointerUp={handlePointerUp}
               onPointerLeave={handlePointerUp}
-              className="absolute inset-0 size-full cursor-crosshair touch-none select-none rounded-2xl shadow-[4px_4px_0_#141414] sm:shadow-[6px_6px_0_#141414]"
+              className="absolute inset-0 size-full cursor-crosshair touch-none select-none rounded-2xl shadow-md"
             />
 
             {/* Instant Reveal Floating Pill */}
-            <div className="pointer-events-auto absolute bottom-3 z-30 flex flex-wrap items-center justify-center gap-2 rounded-full border-2 border-[#141414] bg-[#FFFCF5] px-3.5 py-1.5 shadow-[3px_3px_0_#141414] sm:bottom-4 sm:gap-3 sm:px-4 sm:py-2">
-              <span className="font-display text-[0.62rem] font-black uppercase text-[#5B5146] sm:text-[0.68rem]">
+            <div className="pointer-events-auto absolute bottom-3 z-30 flex flex-wrap items-center justify-center gap-2 rounded-full border border-slate-200 bg-white/95 backdrop-blur px-3.5 py-1.5 shadow-lg sm:bottom-4 sm:gap-3 sm:px-4 sm:py-2">
+              <span className="font-mono text-[0.65rem] font-bold text-slate-500 sm:text-[0.68rem]">
                 {percentage}% Scratched
               </span>
               <button
                 type="button"
                 onClick={handleInstantReveal}
-                className="inline-flex items-center gap-1 rounded-full border-2 border-[#141414] bg-[#FF4D00] px-3 py-1 font-display text-[0.62rem] font-black uppercase text-white transition hover:bg-[#FFC72E] hover:text-[#141414] sm:text-[0.65rem]"
+                className="inline-flex items-center gap-1 rounded-full bg-blue-600 px-3 py-1 font-mono text-[0.65rem] font-bold uppercase tracking-wider text-white shadow-sm transition hover:bg-blue-700"
               >
                 <Eye className="size-3" /> Tap to Unlock
               </button>

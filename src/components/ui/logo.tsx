@@ -8,18 +8,29 @@ export function NextscaleLogo({ className = "size-5" }: { className?: string }) 
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      <path
-        d="M7 5h18a2 2 0 0 1 2 2v18a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"
-        fill="#141414"
+      <rect
+        x="3"
+        y="3"
+        width="26"
+        height="26"
+        rx="8"
+        fill="url(#blue-grad)"
       />
       <path
-        d="M11 20V11l8 9v-9"
-        stroke="#FF4D00"
+        d="M10 21V11l12 10V11"
+        stroke="#FFFFFF"
         strokeWidth="2.5"
-        strokeLinecap="square"
-        strokeLinejoin="miter"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
-      <circle cx="23.5" cy="8.5" r="1.5" fill="#FFC72E" />
+      <circle cx="23.5" cy="8.5" r="2" fill="#38BDF8" />
+      <defs>
+        <linearGradient id="blue-grad" x1="3" y1="3" x2="29" y2="29" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#1D4ED8" />
+          <stop offset="0.5" stopColor="#2563EB" />
+          <stop offset="1" stopColor="#38BDF8" />
+        </linearGradient>
+      </defs>
     </svg>
   );
 }
