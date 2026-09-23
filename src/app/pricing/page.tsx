@@ -215,7 +215,7 @@ export default function PricingPage() {
   ];
 
   return (
-    <div className="overflow-hidden pt-16 sm:pt-20">
+    <div className="overflow-hidden pt-[4.5rem] sm:pt-24">
       {/* Ticker Marquee */}
       <div className="border-b border-slate-200 bg-blue-50/80 py-2.5 overflow-hidden">
         <div className="animate-marquee flex items-center gap-8 whitespace-nowrap font-mono text-xs font-bold uppercase tracking-wider text-blue-900">
@@ -254,13 +254,13 @@ export default function PricingPage() {
             </p>
 
             {/* Currency & Annual Switcher Widget */}
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               {/* Currency Selector */}
               <div className="inline-flex items-center rounded-full border border-slate-200 bg-white p-1 shadow-xs">
                 <button
                   type="button"
                   onClick={() => toggleCurrency("USD")}
-                  className={`flex items-center gap-1.5 rounded-full px-4 py-2 font-mono text-xs font-bold uppercase transition-all ${
+                  className={`flex items-center gap-1.5 rounded-full px-4 min-h-[40px] font-mono text-xs font-bold uppercase transition-all ${
                     !isINR ? "bg-blue-600 text-white shadow-xs" : "text-slate-600 hover:text-slate-900"
                   }`}
                 >
@@ -269,7 +269,7 @@ export default function PricingPage() {
                 <button
                   type="button"
                   onClick={() => toggleCurrency("INR")}
-                  className={`flex items-center gap-1.5 rounded-full px-4 py-2 font-mono text-xs font-bold uppercase transition-all ${
+                  className={`flex items-center gap-1.5 rounded-full px-4 min-h-[40px] font-mono text-xs font-bold uppercase transition-all ${
                     isINR ? "bg-blue-600 text-white shadow-xs" : "text-slate-600 hover:text-slate-900"
                   }`}
                 >
@@ -278,19 +278,20 @@ export default function PricingPage() {
               </div>
 
               {/* Annual Toggle */}
-              <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-2 shadow-xs">
+              <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-2.5 shadow-xs">
                 <span className={cn("font-mono text-xs font-bold uppercase", !isAnnual ? "text-slate-900" : "text-slate-400")}>
                   Monthly
                 </span>
                 <button
                   type="button"
                   onClick={() => setIsAnnual(!isAnnual)}
-                  className="relative inline-flex h-6 w-12 items-center rounded-full bg-slate-200 transition-colors"
+                  aria-label={isAnnual ? "Switch to monthly billing" : "Switch to annual billing"}
+                  className="relative inline-flex h-7 w-14 items-center rounded-full bg-slate-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
                 >
                   <span
                     className={cn(
-                      "inline-block size-4 transform rounded-full bg-blue-600 transition-transform",
-                      isAnnual ? "translate-x-6" : "translate-x-1"
+                      "inline-block size-5 transform rounded-full bg-blue-600 transition-transform shadow-sm",
+                      isAnnual ? "translate-x-7" : "translate-x-1"
                     )}
                   />
                 </button>
@@ -309,7 +310,7 @@ export default function PricingPage() {
                 <a
                   key={j.id}
                   href={`#${j.id}`}
-                  className="rounded-full border border-slate-200 bg-white px-3.5 py-1 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.06em] text-slate-700 shadow-xs transition hover:border-blue-400 hover:text-blue-600"
+                  className="rounded-full border border-slate-200 bg-white px-3.5 py-1.5 min-h-[32px] inline-flex items-center font-mono text-[0.65rem] font-semibold uppercase tracking-[0.06em] text-slate-700 shadow-xs transition hover:border-blue-400 hover:text-blue-600"
                 >
                   {j.label}
                 </a>
@@ -500,7 +501,7 @@ export default function PricingPage() {
                       )}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 font-mono text-xs font-bold uppercase tracking-wider transition ${
+                      className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-5 min-h-[48px] font-mono text-xs font-bold uppercase tracking-wider transition ${
                         tier.popular
                           ? "bg-blue-600 hover:bg-blue-700 text-white shadow-sm"
                           : "border border-slate-200 bg-white hover:bg-slate-50 text-slate-900"
@@ -607,7 +608,7 @@ export default function PricingPage() {
                       )}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-xs font-bold uppercase tracking-wider transition ${
+                      className={`inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 min-h-[48px] text-xs font-bold uppercase tracking-wider transition ${
                         isPopular
                           ? "bg-blue-600 text-white shadow-md shadow-blue-500/20 hover:bg-blue-700"
                           : "border border-slate-200 bg-white text-slate-800 hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50/40"
@@ -654,7 +655,7 @@ export default function PricingPage() {
                   href={waLink(`Hi Next Scale! I'd like to add ${a.name} to my project.`)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 font-mono text-[0.68rem] font-bold text-slate-700 transition hover:bg-blue-600 hover:text-white hover:border-blue-600"
+                  className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 min-h-[36px] inline-flex items-center font-mono text-[0.68rem] font-bold text-slate-700 transition hover:bg-blue-600 hover:text-white hover:border-blue-600 active:scale-95"
                 >
                   + Add
                 </a>
@@ -735,18 +736,18 @@ export default function PricingPage() {
             Tell us your budget, timeline, and goals on WhatsApp — we will send back a clear scope proposal with zero pushy upsells.
           </p>
 
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+          <div className="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href={waLink("Hi Next Scale! I'd like a custom pricing proposal for my business.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-blue-500/25 transition hover:-translate-y-0.5 hover:bg-blue-700"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-7 min-h-[52px] text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-blue-500/25 transition hover:-translate-y-0.5 hover:bg-blue-700 active:scale-95"
             >
               <PhoneCall className="size-4" /> Message Us on WhatsApp
             </a>
             <Link
               href="/tools"
-              className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-white/5 px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-white transition hover:bg-white/10"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-white/5 px-7 min-h-[52px] text-xs font-bold uppercase tracking-wider text-white transition hover:bg-white/10"
             >
               Try Free ROI Calculators →
             </Link>

@@ -223,7 +223,7 @@ const GUARANTEES = [
 
 export default function ServicesPage() {
   return (
-    <div className="overflow-hidden pt-16 sm:pt-20">
+    <div className="overflow-hidden pt-[4.5rem] sm:pt-24">
       <JsonLd
         schema={[
           breadcrumbSchema([
@@ -276,21 +276,21 @@ export default function ServicesPage() {
                   href={waLink("Hi Next Scale! I'm reviewing your services and would like to discuss a project for my business.")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-blue-500/25 transition hover:-translate-y-0.5 hover:bg-blue-700"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 min-h-[48px] text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-blue-500/25 transition hover:-translate-y-0.5 hover:bg-blue-700 active:scale-95"
                 >
                   Start a Project <ArrowRight className="size-4" />
                 </a>
                 <a
                   href="#service-finder"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-slate-800 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-600 hover:text-blue-600"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 min-h-[48px] text-xs font-bold uppercase tracking-wider text-slate-800 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-600 hover:text-blue-600 active:scale-95"
                 >
                   Take 60s Fit Quiz ↓
                 </a>
               </div>
             </div>
 
-            {/* Quick Proof Cards on Right */}
-            <div className="grid grid-cols-2 gap-4">
+            {/* Quick Proof Cards on Right — responsive 2-col on sm+, 1-col on xs */}
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
               <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-blue-200 hover:shadow-md">
                 <span className="font-display text-3xl font-black text-blue-600 sm:text-4xl">99/100</span>
                 <span className="mt-1 block font-display text-xs font-bold uppercase tracking-wider text-slate-900">
@@ -424,7 +424,7 @@ export default function ServicesPage() {
                   <div className="border-t border-slate-100 bg-slate-50/60 p-6">
                     <Link
                       href={s.href}
-                      className={`inline-flex w-full items-center justify-between rounded-xl px-5 py-3 text-xs font-bold uppercase tracking-wider transition ${
+                      className={`inline-flex w-full items-center justify-between rounded-xl px-5 py-3 min-h-[44px] text-xs font-bold uppercase tracking-wider transition ${
                         isHighlight
                           ? "bg-blue-600 text-white shadow-md shadow-blue-500/20 hover:bg-blue-700"
                           : "border border-slate-200 bg-white text-slate-800 hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50/40"
@@ -602,18 +602,18 @@ export default function ServicesPage() {
             Tell us about your business on WhatsApp and we&apos;ll share a concrete scope proposal within 24 hours.
           </p>
 
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+          <div className="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href={waLink("Hi Next Scale! I'd like to talk through your services and see which plan fits my business.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-blue-500/25 transition hover:-translate-y-0.5 hover:bg-blue-700"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-7 min-h-[52px] text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-blue-500/25 transition hover:-translate-y-0.5 hover:bg-blue-700 active:scale-95"
             >
               <PhoneCall className="size-4" /> Chat on WhatsApp Directly
             </a>
             <Link
               href="/pricing"
-              className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-white/5 px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-white transition hover:bg-white/10"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-white/5 px-7 min-h-[52px] text-xs font-bold uppercase tracking-wider text-white transition hover:bg-white/10"
             >
               View Transparent Pricing →
             </Link>

@@ -100,7 +100,7 @@ export function ServiceFinder() {
                   key={value}
                   type="button"
                   onClick={() => selectOption(value)}
-                  className="group rounded-2xl border border-slate-200 bg-slate-50/50 p-5 text-left transition duration-200 hover:-translate-y-0.5 hover:border-blue-500 hover:bg-white hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                  className="group rounded-2xl border border-slate-200 bg-slate-50/50 p-5 min-h-[52px] text-left transition duration-200 hover:-translate-y-0.5 hover:border-blue-500 hover:bg-white hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 active:scale-[0.98] touch-manipulation"
                 >
                   <span className="flex items-start justify-between gap-3">
                     <span className="font-display text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
@@ -116,7 +116,7 @@ export function ServiceFinder() {
               <button
                 type="button"
                 onClick={() => setStep((current) => current - 1)}
-                className="mt-6 font-mono text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-blue-600 transition"
+                className="mt-6 min-h-[36px] font-mono text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-blue-600 transition touch-manipulation"
               >
                 ← Go back
               </button>
@@ -133,7 +133,7 @@ export function ServiceFinder() {
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <Link
                   href={recommendation.href}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 font-semibold text-xs text-white uppercase tracking-wider shadow-md shadow-blue-500/20 transition hover:bg-blue-700 hover:-translate-y-0.5"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 min-h-[48px] font-semibold text-xs text-white uppercase tracking-wider shadow-md shadow-blue-500/20 transition hover:bg-blue-700 hover:-translate-y-0.5 active:scale-95"
                 >
                   {recommendation.label} <ArrowRight className="size-4" />
                 </Link>
@@ -141,7 +141,7 @@ export function ServiceFinder() {
                   href={waLink(`Hi Next Scale! I used the fit finder and think I need ${recommendation.title}.`)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3 font-semibold text-xs text-slate-800 uppercase tracking-wider transition hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50/50"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 min-h-[48px] font-semibold text-xs text-slate-800 uppercase tracking-wider transition hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50/50 active:scale-95"
                 >
                   <MessageCircle className="size-4" /> Ask a human
                 </a>

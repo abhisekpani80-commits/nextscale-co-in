@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight, Zap } from "lucide-react";
@@ -21,6 +21,7 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,12 +32,28 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close mobile drawer when route changes
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
   const isLinkActive = (href: string) => {
     if (href === "/") return pathname === "/";
     if (href === "/pricing") return pathname === "/pricing" || pathname === "/pricing-studio";
     if (href === "/tools") return pathname === "/tools" || pathname.startsWith("/tools/");
     return pathname === href || pathname.startsWith(`${href}/`);
   };
+
+  // Logo click: if on homepage, smooth-scroll to top; otherwise navigate to /
+  const handleLogoClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (isHomePage) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    },
+    [isHomePage]
+  );
 
   return (
     <>
@@ -53,7 +70,12 @@ export function Navbar() {
             }`}
           >
             {/* Brand Logo & Live Status Ping */}
-            <Link href="/" className="group flex items-center gap-2.5" aria-label="Next Scale home">
+            <Link
+              href="/"
+              onClick={handleLogoClick}
+              className="group flex items-center gap-2.5"
+              aria-label="Next Scale home — scroll to top"
+            >
               <div className="relative flex items-center justify-center">
                 <NextscaleLogo className="size-8 transition-transform duration-300 group-hover:scale-105" />
                 <span className="absolute -top-0.5 -right-0.5 flex size-2.5">
@@ -120,7 +142,7 @@ export function Navbar() {
             {/* Mobile Hamburger Button */}
             <button
               type="button"
-              className="grid size-10 place-items-center rounded-full border border-slate-200 bg-slate-100 shadow-xs transition active:scale-95 lg:hidden"
+              className="grid size-11 place-items-center rounded-full border border-slate-200 bg-slate-100 shadow-xs transition active:scale-95 lg:hidden"
               onClick={() => setMobileOpen((open) => !open)}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileOpen}
@@ -133,66 +155,79 @@ export function Navbar() {
         {/* Mobile Slide-down Drawer */}
         <AnimatePresence>
           {mobileOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.2 }}
-              className="mx-auto mt-2 max-w-[1280px] px-4 sm:px-8 lg:hidden"
-            >
-              <div className="rounded-3xl border border-slate-200 bg-white/95 p-5 shadow-xl backdrop-blur-lg">
-                <div className="flex flex-col gap-2">
-                  {links.map((link) => {
-                    const active = isLinkActive(link.href);
-                    return (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        onClick={() => setMobileOpen(false)}
-                        className={`flex items-center justify-between rounded-xl px-4 py-3 font-display text-sm font-bold uppercase tracking-wider transition ${
-                          active
-                            ? "bg-blue-600 text-white"
-                            : "text-slate-700 hover:bg-slate-50 hover:text-blue-600"
-                        }`}
-                      >
-                        <span>{link.label}</span>
-                        {link.badge && (
-                          <span className="rounded-full bg-blue-100 text-blue-700 px-2 py-0.5 text-xs font-bold">
-                            {link.badge}
-                          </span>
-                        )}
+            <>
+              {/* Backdrop — tap outside to close */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.18 }}
+                className="fixed inset-0 z-[-1] bg-slate-900/30 backdrop-blur-[2px] lg:hidden"
+                onClick={() => setMobileOpen(false)}
+                aria-hidden="true"
+              />
+
+              <motion.div
+                initial={{ opacity: 0, y: -12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.2 }}
+                className="mx-auto mt-2 max-w-[1280px] px-4 sm:px-8 lg:hidden"
+              >
+                <div className="rounded-3xl border border-slate-200 bg-white/97 p-5 shadow-xl backdrop-blur-lg">
+                  <div className="flex flex-col gap-2">
+                    {links.map((link) => {
+                      const active = isLinkActive(link.href);
+                      return (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          onClick={() => setMobileOpen(false)}
+                          className={`flex items-center justify-between rounded-xl px-4 py-3.5 font-display text-sm font-bold uppercase tracking-wider transition ${
+                            active
+                              ? "bg-blue-600 text-white"
+                              : "text-slate-700 hover:bg-slate-50 hover:text-blue-600"
+                          }`}
+                        >
+                          <span>{link.label}</span>
+                          {link.badge && (
+                            <span className="rounded-full bg-blue-100 text-blue-700 px-2 py-0.5 text-xs font-bold">
+                              {link.badge}
+                            </span>
+                          )}
+                        </Link>
+                      );
+                    })}
+                  </div>
+
+                  <div className="mt-4 pt-4 border-t border-slate-100 flex flex-col gap-3">
+                    <a
+                      href={waLink()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500 py-4 font-display text-xs font-bold uppercase tracking-wider text-white shadow-md shadow-blue-500/20 min-h-[52px]"
+                    >
+                      <Zap className="size-4" />
+                      Start a project on WhatsApp
+                    </a>
+
+                    <div className="flex items-center justify-around pt-2 text-xs font-semibold text-slate-500">
+                      <Link href="/careers" onClick={() => setMobileOpen(false)} className="py-2 px-3 hover:text-blue-600 transition">
+                        Careers
                       </Link>
-                    );
-                  })}
-                </div>
-
-                <div className="mt-4 pt-4 border-t border-slate-100 flex flex-col gap-3">
-                  <a
-                    href={waLink()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500 py-3.5 font-display text-xs font-bold uppercase tracking-wider text-white shadow-md shadow-blue-500/20"
-                  >
-                    <Zap className="size-4" />
-                    Start a project on WhatsApp
-                  </a>
-
-                  <div className="flex items-center justify-around pt-2 text-xs font-semibold text-slate-500">
-                    <Link href="/careers" onClick={() => setMobileOpen(false)} className="hover:text-blue-600 transition">
-                      Careers
-                    </Link>
-                    <span>·</span>
-                    <Link href="/compare" onClick={() => setMobileOpen(false)} className="hover:text-blue-600 transition">
-                      Compare Agency
-                    </Link>
-                    <span>·</span>
-                    <Link href="/resources" onClick={() => setMobileOpen(false)} className="hover:text-blue-600 transition">
-                      Resources
-                    </Link>
+                      <span>·</span>
+                      <Link href="/compare" onClick={() => setMobileOpen(false)} className="py-2 px-3 hover:text-blue-600 transition">
+                        Compare Agency
+                      </Link>
+                      <span>·</span>
+                      <Link href="/resources" onClick={() => setMobileOpen(false)} className="py-2 px-3 hover:text-blue-600 transition">
+                        Resources
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </>
           )}
         </AnimatePresence>
       </header>

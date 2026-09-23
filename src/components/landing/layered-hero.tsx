@@ -72,8 +72,9 @@ const SLIDES: Slide[] = [
 export function LayeredHero() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const touchStartX = React.useRef<number | null>(null);
 
-  // Auto-move slides every 3 seconds (pauses on user hover)
+  // Auto-move slides every 3 seconds (pauses on user hover/touch)
   useEffect(() => {
     if (isPaused) return;
     const timer = setInterval(() => {
@@ -88,6 +89,23 @@ export function LayeredHero() {
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
+  };
+
+  // Touch swipe handlers for mobile carousel
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    setIsPaused(true);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const delta = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(delta) >= 50) {
+      if (delta < 0) nextSlide();
+      else prevSlide();
+    }
+    touchStartX.current = null;
+    setIsPaused(false);
   };
 
   const slide = SLIDES[currentSlide];
@@ -113,6 +131,8 @@ export function LayeredHero() {
           className="relative max-w-4xl mx-auto"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
           
           {/* Left Arrow Button (Desktop Side) */}
@@ -134,7 +154,7 @@ export function LayeredHero() {
           </button>
 
           {/* Center Dynamic Content Area */}
-          <div className="text-center min-h-[320px] flex flex-col justify-center">
+          <div className="text-center min-h-[340px] sm:min-h-[360px] flex flex-col justify-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={slide.id}

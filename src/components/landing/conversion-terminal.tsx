@@ -48,7 +48,7 @@ export function ConversionTerminal() {
 
               <a
                 href="mailto:biz.abhisek@gmail.com?subject=NextScale%207-Day%20Sprint%20Inquiry"
-                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold text-sm text-slate-200 bg-slate-900/80 hover:bg-slate-800 border border-slate-700 transition-colors"
+                className="inline-flex items-center justify-center gap-2 min-h-[48px] px-6 py-3.5 rounded-xl font-semibold text-sm text-slate-200 bg-slate-900/80 hover:bg-slate-800 border border-slate-700 transition-colors"
               >
                 <Mail className="w-4 h-4 text-slate-400" />
                 <span>Email Founder Directly</span>

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Star, MousePointerClick } from "lucide-react";
 import { AccordionGallery, GalleryItem } from "@/components/ui/accordion-gallery";
 
@@ -74,6 +74,14 @@ const REVIEWS: GalleryItem[] = [
 ];
 
 export function TestimonialShowcase() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener("resize", check, { passive: true });
+    return () => window.removeEventListener("resize", check);
+  }, []);
   return (
     <section id="proof" className="py-20 md:py-32 relative bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -98,7 +106,7 @@ export function TestimonialShowcase() {
 
           <div className="pt-2 flex items-center justify-center gap-2 text-xs text-slate-500">
             <MousePointerClick className="w-3.5 h-3.5 text-blue-600" />
-            <span>Hover or tap any client portrait to expand their story</span>
+            <span>{isMobile ? "Tap any portrait to expand their story" : "Hover or tap any client portrait to expand their story"}</span>
           </div>
         </div>
 
@@ -110,11 +118,11 @@ export function TestimonialShowcase() {
             accentColor="#2563EB"
             overlayColor="#071229"
             textColor="#FFFFFF"
-            height={500}
+            height={isMobile ? 420 : 500}
             gap={12}
             radius={22}
             expandRatio={0.46}
-            trigger="hover"
+            trigger={isMobile ? "click" : "hover"}
             grayscale={false}
           />
         </div>

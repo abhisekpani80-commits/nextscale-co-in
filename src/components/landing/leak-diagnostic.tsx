@@ -62,7 +62,7 @@ export function LeakDiagnostic() {
                   value={monthlyVisitors}
                   onChange={(e) => setMonthlyVisitors(Number(e.target.value))}
                   aria-label="Monthly Website Visitors"
-                  className="w-full h-2.5 bg-slate-100 border border-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                  className="w-full h-3 bg-slate-100 border border-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600 touch-manipulation"
                 />
                 <div className="flex justify-between text-[11px] text-slate-400 mt-1 font-mono">
                   <span>500</span>
@@ -89,7 +89,7 @@ export function LeakDiagnostic() {
                   value={dealValue}
                   onChange={(e) => setDealValue(Number(e.target.value))}
                   aria-label="Average Deal or Client Value"
-                  className="w-full h-2.5 bg-slate-100 border border-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                  className="w-full h-3 bg-slate-100 border border-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600 touch-manipulation"
                 />
                 <div className="flex justify-between text-[11px] text-slate-400 mt-1 font-mono">
                   <span>$500</span>

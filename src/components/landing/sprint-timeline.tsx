@@ -316,7 +316,7 @@ export function SprintTimeline() {
         {/* 5. Desktop Grid & Mobile Connected Vertical Timeline */}
         <div className="relative">
           {/* Mobile Vertical Spine (hidden on desktop) */}
-          <div className="lg:hidden absolute left-5 top-8 bottom-8 w-0.5 bg-slate-200 -z-0">
+          <div className="lg:hidden absolute left-[1.1rem] top-8 bottom-8 w-0.5 bg-slate-200 -z-0">
             <motion.div
               className="w-full bg-gradient-to-b from-blue-600 via-blue-500 to-sky-400 rounded-full origin-top"
               initial={{ height: "15%" }}
@@ -377,7 +377,7 @@ export function SprintTimeline() {
                   )}
 
                   {/* Mobile Indicator Node (on the vertical spine) */}
-                  <div className="lg:hidden absolute -left-10 top-7 -translate-x-1/2 flex items-center justify-center">
+                  <div className="lg:hidden absolute -left-[2.25rem] top-7 -translate-x-1/2 flex items-center justify-center">
                     <span
                       className={`size-4 rounded-full border-2 bg-white transition-all duration-300 ${
                         isCardActive
