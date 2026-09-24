@@ -115,7 +115,7 @@ const BENTO_FEATURES = [
     statLabel: "Mobile Lighthouse",
   },
   {
-    title: "24/7 WhatsApp AI Triage",
+    title: "24/7 WhatsApp AI Bot",
     tag: "Automation",
     color: "#9DD9FF",
     icon: Bot,

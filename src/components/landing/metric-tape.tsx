@@ -4,14 +4,14 @@ import React from "react";
 
 export function MetricTape() {
   const items = [
-    "Sub-Second Digital Front Doors",
-    "24/7 Autonomous WhatsApp AI",
-    "99/100 Google PageSpeed Rating",
-    "Zero Code Vendor Lock-in",
-    "7-Day Rapid Sprint Delivery",
-    "Calendar Direct Booking Sync",
-    "Revenue Leak Elimination",
-    "Custom Next.js 16 + React 19 IP",
+    "Sub-Second Fast Websites",
+    "24/7 WhatsApp AI Bot",
+    "99/100 Google PageSpeed",
+    "100% Full Code Ownership",
+    "Guaranteed 7-Day Launch",
+    "Direct Calendar Booking",
+    "Zero Lost Customer Inquiries",
+    "Modern High-Speed Technology",
   ];
 
   return (

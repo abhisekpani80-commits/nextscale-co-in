@@ -1,7 +1,7 @@
 const OFFERINGS = [
   "Digital Front Doors",
   "Sub-Second Web Apps",
-  "24/7 WhatsApp AI Triage",
+  "24/7 WhatsApp AI Bot",
   "Automated Back Office",
   "Google Local Map Domination",
   "Calendar CRM Sync",

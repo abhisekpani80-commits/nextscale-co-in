@@ -159,7 +159,7 @@ const INDUSTRY_PLAYBOOKS = [
     title: "Clinics & Healthcare",
     color: "#2563EB",
     problem: "High no-show rates & missed patient queries after clinic hours.",
-    solution: "24/7 WhatsApp AI triage + instant slot booking + SMS reminder sequences.",
+    solution: "24/7 WhatsApp AI bot + instant appointment booking + SMS reminders.",
     impact: "+40% booked consultations, -55% no-shows",
   },
   {
@@ -304,7 +304,7 @@ export default function ServicesPage() {
                 <span className="mt-1 block font-display text-xs font-bold uppercase tracking-wider text-slate-900">
                   AI Reply Time
                 </span>
-                <p className="mt-2 text-xs text-slate-500">Instant WhatsApp triage day and night.</p>
+                <p className="mt-2 text-xs text-slate-500">Instant WhatsApp AI bot replies day and night.</p>
               </div>
 
               <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-blue-200 hover:shadow-md">

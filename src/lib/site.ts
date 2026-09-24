@@ -199,12 +199,12 @@ export const SERVICES: Service[] = [
     points: ["n8n & Make workflows", "WhatsApp & CRM sync", "Document & RAG systems"],
   },
   {
-    name: "Autonomous AI Agents",
+    name: "WhatsApp AI Bots",
     description:
-      "24/7 Intelligent software agents that book appointments, capture leads & triage support.",
+      "24/7 WhatsApp AI bots that book appointments, capture leads, and answer customer questions instantly.",
     href: "/services/ai-agents",
     icon: Bot,
-    points: ["WhatsApp & Web agents", "Autonomous lead qualification", "24/7 Support triage"],
+    points: ["WhatsApp & Web AI bots", "Automatic lead qualification", "24/7 Instant customer support"],
   },
 ];
 
@@ -970,7 +970,7 @@ export const ROLES: Role[] = [
     title: "Autonomous AI Agent & WhatsApp Engineer",
     type: "Contract to Core · Work From Home",
     openings: 1,
-    description: "Design, wire, and deploy 24/7 conversational AI receptionists and lead triage bots using Meta Cloud WhatsApp APIs, Claude 3.7 / OpenAI, and Supabase webhooks.",
+    description: "Design, build, and deploy 24/7 conversational WhatsApp AI bots to answer customer questions, qualify leads, and book appointments automatically.",
     requirements: ["Hands-on with Meta Cloud WhatsApp API & Webhooks", "Advanced Prompt Engineering with structured JSON outputs", "TypeScript / Python backend integration skills", "Experience with Supabase / Postgres vector search", "Obsession with low-latency and edge-case handling"],
     expect: ["Architect reliable multi-turn prompt logic with guardrails", "Test 30+ edge cases before pushing live to client numbers", "Setup automated error logging & fallback routing", "Collaborate directly with Abhisek on agent architecture", "Document webhook payloads and API schemas"],
     perks: ["Work on cutting-edge LLMs and real commercial deployments", "Direct revenue share on deployed recurring client bots", "Access to enterprise AI keys & developer infrastructure", "Lead AI architect trajectory as studio expands", "100% remote async autonomy"],

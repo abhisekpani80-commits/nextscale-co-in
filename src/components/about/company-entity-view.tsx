@@ -32,7 +32,7 @@ const PILLARS = [
   {
     icon: Zap,
     title: "7-Day Velocity Delivery",
-    desc: "We eliminate bureaucratic agency bloat. Full custom high-converting storefronts go live in 7 days, and WhatsApp AI concierges are deployed in 48 to 72 hours.",
+    desc: "We eliminate agency delays. Full custom high-converting websites go live in 7 days, and WhatsApp AI bots are deployed in 48 to 72 hours.",
   },
   {
     icon: ShieldCheck,
@@ -46,7 +46,7 @@ const PILLARS = [
   },
   {
     icon: Bot,
-    title: "24/7 WhatsApp Concierge",
+    title: "24/7 WhatsApp AI Bot",
     desc: "Answers customer queries in seconds, qualifies client budgets, and syncs confirmed consultations straight into your calendar 24 hours a day.",
   },
 ];
@@ -102,7 +102,7 @@ export function CompanyEntityView() {
                   <Link href="/about/abhisek-pani" className="font-bold text-slate-900 underline decoration-blue-300 decoration-2 underline-offset-2 hover:text-blue-600">
                     Abhisek Pani
                   </Link>{" "}
-                  in 2024. We architect high-converting digital storefronts and autonomous 24/7 WhatsApp AI booking concierges for growing businesses.
+                  in 2024. We build high-converting business websites and 24/7 WhatsApp AI booking bots for growing businesses.
                 </p>
 
                 {/* Direct Action Links */}
@@ -243,7 +243,7 @@ export function CompanyEntityView() {
                 Ready to Upgrade Your Digital Infrastructure?
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-sm text-slate-300 sm:text-base relative z-10">
-                Get a custom high-converting storefront delivered in 7 days or deploy an autonomous WhatsApp AI concierge in 48 hours.
+                Get a custom high-converting website delivered in 7 days or deploy a 24/7 WhatsApp AI bot in 48 hours.
               </p>
 
               <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row relative z-10">

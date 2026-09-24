@@ -93,7 +93,7 @@ export function Hero() {
       >
         <div className="flex flex-col">
           <span className="text-xl font-bold font-heading text-white">92%</span>
-          <span className="text-xs text-white/50 font-body uppercase tracking-wider">Faster Lead Triage</span>
+          <span className="text-xs text-white/50 font-body uppercase tracking-wider">Faster Lead Replies</span>
         </div>
       </motion.div>
 

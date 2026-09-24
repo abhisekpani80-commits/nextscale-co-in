@@ -1,7 +1,7 @@
 const OUTCOMES = [
   "Fast & Sub-Second",
   "Zero Revenue Leaks",
-  "24/7 Automated Triage",
+  "24/7 WhatsApp AI Bot",
   "Frictionless Intake",
   "Systemized Growth",
   "Instant Calendar Booking",

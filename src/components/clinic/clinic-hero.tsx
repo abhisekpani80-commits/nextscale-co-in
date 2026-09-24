@@ -40,7 +40,7 @@ const SLIDES: SlideData[] = [
     primaryCtaText: "Deploy Back Office AI",
     primaryCtaUrl:
       "https://wa.me/919556436685?text=Hi%20NextScale!%20I'd%20like%20to%20deploy%20a%2024%2F7%20WhatsApp%20AI%20receptionist.",
-    secondaryCtaText: "See Live Triage Demo",
+    secondaryCtaText: "See Live Bot Demo",
     secondaryCtaHref: "#diagnosis",
   },
   {

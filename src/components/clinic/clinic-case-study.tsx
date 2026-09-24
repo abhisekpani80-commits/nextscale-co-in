@@ -23,7 +23,7 @@ export function ClinicCaseStudy() {
             </div>
 
             <p className="text-[#8e8e9c] text-base sm:text-lg leading-relaxed mb-8 max-w-xl">
-              Replaced a slow 4.6s WordPress brochure and delayed human reception with a sub-second NextScale web app and automated WhatsApp triage. Night-time lead loss was reduced to zero.
+              Replaced a slow 4.6s WordPress site and delayed staff replies with a fast sub-second NextScale web app and a 24/7 WhatsApp AI bot. Night-time lead loss was reduced to zero.
             </p>
 
             {/* Stacked client list with thin gradient underlines */}

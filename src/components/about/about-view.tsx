@@ -162,7 +162,7 @@ const TECH_ARSENAL = [
     name: "Meta Cloud WhatsApp API",
     tag: "Automation Engine",
     icon: Bot,
-    desc: "Official enterprise WhatsApp webhook infrastructure for 24/7 autonomous triage, appointment scheduling, and customer inquiries.",
+    desc: "Official enterprise WhatsApp infrastructure for 24/7 AI chat, appointment scheduling, and customer inquiries.",
   },
   {
     name: "Claude 3.7 & OpenAI",
@@ -208,10 +208,10 @@ const LAB_PRODUCTS = [
     category: "In-House SaaS",
   },
   {
-    name: "TriageBot Engine",
+    name: "WhatsApp Sales Bot",
     tag: "Enterprise Core",
     metric: "Sub-30s Automated Booking",
-    desc: "Our proprietary WhatsApp webhook state-machine that powers client triage, payment routing, and Google Calendar sync.",
+    desc: "Our custom WhatsApp system that powers automated client replies, payment routing, and Google Calendar sync.",
     link: "/services/ai-agents",
     category: "Internal Infrastructure",
   },

@@ -182,7 +182,7 @@ const FloatingHero3D = () => {
               </div>
 
               <div className="space-y-4">
-                <FeatureItem icon={<MessageCircle className="w-4 h-4 text-magenta-400" />} text="WhatsApp AI Triage" />
+                <FeatureItem icon={<MessageCircle className="w-4 h-4 text-magenta-400" />} text="WhatsApp AI Bot" />
                 <FeatureItem icon={<Clock className="w-4 h-4 text-magenta-400" />} text="<60s Lead Qualification" />
                 <FeatureItem icon={<CheckCircle2 className="w-4 h-4 text-magenta-400" />} text="Direct G-Calendar Slots" />
                 <FeatureItem icon={<BarChart3 className="w-4 h-4 text-magenta-400" />} text="Zero Revenue Leaks" />
@@ -219,7 +219,7 @@ const FloatingHero3D = () => {
           </div>
           <div>
             <p className="text-sm font-semibold text-white">&lt; 60s Avg</p>
-            <p className="text-xs text-gray-400">AI Triage Speed</p>
+            <p className="text-xs text-gray-400">AI Reply Speed</p>
           </div>
         </motion.div>
 

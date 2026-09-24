@@ -54,11 +54,11 @@ const slides: SlideData[] = [
     tagColor: '#f97316',
     titleBase: 'The Automated',
     titleHighlight: 'Back Office',
-    description: 'Lead generation without automated triage is a bottleneck. Our autonomous conversational systems connect to your official WhatsApp Business number to qualify clients and book calendars 24/7 without manual staff delays.',
+    description: 'Getting leads without instant replies loses sales. Our 24/7 WhatsApp AI bot connects directly to your WhatsApp Business number to answer questions and book appointments without staff delays.',
     bullets: [
       {
-        title: 'Instant Sub-60s Conversational Triage:',
-        desc: 'Greets after-hours inquiries instantly, answers treatment and pricing FAQs, and filters high-intent budgets.',
+        title: 'Instant 24/7 WhatsApp AI Replies:',
+        desc: 'Greets inquiries instantly in under 30 seconds, answers pricing and service questions, and qualifies serious buyers.',
       },
       {
         title: 'Automated Calendar & CRM Handshake:',
@@ -285,7 +285,7 @@ export default function DiagnosisSlider() {
                               </div>
                               <div>
                                 <div className="font-heading font-bold text-sm text-white flex items-center gap-1.5">
-                                  <span>NextScale Triage AI</span>
+                                  <span>NextScale WhatsApp AI</span>
                                   <CheckCircle2 className="size-3.5 text-[#06b6d4] fill-[#06b6d4]/20" />
                                 </div>
                                 {/* SINGLE RESERVED COOL CYAN ACCENT WITH PULSE */}
@@ -323,7 +323,7 @@ export default function DiagnosisSlider() {
                             {/* Automated Action Card */}
                             <div className="bg-white/[0.04] border border-dashed border-[#f97316]/40 rounded-xl p-3 text-xs text-[#8e8e9c]">
                               <div className="text-[0.68rem] font-bold text-[#fbbf24] uppercase tracking-wider mb-1">
-                                AUTOMATED TRIAGE ACTION
+                                AUTOMATED AI ACTION
                               </div>
                               <div className="text-white font-semibold mb-0.5">
                                 ✓ Qualified: Enterprise Multi-Clinic Tier

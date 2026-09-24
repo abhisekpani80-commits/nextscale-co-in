@@ -590,7 +590,7 @@ export const ALL_SERVICES: ServiceItem[] = [
   },
   {
     id: "auto-10",
-    title: "Smart Email Triage & Auto-Drafting",
+    title: "Smart Email Sorting & Auto-Drafting",
     category: "process-automation",
     description: "Categorizing incoming emails and auto-preparing responses for staff review.",
     deliverables: ["Inbox Rules Engine", "Drafting Logic", "Urgency Alerts"],
@@ -1253,7 +1253,7 @@ export const AI_AGENT_CATEGORIES: AutonomousAgentCategory[] = [
       {
         name: "Cold Outreach Agent",
         description: "Autonomous Multichannel Email & LinkedIn Sender",
-        actionDetail: "Sends hyper-personalized cold outreach messages at scale & handles initial response triage.",
+        actionDetail: "Sends personalized outreach messages at scale and handles replies and follow-ups automatically.",
         priceUSD: "$1,199/mo",
         priceINR: "₹29,999/mo",
       },
@@ -1284,7 +1284,7 @@ export const AI_AGENT_CATEGORIES: AutonomousAgentCategory[] = [
         priceINR: "₹24,999/mo",
       },
       {
-        name: "Ticket Triage & Routing Agent",
+        name: "Support Ticket Sorting Agent",
         description: "Autonomous Helpdesk Classifier",
         actionDetail: "Reads incoming support tickets, categorizes urgency & routes complex issues to human agents instantly.",
         priceUSD: "$599/mo",

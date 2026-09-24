@@ -44,7 +44,7 @@ export function ClinicFooter() {
               </li>
               <li>
                 <a href="#services" className="hover:text-white transition-colors">
-                  WhatsApp AI Triage
+                  WhatsApp AI Bot
                 </a>
               </li>
               <li>

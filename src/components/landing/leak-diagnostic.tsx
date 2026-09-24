@@ -7,9 +7,8 @@ export function LeakDiagnostic() {
   const [monthlyVisitors, setMonthlyVisitors] = useState<number>(3500);
   const [dealValue, setDealValue] = useState<number>(2500);
 
-  // Benchmarks:
-  // Typical slow website converts at 1.2% (with 50% dropping off due to delayed follow up)
-  // NextScale frontdoor + backoffice converts at 3.2% with immediate sub-minute triage
+  // Typical slow website converts at 1.2%
+  // NextScale high-speed website + 24/7 WhatsApp AI bot converts at ~3.4%
   const currentLeads = Math.round(monthlyVisitors * 0.012);
   const nextScaleLeads = Math.round(monthlyVisitors * 0.034);
   const recoveredLeads = Math.max(0, nextScaleLeads - currentLeads);
@@ -17,7 +16,7 @@ export function LeakDiagnostic() {
   const annualRevenueRecovered = monthlyRevenueRecovered * 12;
 
   const prefilledWhatsappText = encodeURIComponent(
-    `Hi NextScale! I ran the Revenue Leak Diagnostic. With ${monthlyVisitors.toLocaleString()} monthly visitors and a $${dealValue.toLocaleString()} average deal size, it shows ~$${monthlyRevenueRecovered.toLocaleString()}/mo in recoverable pipeline. I'd like to book an audit.`
+    `Hi NextScale! I used your Revenue Calculator. With ${monthlyVisitors.toLocaleString()} monthly visitors and a $${dealValue.toLocaleString()} average client value, it shows ~$${monthlyRevenueRecovered.toLocaleString()}/month in extra revenue. I'd like to talk to your team.`
   );
 
   return (
@@ -28,13 +27,13 @@ export function LeakDiagnostic() {
         <div className="max-w-3xl mx-auto text-center space-y-4 mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-semibold text-blue-700">
             <Calculator className="w-3.5 h-3.5" />
-            <span>Interactive Diagnostic Engine</span>
+            <span>Revenue Calculator</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-900">
-            How much revenue is slipping through your website right now?
+            How much extra money could your business make?
           </h2>
           <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Most businesses don&apos;t have a traffic problem—they have an inquiry response problem. When buyers don&apos;t get immediate answers, they purchase from competitors. Drag the sliders to see your recoverable revenue.
+            Most businesses don&apos;t need more ad spend—they need faster replies. When potential buyers wait for hours, they buy from competitors. Drag the sliders below to see how much extra revenue you can unlock.
           </p>
         </div>
 
@@ -104,10 +103,10 @@ export function LeakDiagnostic() {
                   <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
                   <div>
                     <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider">
-                      The Leak Diagnosis
+                      Where You Lose Money
                     </h3>
                     <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                      When visitors wait for slow pages or have to fill out long forms, approximately <span className="font-semibold text-rose-600">{recoveredLeads} qualified opportunities</span> exit to competitors each month.
+                      When visitors wait for slow websites or have to fill out long forms, around <span className="font-semibold text-rose-600">{recoveredLeads} serious buyers</span> leave and go to competitors every month.
                     </p>
                   </div>
                 </div>
@@ -118,7 +117,7 @@ export function LeakDiagnostic() {
             <div className="lg:col-span-5 p-6 sm:p-10 bg-[#0F172A] text-white flex flex-col justify-between space-y-6">
               <div>
                 <span className="text-[11px] font-mono uppercase tracking-wider text-sky-400 font-semibold">
-                  ESTIMATED RECOVERABLE CAPACITY
+                  EXTRA REVENUE YOU COULD MAKE
                 </span>
                 
                 <div className="mt-3">
@@ -128,21 +127,21 @@ export function LeakDiagnostic() {
                   </div>
                   <div className="text-xs text-sky-400 font-medium mt-1 flex items-center gap-1">
                     <TrendingUp className="w-3.5 h-3.5" />
-                    <span>~${annualRevenueRecovered.toLocaleString()} annualized addition</span>
+                    <span>~${annualRevenueRecovered.toLocaleString()} extra per year</span>
                   </div>
                 </div>
 
                 <div className="mt-6 pt-6 border-t border-slate-800 space-y-3 text-xs">
                   <div className="flex items-center justify-between text-slate-300">
-                    <span>Extra Booked Calls/mo</span>
+                    <span>Extra Booked Clients / mo</span>
                     <span className="font-mono font-bold text-white">+{recoveredLeads} clients</span>
                   </div>
                   <div className="flex items-center justify-between text-slate-300">
-                    <span>Client Response Speed</span>
+                    <span>WhatsApp Bot Reply Speed</span>
                     <span className="font-mono font-bold text-sky-400">&lt; 30 seconds</span>
                   </div>
                   <div className="flex items-center justify-between text-slate-300">
-                    <span>Implementation Time</span>
+                    <span>Launch Time</span>
                     <span className="font-mono font-bold text-blue-400">7 Days</span>
                   </div>
                 </div>
@@ -156,11 +155,11 @@ export function LeakDiagnostic() {
                   rel="noopener noreferrer"
                   className="w-full flex items-center justify-center gap-2 px-5 py-4 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-blue-600 to-sky-500 hover:brightness-105 shadow-md shadow-blue-500/25 active:scale-[0.98] transition-all"
                 >
-                  <span>Plug These Leaks With Us</span>
+                  <span>Recover This Revenue on WhatsApp</span>
                   <ArrowRight className="w-4 h-4" />
                 </a>
                 <p className="text-center text-[10px] text-slate-400 mt-2">
-                  Opens WhatsApp with your calculated diagnostic parameters.
+                  Opens WhatsApp directly to chat with our team.
                 </p>
               </div>
             </div>

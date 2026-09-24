@@ -9,7 +9,7 @@ const STEPS = [
   {
     num: "02",
     name: "Prescribe",
-    desc: "We architect the custom Next.js front-end wireframe and script the 24/7 WhatsApp AI triage logic tailored to your pricing.",
+    desc: "We design your custom high-speed website and set up the 24/7 WhatsApp AI bot tailored to your services and pricing.",
   },
   {
     num: "03",

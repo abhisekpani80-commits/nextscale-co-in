@@ -88,13 +88,13 @@ export function Footer() {
                   Next Scale
                 </span>
                 <span className="font-display text-[0.65rem] font-bold uppercase tracking-[0.14em] text-blue-600">
-                  Revenue Architecture Studio
+                  Websites &amp; WhatsApp AI Bots
                 </span>
               </div>
             </Link>
 
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-slate-600">
-              High-converting digital storefronts, 24/7 WhatsApp AI booking concierges, and operational revenue growth infrastructure. Shipped in 7 days.
+              High-converting business websites, 24/7 WhatsApp AI booking bots, and automated client booking systems. Shipped in 7 days.
             </p>
 
             <div className="mt-7 flex flex-wrap items-center gap-3">

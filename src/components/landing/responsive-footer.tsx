@@ -93,13 +93,13 @@ export function ResponsiveFooter() {
                   Next Scale<span className="text-blue-600">.</span>
                 </span>
                 <span className="font-display text-[0.62rem] font-bold uppercase tracking-[0.14em] text-blue-600">
-                  Revenue Architecture Studio
+                  Websites &amp; WhatsApp AI Bots
                 </span>
               </div>
             </Link>
 
             <p className="text-xs sm:text-sm text-slate-600 max-w-sm leading-relaxed">
-              Revenue Architecture &amp; Operational Growth Studio. We engineer sub-second digital storefronts paired with autonomous 24/7 WhatsApp triage for scaling businesses worldwide.
+              We build fast, high-converting websites paired with 24/7 WhatsApp AI bots that book clients automatically for growing businesses worldwide.
             </p>
 
             <div className="pt-1 space-y-2 text-xs sm:text-sm">

@@ -49,7 +49,7 @@ const SOCIAL_LINKS = [
 
 const SKILLS = [
   { category: "Web Architecture", items: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "High-Speed Caching", "API Design"] },
-  { category: "Autonomous Systems", items: ["WhatsApp Cloud API", "Smart Qualification AI", "Automated Scheduling", "CRM Integration", "24/7 Triage"] },
+  { category: "Autonomous Systems", items: ["WhatsApp Cloud API", "Smart Qualification AI", "Automated Scheduling", "CRM Integration", "24/7 WhatsApp AI"] },
   { category: "Data & Security", items: ["PostgreSQL", "Cloudflare DNS", "SSL Encryption", "Webhooks", "JSON-LD Schema"] },
   { category: "Growth & Visibility", items: ["Technical SEO", "Mobile First Design", "Fast Loading Pages", "Google Search Optimization"] },
 ];
@@ -59,7 +59,7 @@ const HIGHLIGHTS = [
     title: "Next Scale Studio",
     role: "Founder & Lead Architect",
     period: "2024 — Present",
-    desc: "Revenue architecture studio delivering custom business websites in 7 days and 24/7 WhatsApp AI booking concierges across India, UAE, and USA.",
+    desc: "Studio delivering custom business websites in 7 days and 24/7 WhatsApp AI bots across India, UAE, and USA.",
     link: "/about/next-scale",
     badge: "Active Studio",
   },
@@ -126,7 +126,7 @@ export function FounderEntityView() {
                 </p>
 
                 <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-                  Software architect building high-converting digital storefronts and autonomous 24/7 WhatsApp client concierges. Operating on an anti-agency model: <strong className="text-slate-900">7-day guaranteed delivery, 100% full code ownership, and zero ongoing agency hostage fees.</strong>
+                  Software engineer building high-converting business websites and 24/7 WhatsApp AI bots. Operating on a simple model: <strong className="text-slate-900">7-day guaranteed delivery, 100% full code ownership, and zero monthly agency fees.</strong>
                 </p>
 
                 {/* Social & Entity Links */}
@@ -160,7 +160,7 @@ export function FounderEntityView() {
                     </div>
                     <div>
                       <span className="font-heading text-2xl font-black text-blue-600">12+</span>
-                      <p className="text-xs text-slate-500 font-medium">WhatsApp AI Concierges Live</p>
+                      <p className="text-xs text-slate-500 font-medium">WhatsApp AI Bots Live</p>
                     </div>
                     <div>
                       <span className="font-heading text-2xl font-black text-slate-900">7 Days</span>
@@ -223,7 +223,7 @@ export function FounderEntityView() {
                 </div>
                 <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
                   <span className="font-heading text-base font-bold text-slate-900">3. AI That Sells</span>
-                  <p className="mt-1 text-xs text-slate-600">24/7 WhatsApp AI concierges that book appointments, qualify high-intent clients, and boost revenue.</p>
+                  <p className="mt-1 text-xs text-slate-600">24/7 WhatsApp AI bots that book appointments, qualify serious clients, and increase sales.</p>
                 </div>
               </div>
             </div>
@@ -325,7 +325,7 @@ export function FounderEntityView() {
                 Let&apos;s Build Your High-Velocity Growth System
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-sm text-slate-300 sm:text-base relative z-10">
-                Whether you need a custom business storefront live in 7 days or a 24/7 WhatsApp AI concierge, work directly with founder Abhisek Pani.
+                Whether you need a custom business website live in 7 days or a 24/7 WhatsApp AI bot, work directly with founder Abhisek Pani.
               </p>
 
               <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row relative z-10">

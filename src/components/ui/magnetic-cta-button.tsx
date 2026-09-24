@@ -19,7 +19,7 @@ interface MagneticCtaButtonProps {
 export function MagneticCtaButton({
   href,
   onClick,
-  children = "Add 24/7 WhatsApp Concierge",
+  children = "Add 24/7 WhatsApp AI Bot",
   icon = <MessageSquare className="w-4 h-4 fill-current shrink-0" />,
   showArrow = true,
   className = "",

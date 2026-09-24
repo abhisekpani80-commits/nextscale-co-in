@@ -113,7 +113,7 @@ export function ClinicProof() {
                 &lt; {count60}s
               </div>
               <div className="text-sm sm:text-base text-[#8e8e9c] font-medium">
-                WhatsApp AI Lead Triage Window
+                WhatsApp AI Reply Window
               </div>
             </div>
           </Card3D>

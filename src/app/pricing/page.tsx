@@ -336,7 +336,7 @@ export default function PricingPage() {
               <span className="mt-2 block font-heading text-sm font-bold uppercase text-slate-900">
                 Saved Weekly
               </span>
-              <p className="mt-1 text-xs text-slate-600">Automated scheduling, triage, and reminder sequences.</p>
+              <p className="mt-1 text-xs text-slate-600">Automated scheduling, WhatsApp AI replies, and reminder messages.</p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs">
               <span className="font-heading text-4xl font-extrabold text-slate-900 sm:text-5xl">&lt; 6 Wks</span>

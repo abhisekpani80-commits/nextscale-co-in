@@ -20,7 +20,7 @@ export default function Home() {
           {/* 2. Infinite Metric Running Tape */}
           <MetricTape />
 
-          {/* 3. Dual-Engine Architecture (Digital Storefront + 24/7 WhatsApp Concierge) */}
+          {/* 3. Dual-Engine Architecture (Modern Website + 24/7 WhatsApp AI Bot) */}
           <SystemsArchitecture />
 
           {/* 4. Bespoke Signature Move: Interactive Revenue Leak Simulator */}

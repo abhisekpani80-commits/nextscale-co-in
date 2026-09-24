@@ -13,7 +13,7 @@ const REVIEWS: GalleryItem[] = [
     industry: "Healthcare & Clinics",
     metric: "+184% Bookings in 45 Days",
     quote:
-      "40% of our high-paying patients now book treatments between 10 PM and 6 AM. The WhatsApp booking concierge alone repaid our entire investment within three weeks.",
+      "40% of our high-paying patients now book treatments between 10 PM and 6 AM. The WhatsApp AI booking bot alone repaid our entire investment within three weeks.",
     stars: 5,
   },
   {

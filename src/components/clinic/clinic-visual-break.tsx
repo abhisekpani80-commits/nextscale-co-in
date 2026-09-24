@@ -55,12 +55,12 @@ export function ClinicVisualBreak() {
               </text>
             </g>
 
-            {/* Node 3: AI Triage (Cyan) */}
+            {/* Node 3: AI Replies (Cyan) */}
             <g transform="translate(560, 100)">
               <circle cx="0" cy="0" r="18" fill="#14141c" stroke="#06b6d4" strokeWidth="2" />
               <circle cx="0" cy="0" r="7" fill="#06b6d4" />
               <text x="0" y="34" fill="#8e8e9c" fontSize="10" fontWeight="700" textAnchor="middle" fontFamily="var(--font-heading)">
-                AI TRIAGE
+                AI REPLIES
               </text>
             </g>
 
