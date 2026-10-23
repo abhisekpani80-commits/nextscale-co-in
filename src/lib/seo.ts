@@ -211,13 +211,15 @@ export function founderPersonSchema() {
       "Abhisek Pani Nextscale",
       "Abhisek Pani Founder",
       "Abhisek Pani CEO",
+      "Abhisek Pani Author",
+      "Abhisek Pani Build Solo",
       "Abhisek",
     ],
-    url: `${SITE.url}/about`,
+    url: `${SITE.url}/about/abhisek-pani`,
     email: SITE.email,
-    jobTitle: "Founder & Lead Software Architect",
+    jobTitle: "Founder, Lead Software Architect & Author of Build Solo",
     description:
-      "Abhisek Pani is the founder and CEO of Next Scale (nextscale.co.in). He is a software architect who engineers sub-second Next.js web applications, autonomous WhatsApp AI agents, and digital growth infrastructure for businesses across India and globally.",
+      "Abhisek Pani is a software architect, technology founder, and author based in Bhubaneswar, Odisha, India. He is the founder and CEO of Next Scale (nextscale.co.in) and author of Build Solo, specializing in sub-second Next.js web applications, autonomous WhatsApp AI agents, and independent solo software engineering.",
     nationality: {
       "@type": "Country",
       name: "India",
@@ -239,7 +241,8 @@ export function founderPersonSchema() {
       url: SITE.url,
     },
     knowsAbout: [
-      "Artificial Intelligence",
+      "Build Solo (Solopreneurship & AI Architecture)",
+      "Artificial Intelligence & Agentic Engineering",
       "Autonomous WhatsApp AI Agents",
       "Next.js 16 Web Development",
       "Full-Stack Software Architecture",
@@ -248,13 +251,99 @@ export function founderPersonSchema() {
       "Supabase & PostgreSQL Database Design",
       "Business Automation & Workflow Engineering",
     ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Works by Abhisek Pani",
+      itemListElement: [
+        {
+          "@type": "Book",
+          name: "Build Solo",
+          author: "Abhisek Pani",
+          description: "The Solo Builder's Blueprint for Shipping Production AI & Software at Venture Velocity.",
+          inLanguage: "en",
+        },
+      ],
+    },
     sameAs: SITE.founderSameAs,
     image: {
       "@type": "ImageObject",
       url: abs("/opengraph-image"),
-      caption: "Abhisek Pani — Founder of Next Scale",
+      caption: "Abhisek Pani — Founder of Next Scale and Author of Build Solo",
     },
-    mainEntityOfPage: `${SITE.url}/about`,
+    mainEntityOfPage: `${SITE.url}/about/abhisek-pani`,
+  };
+}
+
+/**
+ * Schema for Build Solo by Abhisek Pani.
+ */
+export function founderBookSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "@id": `${SITE.url}/about/abhisek-pani#build-solo`,
+    name: "Build Solo",
+    alternateName: "Build Solo by Abhisek Pani",
+    author: {
+      "@type": "Person",
+      "@id": `${SITE.url}/#founder`,
+      name: "Abhisek Pani",
+      url: `${SITE.url}/about/abhisek-pani`,
+    },
+    description:
+      "Build Solo is a software engineering guide and solopreneur manifesto authored by Abhisek Pani. It breaks down how modern solo builders, developers, and founders can build and launch production-grade software, WhatsApp AI bots, and profitable businesses in record time without bloated teams.",
+    genre: ["Software Engineering", "Artificial Intelligence", "Entrepreneurship", "Solopreneurship"],
+    inLanguage: "en",
+    publisher: {
+      "@type": "Organization",
+      name: "Next Scale",
+      url: SITE.url,
+    },
+  };
+}
+
+/**
+ * FAQPage Schema for Abhisek Pani profile queries.
+ */
+export function founderFaqSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${SITE.url}/about/abhisek-pani#faq`,
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Who is Abhisek Pani?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Abhisek Pani is a software architect, technology founder, and author based in Bhubaneswar, Odisha, India. He is the founder and CEO of Next Scale (nextscale.co.in) and the author of Build Solo.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is Build Solo by Abhisek Pani?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Build Solo is an engineering methodology and book authored by Abhisek Pani. It provides a step-by-step roadmap for developers and solo founders to build, ship, and monetize high-performance web applications and AI systems independently.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What companies and products has Abhisek Pani created?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Abhisek Pani founded Next Scale (a high-speed web and WhatsApp AI studio), created ExamOS (an AI-powered exam preparation engine), Aura AI (voice intelligence tool), and authored the book Build Solo.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Where is Abhisek Pani from?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Abhisek Pani is from Bhubaneswar, Odisha, India, and works with clients and companies across India, the United States, and the UAE.",
+        },
+      },
+    ],
   };
 }
 
@@ -271,7 +360,7 @@ export function profilePageSchema() {
     url: `${SITE.url}/about`,
     name: "Abhisek Pani — Founder of Next Scale",
     description:
-      "Profile page of Abhisek Pani, founder and CEO of Next Scale. Learn about Abhisek’s journey as an AI builder who created Next Scale to build AI products and digital infrastructure for businesses.",
+      "Profile page of Abhisek Pani, founder and CEO of Next Scale and author of Build Solo. Learn about Abhisek’s journey as an AI builder who created Next Scale to build AI products and digital infrastructure for businesses.",
     dateCreated: "2024-01-01",
     dateModified: new Date().toISOString().split("T")[0],
     inLanguage: "en-IN",
@@ -297,9 +386,9 @@ export function founderDedicatedProfilePageSchema() {
     "@type": "ProfilePage",
     "@id": `${SITE.url}/about/abhisek-pani#profilepage`,
     url: `${SITE.url}/about/abhisek-pani`,
-    name: "Abhisek Pani — Founder & Lead Software Architect at Next Scale",
+    name: "Abhisek Pani — Founder & Lead Software Architect at Next Scale, Author of Build Solo",
     description:
-      "Official entity and personal profile of Abhisek Pani, founder and CEO of Next Scale. Software architect engineering custom Next.js websites and autonomous WhatsApp AI agents based in Bhubaneswar, Odisha.",
+      "Official entity and personal profile of Abhisek Pani, founder and CEO of Next Scale and author of Build Solo. Software architect engineering custom Next.js websites and autonomous WhatsApp AI agents based in Bhubaneswar, Odisha.",
     dateCreated: "2024-01-01",
     dateModified: new Date().toISOString().split("T")[0],
     inLanguage: "en-IN",
@@ -311,7 +400,7 @@ export function founderDedicatedProfilePageSchema() {
       name: "Abhisek Pani",
       givenName: "Abhisek",
       familyName: "Pani",
-      jobTitle: "Founder & Lead Software Architect",
+      jobTitle: "Founder, Lead Software Architect & Author of Build Solo",
       url: `${SITE.url}/about/abhisek-pani`,
       sameAs: SITE.founderSameAs,
       worksFor: {
@@ -331,6 +420,7 @@ export function founderDedicatedProfilePageSchema() {
         name: "Bhubaneswar, Odisha, India",
       },
       knowsAbout: [
+        "Build Solo",
         "Artificial Intelligence",
         "Autonomous WhatsApp AI Agents",
         "Next.js 16 Web Engineering",

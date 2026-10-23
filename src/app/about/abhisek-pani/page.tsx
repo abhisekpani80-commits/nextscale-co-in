@@ -1,15 +1,26 @@
 import type { Metadata } from "next";
 import { FounderEntityView } from "@/components/about/founder-entity-view";
 import { JsonLd } from "@/components/seo/json-ld";
-import { pageMeta, founderDedicatedProfilePageSchema, founderPersonSchema } from "@/lib/seo";
+import {
+  pageMeta,
+  founderDedicatedProfilePageSchema,
+  founderPersonSchema,
+  founderBookSchema,
+  founderFaqSchema,
+} from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "Abhisek Pani — Founder & Lead Software Architect at Next Scale",
+  title: "Who is Abhisek Pani? — Author of Build Solo & Founder of Next Scale",
   description:
-    "Official entity and personal profile of Abhisek Pani, founder of Next Scale (nextscale.co.in). Software architect engineering sub-second Next.js web applications and autonomous WhatsApp AI agents based in Bhubaneswar, Odisha.",
+    "Official profile, biography, and books of Abhisek Pani. Author of Build Solo and Founder of Next Scale (nextscale.co.in). Software architect building sub-second business websites and autonomous WhatsApp AI bots based in Bhubaneswar, Odisha.",
   path: "/about/abhisek-pani",
   keywords: [
+    "Who is Abhisek Pani",
     "Abhisek Pani",
+    "Abhisek Pani author Build Solo",
+    "Build Solo Abhisek Pani",
+    "Build Solo book",
+    "Abhisek Pani biography",
     "Abhisek Pani Next Scale",
     "Abhisek Pani Founder",
     "Abhisek Pani CEO",
@@ -17,7 +28,7 @@ export const metadata: Metadata = pageMeta({
     "Abhisek Pani Odisha",
     "Abhisek Pani software architect",
     "Abhisek Pani web developer",
-    "Next Scale founder",
+    "abhisekpani.nextscale.co.in",
     "AI automation engineer Bhubaneswar",
   ],
 });
@@ -25,7 +36,14 @@ export const metadata: Metadata = pageMeta({
 export default function AbhisekPaniPage() {
   return (
     <>
-      <JsonLd schema={[founderDedicatedProfilePageSchema(), founderPersonSchema()]} />
+      <JsonLd
+        schema={[
+          founderDedicatedProfilePageSchema(),
+          founderPersonSchema(),
+          founderBookSchema(),
+          founderFaqSchema(),
+        ]}
+      />
       <FounderEntityView />
     </>
   );

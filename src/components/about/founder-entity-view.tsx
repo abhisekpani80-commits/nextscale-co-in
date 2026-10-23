@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import {
   Globe,
@@ -11,6 +12,12 @@ import {
   Terminal,
   Cpu,
   Layers,
+  BookOpen,
+  HelpCircle,
+  ChevronDown,
+  CheckCircle2,
+  FileText,
+  BadgeCheck,
 } from "lucide-react";
 import { waLink } from "@/lib/site";
 import { Reveal } from "@/components/ui/reveal";
@@ -44,12 +51,12 @@ const SOCIAL_LINKS = [
   { name: "LinkedIn", href: "https://www.linkedin.com/in/abhisek-pani-1b3592329/", icon: LinkedinIcon },
   { name: "GitHub", href: "https://github.com/abhisekpani80-commits", icon: GithubIcon },
   { name: "X / Twitter", href: "https://x.com/abhisekpani", icon: TwitterIcon },
-  { name: "Instagram", href: "https://instagram.com/nextscale.co.in", icon: Globe },
+  { name: "Subdomain", href: "https://abhisekpani.nextscale.co.in", icon: Globe },
 ];
 
 const SKILLS = [
   { category: "Web Architecture", items: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "High-Speed Caching", "API Design"] },
-  { category: "Autonomous Systems", items: ["WhatsApp Cloud API", "Smart Qualification AI", "Automated Scheduling", "CRM Integration", "24/7 WhatsApp AI"] },
+  { category: "Autonomous Systems", items: ["WhatsApp Cloud API", "Smart Lead Qualification AI", "Automated Booking", "CRM Integration", "24/7 WhatsApp AI"] },
   { category: "Data & Security", items: ["PostgreSQL", "Cloudflare DNS", "SSL Encryption", "Webhooks", "JSON-LD Schema"] },
   { category: "Growth & Visibility", items: ["Technical SEO", "Mobile First Design", "Fast Loading Pages", "Google Search Optimization"] },
 ];
@@ -59,15 +66,23 @@ const HIGHLIGHTS = [
     title: "Next Scale Studio",
     role: "Founder & Lead Architect",
     period: "2024 — Present",
-    desc: "Studio delivering custom business websites in 7 days and 24/7 WhatsApp AI bots across India, UAE, and USA.",
+    desc: "Modern digital engineering studio delivering custom business websites in 7 days and 24/7 WhatsApp AI bots across India, UAE, and USA.",
     link: "/about/next-scale",
     badge: "Active Studio",
+  },
+  {
+    title: "Build Solo (Book & Blueprint)",
+    role: "Author & Lead Architect",
+    period: "2024 — Present",
+    desc: "A manifesto and blueprint on how a single software engineer out-ships full agencies using AI agents, strict architecture, and 7-day cycles.",
+    link: "#build-solo",
+    badge: "Published Work",
   },
   {
     title: "ExamOS",
     role: "Creator & Lead Developer",
     period: "2025 — Present",
-    desc: "AI-powered exam preparation engine for competitive exams with adaptive question generation.",
+    desc: "AI-powered exam preparation engine for competitive exams with adaptive question generation and sub-second evaluation.",
     link: "/products/examos",
     badge: "Beta Platform",
   },
@@ -75,15 +90,67 @@ const HIGHLIGHTS = [
     title: "Aura AI",
     role: "Architect & AI Researcher",
     period: "2025 — Present",
-    desc: "Spoken English fluency coach with real-time pronunciation feedback powered by voice intelligence.",
+    desc: "Spoken English fluency coach with real-time pronunciation feedback powered by conversational voice intelligence.",
     link: "/products/aura",
     badge: "Coming Soon",
   },
 ];
 
+const BOOK_CHAPTERS = [
+  {
+    number: "01",
+    title: "The 1-Person Software Engine",
+    desc: "Why traditional agencies with 10-person teams take 3 months, and how a single engineer with AI agents and modern tooling builds better software in days.",
+  },
+  {
+    number: "02",
+    title: "The 7-Day Production Sprint",
+    desc: "The repeatable framework that goes from blank repository to live, indexed production deployment with sub-second page loads in exactly 168 hours.",
+  },
+  {
+    number: "03",
+    title: "100% Code & Asset Ownership",
+    desc: "Why clients must own 100% of their source code, git commits, and cloud accounts, eliminating recurring agency lock-in forever.",
+  },
+  {
+    number: "04",
+    title: "Autonomous WhatsApp AI Agents",
+    desc: "How to build intelligent 24/7 customer service and sales bots on WhatsApp Cloud API that answer questions, qualify leads, and book sales calls without hallucinating.",
+  },
+];
+
+const FAQS = [
+  {
+    q: "Who is Abhisek Pani?",
+    a: "Abhisek Pani is a software architect, technology entrepreneur, and author based in Bhubaneswar, Odisha, India. He is the founder and CEO of Next Scale (nextscale.co.in) and the author of the book 'Build Solo'. He specializes in designing sub-second Next.js web applications, autonomous WhatsApp AI agents, and custom enterprise software for businesses in India, the UAE, and the United States.",
+  },
+  {
+    q: "What is 'Build Solo' by Abhisek Pani?",
+    a: "'Build Solo' is a software engineering guide and solopreneur manifesto authored by Abhisek Pani. It breaks down how modern solo builders, developers, and founders can build and launch production-grade software, WhatsApp AI bots, and profitable businesses in record time without bloated teams or unnecessary agency overhead.",
+  },
+  {
+    q: "What products and systems has Abhisek Pani created?",
+    a: "Abhisek Pani has founded Next Scale, developed custom web infrastructure and WhatsApp AI systems for businesses across multiple industries, created ExamOS (an adaptive AI exam preparation platform), and architected Aura AI (a voice-powered spoken English fluency coach).",
+  },
+  {
+    q: "Where is Abhisek Pani located?",
+    a: "Abhisek Pani is based in Bhubaneswar, Odisha, India, and works with clients and businesses globally across India, the United Arab Emirates, the United Kingdom, and the United States.",
+  },
+  {
+    q: "How can I work with or contact Abhisek Pani?",
+    a: "You can reach Abhisek Pani directly on WhatsApp at +91 9556436685, email him at biz.abhisek@gmail.com, or submit a project scope via the Next Scale website at nextscale.co.in/contact.",
+  },
+];
+
 export function FounderEntityView() {
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
+
   return (
-    <div className="relative min-h-screen pb-20 bg-white text-slate-900">
+    <div className="relative min-h-screen pb-20 bg-white text-slate-900 overflow-x-hidden">
       {/* Background Decor */}
       <DotGridBackdrop />
 
@@ -108,6 +175,16 @@ export function FounderEntityView() {
                     <Sparkles className="size-3.5 fill-current text-blue-600" />
                     Founder Profile
                   </span>
+                  <a
+                    href="https://abhisekpani.nextscale.co.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-700 hover:bg-indigo-100 transition-colors"
+                  >
+                    <Globe className="size-3 text-indigo-600" />
+                    abhisekpani.nextscale.co.in
+                    <ExternalLink className="size-2.5 opacity-60" />
+                  </a>
                   <span className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-600">
                     <MapPin className="size-3 text-blue-600" />
                     Bhubaneswar, Odisha, India
@@ -119,18 +196,18 @@ export function FounderEntityView() {
                 </h1>
                 
                 <p className="mt-2 text-base font-bold text-blue-600 sm:text-xl">
-                  Founder &amp; Lead Architect at{" "}
-                  <Link href="/about/next-scale" className="underline decoration-blue-300 decoration-2 underline-offset-4 hover:text-blue-700">
+                  Author of <a href="#build-solo" className="underline decoration-blue-300 decoration-2 underline-offset-4 hover:text-blue-800">Build Solo</a> &amp; Founder at{" "}
+                  <Link href="/about/next-scale" className="underline decoration-blue-300 decoration-2 underline-offset-4 hover:text-blue-800">
                     Next Scale
                   </Link>
                 </p>
 
                 <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-                  Software engineer building high-converting business websites and 24/7 WhatsApp AI bots. Operating on a simple model: <strong className="text-slate-900">7-day guaranteed delivery, 100% full code ownership, and zero monthly agency fees.</strong>
+                  Software architect and author building high-speed business websites and 24/7 WhatsApp AI bots. Operating on a simple, transparent standard: <strong className="text-slate-900">7-day delivery, 100% full code ownership, and zero monthly agency retainers.</strong>
                 </p>
 
                 {/* Social & Entity Links */}
-                <div className="mt-6 flex flex-wrap items-center gap-3">
+                <div className="mt-6 flex flex-wrap items-center gap-2.5">
                   {SOCIAL_LINKS.map((soc) => (
                     <a
                       key={soc.name}
@@ -151,7 +228,7 @@ export function FounderEntityView() {
               <div className="w-full shrink-0 md:w-64">
                 <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-5 shadow-sm">
                   <h2 className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                    Track Record
+                    Track Record &amp; Proof
                   </h2>
                   <div className="mt-4 space-y-3.5">
                     <div>
@@ -186,6 +263,111 @@ export function FounderEntityView() {
             </div>
           </div>
         </Reveal>
+
+        {/* Section: Who is Abhisek Pani? (Entity Bio for Google & AI Search) */}
+        <div className="mt-12">
+          <Reveal>
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow sm:p-10">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-600">
+                <BadgeCheck className="size-4" />
+                <span>Biography &amp; Background</span>
+              </div>
+
+              <h2 className="mt-2 font-heading text-2xl font-black text-slate-900 sm:text-3xl">
+                Who is Abhisek Pani?
+              </h2>
+
+              <div className="mt-6 space-y-4 text-sm leading-relaxed text-slate-600 sm:text-base">
+                <p>
+                  <strong className="text-slate-900">Abhisek Pani</strong> is an Indian software architect, technology entrepreneur, and author based in Bhubaneswar, Odisha, India. He is the founder and CEO of <strong className="text-slate-900">Next Scale</strong> (nextscale.co.in) and author of the engineering blueprint <strong className="text-blue-600">&quot;Build Solo&quot;</strong>.
+                </p>
+                <p>
+                  As an engineer, Abhisek specializes in developing high-performance web systems using Next.js, React, and TypeScript, combined with autonomous WhatsApp AI agents running on the Meta Cloud API. Over the past several years, he has designed and delivered digital infrastructure for clinics, real estate firms, legal practices, educational institutes, and startups across India, the United Arab Emirates, and the United States.
+                </p>
+                <p>
+                  In addition to client engineering at Next Scale, Abhisek is an active builder in artificial intelligence. He created <strong className="text-slate-900">ExamOS</strong>, an adaptive test engine for competitive examinations, and is developing <strong className="text-slate-900">Aura AI</strong>, an intelligent voice application focused on real-time English pronunciation coaching.
+                </p>
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-2 pt-4 border-t border-slate-100">
+                <span className="rounded-lg bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">Software Architect</span>
+                <span className="rounded-lg bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">Author of Build Solo</span>
+                <span className="rounded-lg bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">Founder of Next Scale</span>
+                <span className="rounded-lg bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">AI Automation Engineer</span>
+                <span className="rounded-lg bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">Bhubaneswar, Odisha</span>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+
+        {/* Section: Build Solo (Book & Author Story) */}
+        <div id="build-solo" className="mt-12 scroll-mt-28">
+          <Reveal>
+            <div className="overflow-hidden rounded-3xl border border-blue-200 bg-gradient-to-br from-blue-50/50 via-white to-slate-50 p-6 shadow-sm hover:shadow-md transition-shadow sm:p-10">
+              <div className="flex flex-col md:flex-row items-start justify-between gap-6">
+                <div>
+                  <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-700">
+                    <BookOpen className="size-4" />
+                    <span>Authored Work &amp; Philosophy</span>
+                  </div>
+
+                  <h2 className="mt-2 font-heading text-2xl font-black text-slate-900 sm:text-3xl">
+                    Build Solo: The Solo Builder&apos;s Blueprint
+                  </h2>
+
+                  <p className="mt-2 text-sm text-slate-600 sm:text-base max-w-2xl">
+                    Authored by Abhisek Pani, <strong className="text-slate-900">Build Solo</strong> documents the exact methodology for how modern software engineers can design, build, and ship production-grade digital software and autonomous AI systems without bloated teams.
+                  </p>
+                </div>
+
+                <div className="shrink-0 rounded-2xl border border-blue-200 bg-white p-4 shadow-sm text-center md:w-56">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600">Featured Book</span>
+                  <div className="mt-2 font-heading text-lg font-black text-slate-900">Build Solo</div>
+                  <div className="text-xs text-slate-500 font-medium">By Abhisek Pani</div>
+                  <div className="mt-3 inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-bold text-emerald-700 border border-emerald-200">
+                    <CheckCircle2 className="size-3" />
+                    Full Blueprint
+                  </div>
+                </div>
+              </div>
+
+              {/* Book Chapters Grid */}
+              <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {BOOK_CHAPTERS.map((ch) => (
+                  <div key={ch.number} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-2xs">
+                    <div className="flex items-center gap-2.5">
+                      <span className="flex size-7 items-center justify-center rounded-lg bg-blue-100 font-heading text-xs font-bold text-blue-700">
+                        {ch.number}
+                      </span>
+                      <h3 className="font-heading text-base font-bold text-slate-900">
+                        {ch.title}
+                      </h3>
+                    </div>
+                    <p className="mt-2 text-xs leading-relaxed text-slate-600 sm:text-sm">
+                      {ch.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl bg-slate-900 p-5 text-white">
+                <div>
+                  <div className="font-heading text-base font-bold">Want the principles applied to your project?</div>
+                  <div className="text-xs text-slate-300">Hire Abhisek Pani to build your 7-day website or WhatsApp AI bot.</div>
+                </div>
+                <a
+                  href={waLink("Hi Abhisek! I read about your book Build Solo and would like to build a project using this framework.")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex shrink-0 items-center gap-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 px-4 py-2 text-xs font-bold text-white transition-all"
+                >
+                  <MessageCircle className="size-3.5" />
+                  Discuss Your Project
+                </a>
+              </div>
+            </div>
+          </Reveal>
+        </div>
 
         {/* Section: The Story & Philosophy */}
         <div className="mt-12">
@@ -316,6 +498,49 @@ export function FounderEntityView() {
           </Reveal>
         </div>
 
+        {/* Section: Frequently Asked Questions (FAQ for Entity SEO) */}
+        <div className="mt-12">
+          <Reveal>
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow sm:p-10">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-600">
+                <HelpCircle className="size-4" />
+                <span>Common Questions</span>
+              </div>
+
+              <h2 className="mt-2 font-heading text-2xl font-black text-slate-900 sm:text-3xl">
+                Frequently Asked Questions About Abhisek Pani
+              </h2>
+
+              <div className="mt-6 divide-y divide-slate-200">
+                {FAQS.map((faq, index) => {
+                  const isOpen = openFaq === index;
+                  return (
+                    <div key={faq.q} className="py-4 first:pt-0 last:pb-0">
+                      <button
+                        onClick={() => toggleFaq(index)}
+                        className="flex w-full items-center justify-between text-left font-heading text-base font-bold text-slate-900 hover:text-blue-600 transition-colors"
+                        aria-expanded={isOpen}
+                      >
+                        <span>{faq.q}</span>
+                        <ChevronDown
+                          className={`size-4 shrink-0 text-slate-400 transition-transform duration-200 ${
+                            isOpen ? "rotate-180 text-blue-600" : ""
+                          }`}
+                        />
+                      </button>
+                      {isOpen && (
+                        <p className="mt-2.5 text-sm leading-relaxed text-slate-600 sm:text-base">
+                          {faq.a}
+                        </p>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+
         {/* Bottom CTA Block */}
         <div className="mt-12">
           <Reveal>
@@ -350,7 +575,7 @@ export function FounderEntityView() {
 
               {/* Entity Schema Note */}
               <div className="mt-8 border-t border-slate-800 pt-4 text-xs text-slate-400 relative z-10">
-                <span>Entity Authority: Abhisek Pani • Founder of Next Scale • Bhubaneswar, Odisha, India</span>
+                <span>Entity Authority: Abhisek Pani • Author of Build Solo • Founder of Next Scale • Bhubaneswar, Odisha, India</span>
               </div>
             </div>
           </Reveal>
